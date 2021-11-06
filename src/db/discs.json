@@ -1,0 +1,5600 @@
+[
+	{
+		"brand": "Kastaplast",
+		"category": "Distance Drivers",
+		"title": "Rask",
+		"fade": "4",
+		"glide": "3",
+		"speed": "14",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Firestorm",
+		"fade": "4",
+		"glide": "5",
+		"speed": "14",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Limit",
+		"fade": "4",
+		"glide": "3.5",
+		"speed": "14.5",
+		"turn": "0"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Distance Drivers",
+		"title": "Albatross",
+		"fade": "3",
+		"glide": "6",
+		"speed": "14",
+		"turn": "-2"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Delirium",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14.5",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Missilen",
+		"fade": "4.5",
+		"glide": "3",
+		"speed": "14",
+		"turn": "0.5"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "World",
+		"fade": "4",
+		"glide": "4",
+		"speed": "14",
+		"turn": "1"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Distance Drivers",
+		"title": "Rampage",
+		"fade": "4",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Dimension",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14.5",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Ballista Pro",
+		"fade": "3",
+		"glide": "4",
+		"speed": "14",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Colossus",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-2"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "Catapult",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14",
+		"turn": "0"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Distance Drivers",
+		"title": "Lu",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-1"
+	},
+	{
+		"brand": "DGA",
+		"category": "Distance Drivers",
+		"title": "Torrent",
+		"fade": "2",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-1"
+	},
+	{
+		"brand": "Viking",
+		"category": "Distance Drivers",
+		"title": "Thor",
+		"fade": "2",
+		"glide": "5",
+		"speed": "14",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Corvette",
+		"fade": "2",
+		"glide": "6",
+		"speed": "14",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Ballista",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-1"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Distance Drivers",
+		"title": "Lace",
+		"fade": "1",
+		"glide": "6",
+		"speed": "14",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Teleport",
+		"fade": "2.5",
+		"glide": "5",
+		"speed": "14.5",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Tantrum",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14.5",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Raketen",
+		"fade": "3",
+		"glide": "4",
+		"speed": "15",
+		"turn": "-2"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Distance Drivers",
+		"title": "Aftermath",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Distance Drivers",
+		"title": "Cannon",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-3"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "King",
+		"fade": "4",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Relativity",
+		"fade": "1.5",
+		"glide": "5.5",
+		"speed": "14.5",
+		"turn": "-3"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Knight",
+		"fade": "3",
+		"glide": "4",
+		"speed": "14",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Distance Drivers",
+		"title": "Freedom",
+		"fade": "3",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-3"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "Destiny",
+		"fade": "3",
+		"glide": "6",
+		"speed": "14",
+		"turn": "-2"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Excite",
+		"fade": "2",
+		"glide": "5.5",
+		"speed": "14.5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "Queen",
+		"fade": "2",
+		"glide": "5",
+		"speed": "14",
+		"turn": "-2"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Distance Drivers",
+		"title": "UnLace",
+		"fade": "1",
+		"glide": "6",
+		"speed": "14",
+		"turn": "-5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Nuke OS",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Distance Drivers",
+		"title": "Hypercane",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "X1",
+		"fade": "4",
+		"glide": "3",
+		"speed": "13",
+		"turn": "1"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "War Horse",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "Adder",
+		"fade": "4",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Stiletto",
+		"fade": "5",
+		"glide": "3",
+		"speed": "13",
+		"turn": ".05"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Ape",
+		"fade": "4",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "RPM",
+		"category": "Distance Drivers",
+		"title": "Kahu OS",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Distance Drivers",
+		"title": "Solace",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D Model OS",
+		"fade": "4",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Distance Drivers",
+		"title": "Falcon",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Gladiator",
+		"fade": "3.5",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "X2",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Panic",
+		"fade": "3",
+		"glide": "4",
+		"speed": "13",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Energy",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Distance Drivers",
+		"title": "Defender",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Rive",
+		"fade": "3.5",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Distance Drivers",
+		"title": "Legenda",
+		"fade": "4",
+		"glide": "4",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Distance Drivers",
+		"title": "Quasar",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Cutlass",
+		"fade": "3.5",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "Giant",
+		"fade": "4",
+		"glide": "5",
+		"speed": "13",
+		"turn": "1"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Distance Drivers",
+		"title": "Da'E",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Nuke",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Distance Drivers",
+		"title": "Raider",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Boss",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Lone Star Discs",
+		"category": "Distance Drivers",
+		"title": "Bowie",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Slayer",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D Model S",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Distance Drivers",
+		"title": "Grym",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Groove",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Halo",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Distance Drivers",
+		"title": "O-Lace",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Distance Drivers",
+		"title": "DD2",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "RPM",
+		"category": "Distance Drivers",
+		"title": "Kahu",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Dominator",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Distance Drivers",
+		"title": "Sheriff",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Nitro",
+		"fade": "3",
+		"glide": "4",
+		"speed": "13",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Distance Drivers",
+		"title": "Captain",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Distance Drivers",
+		"title": "Majesty",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Shryke",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Distance Drivers",
+		"title": "Pharaoh",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Havoc",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Tenacity",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2.5"
+	},
+	{
+		"brand": "RPM",
+		"category": "Distance Drivers",
+		"title": "Kahu XG",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "Sorcerer",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "0"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Mayhem",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Crank",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "X4",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2.5"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Octane",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Bolt",
+		"fade": "3",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Catalyst",
+		"fade": "2",
+		"glide": "5.5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Distance Drivers",
+		"title": "BigFoot",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Other",
+		"category": "Distance Drivers",
+		"title": "DD-13 Starling",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Distance Drivers",
+		"title": "Qi",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Katana",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-3"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D Model US",
+		"fade": "1",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-3"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Distance Drivers",
+		"title": "Yeti",
+		"fade": "1",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Nuke SS",
+		"fade": "3",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Daedalus",
+		"fade": "2",
+		"glide": "6",
+		"speed": "13",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Crank SS",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-3"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Samurai",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-2"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Distance Drivers",
+		"title": "Sasquatch",
+		"fade": "1",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-5"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Vulcan",
+		"fade": "2",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-4"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "X5",
+		"fade": "1",
+		"glide": "5",
+		"speed": "13",
+		"turn": "-4"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Recoil",
+		"fade": "3",
+		"glide": "4",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Distance Drivers",
+		"title": "Slab",
+		"fade": "4",
+		"glide": "3",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Distance Drivers",
+		"title": "Enforcer",
+		"fade": "4",
+		"glide": "4",
+		"speed": "12",
+		"turn": ".5"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Distance Drivers",
+		"title": "PD2",
+		"fade": "4",
+		"glide": "4",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Scythe",
+		"fade": "4",
+		"glide": "3",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Force",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "XCaliber",
+		"fade": "4",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Distance Drivers",
+		"title": "Razeri",
+		"fade": "4",
+		"glide": "4",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Hybrid Drivers",
+		"title": "Phase",
+		"fade": "4",
+		"glide": "3.5",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D1 Max",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Zeus",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Distance Drivers",
+		"title": "Grym X",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Speed Demon",
+		"fade": "3",
+		"glide": "4",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D1",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Distance Drivers",
+		"title": "Slaidi",
+		"fade": "3",
+		"glide": "3",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "RPM",
+		"category": "Distance Drivers",
+		"title": "Kotare",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Punisher",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Distance Drivers",
+		"title": "DD3",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "AquaFlight",
+		"category": "Distance Drivers",
+		"title": "Osprey",
+		"fade": "2",
+		"glide": "4",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Distance Drivers",
+		"title": "Emperor",
+		"fade": "2.5",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D2 Max",
+		"fade": "3",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D2",
+		"fade": "3",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Distance Drivers",
+		"title": "Outlaw",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Destroyer",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Distance Drivers",
+		"title": "Trespass",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "X3",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Distance Drivers",
+		"title": "DDx",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Distance Drivers",
+		"title": "Scorpius",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Distance Drivers",
+		"title": "Enigma",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Wild Discs",
+		"category": "Distance Drivers",
+		"title": "Orca",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Distance Drivers",
+		"title": "Twin Swords",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Distance Drivers",
+		"title": "Hurricane",
+		"fade": "3",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Distance Drivers",
+		"title": "Sword",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Distance Drivers",
+		"title": "Fasti",
+		"fade": "4",
+		"glide": "4",
+		"speed": "12",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Teedevil",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Journey",
+		"fade": "1",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Tern",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Distance Drivers",
+		"title": "Wahoo",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-2"
+	},
+	{
+		"brand": "MVP",
+		"category": "Hybrid Drivers",
+		"title": "Wave",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D3",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-2"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Apex",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Hades",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-3"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D3 Max",
+		"fade": "1.5",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-3"
+	},
+	{
+		"brand": "Other",
+		"category": "Distance Drivers",
+		"title": "Cypress",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-2"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Distance Drivers",
+		"title": "Maya",
+		"fade": "1",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-3"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Hybrid Drivers",
+		"title": "Vanish",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-3"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D4",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-3"
+	},
+	{
+		"brand": "MVP",
+		"category": "Hybrid Drivers",
+		"title": "Orbital",
+		"fade": "1",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-4.5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Thrasher",
+		"fade": "2",
+		"glide": "5",
+		"speed": "12",
+		"turn": "-3"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D5",
+		"fade": "2",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-4"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Distance Drivers",
+		"title": "Astronaut",
+		"fade": "1",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-4"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D4 Max",
+		"fade": "1",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-4"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "D6",
+		"fade": "1",
+		"glide": "6",
+		"speed": "12",
+		"turn": "-4"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Hybrid Drivers",
+		"title": "Sabot",
+		"fade": "5",
+		"glide": "4",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Flick",
+		"fade": "5",
+		"glide": "3",
+		"speed": "11",
+		"turn": "1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "PD3",
+		"fade": "5",
+		"glide": "3",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Spirit",
+		"fade": "5",
+		"glide": "5",
+		"speed": "11",
+		"turn": "1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Machete",
+		"fade": "4",
+		"glide": "4",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Hybrid Drivers",
+		"title": "Astra-X",
+		"fade": "4",
+		"glide": "5",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Illusion",
+		"fade": "3",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H2 V2",
+		"fade": "2.5",
+		"glide": "5",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Hybrid Drivers",
+		"title": "Sergeant",
+		"fade": "2.5",
+		"glide": "4",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "PDx",
+		"fade": "3",
+		"glide": "4",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "DD",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Hybrid Drivers",
+		"title": "Thrill",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Hybrid Drivers",
+		"title": "Boatman",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Pulse",
+		"fade": "3",
+		"glide": "4",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Hybrid Drivers",
+		"title": "Flow",
+		"fade": "2",
+		"glide": "6",
+		"speed": "11",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Crush",
+		"fade": "4",
+		"glide": "5",
+		"speed": "11",
+		"turn": "0"
+	},
+	{
+		"brand": "Mint Discs",
+		"category": "Hybrid Drivers",
+		"title": "Longhorn",
+		"fade": "3",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Wraith",
+		"fade": "3",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Hybrid Drivers",
+		"title": "Grace",
+		"fade": "2",
+		"glide": "6",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Surge",
+		"fade": "3",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Krait",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Viking",
+		"category": "Hybrid Drivers",
+		"title": "Ragnarok",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Streamline",
+		"category": "Hybrid Drivers",
+		"title": "Trace",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Hybrid Drivers",
+		"title": "Photon",
+		"fade": "2.5",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "DGA",
+		"category": "Hybrid Drivers",
+		"title": "Rogue",
+		"fade": "1",
+		"glide": "4",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "CD3",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Hybrid Drivers",
+		"title": "Defy",
+		"fade": "3",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Hybrid Drivers",
+		"title": "Astra",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "Mentor",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Archon",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Surge SS",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "Sea Serpent",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-2"
+	},
+	{
+		"brand": "Lone Star Discs",
+		"category": "Hybrid Drivers",
+		"title": "Curl",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Hybrid Drivers",
+		"title": "Renegade",
+		"fade": "2.5",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Scorch",
+		"fade": "2",
+		"glide": "6",
+		"speed": "11",
+		"turn": "-2"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Distance Drivers",
+		"title": "Diablo DT",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Hybrid Drivers",
+		"title": "Jun",
+		"fade": "2",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Mystere",
+		"fade": "2",
+		"glide": "6",
+		"speed": "11",
+		"turn": "-3"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Control Drivers",
+		"title": "Virus",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-3.5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Distance Drivers",
+		"title": "Wildcat",
+		"fade": "3",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-2"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Hybrid Drivers",
+		"title": "Aries",
+		"fade": "2",
+		"glide": "6",
+		"speed": "11",
+		"turn": "-4"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Mamba",
+		"fade": "1",
+		"glide": "6",
+		"speed": "11",
+		"turn": "-5"
+	},
+	{
+		"brand": "DGA",
+		"category": "Hybrid Drivers",
+		"title": "Sail",
+		"fade": "1",
+		"glide": "5",
+		"speed": "11",
+		"turn": "-5"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Hybrid Drivers",
+		"title": "Fighter",
+		"fade": "3",
+		"glide": "3",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "F Model OS",
+		"fade": "4",
+		"glide": "5",
+		"speed": "10",
+		"turn": "2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H1",
+		"fade": "3.5",
+		"glide": "3",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Invictus",
+		"fade": "3",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Hybrid Drivers",
+		"title": "Criminal",
+		"fade": "4",
+		"glide": "3",
+		"speed": "10",
+		"turn": "1"
+	},
+	{
+		"brand": "DGA",
+		"category": "Control Drivers",
+		"title": "Hellfire",
+		"fade": "5",
+		"glide": "3",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H2",
+		"fade": "3",
+		"glide": "5",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Hybrid Drivers",
+		"title": "Fortress",
+		"fade": "3",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H1 V2",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Venom",
+		"fade": "4",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Hybrid Drivers",
+		"title": "Rage",
+		"fade": "3.5",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Control Drivers",
+		"title": "F Model S",
+		"fade": "3",
+		"glide": "5",
+		"speed": "10",
+		"turn": "1"
+	},
+	{
+		"brand": "RPM",
+		"category": "Hybrid Drivers",
+		"title": "Kiwi",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Avenger",
+		"fade": "3",
+		"glide": "3",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Control Drivers",
+		"title": "Tsunami",
+		"fade": "4",
+		"glide": "3",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Starfire",
+		"fade": "3",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "PD",
+		"fade": "3",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Hybrid Drivers",
+		"title": "Sampo",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Distance Drivers",
+		"title": "Vengeance",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Orc",
+		"fade": "3",
+		"glide": "4",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Anax",
+		"fade": "3",
+		"glide": "6",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H3",
+		"fade": "2",
+		"glide": "4",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Vulture",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Distance Drivers",
+		"title": "Sapphire",
+		"fade": "1.5",
+		"glide": "6",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Hybrid Drivers",
+		"title": "Aztec",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Hybrid Drivers",
+		"title": "Ninja",
+		"fade": "2",
+		"glide": "6",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H3 V2",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Starfire L",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Hybrid Drivers",
+		"title": "Musket",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Hybrid Drivers",
+		"title": "Laseri",
+		"fade": "1",
+		"glide": "4",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "DGA",
+		"category": "Hybrid Drivers",
+		"title": "Undertow",
+		"fade": "1",
+		"glide": "4",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "F Model US",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "CD",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Flash",
+		"fade": "3",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Hybrid Drivers",
+		"title": "Northman",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Beast",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H4",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H4 V2",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Hybrid Drivers",
+		"title": "Wei",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2.5"
+	},
+	{
+		"brand": "RPM",
+		"category": "Hybrid Drivers",
+		"title": "Taniwha",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "TD",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Hybrid Drivers",
+		"title": "H5",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Avenger SS",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-3"
+	},
+	{
+		"brand": "Mint Discs",
+		"category": "Control Drivers",
+		"title": "Freetail",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-4"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Hybrid Drivers",
+		"title": "Aquarius",
+		"fade": "2",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-4"
+	},
+	{
+		"brand": "Innova",
+		"category": "Hybrid Drivers",
+		"title": "Monarch",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-4"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Hybrid Drivers",
+		"title": "Nemesis",
+		"fade": "2",
+		"glide": "6",
+		"speed": "10",
+		"turn": "-4"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Hybrid Drivers",
+		"title": "TD2",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-4"
+	},
+	{
+		"brand": "Viking",
+		"category": "Hybrid Drivers",
+		"title": "Berserker",
+		"fade": "1",
+		"glide": "5",
+		"speed": "10",
+		"turn": "-4"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Control Drivers",
+		"title": "Enemy",
+		"fade": "4",
+		"glide": "3",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Firebird",
+		"fade": "4",
+		"glide": "3",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Control Drivers",
+		"title": "Scepter",
+		"fade": "4",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Hybrid Drivers",
+		"title": "Motion",
+		"fade": "4",
+		"glide": "3.5",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Draco",
+		"fade": "4",
+		"glide": "3",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Raptor",
+		"fade": "3",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Pioneer",
+		"fade": "4",
+		"glide": "3",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Control Drivers",
+		"title": "Ahti",
+		"fade": "4",
+		"glide": "3",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Felon",
+		"fade": "4",
+		"glide": "3",
+		"speed": "9",
+		"turn": ".5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Predator",
+		"fade": "4",
+		"glide": "4",
+		"speed": "9",
+		"turn": "1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "FD3",
+		"fade": "3",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Control Drivers",
+		"title": "Sabertooth",
+		"fade": "5",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Streamline",
+		"category": "Control Drivers",
+		"title": "Flare",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Culverin",
+		"fade": "3",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Zion",
+		"fade": "3",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Control Drivers",
+		"title": "Blade",
+		"fade": "3",
+		"glide": "5",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Fireball",
+		"fade": "3.5",
+		"glide": "3.5",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Distance Drivers",
+		"title": "Mammoth",
+		"fade": "5",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Control Drivers",
+		"title": "Stal",
+		"fade": "3",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Hybrid Drivers",
+		"title": "Getaway",
+		"fade": "3",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Control Drivers",
+		"title": "Longbowman",
+		"fade": "2",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Control Drivers",
+		"title": "Titan",
+		"fade": "2",
+		"glide": "3",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Control Drivers",
+		"title": "Riptide",
+		"fade": "3",
+		"glide": "4",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Control Drivers",
+		"title": "Buffalo",
+		"fade": "5",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Control Drivers",
+		"title": "Ogopogo",
+		"fade": "5",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Control Drivers",
+		"title": "FX-2",
+		"fade": "3",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Control Drivers",
+		"title": "Diablo",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Tracker",
+		"fade": "3",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Control Drivers",
+		"title": "Wolverine",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Convict",
+		"fade": "3",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Thunderbird",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Marksman",
+		"fade": "2",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Tesla",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Control Drivers",
+		"title": "Wrath",
+		"fade": "2",
+		"glide": "4.5",
+		"speed": "9",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Orion LF",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Control Drivers",
+		"title": "Lots",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Escape",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Savant",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Undertaker",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "CD2",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Saint",
+		"fade": "2",
+		"glide": "7",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Lone Star Discs",
+		"category": "Control Drivers",
+		"title": "Mad Cat",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "0"
+	},
+	{
+		"brand": "Streamline",
+		"category": "Control Drivers",
+		"title": "Lift",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Control Drivers",
+		"title": "Spear",
+		"fade": "1",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Polaris LF",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Control Drivers",
+		"title": "Falk",
+		"fade": "1",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Vandal",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "MVP",
+		"category": "Distance Drivers",
+		"title": "Inertia",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Distance Drivers",
+		"title": "Insanity",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Other",
+		"category": "Control Drivers",
+		"title": "Mantra",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Viking",
+		"fade": "2",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Control Drivers",
+		"title": "Apache",
+		"fade": "2",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Orion LS",
+		"fade": "1",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Control Drivers",
+		"title": "Assassin",
+		"fade": "1",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Bryce",
+		"fade": "2",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Impulse",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Valkyrie",
+		"fade": "2",
+		"glide": "4",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Control Drivers",
+		"title": "Hu",
+		"fade": "2",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Control Drivers",
+		"title": "Bandit",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Jade",
+		"fade": "1",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Control Drivers",
+		"title": "Hatchet",
+		"fade": "2",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Sidewinder",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "TDx",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Control Drivers",
+		"title": "Sphinx",
+		"fade": "1",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "RPM",
+		"category": "Control Drivers",
+		"title": "Pekapeka",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Hybrid Drivers",
+		"title": "Heat",
+		"fade": "1",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Fury",
+		"fade": "2",
+		"glide": "6",
+		"speed": "9",
+		"turn": "-2"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Control Drivers",
+		"title": "Mongoose",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Roadrunner",
+		"fade": "1",
+		"glide": "5",
+		"speed": "9",
+		"turn": "-4"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Control Drivers",
+		"title": "Flipperi",
+		"fade": "0",
+		"glide": "3",
+		"speed": "9",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Reaper",
+		"fade": "4",
+		"glide": "3",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Control Drivers",
+		"title": "Banzai",
+		"fade": "3",
+		"glide": "4",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Control Drivers",
+		"title": "Respecti",
+		"fade": "2",
+		"glide": "2",
+		"speed": "8",
+		"turn": "1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Talon",
+		"fade": "3",
+		"glide": "3",
+		"speed": "8",
+		"turn": "1"
+	},
+	{
+		"brand": "Lightning",
+		"category": "Control Drivers",
+		"title": "#1 Helix",
+		"fade": "3",
+		"glide": "4",
+		"speed": "8",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Shock",
+		"fade": "2.5",
+		"glide": "5",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Saint Pro",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Control Drivers",
+		"title": "Arch",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Control Drivers",
+		"title": "Stag",
+		"fade": "3",
+		"glide": "6",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Striker",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Control Drivers",
+		"title": "Pipeline",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Mint Discs",
+		"category": "Control Drivers",
+		"title": "Alpha",
+		"fade": "2",
+		"glide": "4",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Teebird3",
+		"fade": "2",
+		"glide": "4",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Lightning",
+		"category": "Control Drivers",
+		"title": "#1 Flyer",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "2"
+	},
+	{
+		"brand": "Other",
+		"category": "Control Drivers",
+		"title": "FD-8 Stork",
+		"fade": "1",
+		"glide": "5",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Volt",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Breakout",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-1"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Control Drivers",
+		"title": "Phenom",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-1"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Control Drivers",
+		"title": "Timberwolf",
+		"fade": "1",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Thief",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Falchion",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "TL3",
+		"fade": "1",
+		"glide": "4",
+		"speed": "8",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Passion",
+		"fade": "1",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "XS",
+		"fade": "3",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "Rockstar",
+		"fade": "1",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-2"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Amp",
+		"fade": "1",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "Essence",
+		"fade": "1",
+		"glide": "6",
+		"speed": "8",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Mantis",
+		"fade": "2",
+		"glide": "4",
+		"speed": "8",
+		"turn": "-2"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Control Drivers",
+		"title": "Onyx",
+		"fade": "1",
+		"glide": "6",
+		"speed": "8",
+		"turn": "-3"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Witness",
+		"fade": "1",
+		"glide": "6",
+		"speed": "8",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Xpress",
+		"fade": "1",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Dragon",
+		"fade": "2",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Archangel",
+		"fade": "1",
+		"glide": "6",
+		"speed": "8",
+		"turn": "-4"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Diamond",
+		"fade": "1",
+		"glide": "6",
+		"speed": "8",
+		"turn": "-3"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Control Drivers",
+		"title": "Gou",
+		"fade": "1",
+		"glide": "5",
+		"speed": "8",
+		"turn": "-3.5"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Control Drivers",
+		"title": "Notch",
+		"fade": "4.5",
+		"glide": "3",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "XXX",
+		"fade": "4",
+		"glide": "3",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Banshee",
+		"fade": "3",
+		"glide": "3",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Evader",
+		"fade": "2.5",
+		"glide": "4",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Control Drivers",
+		"title": "F1",
+		"fade": "3",
+		"glide": "4",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Spark",
+		"fade": "3",
+		"glide": "4",
+		"speed": "7",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Other",
+		"category": "Control Drivers",
+		"title": "Tyrant",
+		"fade": "2.5",
+		"glide": "3",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Veteran",
+		"fade": "3",
+		"glide": "4",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Lightning",
+		"category": "Control Drivers",
+		"title": "#1 Hyzer",
+		"fade": "4",
+		"glide": "3",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Distance Drivers",
+		"title": "F2",
+		"fade": "3",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "RPM",
+		"category": "Control Drivers",
+		"title": "Huia",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Stalker",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Teebird",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Cyclone",
+		"fade": "2",
+		"glide": "4",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Control Drivers",
+		"title": "Fu",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Explorer",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "FD2",
+		"fade": "2",
+		"glide": "4",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "Instinct",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Control Drivers",
+		"title": "Rival",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Viking",
+		"category": "Control Drivers",
+		"title": "Barbarian",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Control Drivers",
+		"title": "Exodus",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-5"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Eagle",
+		"fade": "3",
+		"glide": "4",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "XL",
+		"fade": "1",
+		"glide": "4",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Control Drivers",
+		"title": "Clash",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6.5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Control Drivers",
+		"title": "F3",
+		"fade": "2",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Control Drivers",
+		"title": "Centurion",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Python",
+		"fade": "2",
+		"glide": "3",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Control Drivers",
+		"title": "View",
+		"fade": "1",
+		"glide": "6",
+		"speed": "7",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Control Drivers",
+		"title": "Sabre",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "FD",
+		"fade": "1",
+		"glide": "6",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Control Drivers",
+		"title": "Valley",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "JLS",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "TL",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Sting",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Control Drivers",
+		"title": "Maverick",
+		"fade": "2",
+		"glide": "4",
+		"speed": "7",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Control Drivers",
+		"title": "Vamp",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Control Drivers",
+		"title": "F5",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Disc Golf UK",
+		"category": "Control Drivers",
+		"title": "The Count",
+		"fade": "3",
+		"glide": "4",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "River",
+		"fade": "1",
+		"glide": "7",
+		"speed": "7",
+		"turn": "-1"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Control Drivers",
+		"title": "Patriot",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Other",
+		"category": "Control Drivers",
+		"title": "Kraken",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Control Drivers",
+		"title": "Seer",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "AquaFlight",
+		"category": "Control Drivers",
+		"title": "Swift",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Leopard3",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Lone Star Discs",
+		"category": "Control Drivers",
+		"title": "Mockingbird",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Viking",
+		"category": "Control Drivers",
+		"title": "Cosmos",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Streamline",
+		"category": "Control Drivers",
+		"title": "Drift",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "Maul",
+		"fade": "1",
+		"glide": "7",
+		"speed": "7",
+		"turn": "-2"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Control Drivers",
+		"title": "Underworld",
+		"fade": "1",
+		"glide": "6",
+		"speed": "7",
+		"turn": "-3"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Control Drivers",
+		"title": "Swift Fox",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-3"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Control Drivers",
+		"title": "F7",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "Sun Bird",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-4"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "Genius",
+		"fade": "1",
+		"glide": "5",
+		"speed": "7",
+		"turn": "-4"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Viper",
+		"fade": "5",
+		"glide": "4",
+		"speed": "6",
+		"turn": "1"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Moab",
+		"fade": "5",
+		"glide": "4",
+		"speed": "6",
+		"turn": "1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Whippet",
+		"fade": "5",
+		"glide": "3",
+		"speed": "6",
+		"turn": "1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Ram",
+		"fade": "4",
+		"glide": "4",
+		"speed": "6",
+		"turn": "1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Demon",
+		"fade": "4",
+		"glide": "3",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Xtreme",
+		"fade": "4",
+		"glide": "3",
+		"speed": "6",
+		"turn": "1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Blaze",
+		"fade": "3",
+		"glide": "4",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Resistor",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "6.5",
+		"turn": "0"
+	},
+	{
+		"brand": "Lightning",
+		"category": "Control Drivers",
+		"title": "#1 Hookshot",
+		"fade": "3",
+		"glide": "4",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Midrange Drivers",
+		"title": "Kaxe",
+		"fade": "3",
+		"glide": "4",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M Model OS",
+		"fade": "3",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-1"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Midrange Drivers",
+		"title": "Kaxe Z",
+		"fade": "2",
+		"glide": "5",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "Magician",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Control Drivers",
+		"title": "Fox Spirit",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Gazelle",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Control Drivers",
+		"title": "River Pro",
+		"fade": "2",
+		"glide": "5",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M Model S",
+		"fade": "3",
+		"glide": "4",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Other",
+		"category": "Control Drivers",
+		"title": "Andro C",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-1"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "Pure OG",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-1"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Warship",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Zombee",
+		"fade": "1",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Gobi",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Control Drivers",
+		"title": "Polaris LS",
+		"fade": "1",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Servo",
+		"fade": "2",
+		"glide": "5",
+		"speed": "6.5",
+		"turn": "-1"
+	},
+	{
+		"brand": "DGA",
+		"category": "Midrange Drivers",
+		"title": "Squall",
+		"fade": "1",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-1"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Control Drivers",
+		"title": "Crave",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6.5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Cheetah",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-2"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Control Drivers",
+		"title": "Inspire",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-2.5"
+	},
+	{
+		"brand": "Lightning",
+		"category": "Control Drivers",
+		"title": "#1 Driver",
+		"fade": "2",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-2"
+	},
+	{
+		"brand": "Other",
+		"category": "Control Drivers",
+		"title": "Andro C (Retooled)",
+		"fade": "1",
+		"glide": "4",
+		"speed": "6",
+		"turn": "-2"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Control Drivers",
+		"title": "Jiao",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Leopard",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-2"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Switch",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6.5",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Relay",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-2"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Impact",
+		"fade": "1",
+		"glide": "6",
+		"speed": "6",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Control Drivers",
+		"title": "Glide",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-3"
+	},
+	{
+		"brand": "AquaFlight",
+		"category": "Control Drivers",
+		"title": "Pelican",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-3"
+	},
+	{
+		"brand": "MVP",
+		"category": "Control Drivers",
+		"title": "Signal",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-3"
+	},
+	{
+		"brand": "DGA",
+		"category": "Midrange Drivers",
+		"title": "Tremor",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-4"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Croc",
+		"fade": "5",
+		"glide": "2",
+		"speed": "5.5",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Justice",
+		"fade": "4",
+		"glide": "1",
+		"speed": "5",
+		"turn": "0.5"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Midrange Drivers",
+		"title": "Recluse",
+		"fade": "4",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Caiman",
+		"fade": "4",
+		"glide": "2",
+		"speed": "5.5",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Deflector",
+		"fade": "4",
+		"glide": "3.5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Gator",
+		"fade": "3",
+		"glide": "2",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Drone",
+		"fade": "4",
+		"glide": "3",
+		"speed": "5",
+		"turn": "1"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "Gila",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "MD5",
+		"fade": "4",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Midrange Drivers",
+		"title": "Pursuit",
+		"fade": "3",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Malta",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "1"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "Method",
+		"fade": "3",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Midrange Drivers",
+		"title": "Ra",
+		"fade": "2.5",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Midrange Drivers",
+		"title": "Obex",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Buzzz OS",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Tensor",
+		"fade": "3",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Midrange Drivers",
+		"title": "Sentinel",
+		"fade": "4",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Roc X3",
+		"fade": "3.5",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Midrange Drivers",
+		"title": "Mortar",
+		"fade": "3",
+		"glide": "2",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Hornet",
+		"fade": "3",
+		"glide": "3",
+		"speed": "5",
+		"turn": "1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Warrior (Gateway)",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Streamline",
+		"category": "Midrange Drivers",
+		"title": "Runway",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Midrange Drivers",
+		"title": "Pyro",
+		"fade": "2.5",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M1",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Bard",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Anchor",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Wasp",
+		"fade": "2",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Midrange Drivers",
+		"title": "Inca",
+		"fade": "3",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Lion",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "RPM",
+		"category": "Midrange Drivers",
+		"title": "Kea",
+		"fade": "3",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "MD4",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Verdict",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Vector",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Lone Star Discs",
+		"category": "Midrange Drivers",
+		"title": "Middy",
+		"fade": "3",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Midrange Drivers",
+		"title": "Quake",
+		"fade": "3",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Nebula",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "MX-3",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M2",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Mint Discs",
+		"category": "Midrange Drivers",
+		"title": "Bobcat",
+		"fade": "2.5",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Truth, EMAC",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Mint Discs",
+		"category": "Midrange Drivers",
+		"title": "Mustang",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Wild Discs",
+		"category": "Midrange Drivers",
+		"title": "Addax",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Midrange Drivers",
+		"title": "Valor",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Disc Golf UK",
+		"category": "Midrange Drivers",
+		"title": "The Duke",
+		"fade": "3.5",
+		"glide": "4",
+		"speed": "5.5",
+		"turn": "0"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Prophecy",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "RPM",
+		"category": "Midrange Drivers",
+		"title": "Kotuku",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Mace",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Roc3",
+		"fade": "3",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Pine",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Midrange Drivers",
+		"title": "Kui",
+		"fade": "2.5",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "MD3",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Compass",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Shark3",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Avatar",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Midrange Drivers",
+		"title": "Midari",
+		"fade": "1",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "GM",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Midrange Drivers",
+		"title": "Aftershock",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Karma",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Cro",
+		"fade": "2",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Midrange Drivers",
+		"title": "Chariot",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "MD3 (Retooled)",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "MR-5 Skylark",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "Origin",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Truth",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Buzzz",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "DGA",
+		"category": "Midrange Drivers",
+		"title": "Rift",
+		"fade": "1.5",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "KGB",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Matrix",
+		"fade": "2",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Midrange Drivers",
+		"title": "Hex",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M3",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Atlas",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Spider",
+		"fade": "1",
+		"glide": "3",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Core",
+		"fade": "1",
+		"glide": "5",
+		"speed": "6",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Skeeter",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Midrange Drivers",
+		"title": "Gauge",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Scout",
+		"fade": "0",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "AquaFlight",
+		"category": "Midrange Drivers",
+		"title": "Dragonfly",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Control Drivers",
+		"title": "Scorpion",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Midrange Drivers",
+		"title": "Anubis",
+		"fade": "0",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Midrange Drivers",
+		"title": "Launch",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Reactor",
+		"fade": "1.5",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-.5"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Sling",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Disc Golf UK",
+		"category": "Midrange Drivers",
+		"title": "The Duchess",
+		"fade": "2",
+		"glide": "5",
+		"speed": "5.5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Evidence",
+		"fade": "0",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Buzzz SS",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Midrange Drivers",
+		"title": "Tomahawk",
+		"fade": "0",
+		"glide": "6",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "Lucky",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "I-One",
+		"fade": "0",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "VCobra",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Mako3",
+		"fade": "0",
+		"glide": "5",
+		"speed": "5",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Claymore",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Element",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Axis",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Fuse",
+		"fade": "0",
+		"glide": "6",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Midrange Drivers",
+		"title": "Svea",
+		"fade": "0",
+		"glide": "6",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Wombat3",
+		"fade": "0",
+		"glide": "6",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M4",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Wombat",
+		"fade": "0",
+		"glide": "6",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Midrange Drivers",
+		"title": "Ibex",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Midrange Drivers",
+		"title": "Theory",
+		"fade": "1",
+		"glide": "4",
+		"speed": "4",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Warant",
+		"fade": "0",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Proof",
+		"fade": "1",
+		"glide": "6",
+		"speed": "5",
+		"turn": "-3"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Midrange Drivers",
+		"title": "Alias",
+		"fade": "1",
+		"glide": "4",
+		"speed": "4",
+		"turn": "-1"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "Brontosaurus",
+		"fade": ".5",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Panther",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Gateway",
+		"category": "Midrange Drivers",
+		"title": "Mystic",
+		"fade": "0",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "Leviathan",
+		"fade": "0",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-4"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Meteor",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-3"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Pirate",
+		"fade": "0",
+		"glide": "6",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Patrol",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-3"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Tangent",
+		"fade": "0.5",
+		"glide": "4",
+		"speed": "4",
+		"turn": "-0.5"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M5",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Manta",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Foxbat",
+		"fade": "0",
+		"glide": "6",
+		"speed": "5",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Archer",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-4"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Stratus",
+		"fade": "1",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-4"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Tursas",
+		"fade": "1",
+		"glide": "5",
+		"speed": "5",
+		"turn": "-3"
+	},
+	{
+		"brand": "Axiom Discs",
+		"category": "Midrange Drivers",
+		"title": "Paradox",
+		"fade": "0",
+		"glide": "4",
+		"speed": "5",
+		"turn": "-4"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Midrange Drivers",
+		"title": "Taurus",
+		"fade": "4",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Midrange Drivers",
+		"title": "Crossbow",
+		"fade": "4",
+		"glide": "1.5",
+		"speed": "4",
+		"turn": ".5"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Anvil",
+		"fade": "4",
+		"glide": "2",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Zone",
+		"fade": "3",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Putters",
+		"title": "Tactic",
+		"fade": "3",
+		"glide": "2",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Harp",
+		"fade": "3",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "MVP",
+		"category": "Putters",
+		"title": "Entropy",
+		"fade": "3",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Vibram",
+		"category": "Midrange Drivers",
+		"title": "Crag",
+		"fade": "3.5",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Midrange Drivers",
+		"title": "Shockwave",
+		"fade": "3",
+		"glide": "2",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Lone Star Discs",
+		"category": "Midrange Drivers",
+		"title": "Harpoon",
+		"fade": "2",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Legacy",
+		"category": "Midrange Drivers",
+		"title": "Ghost",
+		"fade": "3",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Roc",
+		"fade": "3",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "Maestro",
+		"fade": "2",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "Spring Ox",
+		"fade": "2",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Suspect",
+		"fade": "3",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Disc Golf UK",
+		"category": "Putters",
+		"title": "The Baron",
+		"fade": "2.5",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Classic Roc",
+		"fade": "2",
+		"glide": "3",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Fuji",
+		"fade": "2",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Midrange Drivers",
+		"title": "Yao",
+		"fade": "2",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Rat",
+		"fade": "3",
+		"glide": "2",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Midrange Drivers",
+		"title": "Grizzly",
+		"fade": "2",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Shark",
+		"fade": "2",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Midrange Drivers",
+		"title": "Moose",
+		"fade": "2",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Westside Discs",
+		"category": "Midrange Drivers",
+		"title": "Gatekeeper",
+		"fade": "2",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Midrange Drivers",
+		"title": "Walrus",
+		"fade": "3",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Kastaplast",
+		"category": "Midrange Drivers",
+		"title": "Gote",
+		"fade": "1",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Viking",
+		"category": "Midrange Drivers",
+		"title": "Warrior (Viking)",
+		"fade": "2",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "MD2",
+		"fade": "2",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "VRoc",
+		"fade": "1",
+		"glide": "4",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Coyote",
+		"fade": "1",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Viking",
+		"category": "Midrange Drivers",
+		"title": "Axe",
+		"fade": "1",
+		"glide": "3",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Mako",
+		"fade": "0",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Hawk",
+		"fade": "2",
+		"glide": "3",
+		"speed": "4",
+		"turn": "-2"
+	},
+	{
+		"brand": "RPM",
+		"category": "Midrange Drivers",
+		"title": "Piwakawaka",
+		"fade": "0",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Midrange Drivers",
+		"title": "MD",
+		"fade": "0",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Millennium",
+		"category": "Midrange Drivers",
+		"title": "Aurora/QMS",
+		"fade": "0",
+		"glide": "5",
+		"speed": "4",
+		"turn": "0"
+	},
+	{
+		"brand": "Dynamic Discs",
+		"category": "Midrange Drivers",
+		"title": "Bounty",
+		"fade": ".5",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-1.5"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Comet",
+		"fade": "1",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-2"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Midrange Drivers",
+		"title": "Shu",
+		"fade": "1",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Midrange Drivers",
+		"title": "M Model US",
+		"fade": "1",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-1"
+	},
+	{
+		"brand": "MVP",
+		"category": "Midrange Drivers",
+		"title": "Vertex",
+		"fade": "0.5",
+		"glide": "4",
+		"speed": "4",
+		"turn": "-2"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Midrange Drivers",
+		"title": "Stari",
+		"fade": "0",
+		"glide": "4",
+		"speed": "4",
+		"turn": "-2"
+	},
+	{
+		"brand": "Daredevil Discs",
+		"category": "Midrange Drivers",
+		"title": "Caribou",
+		"fade": "1",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-3"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Midrange Drivers",
+		"title": "Sol",
+		"fade": "0",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-3"
+	},
+	{
+		"brand": "Latitude 64",
+		"category": "Midrange Drivers",
+		"title": "Pearl",
+		"fade": "0",
+		"glide": "6",
+		"speed": "4",
+		"turn": "-4"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Cobra",
+		"fade": "2",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-2"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Stingray",
+		"fade": "1",
+		"glide": "5",
+		"speed": "4",
+		"turn": "-3"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Wolf",
+		"fade": "1",
+		"glide": "3",
+		"speed": "4",
+		"turn": "-4"
+	},
+	{
+		"brand": "Other",
+		"category": "Midrange Drivers",
+		"title": "Stego",
+		"fade": "4",
+		"glide": "1",
+		"speed": "3",
+		"turn": "1"
+	},
+	{
+		"brand": "Prodiscus",
+		"category": "Midrange Drivers",
+		"title": "Jokeri",
+		"fade": "2",
+		"glide": "3",
+		"speed": "3",
+		"turn": "1"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Putters",
+		"title": "A1",
+		"fade": "3",
+		"glide": "3",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Streamline",
+		"category": "Putters",
+		"title": "Stabilzer",
+		"fade": "3",
+		"glide": "4",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Putters",
+		"title": "A2",
+		"fade": "3",
+		"glide": "4",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Putters",
+		"title": "Logic",
+		"fade": "1",
+		"glide": "3",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Putters",
+		"title": "Ruin",
+		"fade": "3",
+		"glide": "3",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Discmania",
+		"category": "Putters",
+		"title": "Sensei",
+		"fade": "1",
+		"glide": "3",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "DGA",
+		"category": "Midrange Drivers",
+		"title": "Breaker",
+		"fade": "3",
+		"glide": "3",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Putters",
+		"title": "A3",
+		"fade": "3",
+		"glide": "4",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Putters",
+		"title": "Wings",
+		"fade": "2",
+		"glide": "3",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Innova",
+		"category": "Putters",
+		"title": "Invader",
+		"fade": "1",
+		"glide": "2",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Prodigy",
+		"category": "Putters",
+		"title": "A4",
+		"fade": "2",
+		"glide": "4",
+		"speed": "3",
+		"turn": "-1"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Putters",
+		"title": "Cohort",
+		"fade": "1",
+		"glide": "4",
+		"speed": "3.5",
+		"turn": "0"
+	},
+	{
+		"brand": "Infinite Discs",
+		"category": "Putters",
+		"title": "Tomb",
+		"fade": "1",
+		"glide": "4",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "RPM",
+		"category": "Putters",
+		"title": "Tui",
+		"fade": "0",
+		"glide": "4",
+		"speed": "3",
+		"turn": "-1"
+	},
+	{
+		"brand": "Discraft",
+		"category": "Putters",
+		"title": "Zeppelin",
+		"fade": "0",
+		"glide": "5",
+		"speed": "3",
+		"turn": "-1"
+	},
+	{
+		"brand": "Innova",
+		"category": "Midrange Drivers",
+		"title": "Aero",
+		"fade": "0",
+		"glide": "6",
+		"speed": "3",
+		"turn": "0"
+	},
+	{
+		"brand": "Yikun",
+		"category": "Midrange Drivers",
+		"title": "Yan",
+		"fade": "0",
+		"glide": "6",
+		"speed": "3",
+		"turn": "0"
+	}
+]

@@ -1,0 +1,45 @@
+{
+  "name": "discit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "db:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n",
+    "db:create": "ts-node ./node_modules/typeorm/cli.js migration:create -n",
+    "db:down": "ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "db:up": "ts-node ./node_modules/typeorm/cli.js migration:run",
+	"postinstall": "npm run build",
+    "build": "tsc",
+	"dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "lint": "eslint --fix --ext .ts,.tsx .",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdleveille/discit.git"
+  },
+  "keywords": [],
+  "author": "Chris Leveille",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cdleveille/discit/issues"
+  },
+  "homepage": "https://github.com/cdleveille/discit#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "ts-node": "^9.1.1",
+    "typeorm": "^0.2.38",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "^8.2.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4"
+  }
+}

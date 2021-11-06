@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  bt-bot-dev-container:
+    container_name: discit-dev-container
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+        - database.env
+    ports:
+      - "6667:5432"
+    networks:
+      - discit-dev-network
+networks:
+  discit-dev-network:
+    driver: bridge
