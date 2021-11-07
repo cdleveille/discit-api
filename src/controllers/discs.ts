@@ -1,12 +1,16 @@
 import { Request, Response, Router } from "express";
 
 import log from "../services/log";
+import { DiscRepository as DiscRepo } from "../repositories/DiscRepository";
+import { Disc } from "../models/Disc";
 
 const router = Router();
 
 router.get("/", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
-		return res.send("disc info goes here");
+		const manager = res.locals.em.getRepository(Disc);
+		const discs = await DiscRepo.GetAll(manager);
+		return res.send(discs);
 	} catch (error) {
 		log.error(error);
 	}

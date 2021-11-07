@@ -2,10 +2,38 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"command": "npm run dev",
-			"name": "debug",
+			"type": "pwa-node",
 			"request": "launch",
-			"type": "node-terminal"
+			"name": "Debug DEV",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"program": "${workspaceFolder}\\src\\index.ts",
+			"preLaunchTask": "tsc: compile",
+			"outFiles": [
+				"${workspaceFolder}/build/**/*.js"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			}
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Debug PROD",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"program": "${workspaceFolder}\\src\\index.ts",
+			"preLaunchTask": "tsc: compile",
+			"outFiles": [
+				"${workspaceFolder}/build/**/*.js"
+			],
+			"env": {
+				"NODE_ENV": "production"
+			}
 		}
 	]
 }

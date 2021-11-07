@@ -1,13 +1,13 @@
-import { PrimaryGeneratedColumn, BaseEntity, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { PrimaryKey, Property } from "@mikro-orm/core";
 
-export default abstract class Entity extends BaseEntity {
+export abstract class Base {
 
-	@PrimaryGeneratedColumn()
-	id: number;
+	@PrimaryKey({ hidden: true })
+	id?: number;
 
-	@CreateDateColumn()
-	createdAt: Date;
+	@Property({ hidden: true })
+	createdAt?: Date = new Date();
 
-	@UpdateDateColumn()
-	updatedAt: Date;
+	@Property({ onUpdate: () => new Date(), hidden: true })
+	updatedAt?: Date = new Date();
 }

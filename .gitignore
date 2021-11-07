@@ -108,3 +108,5 @@ build/**/*
 
 # local dev db data
 discit-dev-container/data/**/*
+
+__db_cache__
