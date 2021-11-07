@@ -1,35 +1,40 @@
-import { Index, Entity, Column } from "typeorm";
+import { Entity, Property, Index } from "@mikro-orm/core";
 
-import Base from "./Base";
+import { Base } from "./Base";
 
-@Entity("Disc")
+@Entity()
 export class Disc extends Base {
 
+	constructor(disc?: Partial<Disc>) {
+		super();
+		Object.assign(this, disc);
+	}
+
 	@Index()
-	@Column()
+	@Property()
 	name: string;
 
 	@Index()
-	@Column()
+	@Property()
 	brand: string;
 
 	@Index()
-	@Column()
+	@Property()
 	category: string;
 
 	@Index()
-	@Column()
+	@Property()
 	speed: number;
 
 	@Index()
-	@Column()
+	@Property()
 	glide: number;
 
 	@Index()
-	@Column()
+	@Property()
 	turn: number;
 
 	@Index()
-	@Column()
+	@Property()
 	fade: number;
 }

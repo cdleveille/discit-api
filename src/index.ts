@@ -4,6 +4,7 @@ import config from "./helpers/config";
 import { Database } from "./services/db";
 import log from "./services/log";
 import app from "./services/server";
+import { Disc } from "./models/Disc";
 
 import { populateDB } from "./db/populate";
 
@@ -12,7 +13,8 @@ const start = async () => {
 		await Database.Connect();
 		app.listen(config.PORT);
 		log.info(`listening on http://${config.HOST}:${config.PORT}`);
-		populateDB();
+		const manager = Database.Manager.fork();
+		populateDB(manager.getRepository(Disc));
 	} catch (error) {
 		log.error(error);
 		process.exit(1);
