@@ -2,14 +2,25 @@
 
 A RESTful API for disc golf discs. Enables developers to programatically access publicly accessible disc golf disc information (name, brand, category, flight numbers, etc.).
 
+```
+GET    /api/disc                  Get all discs
+GET    /api/disc/name/:val        Search by name/title
+GET    /api/disc/brand/:val       Search by brand/manufacturer
+GET    /api/disc/category/:val    Search by category/type (driver, midrange, putter)
+GET    /api/disc/speed/:val       Search by speed flight number
+GET    /api/disc/glide/:val       Search by glide flight number
+GET    /api/disc/turn/:val        Search by turn flight number
+GET    /api/disc/fade/:val        Search by fade flight number
+```
+
 ---
 
 ## Technologies
 
-- TypeScript
-- Express
-- MikroORM
-- PostgreSQL
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/)
+- [MikroORM](https://mikro-orm.io/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ---
 
