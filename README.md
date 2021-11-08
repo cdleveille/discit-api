@@ -7,8 +7,8 @@ A RESTful API for disc golf discs. Enables developers to programatically access 
 ## Technologies
 
 - TypeScript
-- TypeORM
 - Express
+- MikroORM
 - PostgreSQL
 
 ---
