@@ -1,4 +1,4 @@
-import { EntityRepository } from "@mikro-orm/core";
+import { EntityRepository, QueryOrder } from "@mikro-orm/core";
 
 import { Disc } from "../models/Disc";
 import { IDisc } from "../types/abstract";
@@ -18,7 +18,70 @@ export class DiscRepository {
 
 	public static async FindAll(manager: RequestRepo): Promise<Disc[]> {
 		try {
-			const res = await manager.findAll({}, { cache: 3000 });
+			const res = await manager.findAll({}, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindName(manager: RequestRepo, name: string): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ name: { $ilike: `%${name}%` } }, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindBrand(manager: RequestRepo, brand: string): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ brand: { $ilike: `%${brand}%` } }, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindCategory(manager: RequestRepo, category: string): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ category: { $ilike: `%${category}%` } }, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindSpeed(manager: RequestRepo, speed: number): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ speed }, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindGlide(manager: RequestRepo, glide: number): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ glide }, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindTurn(manager: RequestRepo, turn: number): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ turn }, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindFade(manager: RequestRepo, fade: number): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ fade }, { cache: 3000, orderBy: { speed: QueryOrder.DESC, name: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -57,7 +120,7 @@ export class DiscRepository {
 					fade: disc.fade
 				});
 
-				await manager.persist(newDisc);
+				manager.persist(newDisc);
 			}
 
 			await manager.flush();

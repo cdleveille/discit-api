@@ -1,2 +1,23 @@
 ###
 GET http://127.0.0.1:3000/api/disc
+
+###
+GET http://127.0.0.1:3000/api/disc/name/aviar
+
+###
+GET http://127.0.0.1:3000/api/disc/brand/innova
+
+###
+GET http://127.0.0.1:3000/api/disc/category/putter
+
+###
+GET http://127.0.0.1:3000/api/disc/speed/5
+
+###
+GET http://127.0.0.1:3000/api/disc/glide/5
+
+###
+GET http://127.0.0.1:3000/api/disc/turn/-5
+
+###
+GET http://127.0.0.1:3000/api/disc/fade/3

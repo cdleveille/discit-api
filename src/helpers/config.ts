@@ -9,7 +9,8 @@ const Config = {
 	IS_PROD: <boolean>(process.env.NODE_ENV == "production" ? true : false),
 	PORT: <number>parseInt(process.env.PORT as string) || 3000,
 	HOST: <Host>(process.env.NODE_ENV == Env.prod ? process.env.HOST : Host.ip),
-	CORES: <number>os.cpus().length
+	CORES: <number>os.cpus().length,
+	DISC_DATA_URL: <string>process.env.DISC_DATA_URL || undefined
 };
 
 export const Db = {
