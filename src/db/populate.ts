@@ -5,38 +5,50 @@ import log from "../services/log";
 import { IDisc, IDiscRaw } from "../types/abstract";
 
 export const populateDB = async (manager: Manager): Promise<void> => {
-	const hasAny = await DiscRepo.FindAnyOne(manager);
-	if (hasAny) return;
+	const hasAny = await DiscRepo.FindAny(manager);
+	if (hasAny) {
+		log.info("No discs loaded! Database already has data.");
+		return;
+	}
 
-	fs.readFile("./src/db/discs.json", "utf8", (err, jsonString) => {
+	fs.readFile("./src/db/discs.json", "utf8", async (err, jsonString) => {
 		try {
 			if (err) {
 				log.error("File read failed: ", err);
 				return;
 			}
 
-			const discs = JSON.parse(jsonString);
-			parseDiscs(manager, discs);
+			const rawDiscs: IDiscRaw[] = JSON.parse(jsonString);
+			const discs: IDisc[] = processRawDiscs(rawDiscs);
+			await insertDiscs(manager, discs);
 		} catch (error) {
 			log.error(error);
 		}
 	});
 };
 
-const parseDiscs = async (manager: Manager, discs: IDiscRaw[]): Promise<void> => {
-	console.log(discs);
+const processRawDiscs = (rawDiscs: IDiscRaw[]): IDisc[] => {
+	let discs: IDisc[] = [];
 
-	const disc: IDiscRaw = discs[0];
+	for (const rawDisc of rawDiscs) {
+		const disc: IDisc = {
+			name: rawDisc.title,
+			brand: rawDisc.brand,
+			category: rawDisc.category,
+			speed: parseFloat(rawDisc.speed),
+			glide: parseFloat(rawDisc.glide),
+			turn: parseFloat(rawDisc.turn),
+			fade: parseFloat(rawDisc.fade)
+		};
 
-	const newDisc: IDisc = {
-		name: disc.title,
-		brand: disc.brand,
-		category: disc.category,
-		speed: parseFloat(disc.speed),
-		glide: parseFloat(disc.glide),
-		turn: parseFloat(disc.turn),
-		fade: parseFloat(disc.fade)
-	};
+		discs.push(disc);
+	}
 
-	await DiscRepo.InsertOne(manager, newDisc);
+	return discs;
+};
+
+const insertDiscs = async (manager: Manager, discs: IDisc[]): Promise<void> => {
+	const inserted = await DiscRepo.InsertMany(manager, discs);
+	if (!inserted) throw "Error loading disc data into database!";
+	log.info(`Successfully loaded data for ${discs.length} discs into database.`);
 };

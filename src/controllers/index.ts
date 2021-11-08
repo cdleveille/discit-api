@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import discsRouter from "./discs";
+import discRouter from "./disc";
 
 const router = Router();
 
-router.use("/discs", discsRouter);
+router.use("/disc", discRouter);
 
 export default router;

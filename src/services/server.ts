@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 
 import { Database } from "../services/db";
-import router from "../controllers/main";
+import router from "../controllers";
 
 const app = express();
 

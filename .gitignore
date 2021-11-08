@@ -110,3 +110,5 @@ build/**/*
 discit-dev-container/data/**/*
 
 __db_cache__
+
+package-lock.json

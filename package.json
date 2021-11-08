@@ -8,7 +8,7 @@
     "db:create": "npx mikro-orm migration:create",
     "db:up": "npx mikro-orm migration:up",
     "db:down": "npx mikro-orm migration:down",
-    "postinstall": "npm run build",
+    "postinstall": "yarn build",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
     "lint": "eslint --fix --ext .ts,.tsx .",
