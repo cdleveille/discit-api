@@ -1,6 +1,6 @@
 # DiscIt
 
-A RESTful API for disc golf discs. Enables developers to programatically access publicly accessible disc information (name, brand, category, flight numbers, etc.).
+RESTful API for disc golf discs. Enables developers to programatically access publicly accessible disc information (name, brand, category, flight numbers, etc.).
 
 ```
 GET    /api/disc                  Get all discs
