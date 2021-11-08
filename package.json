@@ -4,14 +4,13 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "db:init": "npx mikro-orm migration:create --initial",
-    "db:create": "npx mikro-orm migration:create",
-    "db:up": "npx mikro-orm migration:up",
-    "db:down": "npx mikro-orm migration:down",
-    "postinstall": "yarn build",
-    "build": "tsc",
+    "db:init": "yarn mikro-orm migration:create --initial",
+    "db:create": "yarn mikro-orm migration:create",
+    "db:up": "yarn mikro-orm migration:up",
+    "db:down": "yarn mikro-orm migration:down",
+	"install": "tsc",
+	"lint": "eslint --fix --ext .ts,.tsx .",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
-    "lint": "eslint --fix --ext .ts,.tsx .",
     "start": "node ."
   },
   "repository": {
@@ -32,7 +31,6 @@
     "express": "^4.17.1",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
-    "ts-node": "^9.1.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {

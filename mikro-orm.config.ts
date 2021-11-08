@@ -1,31 +1,21 @@
 import "dotenv/config";
 import "reflect-metadata";
-
 import { ConnectionConfig } from "@mikro-orm/core";
 
-const {
-	NODE_ENV,
-	DB_TYPE,
-	DB_HOST,
-	DB_PORT,
-	DB_USERNAME,
-	DB_PASSWORD,
-	DB_NAME } = process.env;
-
-const IS_PROD = NODE_ENV === "true" ? true : false;
+import Config, { Db } from "./src/helpers/config";
 
 export default {
 	debug: true,
 	entities: ["./src/models/**/*.ts"],
-	dbName: DB_NAME,
-	type: DB_TYPE,
-	host: DB_HOST,
-	port: parseInt(DB_PORT as string),
-	user: DB_USERNAME,
-	password: DB_PASSWORD,
+	dbName: Db.DB_NAME,
+	type: Db.DB_TYPE,
+	host: Db.DB_HOST,
+	port: Db.DB_PORT,
+	user: Db.DB_USERNAME,
+	password: Db.DB_PASSWORD,
 	cache: {
 		enabled: true,
-		pretty: !IS_PROD,
+		pretty: !Config.IS_PROD,
 		options: { cacheDir: process.cwd() + "/__db_cache__" }
 	},
 	migrations: {
