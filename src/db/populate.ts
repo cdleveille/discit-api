@@ -8,7 +8,7 @@ import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositor
 import log from "../services/log";
 import { IDisc, IDiscRaw } from "../types/abstract";
 
-export const maintainDiscs = async (manager: Manager): Promise<void> => {
+export const maintainDiscs = async (manager: Manager) => {
 	log.info("***START*** - disc maintenance process.");
 
 	log.info("Getting all existing discs from database...");
@@ -22,7 +22,7 @@ export const maintainDiscs = async (manager: Manager): Promise<void> => {
 	}
 };
 
-export const populateDBFromWebPage = async (manager: Manager, existingDiscs: Disc[]): Promise<void> => {
+export const populateDBFromWebPage = async (manager: Manager, existingDiscs: Disc[]) => {
 	try {
 		log.info(`Fetching disc data from ${Config.DISC_FETCH_URL}...`);
 		const { data } = await axios.get(Config.DISC_FETCH_URL);
@@ -76,7 +76,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	return newDiscs;
 };
 
-export const populateDBFromJson = async (manager: Manager, existingDiscs: Disc[]): Promise<void> => {
+export const populateDBFromJson = async (manager: Manager, existingDiscs: Disc[]) => {
 	fs.readFile("./src/db/discs.json", "utf8", async (err, jsonString) => {
 		try {
 			if (err) {
@@ -115,7 +115,7 @@ const getDiscsFromJson = (rawDiscs: IDiscRaw[], existingDiscs: Disc[]): IDisc[] 
 	return newDiscs;
 };
 
-const insertDiscs = async (manager: Manager, discs: IDisc[], source: string, numFetched: number): Promise<void> => {
+const insertDiscs = async (manager: Manager, discs: IDisc[], source: string, numFetched: number) => {
 	const areThereNewDiscs: boolean = discs.length > 0;
 
 	if (areThereNewDiscs) {
@@ -134,7 +134,8 @@ const discExistsInDB = (disc: IDisc, existingDiscs: Disc[]): boolean => {
 	if (existingDiscs.length === 0) return false;
 
 	for (const existingDisc of existingDiscs) {
-		if (disc.name === existingDisc.name && disc.brand === existingDisc.brand) return true;
+		if (disc.name === existingDisc.name && disc.brand === existingDisc.brand)
+			return true;
 	}
 
 	return false;

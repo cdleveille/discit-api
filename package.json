@@ -28,6 +28,7 @@
     "@mikro-orm/core": "^4.5.9",
     "@mikro-orm/postgresql": "^4.5.9",
     "axios": "^0.24.0",
+    "cron": "^1.8.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsdom": "^18.0.1",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@mikro-orm/cli": "^4.5.9",
+    "@types/cron": "^1.7.3",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/jsdom": "^16.2.13",
