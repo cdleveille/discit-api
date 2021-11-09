@@ -9,7 +9,7 @@ export interface IDisc {
 }
 
 export interface IDiscRaw {
-	title: string,
+	name: string,
 	brand: string,
 	category: string,
 	speed: string,

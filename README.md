@@ -2,7 +2,7 @@
 
 RESTful API for disc golf discs. Enables developers to programatically access publicly accessible disc information (name, brand, category, flight numbers, etc.).
 
-```
+```text
 GET    /api/disc                  Get all discs
 GET    /api/disc/name/:val        Search by name/title
 GET    /api/disc/brand/:val       Search by brand/manufacturer
