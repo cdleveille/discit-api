@@ -8,24 +8,25 @@ import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositor
 import log from "../services/log";
 import { IDisc, IDiscRaw } from "../types/abstract";
 
-export const populateDB = async (manager: Manager): Promise<void> => {
+export const maintainDiscs = async (manager: Manager): Promise<void> => {
+	log.info("***START*** - disc maintenance process.");
+
+	log.info("Getting all existing discs from database...");
 	const existingDiscs = await DiscRepo.FindAll(manager);
 
 	if (Config.DISC_FETCH_URL) {
 		await populateDBFromWebPage(manager, existingDiscs);
 	} else {
-		log.info("No DISC_FETCH_URL env variable specified! Falling back on local json file.");
-		await populateDBFromLocalJson(manager, existingDiscs);
+		log.error("DISC_FETCH_URL is not defined! Loading from discs.json file instead.");
+		await populateDBFromJson(manager, existingDiscs);
 	}
 };
 
 export const populateDBFromWebPage = async (manager: Manager, existingDiscs: Disc[]): Promise<void> => {
 	try {
+		log.info(`Fetching disc data from ${Config.DISC_FETCH_URL}...`);
 		const { data } = await axios.get(Config.DISC_FETCH_URL);
-		if (!data) {
-			log.info("Failed to fetch disc data from web page! Falling back on local json file.");
-			return await populateDBFromLocalJson(manager, existingDiscs);
-		}
+		if (!data) throw `${Config.DISC_FETCH_URL} returned no data!`;
 
 		const dom = new JSDOM(data);
 		const discCollection = dom.window.document.getElementsByClassName("disc-item");
@@ -33,9 +34,11 @@ export const populateDBFromWebPage = async (manager: Manager, existingDiscs: Dis
 
 		let discs: IDisc[] = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
 
-		await insertDiscs(manager, discs, "web", discCollection.length + putterCollection.length);
+		await insertDiscs(manager, discs, Config.DISC_FETCH_URL, discCollection.length + putterCollection.length);
 	} catch (error) {
 		log.error(error);
+		log.error(`Error fetching disc data from '${Config.DISC_FETCH_URL}'! Loading from discs.json file instead.`);
+		return await populateDBFromJson(manager, existingDiscs);
 	}
 };
 
@@ -73,7 +76,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	return newDiscs;
 };
 
-export const populateDBFromLocalJson = async (manager: Manager, existingDiscs: Disc[]): Promise<void> => {
+export const populateDBFromJson = async (manager: Manager, existingDiscs: Disc[]): Promise<void> => {
 	fs.readFile("./src/db/discs.json", "utf8", async (err, jsonString) => {
 		try {
 			if (err) {
@@ -82,9 +85,9 @@ export const populateDBFromLocalJson = async (manager: Manager, existingDiscs: D
 			}
 
 			const rawDiscs: IDiscRaw[] = JSON.parse(jsonString);
-			const discs: IDisc[] = getDiscsFromLocalJson(rawDiscs, existingDiscs);
+			const discs: IDisc[] = getDiscsFromJson(rawDiscs, existingDiscs);
 
-			await insertDiscs(manager, discs, "local json", rawDiscs.length);
+			await insertDiscs(manager, discs, "discs.json", rawDiscs.length);
 
 		} catch (error) {
 			log.error(error);
@@ -92,7 +95,7 @@ export const populateDBFromLocalJson = async (manager: Manager, existingDiscs: D
 	});
 };
 
-const getDiscsFromLocalJson = (rawDiscs: IDiscRaw[], existingDiscs: Disc[]): IDisc[] => {
+const getDiscsFromJson = (rawDiscs: IDiscRaw[], existingDiscs: Disc[]): IDisc[] => {
 	let newDiscs: IDisc[] = [];
 
 	for (const rawDisc of rawDiscs) {
@@ -123,6 +126,8 @@ const insertDiscs = async (manager: Manager, discs: IDisc[], source: string, num
 	log.info(`Successfully fetched data for ${numFetched} discs (source: ${source}).`);
 	log.info(`Database already contains data for ${numFetched - discs.length} discs fetched.`);
 	log.info(`${!areThereNewDiscs ? "Up to date! " : ""}Inserted data for ${discs.length} new discs into database.`);
+
+	log.info("***END*** - disc maintenance process.");
 };
 
 const discExistsInDB = (disc: IDisc, existingDiscs: Disc[]): boolean => {

@@ -1,6 +1,6 @@
 import cluster from "cluster";
 
-import { populateDB } from "./db/populate";
+import { maintainDiscs } from "./db/populate";
 import Config from "./helpers/config";
 import { Database } from "./services/db";
 import log from "./services/log";
@@ -13,7 +13,7 @@ const start = async () => {
 		app.listen(Config.PORT);
 		log.info(`listening on http://${Config.HOST}:${Config.PORT}`);
 		const manager = Database.Manager.fork();
-		await populateDB(manager.getRepository(Disc));
+		await maintainDiscs(manager.getRepository(Disc));
 	} catch (error) {
 		log.error(error);
 		process.exit(1);

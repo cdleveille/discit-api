@@ -2,15 +2,15 @@ import "dotenv/config";
 import os from "os";
 import path from "path";
 
-import { Env, Host } from "../types/constants";
+import { Env, Host, DISC_FETCH_URL } from "../types/constants";
 
 const Config = {
 	IS_COMPILED: <boolean>path.extname(__filename).includes("js"),
-	IS_PROD: <boolean>(process.env.NODE_ENV == "production" ? true : false),
+	IS_PROD: <boolean>(process.env.NODE_ENV == Env.prod ? true : false),
 	PORT: <number>parseInt(process.env.PORT as string) || 3000,
 	HOST: <Host>(process.env.NODE_ENV == Env.prod ? process.env.HOST : Host.ip),
 	CORES: <number>os.cpus().length,
-	DISC_FETCH_URL: <string>process.env.DISC_FETCH_URL || undefined
+	DISC_FETCH_URL: <string>DISC_FETCH_URL
 };
 
 export const Db = {

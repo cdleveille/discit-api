@@ -10,6 +10,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 	next();
 });
 
-app.use("/api", router);
+app.use("/", router);
 
 export default app;

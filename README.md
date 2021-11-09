@@ -1,16 +1,18 @@
 # DiscIt
 
-RESTful API for disc golf discs. Enables developers to programatically access publicly accessible disc information (name, brand, category, flight numbers, etc.).
+RESTful API for disc golf discs.
+
+Enables developers to programatically access publicly accessible disc information (name, brand, category, flight numbers, etc.) from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page.
 
 ```text
-GET    /api/disc                  Get all discs
-GET    /api/disc/name/:val        Search by name/title
-GET    /api/disc/brand/:val       Search by brand/manufacturer
-GET    /api/disc/category/:val    Search by category/type (driver, midrange, putter)
-GET    /api/disc/speed/:val       Search by speed flight number
-GET    /api/disc/glide/:val       Search by glide flight number
-GET    /api/disc/turn/:val        Search by turn flight number
-GET    /api/disc/fade/:val        Search by fade flight number
+GET    /disc                  Get all discs
+GET    /disc/name/:val        Search by name/title
+GET    /disc/brand/:val       Search by brand/manufacturer
+GET    /disc/category/:val    Search by category/type (driver, midrange, putter)
+GET    /disc/speed/:val       Search by speed flight number
+GET    /disc/glide/:val       Search by glide flight number
+GET    /disc/turn/:val        Search by turn flight number
+GET    /disc/fade/:val        Search by fade flight number
 ```
 
 ---
@@ -33,6 +35,10 @@ Install prerequisites:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Yarn](https://classic.yarnpkg.com/en/) (`npm i -g yarn`)
 
+Also recommended:
+
+- [Azure Data Studio](https://azure.microsoft.com/en-us/services/developer-tools/data-studio/) (plus [PostgreSQL extension](https://docs.microsoft.com/en-us/sql/azure-data-studio/extensions/postgres-extension?view=sql-server-ver15))
+
 Set up dev environment:
 
 - Clone repo and open root folder in VS Code.
@@ -51,3 +57,8 @@ Launch:
 
 - Run `yarn start` to start the server. Disc data will be loaded into the database if none already exists.
   - Alternatively, run the `debug` launch configuration in VS Code (press `F5`).
+
+## See Also
+
+- [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide)
+- [PDGA REST API Services](https://www.pdga.com/dev/api/rest/v1/services)
