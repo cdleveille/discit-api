@@ -1,23 +1,29 @@
 ###
-GET http://127.0.0.1:3000/disc
+GET http://localhost:3000/disc
 
 ###
-GET http://127.0.0.1:3000/disc/name/aviar
+GET http://localhost:3000/disc/5224
 
 ###
-GET http://127.0.0.1:3000/disc/brand/innova
+GET http://localhost:3000/disc/name/mamba
 
 ###
-GET http://127.0.0.1:3000/disc/category/putter
+GET http://localhost:3000/disc/brand/innova
 
 ###
-GET http://127.0.0.1:3000/disc/speed/5
+GET http://localhost:3000/disc/category/putter
 
 ###
-GET http://127.0.0.1:3000/disc/glide/5
+GET http://localhost:3000/disc/speed/5
 
 ###
-GET http://127.0.0.1:3000/disc/turn/-5
+GET http://localhost:3000/disc/glide/5
 
 ###
-GET http://127.0.0.1:3000/disc/fade/3
+GET http://localhost:3000/disc/turn/-0.5
+
+###
+GET http://localhost:3000/disc/fade/3
+
+###
+GET http://localhost:3000/disc/stability/stable

@@ -24,17 +24,27 @@ export class Disc extends Base {
 
 	@Index()
 	@Property()
-	speed: number;
+	speed: string;
 
 	@Index()
 	@Property()
-	glide: number;
+	glide: string;
 
 	@Index()
 	@Property()
-	turn: number;
+	turn: string;
 
 	@Index()
 	@Property()
-	fade: number;
+	fade: string;
+
+	@Index()
+	@Property({ nullable: true })
+	stability: string;
+
+	@Property({ nullable: true })
+	link: string;
+
+	@Property({ nullable: true })
+	pic: string;
 }

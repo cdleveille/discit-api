@@ -3,26 +3,33 @@ import * as fs from "fs";
 import { JSDOM } from "jsdom";
 
 import Config from "../helpers/config";
-import { Disc } from "../models/Disc";
+import { discHasNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc } from "../helpers/util";
 import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositories/DiscRepository";
 import log from "../services/log";
-import { IDisc, IDiscRaw } from "../types/abstract";
+import { IDisc, IDiscUpsert } from "../types/abstract";
+import { categoryMap, stabilityValues } from "../types/constants";
 
 export const maintainDiscs = async (manager: Manager) => {
-	log.info("***START*** - disc maintenance process.");
+	try {
+		log.info("***START*** - disc maintenance process.");
 
-	log.info("Getting all existing discs from database...");
-	const existingDiscs = await DiscRepo.FindAll(manager);
+		log.info("Getting all existing discs from database...");
+		const existingDiscs: IDisc[] = await DiscRepo.FindAll(manager);
 
-	if (Config.DISC_FETCH_URL) {
-		await populateDBFromWebPage(manager, existingDiscs);
-	} else {
-		log.error("DISC_FETCH_URL is not defined! Loading from discs.json file instead.");
-		await populateDBFromJson(manager, existingDiscs);
+		if (Config.DISC_FETCH_URL) {
+			await populateDBFromWebPage(manager, existingDiscs);
+		} else {
+			log.error("DISC_FETCH_URL is not defined! Loading from discs.json file instead.");
+			await populateDBFromJson(manager, existingDiscs);
+		}
+
+		log.info("***END*** - disc maintenance process.");
+	} catch (error) {
+		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'! Loading from discs.json file instead.`);
 	}
 };
 
-export const populateDBFromWebPage = async (manager: Manager, existingDiscs: Disc[]) => {
+const populateDBFromWebPage = async (manager: Manager, existingDiscs: IDisc[]) => {
 	try {
 		log.info(`Fetching disc data from ${Config.DISC_FETCH_URL}...`);
 		const { data } = await axios.get(Config.DISC_FETCH_URL);
@@ -32,51 +39,75 @@ export const populateDBFromWebPage = async (manager: Manager, existingDiscs: Dis
 		const discCollection = dom.window.document.getElementsByClassName("disc-item");
 		const putterCollection = dom.window.document.getElementsByClassName("pc-entry");
 
-		let discs: IDisc[] = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
+		const discs: IDiscUpsert = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
 
-		await insertDiscs(manager, discs, Config.DISC_FETCH_URL, discCollection.length + putterCollection.length);
+		await upsertDiscs(manager, discs.discsToInsert, discs.discsToUpdate, existingDiscs, discCollection.length + putterCollection.length, Config.DISC_FETCH_URL);
 	} catch (error) {
-		log.error(error);
-		log.error(`Error fetching disc data from '${Config.DISC_FETCH_URL}'! Loading from discs.json file instead.`);
+		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'! Loading from discs.json file instead.`);
 		return await populateDBFromJson(manager, existingDiscs);
 	}
 };
 
-const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existingDiscs: Disc[]): IDisc[] => {
-	let newDiscs: IDisc[] = [];
+const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existingDiscs: IDisc[]): IDiscUpsert => {
+	let discsToInsert: IDisc[] = [];
+	let discsToUpdate: IDisc[] = [];
 
+	// distance drivers, hybrid drivers, control drivers, midrange
 	for (const element of discCollection) {
-		const disc: IDisc = {
-			name: element.getAttribute("data-title"),
-			brand: element.getAttribute("data-brand"),
-			category: element.getAttribute("data-category"),
-			speed: parseFloat(element.getAttribute("data-speed")),
-			glide: parseFloat(element.getAttribute("data-glide")),
-			turn: parseFloat(element.getAttribute("data-turn")),
-			fade: parseFloat(element.getAttribute("data-fade"))
-		};
+		const name = element.getAttribute("data-title");
+		const brand = element.getAttribute("data-brand");
+		const category = parseCategory(element.getAttribute("data-category"));
+		const speed = element.getAttribute("data-speed");
+		const glide = element.getAttribute("data-glide");
+		const turn = element.getAttribute("data-turn");
+		const fade = element.getAttribute("data-fade");
+		const stability = parseStability(element, turn, fade);
+		const link = element.getAttribute("data-link");
+		const pic = element.getAttribute("data-pic");
 
-		if (!discExistsInDB(disc, existingDiscs)) newDiscs.push(disc);
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic };
+
+		let match = discHasNameAndBrandMatch(disc, existingDiscs);
+		if (match) {
+			if (!discsAreEqual(disc, match)) {
+				updateDiscFromOtherDisc(match, disc);
+				discsToUpdate.push(match);
+			}
+		} else {
+			discsToInsert.push(disc);
+		}
 	}
 
+	// putters
 	for (const element of putterCollection) {
-		const disc: IDisc = {
-			name: element.getAttribute("data-putter"),
-			brand: element.getAttribute("data-brand"),
-			category: "Putters",
-			speed: parseFloat(element.getAttribute("data-speed")),
-			glide: parseFloat(element.getAttribute("data-glide")),
-			turn: parseFloat(element.getAttribute("data-turn")),
-			fade: parseFloat(element.getAttribute("data-fade"))
-		};
+		const name = element.getAttribute("data-putter");
+		const brand = element.getAttribute("data-brand");
+		const category = "Putter";
+		const speed = element.getAttribute("data-speed");
+		const glide = element.getAttribute("data-glide");
+		const turn = element.getAttribute("data-turn");
+		const fade = element.getAttribute("data-fade");
+		const stability = parseStability(element, turn, fade);
+		const link = element.getAttribute("data-link");
+		const pic = element.getAttribute("data-image");
 
-		if (!discExistsInDB(disc, existingDiscs)) newDiscs.push(disc);
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic };
+
+		let match = discHasNameAndBrandMatch(disc, existingDiscs);
+		if (match) {
+			if (!discsAreEqual(disc, match)) {
+				updateDiscFromOtherDisc(match, disc);
+				discsToUpdate.push(match);
+			}
+		} else {
+			discsToInsert.push(disc);
+		}
 	}
 
-	return newDiscs;
+	return { discsToInsert, discsToUpdate };
 };
 
-export const populateDBFromJson = async (manager: Manager, existingDiscs: Disc[]) => {
+const populateDBFromJson = async (manager: Manager, existingDiscs: IDisc[]) => {
 	fs.readFile("./src/db/discs.json", "utf8", async (err, jsonString) => {
 		try {
 			if (err) {
@@ -84,10 +115,10 @@ export const populateDBFromJson = async (manager: Manager, existingDiscs: Disc[]
 				return;
 			}
 
-			const rawDiscs: IDiscRaw[] = JSON.parse(jsonString);
-			const discs: IDisc[] = getDiscsFromJson(rawDiscs, existingDiscs);
+			const rawDiscs: IDisc[] = JSON.parse(jsonString);
+			const discs: IDiscUpsert = getDiscsFromJson(rawDiscs, existingDiscs);
 
-			await insertDiscs(manager, discs, "discs.json", rawDiscs.length);
+			await upsertDiscs(manager, discs.discsToInsert, discs.discsToUpdate, existingDiscs, rawDiscs.length, "discs.json");
 
 		} catch (error) {
 			log.error(error);
@@ -95,48 +126,77 @@ export const populateDBFromJson = async (manager: Manager, existingDiscs: Disc[]
 	});
 };
 
-const getDiscsFromJson = (rawDiscs: IDiscRaw[], existingDiscs: Disc[]): IDisc[] => {
-	let newDiscs: IDisc[] = [];
+const getDiscsFromJson = (rawDiscs: IDisc[], existingDiscs: IDisc[]): IDiscUpsert => {
+	let discsToInsert: IDisc[] = [];
+	let discsToUpdate: IDisc[] = [];
 
 	for (const rawDisc of rawDiscs) {
-		const disc: IDisc = {
-			name: rawDisc.name,
-			brand: rawDisc.brand,
-			category: rawDisc.category,
-			speed: parseFloat(rawDisc.speed),
-			glide: parseFloat(rawDisc.glide),
-			turn: parseFloat(rawDisc.turn),
-			fade: parseFloat(rawDisc.fade)
-		};
+		const name = rawDisc.name;
+		const brand = rawDisc.brand;
+		const category = parseCategory(rawDisc.category);
+		const speed = rawDisc.speed;
+		const glide = rawDisc.glide;
+		const turn = rawDisc.turn;
+		const fade = rawDisc.fade;
+		const stability = parseStability(null, turn, fade);
+		const link = rawDisc.link;
+		const pic = rawDisc.pic;
 
-		if (!discExistsInDB(disc, existingDiscs)) newDiscs.push(disc);
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic };
+
+		let match = discHasNameAndBrandMatch(disc, existingDiscs);
+		if (match) {
+			if (!discsAreEqual(disc, match)) {
+				updateDiscFromOtherDisc(match, disc);
+				discsToUpdate.push(match);
+			}
+		} else {
+			discsToInsert.push(disc);
+		}
 	}
 
-	return newDiscs;
+	return { discsToInsert, discsToUpdate };
 };
 
-const insertDiscs = async (manager: Manager, discs: IDisc[], source: string, numFetched: number) => {
-	const areThereNewDiscs: boolean = discs.length > 0;
+const upsertDiscs = async (manager: Manager, discsToInsert: IDisc[], discsToUpdate: IDisc[], existingDiscs: IDisc[], fetchCount: number, source: string) => {
+	try {
+		if (discsToInsert.length > 0) await DiscRepo.InsertMany(manager, discsToInsert);
+		if (discsToUpdate.length > 0) await DiscRepo.UpdateMany(manager, discsToUpdate);
 
-	if (areThereNewDiscs) {
-		const inserted = await DiscRepo.InsertMany(manager, discs);
-		if (!inserted) throw "Error loading disc data into database!";
+		log.info(`${fetchCount} discs fetched from ${source}.`);
+		log.info(`${existingDiscs.length} existing discs in database.`);
+		log.info(`${discsToInsert.length} new discs inserted.`);
+		log.info(`${discsToUpdate.length} existing discs updated with new data.`);
+	} catch (error) {
+		log.error(error);
+		log.error("Error updating disc data in database!");
 	}
-
-	log.info(`Successfully fetched data for ${numFetched} discs (source: ${source}).`);
-	log.info(`Database already contains data for ${numFetched - discs.length} discs fetched.`);
-	log.info(`${!areThereNewDiscs ? "Up to date! " : ""}Inserted data for ${discs.length} new discs into database.`);
-
-	log.info("***END*** - disc maintenance process.");
 };
 
-const discExistsInDB = (disc: IDisc, existingDiscs: Disc[]): boolean => {
-	if (existingDiscs.length === 0) return false;
+const parseCategory = (category: string): string => {
+	return categoryMap.get(category) || category;
+};
 
-	for (const existingDisc of existingDiscs) {
-		if (disc.name === existingDisc.name && disc.brand === existingDisc.brand)
-			return true;
+const parseStability = (element: any, turn: string, fade: string): string => {
+	if (element) {
+		const classes: string = element.parentNode.parentNode.parentNode.className;
+		const classesSplit = classes.split(" ");
+
+		// check for stability via class name in html
+		for (let i = classesSplit.length - 1; i >= 0; i--) {
+			const stability = classesSplit[i];
+			if (stabilityValues.includes(stability)) return stability;
+		}
 	}
 
-	return false;
+	// if not found in html, calculate it based on turn and fade
+	const diff: number = parseFloat(turn) + parseFloat(fade);
+	switch (true) {
+		case (diff >= 4): return "very-overstable";
+		case (diff >= 2 && diff < 4): return "overstable";
+		case (diff < 2 && diff > -2): return "stable";
+		case (diff <= -2 && diff > -4): return "understable";
+		case (diff <= -4): return "very-understable";
+		default: return null;
+	}
 };
