@@ -161,12 +161,12 @@ const getDiscsFromJson = (rawDiscs: IDisc[], existingDiscs: IDisc[]): IDiscUpser
 const upsertDiscs = async (manager: Manager, discsToInsert: IDisc[], discsToUpdate: IDisc[], existingDiscs: IDisc[], fetchCount: number, source: string) => {
 	try {
 		if (discsToInsert.length > 0) await DiscRepo.InsertMany(manager, discsToInsert);
-		if (discsToUpdate.length > 0) await DiscRepo.UpdateMany(manager, discsToUpdate);
+		if (discsToUpdate.length > 0 && source === Config.DISC_FETCH_URL) await DiscRepo.UpdateMany(manager, discsToUpdate);
 
 		log.info(`${fetchCount} discs fetched from ${source}.`);
 		log.info(`${existingDiscs.length} existing discs in database.`);
 		log.info(`${discsToInsert.length} new discs inserted.`);
-		log.info(`${discsToUpdate.length} existing discs updated with new data.`);
+		log.info(`${source === Config.DISC_FETCH_URL ? discsToUpdate.length : 0} existing discs updated with new data.`);
 	} catch (error) {
 		log.error(error);
 		log.error("Error updating disc data in database!");

@@ -6,13 +6,15 @@ Enables developers to programatically access publicly accessible disc informatio
 
 ```text
 GET    /disc                  Get all discs
+GET    /disc/:id              Search by id
 GET    /disc/name/:val        Search by name/title
 GET    /disc/brand/:val       Search by brand/manufacturer
-GET    /disc/category/:val    Search by category/type (driver, midrange, putter)
+GET    /disc/category/:val    Search by category/type
 GET    /disc/speed/:val       Search by speed flight number
 GET    /disc/glide/:val       Search by glide flight number
 GET    /disc/turn/:val        Search by turn flight number
 GET    /disc/fade/:val        Search by fade flight number
+GET    /disc/stability/:val   Search by stability rating
 ```
 
 ---
