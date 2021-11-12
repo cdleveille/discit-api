@@ -30,6 +30,9 @@ export class Database {
 			enabled: true,
 			pretty: !Config.IS_PROD,
 			options: { cacheDir: cwd() + "/__db_cache__" }
+		},
+		driverOptions: {
+			connection: { ssl: true }
 		}
 	} as ConnectionOptions;
 
