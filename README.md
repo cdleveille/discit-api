@@ -76,7 +76,7 @@ Set up local dev database:
 
 Launch:
 
-- Run `yarn start` to start the server. Disc data will be loaded into the database if none already exists.
+- Run `yarn start` to start the server. Disc data will be automatically upserted into the database at launch, and also every night at midnight.
   - Alternatively, run the `debug` launch configuration in VS Code (press `F5`).
 
 ## See Also
