@@ -19,7 +19,21 @@ export class Database {
 	 */
 	public static Manager: EntityManager<IDatabaseDriver<Connection>>;
 
-	private static readonly Connector: ConnectionOptions = {
+	private static readonly ConnectorProd: ConnectionOptions = {
+		debug: !Config.IS_PROD,
+		logger: (msg: unknown) => log.info(msg),
+		type: Db.DB_TYPE,
+		clientUrl: Db.DB_URL,
+		entities: [path.join(cwd(), "build/models/**/*.js")],
+		entitiesTs: [path.join(cwd(), "src/models/**/*.ts")],
+		cache: {
+			enabled: true,
+			pretty: !Config.IS_PROD,
+			options: { cacheDir: cwd() + "/__db_cache__" }
+		}
+	} as ConnectionOptions;
+
+	private static readonly ConnectorDev: ConnectionOptions = {
 		debug: !Config.IS_PROD,
 		logger: (msg: unknown) => log.info(msg),
 		type: Db.DB_TYPE,
@@ -39,7 +53,7 @@ export class Database {
 
 	public static async Connect(): Promise<void> {
 		try {
-			Database.orm = await MikroORM.init(Database.Connector);
+			Database.orm = await MikroORM.init(Config.IS_PROD ? Database.ConnectorProd : Database.ConnectorDev);
 			Database.Manager = Database.orm.em.fork();
 			log.info(`Successfully connected to database: ${await Database.orm.isConnected()}`, "database");
 		} catch (e) {
