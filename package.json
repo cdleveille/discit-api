@@ -39,8 +39,7 @@
     "express": "^4.17.1",
     "jsdom": "^18.0.1",
     "pg": "^8.7.1",
-    "reflect-metadata": "^0.1.13",
-    "winston": "^3.3.3"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@mikro-orm/cli": "^4.5.9",
@@ -59,10 +58,5 @@
     "configPaths": [
       "./mikro-orm.config.ts"
     ]
-  },
-  "engines": {
-    "yarn": "1.22.17",
-	"node": "17.0.1",
-	"npm": "7.20.1"
   }
 }

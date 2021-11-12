@@ -1,23 +1,24 @@
-// import Config from "./helpers/config";
-// import cluster from "cluster";
+import Config from "./helpers/config";
+import cluster from "cluster";
 
+import log from "./services/log";
 import app from "./services/server";
 
-process.on("uncaughtException", (err) => {
-	console.log(`error: ${err}`);
+process.on("uncaughtException", (error) => {
+	log.error(error);
 });
 
 (async () => {
-	// const cpus = Config.IS_PROD ? Config.CORES : 1;
-	// if (cluster.isPrimary) {
-	// 	for (let i = 0; i < cpus; i++) {
-	// 		cluster.fork();
-	// 	}
-	// }
 	try {
-		console.log("Starting app...");
-		await app.start();
+		const cpus = Config.IS_PROD ? Config.CORES : 1;
+		if (cluster.isPrimary) {
+			for (let i = 0; i < cpus; i++) {
+				cluster.fork();
+			}
+		}
+		else await app.start();
 	} catch (error) {
-		console.log(error);
+		log.error(error);
+		process.exit(1);
 	}
 })();

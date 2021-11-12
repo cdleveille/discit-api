@@ -21,26 +21,17 @@ export default class App {
 	}
 
 	public static async start() {
-		try {
-			console.log("Connecting to database...");
-			await Database.Connect();
+		await Database.Connect();
 
-			console.log("Setting up app...");
-			await App.setup();
+		await App.setup();
 
-			App.instance.listen(Config.PORT);
-			log.info(`Listening on http://${Config.HOST}:${Config.PORT}`);
+		App.instance.listen(Config.PORT);
+		log.info(`Listening on http://${Config.HOST}:${Config.PORT}`);
 
-			const manager = Database.Manager.fork().getRepository(Disc);
-			const cron = new Cron(manager);
-			cron.autoDiscMaintenance.start();
+		const manager = Database.Manager.fork().getRepository(Disc);
+		const cron = new Cron(manager);
+		cron.autoDiscMaintenance.start();
 
-			await fetchDiscs(manager);
-
-		} catch (error) {
-			console.log(error);
-			log.error(error);
-			process.exit(1);
-		}
+		await fetchDiscs(manager);
 	}
 }
