@@ -4,23 +4,35 @@ RESTful API for disc golf discs.
 
 Enables developers to programmatically access public disc information from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page.
 
-```text
-GET    /disc                  Get all discs
-GET    /disc/name/:val        Search by name/title
-GET    /disc/brand/:val       Search by brand/manufacturer
-GET    /disc/category/:val    Search by category/type
-GET    /disc/speed/:val       Search by speed flight number
-GET    /disc/glide/:val       Search by glide flight number
-GET    /disc/turn/:val        Search by turn flight number
-GET    /disc/fade/:val        Search by fade flight number
-GET    /disc/stability/:val   Search by stability rating
-```
+## Fields
 
-The `/disc` route also supports query strings which can be used to search by multiple fields:
+| Field       | Search Operator   | Description                                                                                                             |
+|-------------|-------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `name`      | `LIKE`            | Name/title of the disc mold ['aviar', 'buzz', 'destroyer', etc.]                                                        |
+| `brand`     | `LIKE`            | Brand/manufacturer of the disc ['innova', 'discraft', 'discmania', etc.]                                                |
+| `category`  | `LIKE`            | ['distance-driver', 'hybrid-driver', 'control-driver', 'midrange', 'putter']                                            |
+| `speed`     | `=`               | The rate at which a disc can travel through the air [1 to 15]                                                           |
+| `glide`     | `=`               | The ability of a disc to maintain loft during its flight [1 to 7]                                                       |
+| `turn`      | `=`               | The tendency of a disc to turn over or bank to the right (for RHBH throws) at the initial part of its flight [+1 to -5] |
+| `fade`      | `=`               | The tendency of a disc to hook left (for RHBH throws) at the end of its flight [0 to 5]                                 |
+| `stability` | `=`               | ['stable', 'overstable', 'very-overstable', 'understable', 'very-understable']                                          |
+| `link`      | N/A               | Link to search for this disc in the Marshall Street Disc Golf web store                                                 |
+| `pic`       | N/A               | Link to a picture showing the approximate flight shape of this disc                                                     |
 
-```text
-GET    /disc?brand=innova&category=putter&stability=overstable
-```
+## Endpoints
+
+| Method | Route                   | Description                                                                             |
+|--------|-------------------------|-----------------------------------------------------------------------------------------|
+| `GET`  | `/disc`                 | Get all discs                                                                           |
+| `GET`  | `/disc/?query`          | Search by query string (i.e. `/disc?brand=innova&category=putter&stability=overstable`) |
+| `GET`  | `/disc/name/:val`       | Search by name/title                                                                    |
+| `GET`  | `/disc/brand/:val`      | Search by brand/manufacturer                                                            |
+| `GET`  | `/disc/category/:val`   | Search by category/type                                                                 |
+| `GET`  | `/disc/speed/:val`      | Search by speed flight number                                                           |
+| `GET`  | `/disc/glide/:val`      | Search by glide flight number                                                           |
+| `GET`  | `/disc/turn/:val`       | Search by turn flight number                                                            |
+| `GET`  | `/disc/fade/:val`       | Search by fade flight number                                                            |
+| `GET`  | `/disc/stablility/:val` | Search by stability flight number                                                       |
 
 ---
 

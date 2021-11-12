@@ -17,15 +17,8 @@ export const createDisc = (disc: IDisc): Disc => {
 	});
 };
 
-export const discHasNameAndBrandMatch = (disc: IDisc, discs: IDisc[]): IDisc => {
-	if (discs.length === 0) return null;
-
-	for (const disc2 of discs) {
-		if (disc.name === disc2.name && disc.brand === disc2.brand)
-			return disc2;
-	}
-
-	return null;
+export const discNameAndBrandMatch = (disc: IDisc, disc2: IDisc): IDisc => {
+	return disc.name === disc2.name && disc.brand === disc2.brand ? disc2 : null;
 };
 
 export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
@@ -60,7 +53,7 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 
 export const equalsOrLike = (key: string, value: string): string => {
 	if (FieldsUsingLike.includes(key.toLowerCase())) {
-		return `${key.toLowerCase()} ilike '%${value}%' `;
+		return `${key.toLowerCase()} ilike '%${value}%'`;
 	}
-	return `${key} = '${value}' `;
+	return `${key} = '${value}'`;
 };

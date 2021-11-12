@@ -7,9 +7,11 @@ import { IDisc } from "../types/abstract";
 export type RequestRepo = EntityRepository<Disc>;
 
 export class DiscRepository {
+	private static readonly CacheSize = 3000;
+
 	public static async FindAll(manager: RequestRepo): Promise<Disc[]> {
 		try {
-			const res = await manager.findAll({}, { cache: 3000 });
+			const res = await manager.findAll({}, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -18,14 +20,13 @@ export class DiscRepository {
 
 	public static async FindByQuery(connection: Connection, query: any): Promise<Disc[]> {
 		try {
-			let sql = "select name, brand, category, speed, glide, turn, fade, stability, link, pic from disc ";
-			let whereClause = "";
+			let sql = "select name, brand, category, speed, glide, turn, fade, stability, link, pic from disc";
 
 			for (const key in query) {
-				whereClause += (whereClause ? "and " : "where ") + equalsOrLike(key, query[key]);
+				sql += (sql.includes(" where ") ? " and " : " where ") + equalsOrLike(key, query[key]);
 			}
 
-			const res = await connection.execute(sql + whereClause);
+			const res = await connection.execute(sql);
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -34,7 +35,7 @@ export class DiscRepository {
 
 	public static async FindByID(manager: RequestRepo, id: number): Promise<Disc> {
 		try {
-			const res = await manager.findOne({ id }, { cache: 3000 });
+			const res = await manager.findOne({ id }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -43,7 +44,7 @@ export class DiscRepository {
 
 	public static async FindByName(manager: RequestRepo, name: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ name: { $ilike: `%${name}%` } }, { cache: 3000 });
+			const res = await manager.find({ name: { $ilike: `%${name}%` } }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -52,7 +53,7 @@ export class DiscRepository {
 
 	public static async FindByBrand(manager: RequestRepo, brand: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ brand: { $ilike: `%${brand}%` } }, { cache: 3000 });
+			const res = await manager.find({ brand: { $ilike: `%${brand}%` } }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -61,7 +62,7 @@ export class DiscRepository {
 
 	public static async FindByCategory(manager: RequestRepo, category: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ category: { $ilike: `%${category}%` } }, { cache: 3000 });
+			const res = await manager.find({ category: { $ilike: `%${category}%` } }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -70,7 +71,7 @@ export class DiscRepository {
 
 	public static async FindBySpeed(manager: RequestRepo, speed: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ speed }, { cache: 3000 });
+			const res = await manager.find({ speed }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -79,7 +80,7 @@ export class DiscRepository {
 
 	public static async FindByGlide(manager: RequestRepo, glide: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ glide }, { cache: 3000 });
+			const res = await manager.find({ glide }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -88,7 +89,7 @@ export class DiscRepository {
 
 	public static async FindByTurn(manager: RequestRepo, turn: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ turn }, { cache: 3000 });
+			const res = await manager.find({ turn }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -97,7 +98,7 @@ export class DiscRepository {
 
 	public static async FindByFade(manager: RequestRepo, fade: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ fade }, { cache: 3000 });
+			const res = await manager.find({ fade }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -106,7 +107,7 @@ export class DiscRepository {
 
 	public static async FindByStability(manager: RequestRepo, stability: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ stability }, { cache: 3000 });
+			const res = await manager.find({ stability }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);

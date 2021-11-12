@@ -27,11 +27,11 @@ export enum Site {
 }
 
 export const CategoryMap = new Map([
-	["Distance Drivers", "Distance Driver"],
-	["Hybrid Drivers", "Hybrid Driver"],
-	["Control Drivers", "Control Driver"],
-	["Midrange Drivers", "Midrange"],
-	["Putters", "Putter"]
+	["Distance Drivers", "distance-driver"],
+	["Hybrid Drivers", "hybrid-driver"],
+	["Control Drivers", "control-driver"],
+	["Midrange Drivers", "midrange"],
+	["Putters", "putter"]
 ]);
 
 export const StabilityValues = [

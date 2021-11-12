@@ -2,7 +2,7 @@ import axios from "axios";
 import { JSDOM } from "jsdom";
 
 import Config from "../helpers/config";
-import { discHasNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc } from "../helpers/util";
+import { discNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc } from "../helpers/util";
 import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositories/DiscRepository";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
@@ -60,7 +60,12 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 
 		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic };
 
-		let match = discHasNameAndBrandMatch(disc, existingDiscs);
+		let match;
+		for (const existingDisc of existingDiscs) {
+			match = discNameAndBrandMatch(disc, existingDisc);
+			if (match) break;
+		}
+
 		if (match) {
 			if (!discsAreEqual(disc, match)) {
 				updateDiscFromOtherDisc(match, disc);
@@ -75,7 +80,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	for (const element of putterCollection) {
 		const name = element.getAttribute(Site.putterNameAttr);
 		const brand = element.getAttribute(Site.brandAttr);
-		const category = "Putter";
+		const category = "putter";
 		const speed = element.getAttribute(Site.speedAttr);
 		const glide = element.getAttribute(Site.glideAttr);
 		const turn = element.getAttribute(Site.turnAttr);
@@ -86,7 +91,12 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 
 		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic };
 
-		let match = discHasNameAndBrandMatch(disc, existingDiscs);
+		let match;
+		for (const existingDisc of existingDiscs) {
+			match = discNameAndBrandMatch(disc, existingDisc);
+			if (match) break;
+		}
+
 		if (match) {
 			if (!discsAreEqual(disc, match)) {
 				updateDiscFromOtherDisc(match, disc);
