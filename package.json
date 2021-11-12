@@ -8,11 +8,10 @@
     "db:create": "yarn mikro-orm migration:create",
     "db:up": "yarn mikro-orm migration:up",
     "db:down": "yarn mikro-orm migration:down",
-    "install": "tsc",
     "lint": "eslint --fix --ext .ts,.tsx .",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
     "build": "tsc",
-    "prestart": "tsc",
+    "postinstall": "npm run build",
     "start": "node ."
   },
   "repository": {

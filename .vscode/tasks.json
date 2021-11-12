@@ -3,7 +3,7 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "install",
+			"script": "postinstall",
 			"problemMatcher": [
 				"$tsc"
 			],
