@@ -11,7 +11,7 @@
     "install": "tsc",
     "lint": "eslint --fix --ext .ts,.tsx .",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
-    "start": "node ."
+    "start": "tsc && node ."
   },
   "repository": {
     "type": "git",
