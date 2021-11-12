@@ -32,7 +32,7 @@ export class Database {
 			options: { cacheDir: cwd() + "/__db_cache__" }
 		},
 		driverOptions: {
-			connection: { ssl: true }
+			connection: { ssl: { rejectUnauthorized: false } }
 		}
 	} as ConnectionOptions;
 
