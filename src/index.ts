@@ -3,6 +3,10 @@ import cluster from "cluster";
 
 import app from "./services/server";
 
+process.on("uncaughtException", (err) => {
+	console.log(`error: ${err}`);
+});
+
 (async () => {
 	const cpus = Config.IS_PROD ? Config.CORES : 1;
 	if (cluster.isPrimary) {
