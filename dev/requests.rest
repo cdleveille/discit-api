@@ -5,19 +5,16 @@ GET http://localhost:3000/disc
 GET http://localhost:3000/disc?brand=innova&category=putter&stability=overstable
 
 ###
-GET http://localhost:3000/disc/5805
-
-###
 GET http://localhost:3000/disc/name/mamba
 
 ###
 GET http://localhost:3000/disc/brand/innova
 
 ###
-GET http://localhost:3000/disc/category/putter
+GET http://localhost:3000/disc/category/control-driver
 
 ###
-GET http://localhost:3000/disc/speed/5
+GET http://localhost:3000/disc/speed/7
 
 ###
 GET http://localhost:3000/disc/glide/5
@@ -29,4 +26,4 @@ GET http://localhost:3000/disc/turn/-0.5
 GET http://localhost:3000/disc/fade/3
 
 ###
-GET http://localhost:3000/disc/stability/stable
+GET http://localhost:3000/disc/stability/very-understable

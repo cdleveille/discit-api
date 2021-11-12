@@ -21,18 +21,20 @@ Enables developers to programmatically access public disc information from the [
 
 ## Endpoints
 
-| Method | Route                   | Description                                                                             |
-|--------|-------------------------|-----------------------------------------------------------------------------------------|
-| `GET`  | `/disc`                 | Get all discs                                                                           |
-| `GET`  | `/disc/?query`          | Search by query string (i.e. `/disc?brand=innova&category=putter&stability=overstable`) |
-| `GET`  | `/disc/name/:val`       | Search by name/title                                                                    |
-| `GET`  | `/disc/brand/:val`      | Search by brand/manufacturer                                                            |
-| `GET`  | `/disc/category/:val`   | Search by category/type                                                                 |
-| `GET`  | `/disc/speed/:val`      | Search by speed flight number                                                           |
-| `GET`  | `/disc/glide/:val`      | Search by glide flight number                                                           |
-| `GET`  | `/disc/turn/:val`       | Search by turn flight number                                                            |
-| `GET`  | `/disc/fade/:val`       | Search by fade flight number                                                            |
-| `GET`  | `/disc/stablility/:val` | Search by stability flight number                                                       |
+| Method | Route                   | Description                       |
+|--------|-------------------------|-----------------------------------|
+| `GET`  | `/disc`                 | Get all discs                     |
+| `GET`  | `/disc/?query`          | Search by query string            |
+| `GET`  | `/disc/name/:val`       | Search by name/title              |
+| `GET`  | `/disc/brand/:val`      | Search by brand/manufacturer      |
+| `GET`  | `/disc/category/:val`   | Search by category/type           |
+| `GET`  | `/disc/speed/:val`      | Search by speed flight number     |
+| `GET`  | `/disc/glide/:val`      | Search by glide flight number     |
+| `GET`  | `/disc/turn/:val`       | Search by turn flight number      |
+| `GET`  | `/disc/fade/:val`       | Search by fade flight number      |
+| `GET`  | `/disc/stablility/:val` | Search by stability flight number |
+
+See [/dev/requests.rest](https://github.com/cdleveille/discit/blob/main/dev/requests.rest) for example requests.
 
 ---
 
