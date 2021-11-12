@@ -166,7 +166,9 @@ const upsertDiscs = async (manager: Manager, discsToInsert: IDisc[], discsToUpda
 		log.info(`${fetchCount} discs fetched from ${source}.`);
 		log.info(`${existingDiscs.length} existing discs in database.`);
 		log.info(`${discsToInsert.length} new discs inserted.`);
-		log.info(`${source === Config.DISC_FETCH_URL ? discsToUpdate.length : 0} existing discs updated with new data.`);
+		if (existingDiscs.length > 0) {
+			log.info(`${source === Config.DISC_FETCH_URL ? discsToUpdate.length : 0} existing discs updated with new data.`);
+		}
 	} catch (error) {
 		log.error(error);
 		log.error("Error updating disc data in database!");

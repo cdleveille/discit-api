@@ -2,7 +2,7 @@
 
 RESTful API for disc golf discs.
 
-Enables developers to programatically access publicly accessible disc information (name, brand, category, flight numbers, etc.) from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page.
+Enables developers to programatically access public disc information from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page.
 
 ```text
 GET    /disc                  Get all discs

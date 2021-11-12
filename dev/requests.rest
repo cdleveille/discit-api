@@ -1,8 +1,11 @@
 ###
-GET http://localhost:3000/disc
+GET http://localhost:3000/disc/
 
 ###
 GET http://localhost:3000/disc/5224
+
+###
+GET http://localhost:3000/disc/?speed=5
 
 ###
 GET http://localhost:3000/disc/name/mamba
