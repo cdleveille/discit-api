@@ -1,105 +1,112 @@
-import { EntityRepository, QueryOrder } from "@mikro-orm/core";
+import { Connection, EntityRepository } from "@mikro-orm/core";
 
-import { createDisc } from "../helpers/util";
+import { createDisc, equalsOrLike } from "../helpers/util";
 import { Disc } from "../models/Disc";
 import { IDisc } from "../types/abstract";
 
 export type RequestRepo = EntityRepository<Disc>;
 
 export class DiscRepository {
-	public static async FindAny(manager: RequestRepo): Promise<boolean> {
-		try {
-			const res = await manager.find({}, { cache: 3000, limit: 1 });
-			return res.length > 0 ? true : false;
-		} catch (error) {
-			throw Error(error);
-		}
-	}
-
 	public static async FindAll(manager: RequestRepo): Promise<Disc[]> {
 		try {
-			const res = await manager.findAll({}, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.findAll({}, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindID(manager: RequestRepo, id: number): Promise<Disc[]> {
+	public static async FindByQuery(connection: Connection, query: any): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ id }, { cache: 3000, limit: 1 });
+			let sql = "select name, brand, category, speed, glide, turn, fade, stability, link, pic from disc ";
+			let whereClause = "";
+
+			for (const key in query) {
+				whereClause += (whereClause ? "and " : "where ") + equalsOrLike(key, query[key]);
+			}
+
+			const res = await connection.execute(sql + whereClause);
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindName(manager: RequestRepo, name: string): Promise<Disc[]> {
+	public static async FindByID(manager: RequestRepo, id: number): Promise<Disc> {
 		try {
-			const res = await manager.find({ name: { $ilike: `%${name}%` } }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.findOne({ id }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindBrand(manager: RequestRepo, brand: string): Promise<Disc[]> {
+	public static async FindByName(manager: RequestRepo, name: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ brand: { $ilike: `%${brand}%` } }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.find({ name: { $ilike: `%${name}%` } }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindCategory(manager: RequestRepo, category: string): Promise<Disc[]> {
+	public static async FindByBrand(manager: RequestRepo, brand: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ category: { $ilike: `%${category}%` } }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.find({ brand: { $ilike: `%${brand}%` } }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindSpeed(manager: RequestRepo, speed: string): Promise<Disc[]> {
+	public static async FindByCategory(manager: RequestRepo, category: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ speed }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.find({ category: { $ilike: `%${category}%` } }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindGlide(manager: RequestRepo, glide: string): Promise<Disc[]> {
+	public static async FindBySpeed(manager: RequestRepo, speed: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ glide }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.find({ speed }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindTurn(manager: RequestRepo, turn: string): Promise<Disc[]> {
+	public static async FindByGlide(manager: RequestRepo, glide: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ turn }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.find({ glide }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindFade(manager: RequestRepo, fade: string): Promise<Disc[]> {
+	public static async FindByTurn(manager: RequestRepo, turn: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ fade }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.find({ turn }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindStability(manager: RequestRepo, stability: string): Promise<Disc[]> {
+	public static async FindByFade(manager: RequestRepo, fade: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ stability }, { cache: 3000, orderBy: { name: QueryOrder.ASC } });
+			const res = await manager.find({ fade }, { cache: 3000 });
+			return res;
+		} catch (error) {
+			throw Error(error);
+		}
+	}
+
+	public static async FindByStability(manager: RequestRepo, stability: string): Promise<Disc[]> {
+		try {
+			const res = await manager.find({ stability }, { cache: 3000 });
 			return res;
 		} catch (error) {
 			throw Error(error);

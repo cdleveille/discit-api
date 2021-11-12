@@ -9,7 +9,7 @@ import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
 import { categoryMap, stabilityValues } from "../types/constants";
 
-export const maintainDiscs = async (manager: Manager) => {
+export const fetchDiscs = async (manager: Manager) => {
 	try {
 		log.info("***START*** - disc maintenance process.");
 
@@ -17,19 +17,19 @@ export const maintainDiscs = async (manager: Manager) => {
 		const existingDiscs: IDisc[] = await DiscRepo.FindAll(manager);
 
 		if (Config.DISC_FETCH_URL) {
-			await populateDBFromWebPage(manager, existingDiscs);
+			await fetchDiscsFromWebPage(manager, existingDiscs);
 		} else {
 			log.error("DISC_FETCH_URL is not defined! Loading from discs.json file instead.");
-			await populateDBFromJson(manager, existingDiscs);
+			await fetchDiscsFromJson(manager, existingDiscs);
 		}
 
-		log.info("***END*** - disc maintenance process.");
+		log.info("***END*** - disc maintenance process completed successfully.");
 	} catch (error) {
 		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'! Loading from discs.json file instead.`);
 	}
 };
 
-const populateDBFromWebPage = async (manager: Manager, existingDiscs: IDisc[]) => {
+const fetchDiscsFromWebPage = async (manager: Manager, existingDiscs: IDisc[]) => {
 	try {
 		log.info(`Fetching disc data from ${Config.DISC_FETCH_URL}...`);
 		const { data } = await axios.get(Config.DISC_FETCH_URL);
@@ -44,7 +44,7 @@ const populateDBFromWebPage = async (manager: Manager, existingDiscs: IDisc[]) =
 		await upsertDiscs(manager, discs.discsToInsert, discs.discsToUpdate, existingDiscs, discCollection.length + putterCollection.length, Config.DISC_FETCH_URL);
 	} catch (error) {
 		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'! Loading from discs.json file instead.`);
-		return await populateDBFromJson(manager, existingDiscs);
+		return await fetchDiscsFromJson(manager, existingDiscs);
 	}
 };
 
@@ -107,7 +107,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	return { discsToInsert, discsToUpdate };
 };
 
-const populateDBFromJson = async (manager: Manager, existingDiscs: IDisc[]) => {
+const fetchDiscsFromJson = async (manager: Manager, existingDiscs: IDisc[]) => {
 	fs.readFile("./src/db/discs.json", "utf8", async (err, jsonString) => {
 		try {
 			if (err) {

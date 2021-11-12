@@ -26,4 +26,10 @@ export const stabilityValues = [
 	"very-understable"
 ];
 
+export const fieldsUsingLike = [
+	"name",
+	"brand",
+	"category"
+];
+
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";

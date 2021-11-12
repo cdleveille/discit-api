@@ -1,6 +1,6 @@
 import { CronJob } from "cron";
 
-import { maintainDiscs } from "../db/populate";
+import { fetchDiscs } from "../db/populate";
 import { RequestRepo as Manager } from "../repositories/DiscRepository";
 
 export default class Cron {
@@ -13,6 +13,6 @@ export default class Cron {
 	}
 
 	public autoDiscMaintenance = new CronJob(Cron.EveryNightAtMidnight, async () => {
-		await maintainDiscs(this.manager);
+		await fetchDiscs(this.manager);
 	}, null, null, "America/New_York");
 }

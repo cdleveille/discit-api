@@ -6,7 +6,6 @@ Enables developers to programatically access public disc information from the [M
 
 ```text
 GET    /disc                  Get all discs
-GET    /disc/:id              Search by id
 GET    /disc/name/:val        Search by name/title
 GET    /disc/brand/:val       Search by brand/manufacturer
 GET    /disc/category/:val    Search by category/type
@@ -15,6 +14,12 @@ GET    /disc/glide/:val       Search by glide flight number
 GET    /disc/turn/:val        Search by turn flight number
 GET    /disc/fade/:val        Search by fade flight number
 GET    /disc/stability/:val   Search by stability rating
+```
+
+The `/disc` route also supports query strings which can be used to search by multiple fields:
+
+```text
+GET    /disc?brand=innova&category=putter&stability=overstable
 ```
 
 ---

@@ -41,9 +41,9 @@ export class Database {
 		try {
 			Database.orm = await MikroORM.init(Database.Connector);
 			Database.Manager = Database.orm.em.fork();
-			log.info(`successfully connected to database: ${await Database.orm.isConnected()}`, "database");
+			log.info(`Successfully connected to database: ${await Database.orm.isConnected()}`, "database");
 		} catch (e) {
-			throw new Error(`error connecting to database: ${e}`);
+			throw new Error(`Error connecting to database: ${e}`);
 		}
 	}
 
