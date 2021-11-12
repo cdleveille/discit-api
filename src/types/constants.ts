@@ -10,7 +10,23 @@ export enum Host {
 	ip = "127.0.0.1"
 }
 
-export const categoryMap = new Map([
+export enum Site {
+	discClass = "disc-item",
+	putterClass = "pc-entry",
+	discNameAttr = "data-title",
+	putterNameAttr = "data-putter",
+	brandAttr = "data-brand",
+	categoryAttr = "data-category",
+	speedAttr = "data-speed",
+	glideAttr = "data-glide",
+	turnAttr = "data-turn",
+	fadeAttr = "data-fade",
+	linkAttr = "data-link",
+	discPicAttr = "data-pic",
+	putterPicAttr = "data-image"
+}
+
+export const CategoryMap = new Map([
 	["Distance Drivers", "Distance Driver"],
 	["Hybrid Drivers", "Hybrid Driver"],
 	["Control Drivers", "Control Driver"],
@@ -18,7 +34,7 @@ export const categoryMap = new Map([
 	["Putters", "Putter"]
 ]);
 
-export const stabilityValues = [
+export const StabilityValues = [
 	"very-overstable",
 	"overstable",
 	"stable",
@@ -26,7 +42,7 @@ export const stabilityValues = [
 	"very-understable"
 ];
 
-export const fieldsUsingLike = [
+export const FieldsUsingLike = [
 	"name",
 	"brand",
 	"category"

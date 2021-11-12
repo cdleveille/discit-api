@@ -1,7 +1,7 @@
 {
   "name": "discit",
   "version": "1.0.0",
-  "description": "",
+  "description": "RESTful API for disc golf discs.",
   "main": "build/index.js",
   "scripts": {
     "db:init": "yarn mikro-orm migration:create --initial",
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/cdleveille/discit.git"
   },
-  "keywords": [],
+  "keywords": ["disc", "golf", "api", "restful"],
   "author": "Chris Leveille",
   "license": "MIT",
   "bugs": {

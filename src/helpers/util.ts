@@ -1,6 +1,6 @@
 import { Disc } from "../models/Disc";
 import { IDisc } from "../types/abstract";
-import { fieldsUsingLike } from "../types/constants";
+import { FieldsUsingLike } from "../types/constants";
 
 export const createDisc = (disc: IDisc): Disc => {
 	return new Disc({
@@ -59,7 +59,7 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 };
 
 export const equalsOrLike = (key: string, value: string): string => {
-	if (fieldsUsingLike.includes(key.toLowerCase())) {
+	if (FieldsUsingLike.includes(key.toLowerCase())) {
 		return `${key.toLowerCase()} ilike '%${value}%' `;
 	}
 	return `${key} = '${value}' `;
