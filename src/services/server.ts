@@ -22,7 +22,10 @@ export default class App {
 
 	public static async start() {
 		try {
+			console.log("Connecting to database...");
 			await Database.Connect();
+
+			console.log("Setting up app...");
 			await App.setup();
 
 			App.instance.listen(Config.PORT);
@@ -33,7 +36,9 @@ export default class App {
 			// cron.autoDiscMaintenance.start();
 
 			// await fetchDiscs(manager);
+
 		} catch (error) {
+			console.log(error);
 			log.error(error);
 			process.exit(1);
 		}

@@ -14,5 +14,10 @@ process.on("uncaughtException", (err) => {
 	// 		cluster.fork();
 	// 	}
 	// }
-	await app.start();
+	try {
+		console.log("Starting app...");
+		await app.start();
+	} catch (error) {
+		console.log(error);
+	}
 })();
