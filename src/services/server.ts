@@ -18,6 +18,10 @@ export default class App {
 		});
 
 		App.instance.use("/", router);
+
+		App.instance.use(express.static("./src"));
+		App.instance.set("view engine", "ejs");
+		App.instance.set("views", "./src/views");
 	}
 
 	public static async start() {
