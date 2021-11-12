@@ -1,9 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
 
-//import { fetchDiscs } from "../db/populate";
+import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
-//import { Disc } from "../models/Disc";
-//import Cron from "../services/cron";
+import { Disc } from "../models/Disc";
+import Cron from "../services/cron";
 import { Database } from "../services/db";
 import log from "../services/log";
 import router from "../controllers";
@@ -31,11 +31,11 @@ export default class App {
 			App.instance.listen(Config.PORT);
 			log.info(`Listening on http://${Config.HOST}:${Config.PORT}`);
 
-			// const manager = Database.Manager.fork().getRepository(Disc);
-			// const cron = new Cron(manager);
-			// cron.autoDiscMaintenance.start();
+			const manager = Database.Manager.fork().getRepository(Disc);
+			const cron = new Cron(manager);
+			cron.autoDiscMaintenance.start();
 
-			// await fetchDiscs(manager);
+			await fetchDiscs(manager);
 
 		} catch (error) {
 			console.log(error);

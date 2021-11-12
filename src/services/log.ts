@@ -31,10 +31,10 @@ const log: winston.Logger = createLogger({
 	],
 });
 
-if (!config.IS_PROD) {
-	log.add(new transports.Console({
-		format: format.simple(),
-	}));
-}
+// if (!config.IS_PROD) {
+// 	log.add(new transports.Console({
+// 		format: format.simple(),
+// 	}));
+// }
 
 export default log;
