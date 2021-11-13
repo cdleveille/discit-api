@@ -62,5 +62,10 @@ export const equalsOrLike = (key: string, value: string): string => {
 };
 
 export const getNameSlug = (name: string): string => {
-	return name.toLowerCase().replaceAll(" ", "-").replaceAll("(", "").replaceAll(")", "").replaceAll("#", "");
+	let slug = name.toLowerCase();
+	slug = slug.replace(/ /gi, "-");
+	slug = slug.replace("(", "");
+	slug = slug.replace(")", "");
+	slug = slug.replace("#", "");
+	return slug;
 };
