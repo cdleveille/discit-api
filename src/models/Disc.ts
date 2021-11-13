@@ -47,4 +47,8 @@ export class Disc extends Base {
 
 	@Property({ nullable: true })
 	pic: string;
+
+	@Index()
+	@Property({ default: "*" })
+	slug: string;
 }

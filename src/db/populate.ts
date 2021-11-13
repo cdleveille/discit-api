@@ -2,7 +2,7 @@ import axios from "axios";
 import { JSDOM } from "jsdom";
 
 import Config from "../helpers/config";
-import { discNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc } from "../helpers/util";
+import { discNameAndBrandMatch, discsAreEqual, getNameSlug, updateDiscFromOtherDisc } from "../helpers/util";
 import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositories/DiscRepository";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
@@ -47,18 +47,19 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 
 	// distance drivers, hybrid drivers, control drivers, midranges
 	for (const element of discCollection) {
-		const name = element.getAttribute(Site.discNameAttr);
-		const brand = element.getAttribute(Site.brandAttr);
-		const category = parseCategory(element.getAttribute(Site.categoryAttr));
-		const speed = element.getAttribute(Site.speedAttr);
-		const glide = element.getAttribute(Site.glideAttr);
-		const turn = element.getAttribute(Site.turnAttr);
-		const fade = element.getAttribute(Site.fadeAttr);
-		const stability = parseStability(element, turn, fade);
-		const link = element.getAttribute(Site.linkAttr);
-		const pic = element.getAttribute(Site.discPicAttr);
+		const name: string = element.getAttribute(Site.discNameAttr);
+		const brand: string = element.getAttribute(Site.brandAttr);
+		const category: string = parseCategory(element.getAttribute(Site.categoryAttr));
+		const speed: string = element.getAttribute(Site.speedAttr);
+		const glide: string = element.getAttribute(Site.glideAttr);
+		const turn: string = element.getAttribute(Site.turnAttr);
+		const fade: string = element.getAttribute(Site.fadeAttr);
+		const stability: string = parseStability(element, turn, fade);
+		const link: string = element.getAttribute(Site.linkAttr);
+		const pic: string = element.getAttribute(Site.discPicAttr);
+		const slug: string = getNameSlug(name);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, slug };
 
 		let match;
 		for (const existingDisc of existingDiscs) {
@@ -78,18 +79,19 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 
 	// putters
 	for (const element of putterCollection) {
-		const name = element.getAttribute(Site.putterNameAttr);
-		const brand = element.getAttribute(Site.brandAttr);
-		const category = "putter";
-		const speed = element.getAttribute(Site.speedAttr);
-		const glide = element.getAttribute(Site.glideAttr);
-		const turn = element.getAttribute(Site.turnAttr);
-		const fade = element.getAttribute(Site.fadeAttr);
-		const stability = parseStability(element, turn, fade);
-		const link = element.getAttribute(Site.linkAttr);
-		const pic = element.getAttribute(Site.putterPicAttr);
+		const name: string = element.getAttribute(Site.putterNameAttr);
+		const brand: string = element.getAttribute(Site.brandAttr);
+		const category: string = "putter";
+		const speed: string = element.getAttribute(Site.speedAttr);
+		const glide: string = element.getAttribute(Site.glideAttr);
+		const turn: string = element.getAttribute(Site.turnAttr);
+		const fade: string = element.getAttribute(Site.fadeAttr);
+		const stability: string = parseStability(element, turn, fade);
+		const link: string = element.getAttribute(Site.linkAttr);
+		const pic: string = element.getAttribute(Site.putterPicAttr);
+		const slug: string = getNameSlug(name);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, slug };
 
 		let match;
 		for (const existingDisc of existingDiscs) {

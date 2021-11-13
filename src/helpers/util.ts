@@ -13,7 +13,8 @@ export const createDisc = (disc: IDisc): Disc => {
 		fade: disc.fade,
 		stability: disc.stability,
 		link: disc.link,
-		pic: disc.pic
+		pic: disc.pic,
+		slug: disc.slug
 	});
 };
 
@@ -32,7 +33,8 @@ export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
 		disc1.fade === disc2.fade &&
 		disc1.stability === disc2.stability &&
 		disc1.link === disc2.link &&
-		disc1.pic === disc2.pic
+		disc1.pic === disc2.pic &&
+		disc1.slug === disc2.slug
 	);
 };
 
@@ -47,6 +49,7 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 	targetDisc.stability = sourceDisc.stability;
 	targetDisc.link = sourceDisc.link;
 	targetDisc.pic = sourceDisc.pic;
+	targetDisc.slug = sourceDisc.slug;
 
 	return targetDisc;
 };
@@ -56,4 +59,8 @@ export const equalsOrLike = (key: string, value: string): string => {
 		return `${key.toLowerCase()} ilike '%${value}%'`;
 	}
 	return `${key} = '${value}'`;
+};
+
+export const getNameSlug = (name: string): string => {
+	return name.toLowerCase().replaceAll(" ", "-").replaceAll("(", "").replaceAll(")", "").replaceAll("#", "");
 };

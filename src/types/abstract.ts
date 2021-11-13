@@ -8,7 +8,8 @@ export interface IDisc {
 	fade: string,
 	stability: string,
 	link: string,
-	pic: string
+	pic: string,
+	slug: string
 }
 
 export interface IDiscUpsert {
