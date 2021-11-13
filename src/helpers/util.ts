@@ -55,10 +55,11 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 };
 
 export const equalsOrLike = (key: string, value: string): string => {
+	const searchKey: string = key === "name" ? "slug" : key.toLowerCase();
 	if (FieldsUsingLike.includes(key.toLowerCase())) {
-		return `${key.toLowerCase()} ilike '%${value}%'`;
+		return `${searchKey} ilike '%${value}%'`;
 	}
-	return `${key} = '${value}'`;
+	return `${searchKey} = '${value}'`;
 };
 
 export const getNameSlug = (name: string): string => {

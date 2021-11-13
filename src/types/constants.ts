@@ -45,7 +45,8 @@ export const StabilityValues = [
 export const FieldsUsingLike = [
 	"name",
 	"brand",
-	"category"
+	"category",
+	"slug"
 ];
 
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";
