@@ -10,7 +10,7 @@ Check it out live on Heroku! [discitapi.herokuapp.com/disc](https://discitapi.he
 
 | Field       | Search Operator   | Description                                                                                                             |
 |-------------|-------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `name`      | `LIKE`            | Name/title of the disc mold ['aviar', 'buzz', 'destroyer', etc.]                                                        |
+| `name`      | `LIKE`            | Name/title of the disc mold ['Aviar', 'Buzz', 'Crank SS', etc.]. A *slug* of the name is used for searches (see below).   |
 | `brand`     | `LIKE`            | Brand/manufacturer of the disc ['innova', 'discraft', 'discmania', etc.]                                                |
 | `category`  | `LIKE`            | ['distance-driver', 'hybrid-driver', 'control-driver', 'midrange', 'putter']                                            |
 | `speed`     | `=`               | The rate at which a disc can travel through the air [1 to 15]                                                           |
@@ -20,6 +20,7 @@ Check it out live on Heroku! [discitapi.herokuapp.com/disc](https://discitapi.he
 | `stability` | `=`               | ['stable', 'overstable', 'very-overstable', 'understable', 'very-understable']                                          |
 | `link`      | N/A               | Link to search for this disc in the Marshall Street Disc Golf web store                                                 |
 | `pic`       | N/A               | Link to a picture showing the approximate flight shape of this disc                                                     |
+| `slug`      | `LIKE`            | A simplified, URL-friendly version of the disc name used for search comparisons ['kc-aviar', 'nuke-ss', 'd1-max', etc.] |
 
 ## Endpoints
 
