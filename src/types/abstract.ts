@@ -10,7 +10,9 @@ export interface IDisc {
 	link: string,
 	pic: string,
 	name_slug: string,
-	brand_slug: string
+	brand_slug: string,
+	category_slug: string,
+	stability_slug: string
 }
 
 export interface IDiscUpsert {

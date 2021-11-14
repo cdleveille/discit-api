@@ -10,15 +10,12 @@ export class Disc extends Base {
 		Object.assign(this, disc);
 	}
 
-	@Index()
 	@Property()
 	name: string;
 
-	@Index()
 	@Property()
 	brand: string;
 
-	@Index()
 	@Property()
 	category: string;
 
@@ -38,11 +35,10 @@ export class Disc extends Base {
 	@Property()
 	fade: string;
 
-	@Index()
-	@Property({ nullable: true })
+	@Property()
 	stability: string;
 
-	@Property({ nullable: true })
+	@Property()
 	link: string;
 
 	@Property({ nullable: true })
@@ -55,4 +51,12 @@ export class Disc extends Base {
 	@Index()
 	@Property({ default: "*" })
 	brand_slug: string;
+
+	@Index()
+	@Property({ default: "*" })
+	category_slug: string;
+
+	@Index()
+	@Property({ default: "*" })
+	stability_slug: string;
 }

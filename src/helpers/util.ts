@@ -15,7 +15,9 @@ export const createDisc = (disc: IDisc): Disc => {
 		link: disc.link,
 		pic: disc.pic,
 		name_slug: disc.name_slug,
-		brand_slug: disc.brand_slug
+		brand_slug: disc.brand_slug,
+		category_slug: disc.category_slug,
+		stability_slug: disc.stability_slug
 	});
 };
 
@@ -36,7 +38,9 @@ export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
 		disc1.link === disc2.link &&
 		disc1.pic === disc2.pic &&
 		disc1.name_slug === disc2.name_slug &&
-		disc1.brand_slug === disc2.brand_slug
+		disc1.brand_slug === disc2.brand_slug &&
+		disc1.category_slug === disc2.category_slug &&
+		disc1.stability_slug === disc2.stability_slug
 	);
 };
 
@@ -53,14 +57,17 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 	targetDisc.pic = sourceDisc.pic;
 	targetDisc.name_slug = sourceDisc.name_slug;
 	targetDisc.brand_slug = sourceDisc.brand_slug;
+	targetDisc.category_slug = sourceDisc.category_slug;
+	targetDisc.stability_slug = sourceDisc.stability_slug;
 
 	return targetDisc;
 };
 
 export const equalsOrLike = (key: string, value: string): string => {
-	const searchKey: string = key === "name" ? "slug" : key.toLowerCase();
-	if (FieldsUsingLike.includes(key.toLowerCase())) {
-		return `${searchKey} ilike '%${value}%'`;
+	const searchKey: string = ["name", "brand", "category", "stability"].includes(key.toLowerCase()) ? `${key.toLowerCase()}_slug` : key.toLowerCase();
+	if (FieldsUsingLike.includes(searchKey)) {
+		const sql = `${searchKey} ilike '%${value}%'`;
+		return sql;
 	}
 	return `${searchKey} = '${value}'`;
 };

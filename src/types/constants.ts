@@ -27,27 +27,27 @@ export enum Site {
 }
 
 export const CategoryMap = new Map([
-	["Distance Drivers", "distance-driver"],
-	["Hybrid Drivers", "hybrid-driver"],
-	["Control Drivers", "control-driver"],
-	["Midrange Drivers", "midrange"],
-	["Putters", "putter"]
+	["Distance Drivers", "Distance Driver"],
+	["Hybrid Drivers", "Hybrid Driver"],
+	["Control Drivers", "Control Driver"],
+	["Midrange Drivers", "Midrange"]
 ]);
 
-export const StabilityValues = [
-	"very-overstable",
-	"overstable",
-	"stable",
-	"understable",
-	"very-understable"
-];
+export const StabilityMap = new Map([
+	["very-overstable", "Very Overstable"],
+	["overstable", "Overstable"],
+	["stable", "Stable"],
+	["understable", "Understable"],
+	["very-understable", "Very Understable"]
+]);
 
 export const FieldsUsingLike = [
+	"name_slug",
+	"brand_slug",
+	"category_slug",
 	"name",
 	"brand",
-	"category",
-	"name_slug",
-	"brand_slug"
+	"category"
 ];
 
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";

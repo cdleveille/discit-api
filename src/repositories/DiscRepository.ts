@@ -20,7 +20,7 @@ export class DiscRepository {
 
 	public static async FindByQuery(connection: Connection, query: any): Promise<Disc[]> {
 		try {
-			let sql = "select name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug from disc";
+			let sql = "select name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug from disc";
 
 			for (const key in query) {
 				sql += (sql.includes(" where ") ? " and " : " where ") + equalsOrLike(key, query[key]);
@@ -62,7 +62,7 @@ export class DiscRepository {
 
 	public static async FindByCategory(manager: RequestRepo, category: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ category: { $ilike: `%${category}%` } }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ category_slug: { $ilike: `%${category}%` } }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -107,7 +107,7 @@ export class DiscRepository {
 
 	public static async FindByStability(manager: RequestRepo, stability: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ stability }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ stability_slug: stability }, { cache: DiscRepository.CacheSize });
 			return res;
 		} catch (error) {
 			throw Error(error);

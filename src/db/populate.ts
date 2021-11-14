@@ -6,7 +6,7 @@ import { discNameAndBrandMatch, discsAreEqual, slugify, updateDiscFromOtherDisc 
 import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositories/DiscRepository";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
-import { CategoryMap, Site, StabilityValues } from "../types/constants";
+import { CategoryMap, Site, StabilityMap } from "../types/constants";
 
 export const fetchDiscs = async (manager: Manager) => {
 	try {
@@ -59,8 +59,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const pic: string = element.getAttribute(Site.discPicAttr);
 		const name_slug: string = slugify(name);
 		const brand_slug: string = slugify(brand);
+		const category_slug: string = slugify(category);
+		const stability_slug: string = slugify(stability);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug };
 
 		let match;
 		for (const existingDisc of existingDiscs) {
@@ -82,7 +84,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	for (const element of putterCollection) {
 		const name: string = element.getAttribute(Site.putterNameAttr);
 		const brand: string = element.getAttribute(Site.brandAttr);
-		const category: string = "putter";
+		const category: string = "Putter";
 		const speed: string = element.getAttribute(Site.speedAttr);
 		const glide: string = element.getAttribute(Site.glideAttr);
 		const turn: string = element.getAttribute(Site.turnAttr);
@@ -92,8 +94,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const pic: string = element.getAttribute(Site.putterPicAttr);
 		const name_slug: string = slugify(name);
 		const brand_slug: string = slugify(brand);
+		const category_slug: string = slugify(category);
+		const stability_slug: string = slugify(stability);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug };
 
 		let match;
 		for (const existingDisc of existingDiscs) {
@@ -141,18 +145,18 @@ const parseStability = (element: any, turn: string, fade: string): string => {
 		// check for stability via class name in html
 		for (let i = classesSplit.length - 1; i >= 0; i--) {
 			const stability = classesSplit[i];
-			if (StabilityValues.includes(stability)) return stability;
+			if (Array.from(StabilityMap.keys()).includes(stability)) return StabilityMap.get(stability);
 		}
 	}
 
 	// if not found in html, calculate it based on turn and fade
 	const diff: number = parseFloat(turn) + parseFloat(fade);
 	switch (true) {
-		case (diff >= 4): return "very-overstable";
-		case (diff >= 2 && diff < 4): return "overstable";
-		case (diff < 2 && diff > -2): return "stable";
-		case (diff <= -2 && diff > -4): return "understable";
-		case (diff <= -4): return "very-understable";
+		case (diff >= 4): return "Very Overstable";
+		case (diff >= 2 && diff < 4): return "Overstable";
+		case (diff < 2 && diff > -2): return "Stable";
+		case (diff <= -2 && diff > -4): return "Understable";
+		case (diff <= -4): return "Very Understable";
 		default: return null;
 	}
 };
