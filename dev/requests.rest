@@ -8,7 +8,7 @@ GET http://localhost:3000/disc?brand=innova&category=putter&stability=overstable
 GET http://localhost:3000/disc/name/mamba
 
 ###
-GET http://localhost:3000/disc/brand/innova
+GET http://localhost:3000/disc/brand/axiom-discs
 
 ###
 GET http://localhost:3000/disc/category/control-driver

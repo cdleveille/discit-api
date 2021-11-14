@@ -14,7 +14,8 @@ export const createDisc = (disc: IDisc): Disc => {
 		stability: disc.stability,
 		link: disc.link,
 		pic: disc.pic,
-		slug: disc.slug
+		name_slug: disc.name_slug,
+		brand_slug: disc.brand_slug
 	});
 };
 
@@ -34,7 +35,8 @@ export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
 		disc1.stability === disc2.stability &&
 		disc1.link === disc2.link &&
 		disc1.pic === disc2.pic &&
-		disc1.slug === disc2.slug
+		disc1.name_slug === disc2.name_slug &&
+		disc1.brand_slug === disc2.brand_slug
 	);
 };
 
@@ -49,7 +51,8 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 	targetDisc.stability = sourceDisc.stability;
 	targetDisc.link = sourceDisc.link;
 	targetDisc.pic = sourceDisc.pic;
-	targetDisc.slug = sourceDisc.slug;
+	targetDisc.name_slug = sourceDisc.name_slug;
+	targetDisc.brand_slug = sourceDisc.brand_slug;
 
 	return targetDisc;
 };
@@ -62,9 +65,9 @@ export const equalsOrLike = (key: string, value: string): string => {
 	return `${searchKey} = '${value}'`;
 };
 
-export const getNameSlug = (name: string): string => {
-	let slug = name.toLowerCase();
-	slug = slug.replace(/ /gi, "-");
+export const slugify = (text: string): string => {
+	let slug = text.toLowerCase();
+	slug = slug.replace(/ /g, "-");
 	slug = slug.replace("(", "");
 	slug = slug.replace(")", "");
 	slug = slug.replace("#", "");

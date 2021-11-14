@@ -2,7 +2,7 @@ import axios from "axios";
 import { JSDOM } from "jsdom";
 
 import Config from "../helpers/config";
-import { discNameAndBrandMatch, discsAreEqual, getNameSlug, updateDiscFromOtherDisc } from "../helpers/util";
+import { discNameAndBrandMatch, discsAreEqual, slugify, updateDiscFromOtherDisc } from "../helpers/util";
 import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositories/DiscRepository";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
@@ -57,9 +57,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const stability: string = parseStability(element, turn, fade);
 		const link: string = element.getAttribute(Site.linkAttr);
 		const pic: string = element.getAttribute(Site.discPicAttr);
-		const slug: string = getNameSlug(name);
+		const name_slug: string = slugify(name);
+		const brand_slug: string = slugify(brand);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, slug };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug };
 
 		let match;
 		for (const existingDisc of existingDiscs) {
@@ -89,9 +90,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const stability: string = parseStability(element, turn, fade);
 		const link: string = element.getAttribute(Site.linkAttr);
 		const pic: string = element.getAttribute(Site.putterPicAttr);
-		const slug: string = getNameSlug(name);
+		const name_slug: string = slugify(name);
+		const brand_slug: string = slugify(brand);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, slug };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug };
 
 		let match;
 		for (const existingDisc of existingDiscs) {

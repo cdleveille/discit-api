@@ -46,7 +46,8 @@ export const FieldsUsingLike = [
 	"name",
 	"brand",
 	"category",
-	"slug"
+	"name_slug",
+	"brand_slug"
 ];
 
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";

@@ -50,5 +50,9 @@ export class Disc extends Base {
 
 	@Index()
 	@Property({ default: "*" })
-	slug: string;
+	name_slug: string;
+
+	@Index()
+	@Property({ default: "*" })
+	brand_slug: string;
 }
