@@ -1,4 +1,7 @@
+import compression from "compression";
+import cors from "cors";
 import express, { Request, Response, NextFunction } from "express";
+import helmet from "helmet";
 
 import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
@@ -22,6 +25,12 @@ export default class App {
 		App.instance.use(express.static("./src"));
 		App.instance.set("view engine", "ejs");
 		App.instance.set("views", "./src/views");
+
+		App.instance.set("json spaces", 2);
+		App.instance.disabled("x-powered-by");
+		App.instance.use(cors());
+		App.instance.use(helmet());
+		App.instance.use(compression());
 	}
 
 	public static async start() {
