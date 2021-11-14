@@ -8,34 +8,35 @@ Check it out live on Heroku! [discitapi.herokuapp.com/disc](https://discitapi.he
 
 ## Fields
 
-| Field       | Search Operator   | Description                                                                                                             |
-|-------------|-------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `name`      | `LIKE`            | Name/title of the disc mold ['Aviar', 'Buzz', 'Crank SS', etc.]. A *slug* of the name is used for searches (see below).   |
-| `brand`     | `LIKE`            | Brand/manufacturer of the disc ['innova', 'discraft', 'discmania', etc.]                                                |
-| `category`  | `LIKE`            | ['distance-driver', 'hybrid-driver', 'control-driver', 'midrange', 'putter']                                            |
-| `speed`     | `=`               | The rate at which a disc can travel through the air [1 to 15]                                                           |
-| `glide`     | `=`               | The ability of a disc to maintain loft during its flight [1 to 7]                                                       |
-| `turn`      | `=`               | The tendency of a disc to turn over or bank to the right (for RHBH throws) at the initial part of its flight [+1 to -5] |
-| `fade`      | `=`               | The tendency of a disc to hook left (for RHBH throws) at the end of its flight [0 to 5]                                 |
-| `stability` | `=`               | ['stable', 'overstable', 'very-overstable', 'understable', 'very-understable']                                          |
-| `link`      | N/A               | Link to search for this disc in the Marshall Street Disc Golf web store                                                 |
-| `pic`       | N/A               | Link to a picture showing the approximate flight shape of this disc                                                     |
-| `slug`      | `LIKE`            | A simplified, URL-friendly version of the disc name used for search comparisons ['kc-aviar', 'nuke-ss', 'd1-max', etc.] |
+| Field        | Search Operator   | Description                                                                                                                   |
+|--------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `name`*      | `LIKE`            | Name of the disc (`Aviar`, `Buzz`, `Crank SS`, etc.).                                                                         |
+| `brand`*     | `LIKE`            | Brand of the disc (`Innova`, `Discraft`, `Dynamic Discs`, etc.)                                                               |
+| `category`*  | `LIKE`            | `Distance Driver`, `Hybrid Driver`, `Control Driver`, `Midrange`, `Putter`                                                    |
+| `speed`      | `=`               | The relative rate at which the disc can travel through the air (`1` to `15`)                                                  |
+| `glide`      | `=`               | The relative ability of the disc to maintain loft during its flight (`1` to `7`)                                              |
+| `turn`       | `=`               | The tendency of the disc to turn over or bank to the right (for RHBH throws) at the initial part of its flight (`+1` to `-5`) |
+| `fade`       | `=`               | The tendency of the disc to hook left (for RHBH throws) at the end of its flight (`0` to `5`)                                 |
+| `stability`* | `=`               | `Stable`, `Overstable`, `Very Overstable`, `Understable`, `Very Understable`                                                  |
+| `link`       | N/A               | Link to search for the disc in the Marshall Street Disc Golf web store                                                        |
+| `pic`        | N/A               | Link to a picture showing the approximate flight shape of the disc                                                            |
+
+\* This field uses a URL-friendly *slug* string for searches (e.g. `Crank SS` = `crank-ss`)
 
 ## Endpoints
 
-| Method | Route                   | Description                       |
-|--------|-------------------------|-----------------------------------|
-| `GET`  | `/disc`                 | Get all discs                     |
-| `GET`  | `/disc/?query`          | Search by query string            |
-| `GET`  | `/disc/name/:val`       | Search by name/title              |
-| `GET`  | `/disc/brand/:val`      | Search by brand/manufacturer      |
-| `GET`  | `/disc/category/:val`   | Search by category/type           |
-| `GET`  | `/disc/speed/:val`      | Search by speed flight number     |
-| `GET`  | `/disc/glide/:val`      | Search by glide flight number     |
-| `GET`  | `/disc/turn/:val`       | Search by turn flight number      |
-| `GET`  | `/disc/fade/:val`       | Search by fade flight number      |
-| `GET`  | `/disc/stablility/:val` | Search by stability flight number |
+| Method | Route              | Description                   |
+|--------|--------------------|-------------------------------|
+| `GET`  | `/disc`            | Get all discs                 |
+| `GET`  | `/disc?`           | Search by custom query string |
+| `GET`  | `/disc/name`       | Search by `name` field        |
+| `GET`  | `/disc/brand`      | Search by `brand` field       |
+| `GET`  | `/disc/category`   | Search by `category` field    |
+| `GET`  | `/disc/speed`      | Search by `speed` field       |
+| `GET`  | `/disc/glide`      | Search by `glide` field       |
+| `GET`  | `/disc/turn`       | Search by `turn` field        |
+| `GET`  | `/disc/fade`       | Search by `fade` field        |
+| `GET`  | `/disc/stablility` | Search by `stability` field   |
 
 See [/dev/requests.rest](https://github.com/cdleveille/discit/blob/main/dev/requests.rest) for example requests.
 
@@ -86,3 +87,4 @@ Launch:
 
 - [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide)
 - [PDGA REST API Services](https://www.pdga.com/dev/api/rest/v1/services)
+- [Flight Ratings System](https://www.innovadiscs.com/home/disc-golf-faq/flight-ratings-system/)
