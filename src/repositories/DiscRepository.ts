@@ -1,4 +1,4 @@
-import { Connection, EntityRepository } from "@mikro-orm/core";
+import { Connection, EntityRepository, QueryOrder } from "@mikro-orm/core";
 
 import { createDisc, equalsOrLike } from "../helpers/util";
 import { Disc } from "../models/Disc";
@@ -11,7 +11,7 @@ export class DiscRepository {
 
 	public static async FindAll(manager: RequestRepo): Promise<Disc[]> {
 		try {
-			const res = await manager.findAll({}, { cache: DiscRepository.CacheSize });
+			const res = await manager.findAll({}, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -27,7 +27,9 @@ export class DiscRepository {
 				sql += (sql.includes(" where ") ? " and " : " where ") + equalsOrLike(searchKey, query[key]);
 			}
 
-			const res = await connection.execute(sql);
+			sql += " order by name_slug asc";
+
+			const res = await connection.execute(sql, [{ cache: DiscRepository.CacheSize }]);
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -36,7 +38,7 @@ export class DiscRepository {
 
 	public static async FindByID(manager: RequestRepo, id: number): Promise<Disc> {
 		try {
-			const res = await manager.findOne({ id }, { cache: DiscRepository.CacheSize });
+			const res = await manager.findOne({ id }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -45,7 +47,7 @@ export class DiscRepository {
 
 	public static async FindByName(manager: RequestRepo, name: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ name_slug: { $ilike: `%${name}%` } }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ name_slug: { $ilike: `%${name}%` } }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -54,7 +56,7 @@ export class DiscRepository {
 
 	public static async FindByBrand(manager: RequestRepo, brand: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ brand_slug: { $ilike: `%${brand}%` } }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ brand_slug: { $ilike: `%${brand}%` } }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -63,7 +65,7 @@ export class DiscRepository {
 
 	public static async FindByCategory(manager: RequestRepo, category: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ category_slug: { $ilike: `%${category}%` } }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ category_slug: { $ilike: `%${category}%` } }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -72,7 +74,7 @@ export class DiscRepository {
 
 	public static async FindBySpeed(manager: RequestRepo, speed: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ speed }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ speed }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -81,7 +83,7 @@ export class DiscRepository {
 
 	public static async FindByGlide(manager: RequestRepo, glide: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ glide }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ glide }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -90,7 +92,7 @@ export class DiscRepository {
 
 	public static async FindByTurn(manager: RequestRepo, turn: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ turn }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ turn }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -99,7 +101,7 @@ export class DiscRepository {
 
 	public static async FindByFade(manager: RequestRepo, fade: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ fade }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ fade }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
@@ -108,7 +110,7 @@ export class DiscRepository {
 
 	public static async FindByStability(manager: RequestRepo, stability: string): Promise<Disc[]> {
 		try {
-			const res = await manager.find({ stability_slug: stability }, { cache: DiscRepository.CacheSize });
+			const res = await manager.find({ stability_slug: stability }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);

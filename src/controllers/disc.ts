@@ -13,6 +13,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response | void> =>
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -23,6 +24,7 @@ router.get("/:id", async (req: Request, res: Response): Promise<Response | void>
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -33,6 +35,7 @@ router.get("/name/:val", async (req: Request, res: Response): Promise<Response |
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -43,6 +46,7 @@ router.get("/brand/:val", async (req: Request, res: Response): Promise<Response 
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -53,6 +57,7 @@ router.get("/category/:val", async (req: Request, res: Response): Promise<Respon
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -63,6 +68,7 @@ router.get("/speed/:val", async (req: Request, res: Response): Promise<Response 
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -73,6 +79,7 @@ router.get("/glide/:val", async (req: Request, res: Response): Promise<Response 
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -83,6 +90,7 @@ router.get("/turn/:val", async (req: Request, res: Response): Promise<Response |
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -93,6 +101,7 @@ router.get("/fade/:val", async (req: Request, res: Response): Promise<Response |
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 
@@ -103,6 +112,7 @@ router.get("/stability/:val", async (req: Request, res: Response): Promise<Respo
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
+		return res.json([]);
 	}
 });
 

@@ -95,11 +95,19 @@ const changeRoute = (newRouteText) => {
 
 searchBox.oninput = () => {
 	if (searchBox.value) {
-		routeDiv.innerHTML = `${routeText}${routeText === "/disc?" ? "" : "/"}${searchBox.value}`;
+		const inputText = slugify(searchBox.value);
+		routeDiv.innerHTML = `${routeText}${routeText === "/disc?" || !inputText ? "" : "/"}${inputText}`;
 		getLink.href = routeDiv.innerHTML;
 	} else routeDiv.innerHTML = routeText;
 
 	setSearchBoxWidth();
+};
+
+const slugify = (text) => {
+	let slug = text.toLowerCase();
+	slug = slug.replace(/[/\\#,+()$~%.'":*?<>{}[\]]/g, "");
+	slug = slug.replace(/ /g, "-");
+	return slug;
 };
 
 // Create a div element
