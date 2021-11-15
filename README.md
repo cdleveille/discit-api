@@ -4,7 +4,7 @@ RESTful API for disc golf discs.
 
 Enables developers to programmatically access public disc information from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page.
 
-Check it out live on Heroku! [discitapi.herokuapp.com/disc](https://discitapi.herokuapp.com/disc)
+Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokuapp.com)
 
 ## Fields
 
