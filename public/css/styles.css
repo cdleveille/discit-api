@@ -3,6 +3,8 @@ body {
 	font-size: 1rem;
 	overflow: hidden;
 	text-align: center;
+	-webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+	touch-action: none;
 }
 
 a:link, a:visited {
