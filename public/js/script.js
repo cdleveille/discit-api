@@ -5,6 +5,7 @@ const getLink = document.getElementById("get-link");
 const getBtn = document.getElementById("get-btn");
 const getForm = document.getElementById("get-form");
 const results = document.getElementById("results");
+const resultsCount = document.getElementById("results-count");
 const routeDiv = document.getElementById("route-div");
 let routeText = routeDiv.innerHTML;
 
@@ -108,7 +109,7 @@ searchBox.oninput = () => {
 const slugify = (text) => {
 	let slug = text.toLowerCase();
 	slug = slug.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "");
-	slug = slug.replace(/[ _]/g, "-");
+	slug = slug.replace(/[ ]/g, "-");
 	return slug;
 };
 
@@ -174,6 +175,11 @@ window.addEventListener("resize", () => {
 	resizeResults();
 });
 
+results.onload = () => {
+	const json = $.parseJSON($(results).contents().text());
+	resultsCount.innerHTML = `${json.length} result${json.length === 1 ? "" : "s"}`;
+};
+
 const resizeResults = () => {
 	if (window.innerWidth * 0.95 < 600 ) {
 		results.style.width = `${Math.floor(window.innerWidth * 0.95)}px`;
@@ -181,7 +187,7 @@ const resizeResults = () => {
 		results.style.width = "600px";
 	}
 
-	results.style.height = `${window.innerHeight - results.offsetTop - 16}px`;
+	results.style.height = `${window.innerHeight - results.offsetTop - 56}px`;
 	
 };
 

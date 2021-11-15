@@ -6,36 +6,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥏</text></svg>">
 	<link rel="stylesheet" href="/css/styles.css">
+	<script src="/js/jquery-3.6.0.min.js"></script>
 	<script src="/js/script.js" defer></script>
-	<title>DiscIt API</title>
+	<title>DiscIt</title>
 </head>
 <body>
-	<h1>DiscIt API</h1>
+	<h1>DiscIt</h1>
 
 	<div id="github" class="item">
 		<a href="https://github.com/cdleveille/discit" target="_blank">github.com/cdleveille/discit</a>
 	</div>
 
 	<div id="route-links" class="item">
-		<a id="all-link" href="">All Discs</a> |
-		<a id="name-link" href="">Name</a> |
-		<a id="brand-link" href="">Brand</a> |
-		<a id="category-link" href="">Category</a> |
-		<a id="speed-link" href="">Speed</a> |
-		<a id="glide-link" href="">Glide</a> |
-		<a id="turn-link" href="">Turn</a> |
-		<a id="fade-link" href="">Fade</a> |
-		<a id="stability-link" href="">Stability</a> |
-		<a id="query-link" href="">Custom Query</a>
+		<a id="all-link" href="/disc">All Discs</a> |
+		<a id="name-link" href="/disc/name">Name</a> |
+		<a id="brand-link" href="/disc/brand">Brand</a> |
+		<a id="category-link" href="/disc/category">Category</a> |
+		<a id="speed-link" href="/disc/speed">Speed</a> |
+		<a id="glide-link" href="/disc/glide">Glide</a> |
+		<a id="turn-link" href="/disc/turn">Turn</a> |
+		<a id="fade-link" href="/disc/fade">Fade</a> |
+		<a id="stability-link" href="/disc/stability">Stability</a> |
+		<a id="query-link" href="/disc?">Custom Query</a>
 	</div>
 
 	<div id="route-div" class="item">/disc</div>
 
-	<form id="get-form" class="header-item">
-		<input id="search-box" placeholder="value" disabled><br>
+	<form id="get-form">
+		<input id="search-box" placeholder="value" autocomplete="off" disabled><br>
 		<a id="get-link" href="/disc"><button id="get-btn" type="submit">GET</button></a>
 	</form>
 
-	<iframe id="results" src="" title="results" frameBorder="0"></iframe>
+	<iframe id="results" class="item" src="" title="results" frameBorder="0"></iframe>
+
+	<div id="results-count" class="item"></div>
 </body>
 </html>

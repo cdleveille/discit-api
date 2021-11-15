@@ -66,7 +66,7 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 export const slugify = (text: string) => {
 	let slug = text.toLowerCase();
 	slug = slug.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "");
-	slug = slug.replace(/[ _]/g, "-");
+	slug = slug.replace(/[ ]/g, "-");
 	return slug;
 };
 
