@@ -23,7 +23,8 @@ export class DiscRepository {
 			let sql = "select name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug from disc";
 
 			for (const key in query) {
-				sql += (sql.includes(" where ") ? " and " : " where ") + equalsOrLike(key, query[key]);
+				let searchKey = key.includes("amp;") ? key.replace("amp;", "") : key;
+				sql += (sql.includes(" where ") ? " and " : " where ") + equalsOrLike(searchKey, query[key]);
 			}
 
 			const res = await connection.execute(sql);

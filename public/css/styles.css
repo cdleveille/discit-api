@@ -1,0 +1,41 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	overflow: hidden;
+	text-align: center;
+}
+
+a:link, a:visited {
+	color: blue;
+	text-decoration: none;
+}
+
+a:focus, .focus a {
+	outline: none !important;
+}
+
+h1 {
+	font-size: 2rem;
+	margin: 1rem;
+}
+
+.item {
+	margin-bottom: 1rem;
+}
+
+button {
+	margin: 1rem;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+input {
+	width: 9rem;
+	min-width: 9rem;
+}
+
+#results {
+	width: 600px;
+}

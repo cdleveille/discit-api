@@ -10,7 +10,8 @@ const Config = {
 	PORT: <number>parseInt(process.env.PORT as string) || 3000,
 	HOST: <Host>(process.env.NODE_ENV == Env.prod ? process.env.HOST : Host.ip),
 	CORES: <number>os.cpus().length,
-	DISC_FETCH_URL: <string>DISC_FETCH_URL
+	DISC_FETCH_URL: <string>DISC_FETCH_URL,
+	FETCH_DISCS: <boolean>(process.env.FETCH_DISCS == "true")
 };
 
 export const Db = {

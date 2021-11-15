@@ -22,9 +22,9 @@ export default class App {
 
 		App.instance.use("/", router);
 
-		App.instance.use(express.static("./src"));
+		App.instance.use(express.static("./public"));
 		App.instance.set("view engine", "ejs");
-		App.instance.set("views", "./src/views");
+		App.instance.set("views", "./public/views");
 
 		App.instance.set("json spaces", 2);
 		App.instance.disabled("x-powered-by");
@@ -45,6 +45,6 @@ export default class App {
 		const cron = new Cron(manager);
 		cron.autoDiscMaintenance.start();
 
-		await fetchDiscs(manager);
+		if (Config.FETCH_DISCS) await fetchDiscs(manager);
 	}
 }

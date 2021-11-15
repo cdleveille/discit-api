@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<script src="/js/script.js" defer></script>
+	<title>DiscIt API</title>
+</head>
+<body>
+	<h1>DiscIt API</h1>
+
+	<div id="github" class="item">
+		<a href="https://github.com/cdleveille/discit" target="_blank">GitHub Repo</a>
+	</div>
+
+	<div id="route-links" class="item">
+		<a id="all-link" href="">All Discs</a> |
+		<a id="name-link" href="">Name</a> |
+		<a id="brand-link" href="">Brand</a> |
+		<a id="category-link" href="">Category</a> |
+		<a id="speed-link" href="">Speed</a> |
+		<a id="glide-link" href="">Glide</a> |
+		<a id="turn-link" href="">Turn</a> |
+		<a id="fade-link" href="">Fade</a> |
+		<a id="stability-link" href="">Stability</a> |
+		<a id="query-link" href="">Custom Query</a>
+	</div>
+
+	<div id="route-div" class="item">/disc</div>
+
+	<form id="get-form" class="header-item">
+		<input id="search-box" placeholder="value" disabled><br>
+		<a id="get-link" href="/disc"><button id="get-btn" type="submit">GET</button></a>
+	</form>
+
+	<iframe id="results" src="" title="Results"></iframe>
+</body>
+</html>
