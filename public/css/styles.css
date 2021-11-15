@@ -45,5 +45,6 @@ input {
 #results {
 	width: 600px;
 	-webkit-text-size-adjust: none;
+	touch-action: none;
 	touch-action: pan-y;
 }
