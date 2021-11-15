@@ -144,6 +144,42 @@ fakeEle.style.paddingRight = styles.paddingRight;
 // Append the fake element to `body`
 document.body.appendChild(fakeEle);
 
+document.addEventListener("gesturestart", function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
+document.addEventListener("gesturechange", function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
+document.addEventListener("gestureend", function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
+results.addEventListener("gesturestart", function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
+results.addEventListener("gesturechange", function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
+results.addEventListener("gestureend", function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
 const setSearchBoxWidth = () => {
     const string = searchBox.value || searchBox.getAttribute("placeholder") || "";
     fakeEle.innerHTML = string.replace(/\s/g, "&" + "nbsp;");

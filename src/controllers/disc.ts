@@ -19,14 +19,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response | void> =>
 });
 
 router.get("/name/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/name/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -41,14 +34,7 @@ router.get("/name/:val", async (req: Request, res: Response): Promise<Response |
 });
 
 router.get("/brand/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/brand/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -63,14 +49,7 @@ router.get("/brand/:val", async (req: Request, res: Response): Promise<Response 
 });
 
 router.get("/category/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/category/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -85,14 +64,7 @@ router.get("/category/:val", async (req: Request, res: Response): Promise<Respon
 });
 
 router.get("/speed/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/speed/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -107,14 +79,7 @@ router.get("/speed/:val", async (req: Request, res: Response): Promise<Response 
 });
 
 router.get("/glide/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/glide/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -129,14 +94,7 @@ router.get("/glide/:val", async (req: Request, res: Response): Promise<Response 
 });
 
 router.get("/turn/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/turn/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -151,14 +109,7 @@ router.get("/turn/:val", async (req: Request, res: Response): Promise<Response |
 });
 
 router.get("/fade/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/fade/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -173,14 +124,7 @@ router.get("/fade/:val", async (req: Request, res: Response): Promise<Response |
 });
 
 router.get("/stability/", async (req: Request, res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
+	return findAll(res);
 });
 
 router.get("/stability/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -193,5 +137,16 @@ router.get("/stability/:val", async (req: Request, res: Response): Promise<Respo
 		return res.json([]);
 	}
 });
+
+const findAll = async (res: Response): Promise<Response | void> => {
+	try {
+		const manager = res.locals.em.getRepository(Disc);
+		const discs = await DiscRepo.FindAll(manager);
+		return res.json(discs);
+	} catch (error) {
+		log.error(error);
+		return res.json([]);
+	}
+};
 
 export default router;
