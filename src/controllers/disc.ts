@@ -1,9 +1,9 @@
+import { EntityManager } from "@mikro-orm/knex";
 import { Request, Response, Router } from "express";
 
 import { Disc } from "../models/Disc";
 import log from "../services/log";
 import { DiscRepository as DiscRepo } from "../repositories/DiscRepository";
-import { EntityManager } from "@mikro-orm/knex";
 
 const router = Router();
 
