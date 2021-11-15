@@ -1,6 +1,7 @@
 import path from "path";
 import { cwd } from "process";
 import { Connection, IDatabaseDriver, MikroORM, ConnectionOptions, EntityManager } from "@mikro-orm/core";
+import { SqlHighlighter } from "@mikro-orm/sql-highlighter";
 
 import Config, { Db } from "../helpers/config";
 import log from "./log";
@@ -21,7 +22,8 @@ export class Database {
 
 	private static readonly ConnectorProd: ConnectionOptions = {
 		debug: !Config.IS_PROD,
-		logger: (msg: unknown) => log.info(msg),
+		logger: (msg: string) => log.query(msg),
+		highlighter: new SqlHighlighter(),
 		type: Db.DB_TYPE,
 		clientUrl: Db.DB_URL,
 		entities: [path.join(cwd(), "build/models/**/*.js")],
@@ -38,7 +40,8 @@ export class Database {
 
 	private static readonly ConnectorDev: ConnectionOptions = {
 		debug: !Config.IS_PROD,
-		logger: (msg: unknown) => log.info(msg),
+		logger: (msg: string) => log.query(msg),
+		highlighter: new SqlHighlighter(),
 		type: Db.DB_TYPE,
 		host: Db.DB_HOST,
 		port: Db.DB_PORT,

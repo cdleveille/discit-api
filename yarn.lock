@@ -97,6 +97,13 @@
     "@mikro-orm/knex" "^4.5.9"
     pg "8.6.0"
 
+"@mikro-orm/sql-highlighter@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/sql-highlighter/-/sql-highlighter-1.0.1.tgz#f821cad6d6dbd6fd8be486e223f2d92fd6a280e6"
+  integrity sha512-iO+FwRNuqNDVlIo5zfgOu2mMGVicX/FqzP+F/A0xpJLHyqvWyXzVwntgAMimBjQaxiX9Rpmc0u3Jq6/A6V6JQA==
+  dependencies:
+    ansi-colors "^4.1.1"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

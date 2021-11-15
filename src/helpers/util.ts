@@ -1,6 +1,6 @@
 import { Disc } from "../models/Disc";
 import { IDisc } from "../types/abstract";
-import { FieldsUsingLike } from "../types/constants";
+import { FieldsUsingLike, FieldsUsingSlug } from "../types/constants";
 
 export const createDisc = (disc: IDisc): Disc => {
 	return new Disc({
@@ -63,18 +63,23 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 	return targetDisc;
 };
 
-export const equalsOrLike = (key: string, value: string): string => {
-	const searchKey: string = ["name", "brand", "category", "stability"].includes(key.toLowerCase()) ? `${key.toLowerCase()}_slug` : key.toLowerCase();
-	if (FieldsUsingLike.includes(searchKey)) {
-		const sql = `${searchKey} ilike '%${value}%'`;
-		return sql;
-	}
-	return `${searchKey} = '${value}'`;
-};
-
 export const slugify = (text: string) => {
 	let slug = text.toLowerCase();
-	slug = slug.replace(/[/\\#,+()$~%.'":*?<>{}[\]]/g, "");
-	slug = slug.replace(/ /g, "-");
+	slug = slug.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "");
+	slug = slug.replace(/[ _]/g, "-");
 	return slug;
+};
+
+export const cleanQueryField = (key: string): string => {
+	const cleanKey = key.replace(/amp;/gi, "").toLowerCase().trim();
+	return FieldsUsingSlug.includes(cleanKey) ? `${cleanKey}_slug` : cleanKey;
+};
+
+export const cleanQueryValue = (cleanKey: string, value: string): any => {
+	const cleanValue = value.toLowerCase().trim();
+	if (FieldsUsingLike.includes(cleanKey)) {
+		return { "$ilike": `%${cleanValue}%` };
+	} else {
+		return `${cleanValue}`;
+	}
 };

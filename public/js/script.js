@@ -2,6 +2,7 @@
 
 const searchBox = document.getElementById("search-box");
 const getLink = document.getElementById("get-link");
+const getBtn = document.getElementById("get-btn");
 const getForm = document.getElementById("get-form");
 const results = document.getElementById("results");
 const routeDiv = document.getElementById("route-div");
@@ -9,9 +10,10 @@ let routeText = routeDiv.innerHTML;
 
 const allLink = document.getElementById("all-link");
 allLink.onclick = (e) => {
-	e.preventDefault();
+	if (e) e.preventDefault();
 	changeRoute("/disc");
 	underlineLink(allLink);
+	getBtn.focus();
 };
 
 const nameLink = document.getElementById("name-link");
@@ -105,8 +107,8 @@ searchBox.oninput = () => {
 
 const slugify = (text) => {
 	let slug = text.toLowerCase();
-	slug = slug.replace(/[/\\#,+()$~%.'":*?<>{}[\]]/g, "");
-	slug = slug.replace(/ /g, "-");
+	slug = slug.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "");
+	slug = slug.replace(/[ _]/g, "-");
 	return slug;
 };
 
@@ -166,7 +168,6 @@ const underlineLink = (link) => {
 getForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 	results.src = routeDiv.innerHTML;
-	results.hidden = false;
 });
 
 window.addEventListener("resize", () => {
@@ -184,5 +185,5 @@ const resizeResults = () => {
 	
 };
 
-underlineLink(allLink);
 resizeResults();
+allLink.onclick();

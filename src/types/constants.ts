@@ -30,7 +30,8 @@ export const CategoryMap = new Map([
 	["Distance Drivers", "Distance Driver"],
 	["Hybrid Drivers", "Hybrid Driver"],
 	["Control Drivers", "Control Driver"],
-	["Midrange Drivers", "Midrange"]
+	["Midrange Drivers", "Midrange"],
+	["Putters", "Putter"]
 ]);
 
 export const StabilityMap = new Map([
@@ -48,6 +49,13 @@ export const FieldsUsingLike = [
 	"name",
 	"brand",
 	"category"
+];
+
+export const FieldsUsingSlug = [
+	"name",
+	"brand",
+	"category",
+	"stability"
 ];
 
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";

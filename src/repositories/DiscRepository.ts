@@ -1,6 +1,7 @@
-import { Connection, EntityRepository, QueryOrder } from "@mikro-orm/core";
+import { EntityRepository, QueryOrder } from "@mikro-orm/core";
+import { EntityManager } from "@mikro-orm/knex";
 
-import { createDisc, equalsOrLike } from "../helpers/util";
+import { cleanQueryField, cleanQueryValue, createDisc } from "../helpers/util";
 import { Disc } from "../models/Disc";
 import { IDisc } from "../types/abstract";
 
@@ -11,34 +12,24 @@ export class DiscRepository {
 
 	public static async FindAll(manager: RequestRepo): Promise<Disc[]> {
 		try {
-			const res = await manager.findAll({}, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
+			const res = await manager.find({}, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
 			return res;
 		} catch (error) {
 			throw Error(error);
 		}
 	}
 
-	public static async FindByQuery(connection: Connection, query: any): Promise<Disc[]> {
+	public static async FindByQuery(em: EntityManager, query: any): Promise<Disc[]> {
 		try {
-			let sql = "select name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug from disc";
+			let cleanQuery: any = {};
 
 			for (const key in query) {
-				let searchKey = key.includes("amp;") ? key.replace("amp;", "") : key;
-				sql += (sql.includes(" where ") ? " and " : " where ") + equalsOrLike(searchKey, query[key]);
+				const cleanKey = cleanQueryField(key);
+				const cleanValue = cleanQueryValue(cleanKey, query[key]);
+				cleanQuery[cleanKey] = cleanValue;
 			}
 
-			sql += " order by name_slug asc";
-
-			const res = await connection.execute(sql, [{ cache: DiscRepository.CacheSize }]);
-			return res;
-		} catch (error) {
-			throw Error(error);
-		}
-	}
-
-	public static async FindByID(manager: RequestRepo, id: number): Promise<Disc> {
-		try {
-			const res = await manager.findOne({ id }, { cache: DiscRepository.CacheSize, orderBy: { name_slug: QueryOrder.ASC } });
+			const res = await em.createQueryBuilder(Disc).select("*").where(cleanQuery).orderBy({ name_slug: QueryOrder.ASC }).cache(DiscRepository.CacheSize).getResult();
 			return res;
 		} catch (error) {
 			throw Error(error);
