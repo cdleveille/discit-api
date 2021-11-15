@@ -1,6 +1,10 @@
+import slug from "slug";
+
 import { Disc } from "../models/Disc";
 import { IDisc } from "../types/abstract";
 import { FieldsUsingLike } from "../types/constants";
+
+slug.defaults.mode = "rfc3986";
 
 export const createDisc = (disc: IDisc): Disc => {
 	return new Disc({
@@ -73,10 +77,5 @@ export const equalsOrLike = (key: string, value: string): string => {
 };
 
 export const slugify = (text: string): string => {
-	let slug = text.toLowerCase();
-	slug = slug.replace(/ /g, "-");
-	slug = slug.replace("(", "");
-	slug = slug.replace(")", "");
-	slug = slug.replace("#", "");
-	return slug;
+	return slug(text);
 };
