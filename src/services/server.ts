@@ -1,7 +1,9 @@
 import compression from "compression";
 import cors from "cors";
-import express, { Request, Response, NextFunction } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
+import fs from "fs";
 import helmet from "helmet";
+import morgan from "morgan";
 
 import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
@@ -12,9 +14,14 @@ import log from "../services/log";
 import router from "../controllers";
 
 export default class App {
-	private static instance = express();
+	private static instance: Express;
 
 	private static async setup() {
+		App.instance = express();
+
+		const logStream = fs.createWriteStream("combined.log", { flags: "a" });
+		App.instance.use(morgan("combined", { stream: logStream }));
+
 		App.instance.use((req: Request, res: Response, next: NextFunction) => {
 			res.locals.em = Database.Manager.fork();
 			next();
