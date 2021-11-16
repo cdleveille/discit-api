@@ -33,6 +33,7 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.9",
     "@mikro-orm/postgresql": "^4.5.9",
+    "@mikro-orm/sql-highlighter": "^1.0.1",
     "axios": "^0.24.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -48,7 +49,6 @@
   },
   "devDependencies": {
     "@mikro-orm/cli": "^4.5.9",
-    "@mikro-orm/sql-highlighter": "^1.0.1",
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.12",
     "@types/cron": "^1.7.3",
