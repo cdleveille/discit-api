@@ -21,6 +21,11 @@ a:focus, .focus a {
 h1 {
 	font-size: 2rem;
 	margin: 1rem;
+	color: black;
+}
+
+h1 a:link, h1 a:visited {
+	color: black;
 }
 
 .item {
