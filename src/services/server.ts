@@ -28,7 +28,7 @@ export default class App {
 			next();
 		});
 
-		App.instance.use(cleanURL);
+		App.instance.use(cleanURL());
 		App.instance.use(cors());
 		App.instance.use(helmet());
 		App.instance.use(compression());

@@ -1,18 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 
-const cleanUrl = (req: Request, res: Response, next: NextFunction) => {
-	if (req.url.toLowerCase().startsWith("/disc")) {
-		const cleanedUrl = correctURL(req.url);
-		if (cleanedUrl !== req.url) res.redirect(cleanedUrl);
-	}
-	next();
+export default () => {
+	return (req: Request, res: Response, next: NextFunction) => {
+		const url = req.url.toLowerCase();
+		if (url.startsWith("/disc") || url.startsWith("\\disc")) {
+			const cleanedUrl = cleanUrl(url);
+			if (cleanedUrl !== req.url) res.redirect(cleanedUrl);
+		}
+		next();
+	};
 };
 
-const correctURL = (url: string) => {
-	let slug = url.toLowerCase();
-	slug = slug.replace(/[\\,+()$~!@^|`.'":;*<>{}[\]]/g, "");
-	slug = slug.replace(/%20/g, "-");
-	return slug;
+const cleanUrl = (url: string) => {
+	let clean = url.replace(/[,+()$~!@^|`.'":;*<>{}[\]]/g, "");
+	clean = clean.replace(/%20/g, "-");
+	clean = clean.replace(/\\/g, "/");
+	return clean;
 };
-
-export default cleanUrl;
