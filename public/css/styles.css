@@ -2,9 +2,11 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 1rem;
 	overflow: hidden;
+	display: block;
 	text-align: center;
 	-webkit-text-size-adjust: none;
 	touch-action: none;
+	user-select: none;
 }
 
 a:link, a:visited {
@@ -26,7 +28,7 @@ h1 {
 }
 
 button {
-	margin-top: 1rem;
+	margin: 1rem;
 }
 
 button:focus {
@@ -43,8 +45,21 @@ input {
 }
 
 #results {
+	visibility: hidden;
 	width: 600px;
+	margin: auto;
 	-webkit-text-size-adjust: none;
-	touch-action: none;
 	touch-action: pan-y;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-align: left;
+	user-select: text;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+    font-family: monospace;
+	font-size: 0.8rem;
+}
+
+#results-count {
+	margin-top: 1rem;
 }

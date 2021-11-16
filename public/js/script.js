@@ -166,30 +166,53 @@ const underlineLink = (link) => {
 	link.style.textDecoration = "underline";
 };
 
+let start, resTime;
+
 getForm.addEventListener("submit", (e) => {
+	start = Date.now();
 	e.preventDefault();
-	results.src = routeDiv.innerHTML;
+	let headers = {
+		"Content-Type": "application/json"
+	};
+	let body = {};
+	let method = "GET", route = routeDiv.innerHTML;
+	request(method, route, headers, body).then(res => {
+		resTime = Date.now() - start;
+		if (res) {
+			resultsCount.innerHTML = `${res.length} result${res.length === 1 ? "" : "s"} • ${resTime} ms`;
+			results.innerHTML = JSON.stringify(res, null, 2);
+			results.style.visibility = "visible";
+			resizeResults();
+		}
+	}).catch(err => console.log(err));
 });
+
+const request = (method, uri, headers, body) => {
+	return new Promise((resolve, reject) => {
+		fetch(uri, method == "GET" || !body ?
+			{ method: method || "GET", headers: headers } :
+			{ method: method || "POST", headers: headers, body: JSON.stringify(body) }
+		).then(r => r.json()).then(data => {
+			return resolve(data);
+		}).catch(e => {
+			return reject(e);
+		});
+	});
+};
 
 window.addEventListener("resize", () => {
 	resizeResults();
 });
 
-results.onload = () => {
-	const json = $.parseJSON($(results).contents().text());
-	resultsCount.innerHTML = `${json.length} result${json.length === 1 ? "" : "s"}`;
-};
-
 const resizeResults = () => {
+	let widthNum = 600;
 	if (window.innerWidth * 0.95 < 600 ) {
-		results.style.width = `${Math.floor(window.innerWidth * 0.95)}px`;
+		widthNum = Math.floor(window.innerWidth * 0.95);
+		results.style.width = `${widthNum}px`;
 	} else {
 		results.style.width = "600px";
 	}
-
-	results.style.height = `${window.innerHeight - results.offsetTop - 56}px`;
-	
+	results.style.height = `${window.innerHeight - results.offsetTop - 48}px`;
 };
 
-resizeResults();
 allLink.onclick();
