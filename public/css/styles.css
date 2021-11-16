@@ -62,7 +62,7 @@ input {
 	word-wrap: break-word;
 	white-space: pre-wrap;
     font-family: monospace;
-	font-size: 0.8rem;
+	font-size: 12px;
 }
 
 #results-count {

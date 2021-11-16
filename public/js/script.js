@@ -171,12 +171,11 @@ let start, resTime;
 getForm.addEventListener("submit", (e) => {
 	start = Date.now();
 	e.preventDefault();
-	let headers = {
+	const headers = {
 		"Content-Type": "application/json"
 	};
-	let body = {};
-	let method = "GET", route = routeDiv.innerHTML;
-	request(method, route, headers, body).then(res => {
+	const method = "GET", route = routeDiv.innerHTML;
+	request(method, route, headers, null).then(res => {
 		resTime = Date.now() - start;
 		if (res) {
 			resultsCount.innerHTML = `${res.length} result${res.length === 1 ? "" : "s"} • ${resTime} ms`;
@@ -189,9 +188,7 @@ getForm.addEventListener("submit", (e) => {
 
 const request = (method, uri, headers, body) => {
 	return new Promise((resolve, reject) => {
-		fetch(uri, method == "GET" || !body ?
-			{ method: method || "GET", headers: headers } :
-			{ method: method || "POST", headers: headers, body: JSON.stringify(body) }
+		fetch(uri, { method, headers, body }
 		).then(r => r.json()).then(data => {
 			return resolve(data);
 		}).catch(e => {

@@ -28,11 +28,10 @@ export default class App {
 			next();
 		});
 
-		App.instance.use(cleanURL());
-		App.instance.use(cors());
 		App.instance.use(helmet());
 		App.instance.use(compression());
-
+		App.instance.use(cors());
+		App.instance.use(cleanURL());
 		App.instance.use("/", router);
 
 		App.instance.use(express.static("./public"));
