@@ -8,6 +8,7 @@ import morgan from "morgan";
 import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
 import { Disc } from "../models/Disc";
+import cleanURL from "../middleware/cleanUrl";
 import Cron from "../services/cron";
 import { Database } from "../services/db";
 import log from "../services/log";
@@ -27,6 +28,11 @@ export default class App {
 			next();
 		});
 
+		App.instance.use(cleanURL);
+		App.instance.use(cors());
+		App.instance.use(helmet());
+		App.instance.use(compression());
+
 		App.instance.use("/", router);
 
 		App.instance.use(express.static("./public"));
@@ -35,9 +41,6 @@ export default class App {
 
 		App.instance.set("json spaces", 2);
 		App.instance.disabled("x-powered-by");
-		App.instance.use(cors());
-		App.instance.use(helmet());
-		App.instance.use(compression());
 	}
 
 	public static async start() {
