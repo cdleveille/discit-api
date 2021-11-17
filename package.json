@@ -8,13 +8,12 @@
     "db:create": "yarn mikro-orm migration:create",
     "db:up": "yarn mikro-orm migration:up",
     "db:down": "yarn mikro-orm migration:down",
-    "postinstall": "yarn build",
-    "prebuild": "yarn lint && yarn walk && yarn min",
-    "build": "tsc -b",
+    "build": "yarn lint && tsc --build && yarn walk && yarn min",
     "lint": "eslint --fix --ext .ts,.tsx .",
+	"walk": "node ./build/helpers/cpx.js",
     "min": "javascript-obfuscator public --output public.min",
-    "walk": "node ./tools/cpx.js",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "dev": "yarn build && ts-node-dev --respawn --transpile-only ./src/index.ts",
+	"prestart": "yarn build",
     "start": "node ."
   },
   "repository": {
@@ -36,7 +35,6 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.9",
     "@mikro-orm/postgresql": "^4.5.9",
-    "@types/cpx": "^1.5.2",
     "axios": "^0.24.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -55,6 +53,7 @@
     "@mikro-orm/cli": "^4.5.9",
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.12",
+    "@types/cpx": "^1.5.2",
     "@types/cron": "^1.7.3",
     "@types/dotenv": "^8.2.0",
     "@types/ejs": "^3.1.0",
