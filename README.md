@@ -38,7 +38,7 @@ Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokua
 | `GET`  | `/disc/fade`       | Search by `fade` field        |
 | `GET`  | `/disc/stability`  | Search by `stability` field   |
 
-See [/tools/requests.rest](https://github.com/cdleveille/discit/blob/main/dev/requests.rest) for example requests.
+See [/dev/requests.rest](https://github.com/cdleveille/discit/blob/main/dev/requests.rest) for example requests.
 
 ---
 
