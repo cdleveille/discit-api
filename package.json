@@ -8,13 +8,13 @@
     "db:create": "yarn mikro-orm migration:create",
     "db:up": "yarn mikro-orm migration:up",
     "db:down": "yarn mikro-orm migration:down",
-	"postinstall": "yarn build",
-	"prebuild": "yarn lint && yarn walk && yarn min",
-	"build": "tsc",
-	"lint": "eslint --fix --ext .ts,.tsx .",
+    "postinstall": "yarn build",
+    "prebuild": "yarn lint && yarn walk && yarn min",
+    "build": "tsc -b",
+    "lint": "eslint --fix --ext .ts,.tsx .",
     "min": "javascript-obfuscator public --output public.min",
-	"walk": "node ./tools/cpx.js",
-	"dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "walk": "node ./tools/cpx.js",
+    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
     "start": "node ."
   },
   "repository": {
@@ -36,6 +36,7 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.9",
     "@mikro-orm/postgresql": "^4.5.9",
+    "@types/cpx": "^1.5.2",
     "axios": "^0.24.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -74,6 +75,7 @@
     ]
   },
   "engines": {
-	  "yarn": ">=1.22.17"
-  }
+    "yarn": ">=1.22.17"
+  },
+  "type": "module"
 }

@@ -103,5 +103,8 @@
 	},
 	"include": [
 		"src/**/*"
+	],
+	"references": [
+		{ "path": "public/ts" }
 	]
 }

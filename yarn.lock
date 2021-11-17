@@ -188,6 +188,13 @@
   resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.12.tgz#6b2c510a7ad7039e98e7b8d3d6598f4359e5c080"
   integrity sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
 
+"@types/cpx@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@types/cpx/-/cpx-1.5.2.tgz#10f1ac2d27c8cf5f606575afdbcb45136388504a"
+  integrity sha512-CL9DbTAdf5NYcbYpBTli6JxVIpCAhJp1FeQiXd9SNjbC4o9k6McnHkU0FHgj9UYoN7TVX3poaaBrwFabTY7Skw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/cron@^1.7.3":
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/@types/cron/-/cron-1.7.3.tgz#993db7d54646f61128c851607b64ba4495deae93"
