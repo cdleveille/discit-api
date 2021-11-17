@@ -19,7 +19,7 @@ discRouter.get("/", async (req: Request, res: Response): Promise<Response | void
 });
 
 discRouter.get("/name/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/name/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -34,7 +34,7 @@ discRouter.get("/name/:val", async (req: Request, res: Response): Promise<Respon
 });
 
 discRouter.get("/brand/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/brand/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -49,7 +49,7 @@ discRouter.get("/brand/:val", async (req: Request, res: Response): Promise<Respo
 });
 
 discRouter.get("/category/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/category/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -64,7 +64,7 @@ discRouter.get("/category/:val", async (req: Request, res: Response): Promise<Re
 });
 
 discRouter.get("/speed/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/speed/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -79,7 +79,7 @@ discRouter.get("/speed/:val", async (req: Request, res: Response): Promise<Respo
 });
 
 discRouter.get("/glide/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/glide/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -94,7 +94,7 @@ discRouter.get("/glide/:val", async (req: Request, res: Response): Promise<Respo
 });
 
 discRouter.get("/turn/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/turn/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -109,7 +109,7 @@ discRouter.get("/turn/:val", async (req: Request, res: Response): Promise<Respon
 });
 
 discRouter.get("/fade/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/fade/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -124,7 +124,7 @@ discRouter.get("/fade/:val", async (req: Request, res: Response): Promise<Respon
 });
 
 discRouter.get("/stability/", async (req: Request, res: Response): Promise<Response | void> => {
-	return findAll(res);
+	return res.json([]);
 });
 
 discRouter.get("/stability/:val", async (req: Request, res: Response): Promise<Response | void> => {
@@ -137,16 +137,5 @@ discRouter.get("/stability/:val", async (req: Request, res: Response): Promise<R
 		return res.json([]);
 	}
 });
-
-const findAll = async (res: Response): Promise<Response | void> => {
-	try {
-		const manager = res.locals.em.getRepository(Disc);
-		const discs = await DiscRepo.FindAll(manager);
-		return res.json(discs);
-	} catch (error) {
-		log.error(error);
-		return res.json([]);
-	}
-};
 
 export default discRouter;

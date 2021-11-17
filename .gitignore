@@ -103,12 +103,12 @@ dist
 # TernJS port file
 .tern-port
 
-# Ignore built ts files
-build/**/*
+build/
 
-# local dev db data
-discit-dev-container/data/**/*
+discit-dev-container/data/
 
-__db_cache__
+__db_cache__/
 
 package-lock.json
+
+public.min/

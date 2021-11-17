@@ -11,6 +11,9 @@
     "lint": "eslint --fix --ext .ts,.tsx .",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
     "build": "tsc",
+    "min": "javascript-obfuscator public --output public.min",
+	"walk": "node ./tools/cpx.js",
+	"prebuild": "yarn lint && yarn walk && yarn min",
     "postinstall": "npm run build",
     "start": "node ."
   },
@@ -33,10 +36,10 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.9",
     "@mikro-orm/postgresql": "^4.5.9",
-    "@mikro-orm/sql-highlighter": "^1.0.1",
     "axios": "^0.24.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
+    "cpx": "^1.5.0",
     "cron": "^1.8.2",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
@@ -60,6 +63,7 @@
     "@types/node": "^16.11.6",
     "@typescript-eslint/parser": "^5.3.0",
     "eslint": "^8.2.0",
+    "javascript-obfuscator": "^3.0.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.4"
   },
@@ -68,5 +72,8 @@
     "configPaths": [
       "./mikro-orm.config.ts"
     ]
+  },
+  "engines": {
+	  "yarn": ">=1.22.17"
   }
 }
