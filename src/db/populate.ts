@@ -71,7 +71,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		}
 
 		if (match) {
-			if (!discsAreEqual(disc, match)) {
+			if (!Config.INSERT_ONLY && !discsAreEqual(disc, match)) {
 				updateDiscFromOtherDisc(match, disc);
 				discsToUpdate.push(match);
 			}
@@ -106,7 +106,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		}
 
 		if (match) {
-			if (!discsAreEqual(disc, match)) {
+			if (!Config.INSERT_ONLY && !discsAreEqual(disc, match)) {
 				updateDiscFromOtherDisc(match, disc);
 				discsToUpdate.push(match);
 			}

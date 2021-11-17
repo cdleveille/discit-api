@@ -11,7 +11,8 @@ const Config = {
 	HOST: <Host>(process.env.NODE_ENV === Env.prod ? process.env.HOST : Host.local || Host.ip),
 	CORES: <number>os.cpus().length,
 	DISC_FETCH_URL: <string>DISC_FETCH_URL,
-	FETCH_DISCS: <boolean>(process.env.FETCH_DISCS === "true")
+	FETCH_DISCS: <boolean>(process.env.FETCH_DISCS === "true"),
+	INSERT_ONLY: <boolean>(process.env.INSERT_ONLY === "true")
 };
 
 export const Db = {
