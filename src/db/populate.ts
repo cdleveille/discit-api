@@ -50,10 +50,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const name: string = element.getAttribute(Site.discNameAttr);
 		const brand: string = element.getAttribute(Site.brandAttr);
 		const category: string = parseCategory(element.getAttribute(Site.categoryAttr));
-		const speed: string = element.getAttribute(Site.speedAttr);
-		const glide: string = element.getAttribute(Site.glideAttr);
-		const turn: string = element.getAttribute(Site.turnAttr);
-		const fade: string = element.getAttribute(Site.fadeAttr);
+		const speed: string = parseDecimalString(element.getAttribute(Site.speedAttr));
+		const glide: string = parseDecimalString(element.getAttribute(Site.glideAttr));
+		const turn: string = parseDecimalString(element.getAttribute(Site.turnAttr));
+		const fade: string = parseDecimalString(element.getAttribute(Site.fadeAttr));
 		const stability: string = parseStability(element, turn, fade);
 		const link: string = element.getAttribute(Site.linkAttr);
 		const pic: string = element.getAttribute(Site.discPicAttr);
@@ -85,10 +85,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const name: string = element.getAttribute(Site.putterNameAttr);
 		const brand: string = element.getAttribute(Site.brandAttr);
 		const category: string = "Putter";
-		const speed: string = element.getAttribute(Site.speedAttr);
-		const glide: string = element.getAttribute(Site.glideAttr);
-		const turn: string = element.getAttribute(Site.turnAttr);
-		const fade: string = element.getAttribute(Site.fadeAttr);
+		const speed: string = parseDecimalString(element.getAttribute(Site.speedAttr));
+		const glide: string = parseDecimalString(element.getAttribute(Site.glideAttr));
+		const turn: string = parseDecimalString(element.getAttribute(Site.turnAttr));
+		const fade: string = parseDecimalString(element.getAttribute(Site.fadeAttr));
 		const stability: string = parseStability(element, turn, fade);
 		const link: string = element.getAttribute(Site.linkAttr);
 		const pic: string = element.getAttribute(Site.putterPicAttr);
@@ -159,4 +159,11 @@ const parseStability = (element: any, turn: string, fade: string): string => {
 		case (diff <= -4): return "Very Understable";
 		default: return null;
 	}
+};
+
+const parseDecimalString = (decimal: string) => {
+	if (decimal.startsWith(".") || decimal.startsWith("-.")) {
+		return decimal.replace(".", "0.");
+	}
+	return decimal;
 };
