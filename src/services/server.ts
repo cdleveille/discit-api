@@ -33,22 +33,19 @@ export default class App {
 		App.instance.use(cors());
 		App.instance.use(cleanURL());
 		App.instance.use("/", router);
-
 		App.instance.use(express.static("./public"));
 		App.instance.set("view engine", "ejs");
 		App.instance.set("views", "./public/views");
-
 		App.instance.set("json spaces", 2);
 		App.instance.disabled("x-powered-by");
 	}
 
 	public static async start() {
 		await Database.Connect();
-
 		await App.setup();
 
 		App.instance.listen(Config.PORT);
-		log.info(`Listening on http://${Config.HOST}:${Config.PORT}`);
+		log.info(`Server started - listening on http://${Config.HOST}:${Config.PORT}`);
 
 		const manager = Database.Manager.fork().getRepository(Disc);
 		const cron = new Cron(manager);

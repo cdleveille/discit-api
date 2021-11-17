@@ -6,8 +6,8 @@ const getBtn = document.getElementById("get-btn");
 const getForm = document.getElementById("get-form");
 const results = document.getElementById("results");
 const resultsCount = document.getElementById("results-count");
-const routeDiv = document.getElementById("route-div");
-let routeText = routeDiv.innerHTML;
+const routeActive = document.getElementById("route-active");
+let routeText = routeActive.innerHTML;
 
 const allLink = document.getElementById("all-link");
 allLink.onclick = (e) => {
@@ -84,7 +84,8 @@ queryLink.onclick = (e) => {
 
 const changeRoute = (newRouteText) => {
 	routeText = newRouteText;
-	routeDiv.innerHTML = newRouteText;
+	routeActive.innerHTML = newRouteText;
+	routeActive.href = newRouteText;
 	getLink.href = newRouteText;
 	searchBox.value = "";
 
@@ -99,57 +100,54 @@ const changeRoute = (newRouteText) => {
 searchBox.oninput = () => {
 	if (searchBox.value) {
 		const inputText = slugify(searchBox.value);
-		routeDiv.innerHTML = `${routeText}${routeText === "/disc?" || !inputText ? "" : "/"}${inputText}`;
-		getLink.href = routeDiv.innerHTML;
-	} else routeDiv.innerHTML = routeText;
+		routeActive.innerHTML = `${routeText}${routeText === "/disc?" || !inputText ? "" : "/"}${inputText}`;
+		routeActive.href = routeActive.innerHTML;
+		getLink.href = routeActive.innerHTML;
+	} else routeActive.innerHTML = routeText;
 
 	setSearchBoxWidth();
 };
 
 const slugify = (text) => {
-	let slug = text.toLowerCase();
-	slug = slug.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "");
-	slug = slug.replace(/[ ]/g, "-");
+	let slug = text.toLowerCase()
+		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
+		.replace(/[ ]/g, "-");
 	return slug;
 };
 
-// Create a div element
-const fakeEle = document.createElement("div");
+let ghostInput = document.createElement("div");
+const setUpGhostInput = () => {
+	ghostInput.style.position = "absolute";
+	ghostInput.style.top = "0";
+	ghostInput.style.left = "-9999px";
+	ghostInput.style.overflow = "hidden";
+	ghostInput.style.visibility = "hidden";
+	ghostInput.style.whiteSpace = "nowrap";
+	ghostInput.style.height = "0";
 
-// Hide it completely
-fakeEle.style.position = "absolute";
-fakeEle.style.top = "0";
-fakeEle.style.left = "-9999px";
-fakeEle.style.overflow = "hidden";
-fakeEle.style.visibility = "hidden";
-fakeEle.style.whiteSpace = "nowrap";
-fakeEle.style.height = "0";
+	const styles = window.getComputedStyle(searchBox);
 
-// Get the styles
-const styles = window.getComputedStyle(searchBox);
+	ghostInput.style.fontFamily = styles.fontFamily;
+	ghostInput.style.fontSize = styles.fontSize;
+	ghostInput.style.fontStyle = styles.fontStyle;
+	ghostInput.style.fontWeight = styles.fontWeight;
+	ghostInput.style.letterSpacing = styles.letterSpacing;
+	ghostInput.style.textTransform = styles.textTransform;
 
-// Copy font styles from the textbox
-fakeEle.style.fontFamily = styles.fontFamily;
-fakeEle.style.fontSize = styles.fontSize;
-fakeEle.style.fontStyle = styles.fontStyle;
-fakeEle.style.fontWeight = styles.fontWeight;
-fakeEle.style.letterSpacing = styles.letterSpacing;
-fakeEle.style.textTransform = styles.textTransform;
+	ghostInput.style.borderLeftWidth = styles.borderLeftWidth;
+	ghostInput.style.borderRightWidth = styles.borderRightWidth;
+	ghostInput.style.paddingLeft = styles.paddingLeft;
+	ghostInput.style.paddingRight = styles.paddingRight;
 
-fakeEle.style.borderLeftWidth = styles.borderLeftWidth;
-fakeEle.style.borderRightWidth = styles.borderRightWidth;
-fakeEle.style.paddingLeft = styles.paddingLeft;
-fakeEle.style.paddingRight = styles.paddingRight;
-
-// Append the fake element to `body`
-document.body.appendChild(fakeEle);
+	document.body.appendChild(ghostInput);
+};
 
 const setSearchBoxWidth = () => {
     const string = searchBox.value || searchBox.getAttribute("placeholder") || "";
-    fakeEle.innerHTML = string.replace(/\s/g, "&" + "nbsp;");
+    ghostInput.innerHTML = string.replace(/\s/g, "&" + "nbsp;");
 
-    const fakeEleStyles = window.getComputedStyle(fakeEle);
-    searchBox.style.width = fakeEleStyles.width;
+    const ghostInputStyles = window.getComputedStyle(ghostInput);
+    searchBox.style.width = ghostInputStyles.width;
 };
 
 const underlineLink = (link) => {
@@ -167,14 +165,13 @@ const underlineLink = (link) => {
 };
 
 let start, resTime;
-
 getForm.addEventListener("submit", (e) => {
 	start = Date.now();
 	e.preventDefault();
 	const headers = {
 		"Content-Type": "application/json"
 	};
-	const method = "GET", route = routeDiv.innerHTML;
+	const method = "GET", route = routeActive.innerHTML;
 	request(method, route, headers, null).then(res => {
 		resTime = Date.now() - start;
 		if (res) {
@@ -212,4 +209,7 @@ const resizeResults = () => {
 	results.style.height = `${window.innerHeight - results.offsetTop - 48}px`;
 };
 
-allLink.onclick();
+setUpGhostInput();
+changeRoute("/disc");
+underlineLink(allLink);
+getBtn.focus();

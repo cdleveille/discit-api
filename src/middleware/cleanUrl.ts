@@ -4,7 +4,9 @@ import { FieldTypos } from "../types/constants";
 
 export default () => {
 	return (req: Request, res: Response, next: NextFunction) => {
-		const url = req.url.toLowerCase();
+		let url = req.url.toLowerCase()
+			.replace(/\\/g, "/")
+			.replace(/\/{2,}/g, "/");
 		if (isDiscRoute(url)) {
 			const clean = cleanUrl(url);
 			if (clean !== req.url) {
@@ -17,22 +19,19 @@ export default () => {
 
 const cleanUrl = (url: string) => {
 	// replace disallowed characters/sequences
-	let clean = url.replace(/[,+()$~!@^|`.'":;*<>{}[\]]/g, "");
-	clean = clean.replace(/%20/g, "-");
-	clean = clean.replace(/\\/g, "/");
-	clean = clean.replace(/\/{2,}/g, "/");
+	let clean = url.replace(/[,+()$~!@^|`.'":;*<>{}[\]]/g, "")
+		.replace(/&amp/g, "&amp;")
+		.replace(/%20/g, "-")
+		.replace(/\?{2,}/g, "?")
+		.replace(/={2,}/g, "=");
 
-	// correct typos
-	for (let [key, values] of FieldTypos) {
-		for (let value of values) {
-			if (clean.includes(`/${value}`)) {
-				clean = clean.replace(`/${value}`, `/${key}`);
-			}
-			if (clean.includes(`?${value}`)) {
-				clean = clean.replace(`&${value}`, `&${key}`);
-			}
-			if (clean.includes(`?${value}`)) {
-				clean = clean.replace(`?${value}`, `?${key}`);
+	// correct field name typos
+	for (const [key, values] of FieldTypos) {
+		for (const value of values) {
+			for (const char of ["/", "&", "?"]) {
+				if (clean.includes(`${char}${value}`)) {
+					clean = clean.replace(`${char}${value}`, `${char}${key}`);
+				}
 			}
 		}
 	}

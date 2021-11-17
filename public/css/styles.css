@@ -68,3 +68,7 @@ input {
 #results-count {
 	margin-top: 1rem;
 }
+
+#route-div a:link, #route-div a:visited {
+	color: black;
+}

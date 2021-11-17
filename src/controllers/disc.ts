@@ -5,9 +5,9 @@ import { Disc } from "../models/Disc";
 import log from "../services/log";
 import { DiscRepository as DiscRepo } from "../repositories/DiscRepository";
 
-const router = Router();
+const discRouter = Router();
 
-router.get("/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const em: EntityManager = res.locals.em;
 		const discs = await DiscRepo.FindByQuery(em, req.query);
@@ -18,11 +18,11 @@ router.get("/", async (req: Request, res: Response): Promise<Response | void> =>
 	}
 });
 
-router.get("/name/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/name/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/name/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/name/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindByName(manager, req.params.val);
@@ -33,11 +33,11 @@ router.get("/name/:val", async (req: Request, res: Response): Promise<Response |
 	}
 });
 
-router.get("/brand/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/brand/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/brand/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/brand/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindByBrand(manager, req.params.val);
@@ -48,11 +48,11 @@ router.get("/brand/:val", async (req: Request, res: Response): Promise<Response 
 	}
 });
 
-router.get("/category/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/category/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/category/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/category/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindByCategory(manager, req.params.val);
@@ -63,11 +63,11 @@ router.get("/category/:val", async (req: Request, res: Response): Promise<Respon
 	}
 });
 
-router.get("/speed/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/speed/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/speed/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/speed/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindBySpeed(manager, req.params.val);
@@ -78,11 +78,11 @@ router.get("/speed/:val", async (req: Request, res: Response): Promise<Response 
 	}
 });
 
-router.get("/glide/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/glide/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/glide/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/glide/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindByGlide(manager, req.params.val);
@@ -93,11 +93,11 @@ router.get("/glide/:val", async (req: Request, res: Response): Promise<Response 
 	}
 });
 
-router.get("/turn/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/turn/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/turn/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/turn/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindByTurn(manager, req.params.val);
@@ -108,11 +108,11 @@ router.get("/turn/:val", async (req: Request, res: Response): Promise<Response |
 	}
 });
 
-router.get("/fade/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/fade/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/fade/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/fade/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindByFade(manager, req.params.val);
@@ -123,11 +123,11 @@ router.get("/fade/:val", async (req: Request, res: Response): Promise<Response |
 	}
 });
 
-router.get("/stability/", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/stability/", async (req: Request, res: Response): Promise<Response | void> => {
 	return findAll(res);
 });
 
-router.get("/stability/:val", async (req: Request, res: Response): Promise<Response | void> => {
+discRouter.get("/stability/:val", async (req: Request, res: Response): Promise<Response | void> => {
 	try {
 		const manager = res.locals.em.getRepository(Disc);
 		const discs = await DiscRepo.FindByStability(manager, req.params.val);
@@ -149,4 +149,4 @@ const findAll = async (res: Response): Promise<Response | void> => {
 	}
 };
 
-export default router;
+export default discRouter;
