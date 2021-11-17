@@ -28,9 +28,10 @@ const cleanUrl = (url: string) => {
 	// correct field name typos
 	for (const [key, values] of FieldTypos) {
 		for (const value of values) {
-			for (const char of ["/", "&", "?"]) {
+			for (const char of ["/", "&amp;", "?"]) {
 				if (clean.includes(`${char}${value}`)) {
 					clean = clean.replace(`${char}${value}`, `${char}${key}`);
+					break;
 				}
 			}
 		}
