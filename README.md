@@ -6,6 +6,8 @@ Enables developers to programmatically access public disc information from the [
 
 Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokuapp.com)
 
+---
+
 ## Fields
 
 | Field        | Search Operator   | Description                                                                                                                   |
@@ -22,6 +24,8 @@ Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokua
 | `pic`        | N/A               | Link to a picture showing the approximate flight shape of the disc                                                            |
 
 \* This field uses a URL-friendly *slug* string for searches (e.g. `Crank SS` = `crank-ss`)
+
+---
 
 ## Endpoints
 
@@ -64,14 +68,14 @@ Also recommended:
 
 - [Azure Data Studio](https://azure.microsoft.com/en-us/services/developer-tools/data-studio/) (plus [PostgreSQL extension](https://docs.microsoft.com/en-us/sql/azure-data-studio/extensions/postgres-extension?view=sql-server-ver15))
 
-Set up dev environment:
+Set up environment:
 
 - Clone repo and open root folder in VS Code.
 - Install recommended VSCode extensions `Docker` and `ESLint`.
 - Run `yarn install` to install package dependencies.
 - Create and populate a `.env` file in the root folder based on the `.env.template` file.
 
-Set up local dev database:
+Set up database:
 
 - Open Docker Desktop and leave it running in the background.
 - In VS Code, right-click on `discit-dev-container\docker-compose.yml` and select `Compose Up`.
@@ -82,6 +86,8 @@ Launch:
 
 - Run `yarn start` to start the server. Disc data will be automatically upserted into the database at launch, and also every night at midnight.
   - Alternatively, run the `debug` launch configuration in VS Code (press `F5`).
+
+---
 
 ## See Also
 
