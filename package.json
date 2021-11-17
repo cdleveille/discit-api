@@ -8,12 +8,12 @@
     "db:create": "yarn mikro-orm migration:create",
     "db:up": "yarn mikro-orm migration:up",
     "db:down": "yarn mikro-orm migration:down",
+	"postinstall": "yarn build",
     "build": "yarn lint && tsc --build && yarn walk && yarn min",
     "lint": "eslint --fix --ext .ts,.tsx .",
 	"walk": "node ./build/helpers/cpx.js",
     "min": "javascript-obfuscator public --output public.min",
     "dev": "yarn build && ts-node-dev --respawn --transpile-only ./src/index.ts",
-	"prestart": "yarn build",
     "start": "node ."
   },
   "repository": {
