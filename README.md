@@ -6,8 +6,6 @@ Enables developers to programmatically access public disc information from the [
 
 Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokuapp.com)
 
----
-
 ## Fields
 
 | Field        | Search Operator   | Description                                                                                                                   |
@@ -24,8 +22,6 @@ Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokua
 | `pic`        | N/A               | Link to a picture showing the approximate flight shape of the disc                                                            |
 
 \* This field uses a URL-friendly *slug* string for searches (e.g. `Crank SS` = `crank-ss`)
-
----
 
 ## Endpoints
 
@@ -44,16 +40,12 @@ Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokua
 
 See [/dev/requests.rest](https://github.com/cdleveille/discit/blob/main/dev/requests.rest) for example requests.
 
----
-
 ## Technologies
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [Express](https://expressjs.com/)
 - [MikroORM](https://mikro-orm.io/)
 - [PostgreSQL](https://www.postgresql.org/)
-
----
 
 ## Local Setup
 
@@ -86,8 +78,6 @@ Launch:
 
 - Run `yarn start` to start the server. Disc data will be automatically upserted into the database at launch, and also every night at midnight.
   - Alternatively, run the `debug` launch configuration in VS Code (press `F5`).
-
----
 
 ## See Also
 
