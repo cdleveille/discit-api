@@ -71,7 +71,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		}
 
 		if (match) {
-			if (!Config.INSERT_ONLY && !discsAreEqual(disc, match)) {
+			if (!discsAreEqual(disc, match)) {
 				updateDiscFromOtherDisc(match, disc);
 				discsToUpdate.push(match);
 			}
@@ -106,7 +106,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		}
 
 		if (match) {
-			if (!Config.INSERT_ONLY && !discsAreEqual(disc, match)) {
+			if (!discsAreEqual(disc, match)) {
 				updateDiscFromOtherDisc(match, disc);
 				discsToUpdate.push(match);
 			}
@@ -121,12 +121,17 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 const upsertDiscs = async (manager: Manager, discsToInsert: IDisc[], discsToUpdate: IDisc[], existingDiscs: IDisc[], fetchCount: number) => {
 	try {
 		if (discsToInsert.length > 0) await DiscRepo.InsertMany(manager, discsToInsert);
-		if (discsToUpdate.length > 0) await DiscRepo.UpdateMany(manager, discsToUpdate);
+		if (discsToUpdate.length > 0 && !Config.INSERT_ONLY) await DiscRepo.UpdateMany(manager, discsToUpdate);
+
+		let additionalUpdateOutput = "";
+		if (discsToUpdate.length > 0 && Config.INSERT_ONLY) {
+			additionalUpdateOutput = ` (fetched new data for ${discsToUpdate.length} existing discs, but INSERT_ONLY flag is set to true)`;
+		}
 
 		log.info(`${fetchCount} discs fetched from ${Config.DISC_FETCH_URL}.`);
 		log.info(`${existingDiscs.length} existing discs in database.`);
 		log.info(`${discsToInsert.length} new discs inserted.`);
-		log.info(`${discsToUpdate.length} existing discs updated with new data.`);
+		log.info(`${discsToUpdate.length} existing discs updated with new data${additionalUpdateOutput}.`);
 	} catch (error) {
 		log.error(error);
 		log.error("Error updating disc data in database!");
