@@ -5,6 +5,7 @@ import fs from "fs";
 import helmet from "helmet";
 import morgan from "morgan";
 
+import router from "../controllers/index";
 import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
 import { Disc } from "../models/Disc";
@@ -12,7 +13,7 @@ import cleanURL from "../middleware/cleanUrl";
 import Cron from "../services/cron";
 import { Database } from "../services/db";
 import log from "../services/log";
-import router from "../controllers";
+import { Routes } from "../types/constants";
 
 export default class App {
 	private static instance: Express;
@@ -32,7 +33,7 @@ export default class App {
 		App.instance.use(compression());
 		App.instance.use(cors());
 		App.instance.use(cleanURL());
-		App.instance.use("/", router);
+		App.instance.use(Routes.root, router);
 		App.instance.use(express.static(Config.IS_PROD ? "./public.min" : "./public"));
 		App.instance.set("view engine", "ejs");
 		App.instance.set("views", Config.IS_PROD ? "./public.min/views" : "./public/views");

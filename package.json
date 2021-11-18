@@ -2,7 +2,7 @@
   "name": "discit",
   "version": "1.0.0",
   "description": "RESTful API for disc golf discs.",
-  "main": "build/index.js",
+  "main": "./build/index.js",
   "scripts": {
     "db:init": "yarn mikro-orm migration:create --initial",
     "db:create": "yarn mikro-orm migration:create",
@@ -12,7 +12,7 @@
     "build": "yarn lint && tsc --build && yarn walk && yarn min",
     "lint": "eslint --fix --ext .ts,.tsx .",
 	"walk": "node ./build/helpers/cpx.js",
-    "min": "javascript-obfuscator public --output public.min",
+    "min": "javascript-obfuscator ./public --output ./public.min",
     "dev": "yarn build && ts-node-dev --respawn --transpile-only ./src/index.ts",
     "start": "node ."
   },
