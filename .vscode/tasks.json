@@ -11,7 +11,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"label": "tsc: compile"
+			"label": "build"
 		}
 	]
 }

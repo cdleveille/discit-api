@@ -13,7 +13,7 @@
     "lint": "eslint --fix --ext .ts,.tsx .",
 	"walk": "node ./build/helpers/walk.js",
     "min": "javascript-obfuscator ./build/public --output ./build/public.min",
-    "dev": "yarn build && ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
     "start": "node ."
   },
   "repository": {
