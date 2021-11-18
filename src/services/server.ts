@@ -34,9 +34,9 @@ export default class App {
 		App.instance.use(cors());
 		App.instance.use(cleanURL());
 		App.instance.use(Routes.root, router);
-		App.instance.use(express.static(Config.IS_PROD ? "./public.min" : "./public"));
+		App.instance.use(express.static(Config.IS_PROD ? "./build/public.min" : "./build/public"));
 		App.instance.set("view engine", "ejs");
-		App.instance.set("views", Config.IS_PROD ? "./public.min/views" : "./public/views");
+		App.instance.set("views", Config.IS_PROD ? "./build/public.min/views" : "./build/public/views");
 		App.instance.set("json spaces", 2);
 		App.instance.disabled("x-powered-by");
 	}
