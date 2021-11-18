@@ -1,3 +1,4 @@
 build/**/*
 src/migrations/**/*
-public/js/**/*
+public/**/*
+public.min/**/*
