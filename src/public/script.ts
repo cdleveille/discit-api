@@ -4,12 +4,23 @@ const searchBox = document.getElementById("search-box") as HTMLInputElement;
 const getLink = document.getElementById("get-link") as HTMLLinkElement;
 const getBtn = document.getElementById("get-btn") as HTMLButtonElement;
 const getForm = document.getElementById("get-form") as HTMLFormElement;
+
 const results = document.getElementById("results") as HTMLDivElement;
 const resultsCount = document.getElementById("results-count") as HTMLDivElement;
 const routeActive = document.getElementById("route-active") as HTMLLinkElement;
 let routeText = routeActive.innerHTML as string;
 
 const allLink = document.getElementById("all-link") as HTMLLinkElement;
+const nameLink = document.getElementById("name-link") as HTMLLinkElement;
+const brandLink = document.getElementById("brand-link") as HTMLLinkElement;
+const categoryLink = document.getElementById("category-link") as HTMLLinkElement;
+const speedLink = document.getElementById("speed-link") as HTMLLinkElement;
+const glideLink = document.getElementById("glide-link") as HTMLLinkElement;
+const turnLink = document.getElementById("turn-link") as HTMLLinkElement;
+const fadeLink = document.getElementById("fade-link") as HTMLLinkElement;
+const stabilityLink = document.getElementById("stability-link") as HTMLLinkElement;
+const queryLink = document.getElementById("query-link") as HTMLLinkElement;
+
 allLink.onclick = (e) => {
 	if (e) e.preventDefault();
 	changeRoute("/disc");
@@ -17,56 +28,48 @@ allLink.onclick = (e) => {
 	getBtn.focus();
 };
 
-const nameLink = document.getElementById("name-link") as HTMLLinkElement;
 nameLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/name");
 	underlineLink(nameLink);
 };
 
-const brandLink = document.getElementById("brand-link") as HTMLLinkElement;
 brandLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/brand");
 	underlineLink(brandLink);
 };
 
-const categoryLink = document.getElementById("category-link") as HTMLLinkElement;
 categoryLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/category");
 	underlineLink(categoryLink);
 };
 
-const speedLink = document.getElementById("speed-link") as HTMLLinkElement;
 speedLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/speed");
 	underlineLink(speedLink);
 };
 
-const glideLink = document.getElementById("glide-link") as HTMLLinkElement;
 glideLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/glide");
 	underlineLink(glideLink);
 };
 
-const turnLink = document.getElementById("turn-link") as HTMLLinkElement;
 turnLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/turn");
 	underlineLink(turnLink);
 };
 
-const fadeLink = document.getElementById("fade-link") as HTMLLinkElement;
 fadeLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/fade");
 	underlineLink(fadeLink);
 };
 
-const stabilityLink = document.getElementById("stability-link") as HTMLLinkElement;
 stabilityLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc/stability");
@@ -74,7 +77,6 @@ stabilityLink.onclick = (e) => {
 	underlineLink(stabilityLink);
 };
 
-const queryLink = document.getElementById("query-link") as HTMLLinkElement;
 queryLink.onclick = (e) => {
 	e.preventDefault();
 	changeRoute("/disc?");
@@ -143,8 +145,8 @@ const setUpGhostInput = () => {
 };
 
 const setSearchBoxWidth = () => {
-	const string = searchBox.value || searchBox.getAttribute("placeholder") || "";
-	ghostInput.innerHTML = string.replace(/\s/g, "&" + "nbsp;");
+	const text = searchBox.value || searchBox.getAttribute("placeholder") || "";
+	ghostInput.innerHTML = text.replace(/\s/g, "&" + "nbsp;");
 
 	const ghostInputStyles = window.getComputedStyle(ghostInput);
 	searchBox.style.width = ghostInputStyles.width;

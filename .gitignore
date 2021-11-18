@@ -111,6 +111,6 @@ __db_cache__/
 
 package-lock.json
 
-public.min/
-
 public/js/
+
+public.min/
