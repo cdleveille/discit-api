@@ -12,9 +12,9 @@
 	"postinstall": "yarn build",
 	"prebuild": "yarn lint",
     "build": "tsc --build && yarn walk && yarn min",
-	"walk": "node ./build/helpers/walk.js",
-    "min": "javascript-obfuscator ./public.min --output ./public.min",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+	"walk": "node build/helpers/walk.js",
+    "min": "javascript-obfuscator public.min --output public.min",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "start": "node ."
   },
   "repository": {

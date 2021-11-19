@@ -22,7 +22,7 @@ const stabilityLink = document.getElementById("stability-link") as HTMLLinkEleme
 const queryLink = document.getElementById("query-link") as HTMLLinkElement;
 
 allLink.onclick = (e) => {
-	if (e) e.preventDefault();
+	e.preventDefault();
 	changeRoute("/disc");
 	underlineLink(allLink);
 	getBtn.focus();
