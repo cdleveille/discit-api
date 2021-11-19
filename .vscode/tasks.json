@@ -12,6 +12,15 @@
 				"isDefault": true
 			},
 			"label": "build"
+		},
+		{
+			"type": "npm",
+			"script": "buildpublic",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "none",
+			"label": "buildpublic"
 		}
 	]
 }

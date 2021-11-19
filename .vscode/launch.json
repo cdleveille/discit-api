@@ -6,7 +6,7 @@
 			"name": "debug",
 			"request": "launch",
 			"type": "node-terminal",
-			"preLaunchTask": "${defaultBuildTask}"
+			"preLaunchTask": "buildpublic"
 		}
 	]
 }

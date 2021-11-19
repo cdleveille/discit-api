@@ -13,7 +13,7 @@
 			]
 		},
 		"sourceMap": false,
-		"outDir": "../../public/js",
+		"outDir": "../../public/build",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitAny": true,
