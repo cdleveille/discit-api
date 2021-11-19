@@ -1,28 +1,28 @@
 {
-    "env": {
+	"env": {
 		"node": true,
-        "es2021": true
-    },
-    "extends": [
+		"es2021": true
+	},
+	"extends": [
 		"eslint:recommended"
 	],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "rules": {
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
-    }
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"rules": {
+		"linebreak-style": [
+			"warn",
+			"windows"
+		],
+		"quotes": [
+			"warn",
+			"double"
+		],
+		"semi": [
+			"warn",
+			"always"
+		]
+	}
 }

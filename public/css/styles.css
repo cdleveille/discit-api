@@ -1,87 +1,78 @@
-body
-{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  overflow: hidden;
-  display: block;
-  text-align: center;
-  -webkit-text-size-adjust: none;
-  touch-action: none;
-  user-select: none;
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	overflow: hidden;
+	display: block;
+	text-align: center;
+	-webkit-text-size-adjust: none;
+	touch-action: none;
+	user-select: none;
 }
 
-a:link, a:visited
-{
-  color: blue;
-  text-decoration: none;
+a:link,
+a:visited {
+	color: blue;
+	text-decoration: none;
 }
 
-a:focus, .focus a
-{
-  outline: none !important;
+a:focus,
+.focus a {
+	outline: none !important;
 }
 
-h1
-{
-  font-size: 2rem;
-  margin: 1rem;
-  color: black;
+h1 {
+	font-size: 2rem;
+	margin: 1rem;
+	color: black;
 }
 
-h1 a:link, h1 a:visited
-{
-  color: black;
+h1 a:link,
+h1 a:visited {
+	color: black;
 }
 
-.item
-{
-  margin-bottom: 1rem;
+.item {
+	margin-bottom: 1rem;
 }
 
-button
-{
-  margin: 1rem;
+button {
+	margin: 1rem;
 }
 
-button:focus
-{
-  outline: 0;
+button:focus {
+	outline: 0;
 }
 
-button:hover
-{
-  cursor: pointer;
+button:hover {
+	cursor: pointer;
 }
 
-input
-{
-  width: 9rem;
-  min-width: 9rem;
+input {
+	width: 9rem;
+	min-width: 9rem;
 }
 
-#results
-{
-  visibility: hidden;
-  width: 600px;
-  margin: auto;
-  -webkit-text-size-adjust: none;
-  touch-action: pan-y;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  text-align: left;
-  user-select: text;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  font-family: monospace;
-  font-size: 12px;
+#results {
+	visibility: hidden;
+	width: 600px;
+	margin: auto;
+	-webkit-text-size-adjust: none;
+	touch-action: pan-y;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-align: left;
+	user-select: text;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	font-family: monospace;
+	font-size: 12px;
 }
 
-#results-count
-{
-  margin-top: 1rem;
+#results-count {
+	margin-top: 1rem;
 }
 
-#route-div a:link, #route-div a:visited
-{
-  color: black;
+#route-div a:link,
+#route-div a:visited {
+	color: black;
 }
