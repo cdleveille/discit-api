@@ -64,7 +64,7 @@ Also recommended:
 Set up environment:
 
 - Clone repo and open root folder in VS Code.
-- Install recommended VSCode extensions `Docker` and `ESLint`.
+- Install recommended VS Code extensions `Docker` and `ESLint`.
 - Run `yarn install` to install package dependencies.
 - Create and populate a `.env` file in the root folder based on the `.env.example` file.
 
