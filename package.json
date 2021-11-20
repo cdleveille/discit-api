@@ -57,7 +57,6 @@
     "@types/cors": "^2.8.12",
     "@types/cpx": "^1.5.2",
     "@types/cron": "^1.7.3",
-    "@types/dotenv": "^8.2.0",
     "@types/ejs": "^3.1.0",
     "@types/express": "^4.17.13",
     "@types/jsdom": "^16.2.13",

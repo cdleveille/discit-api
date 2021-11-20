@@ -66,11 +66,12 @@ Set up environment:
 - Clone repo and open root folder in VS Code.
 - Install recommended VSCode extensions `Docker` and `ESLint`.
 - Run `yarn install` to install package dependencies.
-- Create and populate a `.env` file in the root folder based on the `.env.template` file.
+- Create and populate a `.env` file in the root folder based on the `.env.example` file.
 
 Set up database:
 
 - Open Docker Desktop and leave it running in the background.
+- Run `docker network create discit-dev-network` to create the Docker network.
 - In VS Code, right-click on `discit-dev-container\docker-compose.yml` and select `Compose Up`.
 - Run `yarn db:up` to execute the default database migration checked into source control.
   - If schema changes are subsequently made, run `yarn db:create` to generate a new migration and `yarn db:up` to execute it.

@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  bt-bot-dev-container:
+  discit-dev-container:
     container_name: discit-dev-container
     image: postgres
     restart: unless-stopped
@@ -15,3 +15,5 @@ services:
 networks:
   discit-dev-network:
     driver: bridge
+
+# Run 'docker network create discit-dev-network' before composing up
