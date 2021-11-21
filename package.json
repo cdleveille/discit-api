@@ -8,14 +8,15 @@
     "db:create": "yarn mikro-orm migration:create",
     "db:up": "yarn mikro-orm migration:up",
     "db:down": "yarn mikro-orm migration:down",
+	"postinstall": "yarn build",
     "lint": "eslint --fix --ext .ts,.tsx .",
-    "postinstall": "yarn build",
     "prebuild": "yarn lint",
     "build": "tsc --build && yarn cpx && yarn min",
     "buildpublic": "tsc -p src/public/tsconfig.json",
     "cpx": "node build/helpers/cpx.js",
     "min": "javascript-obfuscator public.min --output public.min",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+	"tsnd": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "concurrently --kill-others \"nodemon\" \"yarn tsnd\"",
     "start": "node ."
   },
   "repository": {
@@ -63,8 +64,10 @@
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.11.6",
     "@typescript-eslint/parser": "^5.3.0",
+    "concurrently": "^6.4.0",
     "eslint": "^8.2.0",
     "javascript-obfuscator": "^3.0.0",
+    "nodemon": "^2.0.15",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.4"
   },

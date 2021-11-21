@@ -5,8 +5,7 @@
 			"command": "yarn dev",
 			"name": "debug",
 			"request": "launch",
-			"type": "node-terminal",
-			"preLaunchTask": "buildpublic"
+			"type": "node-terminal"
 		}
 	]
 }
