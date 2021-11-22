@@ -102,12 +102,6 @@
 		"skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
 	},
 	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"src/public/**/*"
-	],
-	"references": [
-		{ "path": "src/public" }
-    ]
+		"server/src/**/*"
+	]
 }

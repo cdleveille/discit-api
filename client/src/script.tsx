@@ -146,7 +146,7 @@ const setUpGhostInput = () => {
 
 const setSearchBoxWidth = () => {
 	const text = searchBox.value || searchBox.getAttribute("placeholder") || "";
-	ghostInput.innerHTML = text.replace(/\s/g, "&" + "nbsp;");
+	ghostInput.innerHTML = text.replace(/\s/g, "&nbsp;");
 
 	const ghostInputStyles = window.getComputedStyle(ghostInput);
 	searchBox.style.width = ghostInputStyles.width;
@@ -216,3 +216,5 @@ setUpGhostInput();
 changeRoute("/disc");
 underlineLink(allLink);
 getBtn.focus();
+
+export {}
