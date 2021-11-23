@@ -8,13 +8,13 @@ interface IFormProps {
 
 export const Form: React.FC<IFormProps> = ({formSubmitted, inputDisabled, onInputChange, inputValue, getHref}) => {
 	const input = (
-		<input className="item" value={inputValue} placeholder="value" autoComplete="off" disabled={inputDisabled} onInput={e => onInputChange(e)}/>
+		<input className="item" value={inputValue} placeholder="value" autoComplete="off" disabled={inputDisabled} onInput={e => onInputChange(e)} autoFocus/>
 	);
 
 	const button = (
-		<a href={getHref}><button id="get-btn" type="submit">GET</button></a>
+		<a href={getHref}><button id="get-btn" type="submit" autoFocus>GET</button></a>
 	);
-
+	
 	return (
 		<form className="item" spellCheck="false" onSubmit={async e => await formSubmitted(e)}>
 			{input}<br />{button}

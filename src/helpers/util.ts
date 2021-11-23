@@ -63,13 +63,6 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 	return targetDisc;
 };
 
-export const slugify = (text: string) => {
-	let slug = text.toLowerCase()
-		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
-		.replace(/[ ]/g, "-");
-	return slug;
-};
-
 export const cleanQueryField = (key: string): string => {
 	const cleanKey = key.replace(/amp;/gi, "").toLowerCase().trim();
 	return FieldsUsingSlug.includes(cleanKey) ? `${cleanKey}_slug` : cleanKey;

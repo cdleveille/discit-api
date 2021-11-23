@@ -7,15 +7,17 @@ import { Header } from "./components/Header";
 import { Results } from "./components/Results";
 import { IRouteLinkProps } from "./components/RouteLink";
 import RouteLinks from "./components/RouteLinks";
+import { request, slugify } from "./shared/helpers/util";
+import { Routes } from "./shared/types/constants";
 
 export const App: React.FC = () => {
-	const [activeRoute, setActiveRoute] = useState("/disc");
-	const [activeRouteText, setActiveRouteText] = useState("/disc");
+	const [activeRoute, setActiveRoute] = useState(Routes.disc as string);
+	const [activeRouteText, setActiveRouteText] = useState(Routes.disc as string);
 	const [showResults, setShowResults] = useState(false);
 	const [results, setResults] = useState("[]");
 	const [inputDisabled, setInputDisabled] = useState(true);
 	const [inputValue, setInputValue] = useState("");
-	const [getHref, setGetHref] = useState("/disc");
+	const [getHref, setGetHref] = useState(Routes.disc as string);
 	const [resultsCountText, setResultsCountText] = useState("");
 
 	const changeActiveRoute = (route: string) => {
@@ -23,14 +25,14 @@ export const App: React.FC = () => {
 		setActiveRouteText(route);
 		setGetHref(route);
 		setInputValue("");
-		route === "/disc" ? setInputDisabled(true) : setInputDisabled(false);
+		route === Routes.disc ? setInputDisabled(true) : setInputDisabled(false);
 	};
 
 	const onInputChange = (e: any) => {
 		if (e.target.value) {
 			const inputText = slugify(e.target.value);
 			setInputValue(inputText);
-			const newActiveRouteText = `${activeRoute}${activeRoute === "/disc?" || !inputText ? "" : "/"}${inputText}`;
+			const newActiveRouteText = `${activeRoute}${activeRoute === `${Routes.disc}?` || !inputText ? "" : "/"}${inputText}`;
 			setActiveRouteText(newActiveRouteText);
 			setGetHref(newActiveRouteText);
 		} else {
@@ -40,19 +42,12 @@ export const App: React.FC = () => {
 		}
 	};
 
-	const slugify = (text: string): string => {
-		let slug = text.toLowerCase()
-			.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
-			.replace(/[ ]/g, "-");
-		return slug;
-	};
-
 	const formSubmitted = async (e: Event) => {
 		e.preventDefault();
-		await getResults();
+		await fetchResults();
 	};
 
-	const getResults = async () => {
+	const fetchResults = async () => {
 		let startTime: number = Date.now(), resTime: number;
 		const headers = {
 			"Content-Type": "application/json"
@@ -70,34 +65,23 @@ export const App: React.FC = () => {
 		}).catch(err => console.error(err));
 	};
 
-	const request = (method: string, uri: string, headers: any, body: any): Promise<any> => {
-		return new Promise((resolve, reject) => {
-			fetch(uri, { method, headers, body }
-			).then(r => r.json()).then(data => {
-				return resolve(data);
-			}).catch(e => {
-				return reject(e);
-			});
-		});
-	};
-
-	const routeLinks: IRouteLinkProps[]  = [
-		{ route: "/disc", label: "all", changeActiveRoute },
-		{ route: "/disc/name", label: "name", changeActiveRoute },
-		{ route: "/disc/brand", label: "brand", changeActiveRoute },
-		{ route: "/disc/category", label: "category", changeActiveRoute },
-		{ route: "/disc/speed", label: "speed", changeActiveRoute },
-		{ route: "/disc/glide", label: "glide", changeActiveRoute },
-		{ route: "/disc/turn", label: "turn", changeActiveRoute },
-		{ route: "/disc/fade", label: "fade", changeActiveRoute },
-		{ route: "/disc/stability", label: "stability", changeActiveRoute },
-		{ route: "/disc?", label: "query", changeActiveRoute }
+	const routeLinkProps: IRouteLinkProps[] = [
+		{ route: Routes.disc, label: "all" },
+		{ route: `${Routes.disc}${Routes.name}`, label: "name" },
+		{ route: `${Routes.disc}${Routes.brand}`, label: "brand" },
+		{ route: `${Routes.disc}${Routes.category}`, label: "category" },
+		{ route: `${Routes.disc}${Routes.speed}`, label: "speed" },
+		{ route: `${Routes.disc}${Routes.glide}`, label: "glide" },
+		{ route: `${Routes.disc}${Routes.turn}`, label: "turn" },
+		{ route: `${Routes.disc}${Routes.fade}`, label: "fade" },
+		{ route: `${Routes.disc}${Routes.stability}`, label: "stability" },
+		{ route: `${Routes.disc}?`, label: "query" }
 	];
-
+	
 	return (
 		<div className="app">
 			<Header />
-			<RouteLinks routeLinks={routeLinks} />
+			<RouteLinks routeLinks={routeLinkProps} changeActiveRoute={changeActiveRoute} />
 			<ActiveRoute activeRoute={activeRouteText} />
 			<Form formSubmitted={formSubmitted} inputDisabled={inputDisabled} onInputChange={onInputChange} inputValue={inputValue} getHref={getHref} />
 			<Results body={results} visible={showResults} resultsCountText={resultsCountText} />

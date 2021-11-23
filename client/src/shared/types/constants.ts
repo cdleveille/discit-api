@@ -11,4 +11,4 @@ export enum Routes {
 	turn = "/turn",
 	fade = "/fade",
 	stability = "/stability",
-}
+};

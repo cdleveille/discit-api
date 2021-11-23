@@ -3,13 +3,14 @@ import React from "react";
 import RouteLink, { IRouteLinkProps } from "./RouteLink";
 import Spacer from "./Spacer";
 
-interface IRouteLinksProps {
-	routeLinks: IRouteLinkProps[]
+export interface IRouteLinksProps {
+	routeLinks: IRouteLinkProps[],
+	changeActiveRoute: any
 }
 
-export const RouteLinks: React.FC<IRouteLinksProps> = ({routeLinks}) => {
+export const RouteLinks: React.FC<IRouteLinksProps> = ({routeLinks, changeActiveRoute}) => {
 	let links = routeLinks.map((routeLink) => (
-		<RouteLink key={routeLink.route} route={routeLink.route} label={routeLink.label} changeActiveRoute={routeLink.changeActiveRoute} />
+		<RouteLink key={routeLink.route} route={routeLink.route} label={routeLink.label} changeActiveRoute={changeActiveRoute} />
 	))
 
 	let spacedLinks: JSX.Element[] | React.FC = [];

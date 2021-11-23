@@ -1,8 +1,9 @@
 import axios from "axios";
 import { JSDOM } from "jsdom";
 
+import { slugify } from "../../client/src/shared/helpers/util";
 import Config from "../helpers/config";
-import { discNameAndBrandMatch, discsAreEqual, slugify, updateDiscFromOtherDisc } from "../helpers/util";
+import { discNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc } from "../helpers/util";
 import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositories/DiscRepository";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";

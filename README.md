@@ -66,7 +66,7 @@ Set up environment:
 - Clone repo and open root folder in VS Code.
 - Install recommended VS Code extensions `Docker` and `ESLint`.
 - Run `yarn install` to install package dependencies.
-- Create and populate a `.env` file in the root folder based on the `.env.example` file.
+- Create and populate a `.env` file in the root folder and /client folder based on the respective `.env.example` files in those locations.
 
 Set up database:
 
@@ -78,8 +78,8 @@ Set up database:
 
 Launch:
 
-- Run `yarn start` to start the server. Disc data will be automatically upserted into the database at launch, and also every night at midnight.
-  - Alternatively, run the `debug` launch configuration in VS Code (press `F5`).
+- Run `yarn build` to compile both the server and client, and `yarn start` to start the server (client accessible at [localhost:5000](http://localhost:5000/)). Disc data will be fetched and automatically inserted into the database at launch (set the `FETCH_DISCS` .env variable to `false` to disable this), and also every night at midnight via cron job.
+  - Alternatively, start the `debug` launch configuration in VS Code (press `F5`), which essentially runs `yarn dev` and attaches a debugger to the back end (building not required).
 
 ## See Also
 

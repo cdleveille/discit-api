@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 
 interface IResultsProps {
 	body: string,
@@ -7,6 +7,8 @@ interface IResultsProps {
 }
 
 export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountText}) => {
+	const ref = useRef<HTMLDivElement>(null);
+
 	const [winDimensions, setWinDimensions] = useState({
 		width: window.innerWidth,
 		height: window.innerHeight
@@ -24,17 +26,14 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 		})
 	};
 
-	const resultsElement = document.getElementById("results");
-	const offsetTop = resultsElement ? resultsElement.offsetTop : 0;
-
 	const styles: CSSProperties = {
 		visibility: visible ? "visible" : "hidden",
 		width: `${Math.min(600, 0.98 * winDimensions.width)}px`,
-		height: `${winDimensions.height - offsetTop - 48}px`
+		height: `${winDimensions.height - (ref.current ? ref.current.offsetTop : 0) - 48}px`
 	};
 
 	const results = (
-		<div id="results" className="item" style={styles}>
+		<div id="results" className="item" style={styles} ref={ref}>
 			{body}
 		</div>
 	);
