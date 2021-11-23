@@ -31,7 +31,7 @@
 		"paths": {                                        /* Specify a set of entries that re-map imports to additional lookup locations. */
 			"*": [
 				"node_modules/*",
-				"shared/*"
+				"client/src/shared/*"
 			]
 		},
 		// "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */

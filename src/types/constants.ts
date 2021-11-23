@@ -12,6 +12,8 @@ export enum Host {
 
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";
 
+export const PROD_URL = "https://discitapi.herokuapp.com";
+
 export enum Site {
 	discClass = "disc-item",
 	putterClass = "pc-entry",
