@@ -66,6 +66,6 @@ export default class App {
 		const cron = new Cron(manager);
 		cron.autoDiscMaintenance.start();
 
-		if (Config.FETCH_DISCS) await fetchDiscs(manager);
+		if (Config.FETCH_DISCS_START) await fetchDiscs(manager);
 	}
 }

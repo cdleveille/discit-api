@@ -1,6 +1,7 @@
 import { CronJob } from "cron";
 
 import { fetchDiscs } from "../db/populate";
+import Config from "../helpers/config";
 import { RequestRepo as Manager } from "../repositories/DiscRepository";
 
 export default class Cron {
@@ -13,6 +14,6 @@ export default class Cron {
 	}
 
 	public autoDiscMaintenance = new CronJob(Cron.EveryNightAtMidnight, async () => {
-		await fetchDiscs(this.manager);
+		if (Config.FETCH_DISCS_CRON) await fetchDiscs(this.manager);
 	}, null, null, "America/New_York");
 }

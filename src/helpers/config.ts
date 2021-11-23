@@ -11,7 +11,8 @@ const Config = {
 	HOST: <string>(process.env.NODE_ENV === Env.prod ? process.env.HOST : Host.local || Host.ip),
 	CORES: <number>os.cpus().length,
 	DISC_FETCH_URL: <string>DISC_FETCH_URL,
-	FETCH_DISCS: <boolean>(process.env.FETCH_DISCS === "true"),
+	FETCH_DISCS_START: <boolean>(process.env.FETCH_DISCS_START === "true"),
+	FETCH_DISCS_CRON: <boolean>(process.env.FETCH_DISCS_CRON === "true"),
 	INSERT_ONLY: <boolean>(process.env.INSERT_ONLY === "true")
 };
 

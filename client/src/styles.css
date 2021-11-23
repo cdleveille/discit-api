@@ -1,5 +1,6 @@
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 0;
+	font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
 	font-size: 1rem;
 	overflow: hidden;
 	display: block;
@@ -15,6 +16,14 @@ a:visited {
 	text-decoration: none;
 }
 
+button:focus {
+	outline: 0;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
 h1 {
 	font-size: 2rem;
 	margin: 1rem;
@@ -26,30 +35,14 @@ h1 a:visited {
 	color: black;
 }
 
-.active-route a:link,
-.active-route a:visited {
-	color: black;
-}
-
-.item {
-	margin-bottom: 1rem;
-}
-
-/* button {
-	margin: 1rem;
-} */
-
-button:focus {
-	outline: 0;
-}
-
-button:hover {
-	cursor: pointer;
-}
-
 input {
 	width: 9rem;
 	min-width: 9rem;
+}
+
+.active-route a:link,
+.active-route a:visited {
+	color: black;
 }
 
 .emoji {
@@ -57,6 +50,10 @@ input {
 	font-family: "apple color emoji", "segoe ui emoji", "noto color emoji",
 		"android emoji", "emojisymbols", "emojione mozilla", "twemoji mozilla",
 		"segoe ui symbol";
+}
+
+.item {
+	margin-bottom: 1rem;
 }
 
 #results {
@@ -79,4 +76,3 @@ input {
 #results-count {
 	margin-top: 1rem;
 }
-
