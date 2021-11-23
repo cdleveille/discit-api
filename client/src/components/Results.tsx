@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 
 interface IResultsProps {
 	body: string,
@@ -23,7 +23,7 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 		setWinDimensions({
 			width: window.innerWidth,
 			height: window.innerHeight
-		})
+		});
 	};
 
 	const styles: CSSProperties = {
@@ -43,6 +43,6 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 	);
 
 	return (<>{results}{resultsCount}</>);
-}
+};
 
 export default Results;

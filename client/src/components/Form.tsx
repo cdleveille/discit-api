@@ -1,7 +1,9 @@
+import React, { FormEvent } from "react";
+
 interface IFormProps {
-	formSubmitted: any,
+	formSubmitted: (e: FormEvent<HTMLFormElement>) => Promise<void>,
 	inputDisabled: boolean,
-	onInputChange: any,
+	onInputChange: (e: FormEvent<HTMLInputElement>) => void,
 	inputValue: string,
 	getHref: string
 }
@@ -16,10 +18,10 @@ export const Form: React.FC<IFormProps> = ({formSubmitted, inputDisabled, onInpu
 	);
 	
 	return (
-		<form className="item" spellCheck="false" onSubmit={async e => await formSubmitted(e)}>
+		<form className="item" spellCheck="false" onSubmit={async e => formSubmitted(e)}>
 			{input}<br />{button}
 		</form>
 	);
-}
+};
 
 export default Form;

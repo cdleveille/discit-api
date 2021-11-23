@@ -1,11 +1,11 @@
 export const slugify = (text: string): string => {
-	let slug = text.toLowerCase()
+	const slug = text.toLowerCase()
 		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
 		.replace(/[ ]/g, "-");
 	return slug;
 };
 
-export const request = (method: string, uri: string, headers: any, body: any): Promise<any> => {
+export const request = (method: string, uri: string, headers: HeadersInit | undefined, body: BodyInit | null | undefined): Promise<Response> => {
 	return new Promise((resolve, reject) => {
 		fetch(uri, { method, headers, body }
 		).then(r => r.json()).then(data => {

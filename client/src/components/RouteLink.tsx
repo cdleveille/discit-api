@@ -1,7 +1,9 @@
+import React from "react";
+
 interface IRouteLinkPropsPrivate {
 	route: string,
 	label: string,
-	changeActiveRoute: any
+	changeActiveRoute: (route: string) => void
 }
 
 export interface IRouteLinkProps {
@@ -17,7 +19,7 @@ export const RouteLink: React.FC<IRouteLinkPropsPrivate> = ({route, label, chang
 
 	return (
 		<a href={route} onClick={e => onClick(e)}>{label}</a>
-	)
-}
+	);
+};
 
 export default RouteLink;

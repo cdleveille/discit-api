@@ -1,3 +1,5 @@
+import React from "react";
+
 export const Header: React.FC = () => {
 	return (
 		<h1>
@@ -6,6 +8,6 @@ export const Header: React.FC = () => {
 			</a>
 		</h1>
 	);
-}
+};
 
 export default Header;

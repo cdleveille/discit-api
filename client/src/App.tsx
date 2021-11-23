@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 import "./styles.css";
 import { ActiveRoute } from "./components/ActiveRoute";
@@ -28,9 +28,9 @@ export const App: React.FC = () => {
 		route === Routes.disc ? setInputDisabled(true) : setInputDisabled(false);
 	};
 
-	const onInputChange = (e: any) => {
-		if (e.target.value) {
-			const inputText = slugify(e.target.value);
+	const onInputChange = (e: FormEvent<HTMLInputElement>) => {
+		if (e.currentTarget.value) {
+			const inputText = slugify(e.currentTarget.value);
 			setInputValue(inputText);
 			const newActiveRouteText = `${activeRoute}${activeRoute === `${Routes.disc}?` || !inputText ? "" : "/"}${inputText}`;
 			setActiveRouteText(newActiveRouteText);
@@ -42,21 +42,21 @@ export const App: React.FC = () => {
 		}
 	};
 
-	const formSubmitted = async (e: Event) => {
+	const formSubmitted = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		await fetchResults();
 	};
 
 	const fetchResults = async () => {
-		let startTime: number = Date.now(), resTime: number;
+		const startTime: number = Date.now();
 		const headers = {
 			"Content-Type": "application/json"
 		};
 		const method = "GET", route = activeRouteText;
-		await request(method, route, headers, null).then(res => {
+		await request(method, route, headers, undefined).then(res => {
 			if (res) {
-				resTime = Date.now() - startTime;
-				const resArray = res as any[];
+				const resTime = Date.now() - startTime;
+				const resArray = res as unknown as unknown[];
 				setResultsCountText(`${resArray.length} result${resArray.length === 1 ? "" : "s"} • ${resTime} ms`);
 				const json = JSON.stringify(res, null, 2);
 				setResults(json);
@@ -87,6 +87,6 @@ export const App: React.FC = () => {
 			<Results body={results} visible={showResults} resultsCountText={resultsCountText} />
 		</div>
 	);
-}
+};
 
 export default App;
