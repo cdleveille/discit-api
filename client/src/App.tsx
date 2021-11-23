@@ -13,17 +13,17 @@ import { Routes } from "./shared/types/constants";
 export const App: React.FC = () => {
 	const [activeRoute, setActiveRoute] = useState(Routes.disc as string);
 	const [activeRouteText, setActiveRouteText] = useState(Routes.disc as string);
-	const [showResults, setShowResults] = useState(false);
-	const [results, setResults] = useState("[]");
 	const [inputDisabled, setInputDisabled] = useState(true);
 	const [inputValue, setInputValue] = useState("");
-	const [getHref, setGetHref] = useState(Routes.disc as string);
+	const [buttonHref, setButtonHref] = useState(Routes.disc as string);
+	const [showResults, setShowResults] = useState(false);
+	const [resultsText, setResultsText] = useState("[]");
 	const [resultsCountText, setResultsCountText] = useState("");
 
 	const changeActiveRoute = (route: string) => {
 		setActiveRoute(route);
 		setActiveRouteText(route);
-		setGetHref(route);
+		setButtonHref(route);
 		setInputValue("");
 		route === Routes.disc ? setInputDisabled(true) : setInputDisabled(false);
 	};
@@ -34,11 +34,11 @@ export const App: React.FC = () => {
 			setInputValue(inputText);
 			const newActiveRouteText = `${activeRoute}${activeRoute === `${Routes.disc}?` || !inputText ? "" : "/"}${inputText}`;
 			setActiveRouteText(newActiveRouteText);
-			setGetHref(newActiveRouteText);
+			setButtonHref(newActiveRouteText);
 		} else {
 			setInputValue("");
 			setActiveRouteText(activeRoute);
-			setGetHref(activeRoute);
+			setButtonHref(activeRoute);
 		}
 	};
 
@@ -53,13 +53,12 @@ export const App: React.FC = () => {
 			"Content-Type": "application/json"
 		};
 		const method = "GET", route = activeRouteText;
-		await request(method, route, headers, undefined).then(res => {
+		await request(method, route, headers, null).then(res => {
 			if (res) {
 				const resTime = Date.now() - startTime;
 				const resArray = res as unknown as unknown[];
 				setResultsCountText(`${resArray.length} result${resArray.length === 1 ? "" : "s"} • ${resTime} ms`);
-				const json = JSON.stringify(res, null, 2);
-				setResults(json);
+				setResultsText(JSON.stringify(res, null, 2));
 				setShowResults(true);
 			} else throw Error("No response from server!");
 		}).catch(err => console.error(err));
@@ -83,8 +82,8 @@ export const App: React.FC = () => {
 			<Header />
 			<RouteLinks routeLinks={routeLinkProps} changeActiveRoute={changeActiveRoute} />
 			<ActiveRoute activeRoute={activeRouteText} />
-			<Form formSubmitted={formSubmitted} inputDisabled={inputDisabled} onInputChange={onInputChange} inputValue={inputValue} getHref={getHref} />
-			<Results body={results} visible={showResults} resultsCountText={resultsCountText} />
+			<Form formSubmitted={formSubmitted} inputDisabled={inputDisabled} onInputChange={onInputChange} inputValue={inputValue} buttonHref={buttonHref} />
+			<Results body={resultsText} visible={showResults} resultsCountText={resultsCountText} />
 		</div>
 	);
 };

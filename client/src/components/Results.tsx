@@ -29,7 +29,7 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 	const styles: CSSProperties = {
 		visibility: visible ? "visible" : "hidden",
 		width: `${Math.min(600, 0.98 * winDimensions.width)}px`,
-		height: `${winDimensions.height - (ref.current ? ref.current.offsetTop : 0) - 48}px`
+		height: `${winDimensions.height - (ref?.current?.offsetTop || 0) - 48}px`
 	};
 
 	const results = (

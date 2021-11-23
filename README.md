@@ -43,6 +43,7 @@ See [requests.rest](https://github.com/cdleveille/discit/blob/main/requests.rest
 ## Technologies
 
 - [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
 - [MikroORM](https://mikro-orm.io/)
