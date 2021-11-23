@@ -24,7 +24,7 @@ export class Database {
 		logger: (msg: string) => log.query(msg),
 		type: Db.DB_TYPE,
 		clientUrl: Db.DB_URL,
-		entities: [path.join(cwd(), "build/models/**/*.js")],
+		entities: [path.join(cwd(), "build/src/models/**/*.js")],
 		entitiesTs: [path.join(cwd(), "server/src/models/**/*.ts")],
 		cache: {
 			enabled: true,
@@ -45,7 +45,7 @@ export class Database {
 		user: Db.DB_USERNAME,
 		password: Db.DB_PASSWORD,
 		dbName: Db.DB_NAME,
-		entities: [path.join(cwd(), "build/models/**/*.js")],
+		entities: [path.join(cwd(), "build/src/models/**/*.js")],
 		entitiesTs: [path.join(cwd(), "src/models/**/*.ts")],
 		cache: {
 			enabled: true,
