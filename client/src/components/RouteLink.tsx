@@ -15,4 +15,4 @@ export const RouteLink: React.FC<IRouteLinkProps> = ({route, label, changeActive
 	)
 }
 
-export default RouteLink
+export default RouteLink;

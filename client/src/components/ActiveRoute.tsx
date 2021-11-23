@@ -11,4 +11,4 @@ export const ActiveRoute: React.FC<IActiveRouteProps> = ({activeRoute}) => {
 	)
 }
 
-export default ActiveRoute
+export default ActiveRoute;

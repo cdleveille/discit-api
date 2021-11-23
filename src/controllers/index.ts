@@ -4,7 +4,7 @@ import discRouter from "./disc";
 import fs from "fs";
 import path from "path";
 import log from "../services/log";
-import { Routes } from "../types/constants";
+import { Routes } from "../../client/src/shared/types/constants";
 
 const router = Router();
 router.use(Routes.disc, discRouter);

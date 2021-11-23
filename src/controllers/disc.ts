@@ -4,7 +4,7 @@ import { Request, Response, Router } from "express";
 import { Disc } from "../models/Disc";
 import log from "../services/log";
 import { DiscRepository as DiscRepo } from "../repositories/DiscRepository";
-import { Routes } from "../types/constants";
+import { Routes } from "../../client/src/shared/types/constants";
 
 const discRouter = Router();
 

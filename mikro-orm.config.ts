@@ -2,11 +2,11 @@ import "dotenv/config";
 import "reflect-metadata";
 import { ConnectionConfig } from "@mikro-orm/core";
 
-import Config, { Db } from "./server/src/helpers/config";
+import Config, { Db } from "./src/helpers/config";
 
 export default {
 	debug: true,
-	entities: ["./server/src/models/**/*.ts"],
+	entities: ["./src/models/**/*.ts"],
 	dbName: Db.DB_NAME,
 	type: Db.DB_TYPE,
 	host: Db.DB_HOST,
@@ -20,7 +20,7 @@ export default {
 	},
 	migrations: {
 		tableName: "mikro_orm_migrations",
-		path: "./server/src/migrations",
+		path: "./src/migrations",
 		pattern: /^[\w-]+\d+\.ts$/,
 		transactional: true,
 		disableForeignKeys: true,

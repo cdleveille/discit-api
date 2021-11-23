@@ -71,16 +71,3 @@ export const FieldTypos = new Map([
 	["fade", ["afde", "fdae", "faed", "fades", "fadse", "face"]],
 	["stability", ["tsability", "satbility", "stbaility", "staiblity", "stabliity", "stabiilty", "stabiltiy", "stabiliyt", "stabilities", "stabilitise"]]
 ]);
-
-export enum Routes {
-	root = "/",
-	disc = "/disc",
-	name = "/name",
-	brand = "/brand",
-	category = "/category",
-	speed = "/speed",
-	glide = "/glide",
-	turn = "/turn",
-	fade = "/fade",
-	stability = "/stability",
-}

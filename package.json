@@ -11,10 +11,12 @@
     "postinstall": "cd client && yarn install && cd .. && yarn build",
     "lint": "eslint --fix --ext .ts,.tsx .",
     "prebuild": "yarn lint",
-    "build": "tsc && cd client && yarn build",
-    "dev": "concurrently \"yarn tsnd\" \"yarn client\"",
-    "tsnd": "ts-node-dev --respawn --transpile-only server/src/index.ts",
-    "client": "cd client && yarn start",
+    "build": "yarn build-server && yarn build-client",
+    "build-server": "tsc",
+    "build-client": "cd client && yarn build",
+    "dev": "concurrently \"yarn dev-server\" \"yarn dev-client\"",
+    "dev-server": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev-client": "cd client && yarn start",
     "start": "node ."
   },
   "repository": {
@@ -63,7 +65,6 @@
     "concurrently": "^6.4.0",
     "eslint": "^8.2.0",
     "javascript-obfuscator": "^3.0.0",
-    "nodemon": "^2.0.15",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.4"
   },

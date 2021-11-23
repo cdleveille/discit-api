@@ -7,10 +7,17 @@ interface IFormProps {
 }
 
 export const Form: React.FC<IFormProps> = ({formSubmitted, inputDisabled, onInputChange, inputValue, getHref}) => {
+	const input = (
+		<input className="item" value={inputValue} placeholder="value" autoComplete="off" disabled={inputDisabled} onInput={e => onInputChange(e)}/>
+	);
+
+	const button = (
+		<a href={getHref}><button id="get-btn" type="submit">GET</button></a>
+	);
+
 	return (
 		<form className="item" spellCheck="false" onSubmit={async e => await formSubmitted(e)}>
-			<input className="item" value={inputValue} placeholder="value" autoComplete="off" disabled={inputDisabled} onInput={e => onInputChange(e)}/><br />
-			<a href={getHref}><button id="get-btn" type="submit">GET</button></a>
+			{input}<br />{button}
 		</form>
 	);
 }

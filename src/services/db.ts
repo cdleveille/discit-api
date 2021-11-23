@@ -46,7 +46,7 @@ export class Database {
 		password: Db.DB_PASSWORD,
 		dbName: Db.DB_NAME,
 		entities: [path.join(cwd(), "build/models/**/*.js")],
-		entitiesTs: [path.join(cwd(), "server/src/models/**/*.ts")],
+		entitiesTs: [path.join(cwd(), "src/models/**/*.ts")],
 		cache: {
 			enabled: true,
 			pretty: !Config.IS_PROD,

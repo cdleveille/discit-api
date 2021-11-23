@@ -1,4 +1,5 @@
-build/**/*
 src/migrations/**/*
-public/**/*
-public.min/**/*
+build/**/*
+node_modules/**/*
+client/build/**/*
+client/node_modules/**/*

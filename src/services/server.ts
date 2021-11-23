@@ -14,7 +14,7 @@ import { Disc } from "../models/Disc";
 import Cron from "./cron";
 import { Database } from "./db";
 import log from "./log";
-import { Routes } from "../types/constants";
+import { Routes } from "../../client/src/shared/types/constants";
 
 export default class App {
 	private static instance: Express;
