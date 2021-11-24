@@ -17,7 +17,7 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 	useEffect(() => {
 		window.addEventListener("resize", updateWinDimensions);
 		return () => window.removeEventListener("resize", updateWinDimensions);
-	});
+	}, []);
 
 	const updateWinDimensions = () => {
 		setWinDimensions({
@@ -26,7 +26,7 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 		});
 	};
 
-	const styles: CSSProperties = {
+	const resultsStyles: CSSProperties = {
 		visibility: visible ? "visible" : "hidden",
 		width: `${Math.min(600, 0.98 * winDimensions.width)}px`,
 		height: `${winDimensions.height - (ref?.current?.offsetTop || 0) - 48}px`
@@ -36,7 +36,7 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 		<div
 			id="results"
 			className="item"
-			style={styles}
+			style={resultsStyles}
 			ref={ref}
 		>
 			{body}

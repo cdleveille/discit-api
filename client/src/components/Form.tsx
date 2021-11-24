@@ -1,20 +1,27 @@
-import React, { CSSProperties, FormEvent, useEffect, useRef } from "react";
+import React, { CSSProperties, FormEvent, useLayoutEffect, useRef, useState } from "react";
 
 interface IFormProps {
-	formSubmitted: (e: FormEvent<HTMLFormElement>) => Promise<void>,
+	activeRoute: string,
+	onFormSubmit: () => Promise<void>,
 	inputDisabled: boolean,
 	onInputChange: (e: FormEvent<HTMLInputElement>) => void,
 	inputValue: string,
 	buttonHref: string
 }
 
-export const Form: React.FC<IFormProps> = ({formSubmitted, inputDisabled, onInputChange, inputValue, buttonHref}) => {
+export const Form: React.FC<IFormProps> = ({activeRoute, onFormSubmit, inputDisabled, onInputChange, inputValue, buttonHref}) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const ghostRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => inputDisabled ?  buttonRef?.current?.focus() : inputRef?.current?.focus());
-	useEffect(() => adjustInputSize());
+	const [inputWidth, setInputWidth] = useState("0px");
+
+	useLayoutEffect(() => {
+		inputDisabled ?  buttonRef?.current?.focus() : inputRef?.current?.focus();
+	}, [inputDisabled, activeRoute]);
+	useLayoutEffect(() => {
+		adjustInputSize();
+	}, [inputValue]);
 
 	const adjustInputSize = () => {
 		if (inputRef.current && ghostRef.current) {
@@ -22,12 +29,14 @@ export const Form: React.FC<IFormProps> = ({formSubmitted, inputDisabled, onInpu
 			ghostRef.current.innerHTML = text.replace(/\s/g, "&nbsp;");
 
 			const ghostRefStyles: CSSStyleDeclaration = window.getComputedStyle(ghostRef.current);
-			inputRef.current.style.width = ghostRefStyles.width;
+			setInputWidth(ghostRefStyles.width);
+			console.log(ghostRefStyles.width);
 		}
 	};
 
 	const inputStyles: CSSProperties = {
-		fontSize: "14px"
+		fontSize: "14px",
+		width: inputWidth
 	};
 
 	const input = (
@@ -65,9 +74,14 @@ export const Form: React.FC<IFormProps> = ({formSubmitted, inputDisabled, onInpu
 		paddingRight: inputRef.current ? inputRef.current.style.paddingRight : ""
 	};
 
+	const formSubmitted = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		onFormSubmit();
+	};
+
 	return (
 		<>
-			<form className="item" spellCheck="false" onSubmit={async e => formSubmitted(e)}>
+			<form className="item" spellCheck="false" onSubmit={e => formSubmitted(e)}>
 				{input}<br />{button}
 			</form>
 			<div style={ghostDivStyles} ref={ghostRef}></div>

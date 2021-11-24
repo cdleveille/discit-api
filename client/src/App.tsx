@@ -1,6 +1,5 @@
 import React, { FormEvent, useState } from "react";
 
-import "./styles.css";
 import { ActiveRoute } from "./components/ActiveRoute";
 import { Form } from "./components/Form";
 import { Header } from "./components/Header";
@@ -8,6 +7,7 @@ import { Results } from "./components/Results";
 import RouteLinks from "./components/RouteLinks";
 import { request, slugify } from "./shared/helpers/util";
 import { routeLinks, Routes } from "./shared/types/constants";
+import "./styles.css";
 
 export const App: React.FC = () => {
 	const [activeRoute, setActiveRoute] = useState(Routes.disc as string);
@@ -41,25 +41,24 @@ export const App: React.FC = () => {
 		}
 	};
 
-	const formSubmitted = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		await fetchResults();
+	const onFormSubmit = async () => {
+		const startTime: number = Date.now();
+		const res = await fetchResults(activeRouteText);
+		const resTime = Date.now() - startTime;
+		const resArray = res as unknown as unknown[];
+		setResultsCountText(`${resArray.length} result${resArray.length === 1 ? "" : "s"} • ${resTime} ms`);
+		setResultsText(JSON.stringify(res, null, 2));
+		if (!showResults) setShowResults(true);
 	};
 
-	const fetchResults = async () => {
-		const startTime: number = Date.now();
+	const fetchResults = async (route: string): Promise<void | Response> => {
 		const headers = {
 			"Content-Type": "application/json"
 		};
-		const method = "GET", route = activeRouteText;
-		await request(method, route, headers, null).then(res => {
-			if (res) {
-				const resTime = Date.now() - startTime;
-				const resArray = res as unknown as unknown[];
-				setResultsCountText(`${resArray.length} result${resArray.length === 1 ? "" : "s"} • ${resTime} ms`);
-				setResultsText(JSON.stringify(res, null, 2));
-				setShowResults(true);
-			} else throw Error("No response from server!");
+		const method = "GET";
+		return await request(method, route, headers, null).then(res => {
+			if (!res) throw Error("No response from server!");
+			return res;
 		}).catch(err => console.error(err));
 	};
 	
@@ -75,7 +74,8 @@ export const App: React.FC = () => {
 				activeRoute={activeRouteText}
 			/>
 			<Form
-				formSubmitted={formSubmitted}
+				activeRoute={activeRoute}
+				onFormSubmit={onFormSubmit}
 				inputDisabled={inputDisabled}
 				onInputChange={onInputChange}
 				inputValue={inputValue}

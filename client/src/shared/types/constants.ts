@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { IRouteLinkProps } from "../../components/RouteLink";
+import { IRouteLinkPropsShort } from "../../components/RouteLink";
 
 export enum Routes {
 	root = "/",
@@ -14,7 +14,7 @@ export enum Routes {
 	stability = "/stability",
 }
 
-export const routeLinks: IRouteLinkProps[] = [
+export const routeLinks: IRouteLinkPropsShort[] = [
 	{ label: "all", route: Routes.disc },
 	{ label: "name", route: `${Routes.disc}${Routes.name}` },
 	{ label: "brand", route: `${Routes.disc}${Routes.brand}` },

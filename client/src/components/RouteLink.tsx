@@ -1,25 +1,25 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 
-interface IRouteLinkPropsPrivate {
+interface IRouteLinkProps {
 	label: string,
 	route: string,
 	activeRoute: string,
 	changeActiveRoute: (route: string) => void
 }
 
-export interface IRouteLinkProps {
+export interface IRouteLinkPropsShort {
 	label: string,
 	route: string
 }
 
-export const RouteLink: React.FC<IRouteLinkPropsPrivate> = ({label, route, activeRoute, changeActiveRoute}) => {
+export const RouteLink: React.FC<IRouteLinkProps> = ({label, route, activeRoute, changeActiveRoute}) => {
 	const linkRef = useRef<HTMLAnchorElement>(null);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (linkRef.current) {
 			linkRef.current.style.textDecoration = route === activeRoute ? "underline" : "none";
 		}
-	});
+	}, [route, activeRoute]);
 
 	const onClick = (e: React.MouseEvent) => {
 		e.preventDefault();

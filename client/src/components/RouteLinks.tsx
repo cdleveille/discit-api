@@ -1,10 +1,10 @@
 import React from "react";
 
-import RouteLink, { IRouteLinkProps } from "./RouteLink";
+import RouteLink, { IRouteLinkPropsShort } from "./RouteLink";
 import Spacer from "./Spacer";
 
 export interface IRouteLinksProps {
-	routeLinks: IRouteLinkProps[],
+	routeLinks: IRouteLinkPropsShort[],
 	activeRoute: string,
 	changeActiveRoute: (route: string) => void
 }
