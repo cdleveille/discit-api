@@ -33,7 +33,12 @@ export const Results: React.FC<IResultsProps> = ({body, visible, resultsCountTex
 	};
 
 	const results = (
-		<div id="results" className="item" style={styles} ref={ref}>
+		<div
+			id="results"
+			className="item"
+			style={styles}
+			ref={ref}
+		>
 			{body}
 		</div>
 	);

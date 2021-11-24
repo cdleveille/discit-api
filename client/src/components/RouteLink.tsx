@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 interface IRouteLinkPropsPrivate {
-	route: string,
 	label: string,
+	route: string,
+	activeRoute: string,
 	changeActiveRoute: (route: string) => void
 }
 
 export interface IRouteLinkProps {
-	route: string,
-	label: string
+	label: string,
+	route: string
 }
 
-export const RouteLink: React.FC<IRouteLinkPropsPrivate> = ({route, label, changeActiveRoute}) => {
+export const RouteLink: React.FC<IRouteLinkPropsPrivate> = ({label, route, activeRoute, changeActiveRoute}) => {
+	const linkRef = useRef<HTMLAnchorElement>(null);
+
+	useEffect(() => {
+		if (linkRef.current) {
+			linkRef.current.style.textDecoration = route === activeRoute ? "underline" : "none";
+		}
+	});
+
 	const onClick = (e: React.MouseEvent) => {
 		e.preventDefault();
 		changeActiveRoute(route);
 	};
 
 	return (
-		<a href={route} onClick={e => onClick(e)}>{label}</a>
+		<a href={route} ref={linkRef} onClick={e => onClick(e)}>{label}</a>
 	);
 };
 

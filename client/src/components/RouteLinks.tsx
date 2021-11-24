@@ -5,12 +5,19 @@ import Spacer from "./Spacer";
 
 export interface IRouteLinksProps {
 	routeLinks: IRouteLinkProps[],
+	activeRoute: string,
 	changeActiveRoute: (route: string) => void
 }
 
-export const RouteLinks: React.FC<IRouteLinksProps> = ({routeLinks, changeActiveRoute}) => {
+export const RouteLinks: React.FC<IRouteLinksProps> = ({routeLinks, activeRoute, changeActiveRoute}) => {
 	const links = routeLinks.map((routeLink) => (
-		<RouteLink key={routeLink.route} route={routeLink.route} label={routeLink.label} changeActiveRoute={changeActiveRoute} />
+		<RouteLink
+			key={routeLink.route}
+			label={routeLink.label}
+			route={routeLink.route}
+			activeRoute={activeRoute}
+			changeActiveRoute={changeActiveRoute}
+		/>
 	));
 
 	const spacedLinks: JSX.Element[] | React.FC = [];
@@ -21,11 +28,7 @@ export const RouteLinks: React.FC<IRouteLinksProps> = ({routeLinks, changeActive
 		}
 	}
 
-	return (
-		<div className="item">
-			{spacedLinks}
-		</div>
-	);
+	return (<div className="item">{spacedLinks}</div>);
 };
 
 export default RouteLinks;
