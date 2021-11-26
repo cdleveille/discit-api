@@ -79,7 +79,7 @@ Set up database:
 
 Launch:
 
-- Run `yarn build` to compile both the server and client, and `yarn start` to start the server (client accessible at [localhost:3001](http://localhost:5000/)). Disc data will be fetched and automatically inserted into the database at launch (set the `FETCH_DISCS_START` .env variable to `false` to disable this), and also every night at midnight via cron job (set the `FETCH_DISCS_CRON` .env variable to `false` to disable this).
+- Run `yarn build` to compile both the server and client, and `yarn start` to start the server (client accessible at [localhost:3001](http://localhost:3001/)). Disc data will be fetched and automatically inserted into the database at launch (set the `FETCH_DISCS_START` .env variable to `false` to disable this), and also every night at midnight via cron job (set the `FETCH_DISCS_CRON` .env variable to `false` to disable this).
   - Alternatively, start the `debug` launch configuration in VS Code (press `F5`), which essentially runs `yarn dev` and attaches a debugger to the back end (building not required).
 
 ## See Also
