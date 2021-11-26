@@ -30,7 +30,6 @@ export const Form: React.FC<IFormProps> = ({activeRoute, onFormSubmit, inputDisa
 
 			const ghostRefStyles: CSSStyleDeclaration = window.getComputedStyle(ghostRef.current);
 			setInputWidth(ghostRefStyles.width);
-			console.log(ghostRefStyles.width);
 		}
 	};
 

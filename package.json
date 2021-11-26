@@ -48,6 +48,7 @@
     "jsdom": "^18.0.1",
     "morgan": "^1.10.0",
     "pg": "^8.7.1",
+    "postcss": "^8.4.1",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
