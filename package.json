@@ -4,11 +4,12 @@
   "description": "RESTful API for disc golf discs.",
   "main": "build/src/index.js",
   "scripts": {
-    "db:init": "yarn mikro-orm migration:create --initial",
+		"db:init": "yarn mikro-orm migration:create --initial",
     "db:create": "yarn mikro-orm migration:create",
     "db:up": "yarn mikro-orm migration:up",
     "db:down": "yarn mikro-orm migration:down",
     "postinstall": "cd client && yarn install",
+		"clean": "yarn autoclean --force",
     "lint": "eslint --fix --ext .ts,.tsx . && cd client && eslint --fix --ext .ts,.tsx .",
     "build": "yarn lint && yarn build-server && yarn build-client && yarn min",
     "build-server": "tsc",
@@ -75,7 +76,7 @@
     ]
   },
   "engines": {
-    "yarn": ">=1.22.17"
+    "yarn": "^1.22.5 || >=1.22.17"
   },
   "packageManager": "yarn@1.22.17"
 }
