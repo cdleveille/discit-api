@@ -1,6 +1,18 @@
-# We'll let Git's auto-detection algorithm infer if a file is text. If it is,
-# enforce LF line endings regardless of OS or git configurations.
-* text=auto eol=lf
+###############################
+# Git Line Endings            #
+###############################
+
+# Set default behaviour to automatically normalize line endings.
+* text=auto eol=crlf
+
+# Force batch scripts to always use CRLF line endings so that if a repo is accessed
+# in Windows via a file share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# Force bash scripts to always use LF line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will work.
+*.sh text eol=lf
 
 # Isolate binary files in case the auto-detection algorithm fails and
 # marks them as text files (which could brick them).

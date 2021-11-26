@@ -1,0 +1,36 @@
+name: Build Main
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: Development
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: yarn
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Lint Project
+        run: yarn lint
+
+      - name: Build Project
+        run: yarn build
+
+        env:
+          SKIP_PREFLIGHT_CHECK: true
+
+      # - name: Run Tests
+      #   run: yarn test
