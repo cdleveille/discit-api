@@ -29,5 +29,8 @@ jobs:
       - name: Build Project
         run: yarn build
 
+        env:
+          SKIP_PREFLIGHT_CHECK: true
+
       # - name: Run Tests
       #   run: yarn test
