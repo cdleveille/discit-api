@@ -1,16 +1,16 @@
-name: Build Main
+name: Dev CI
 
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [dev]
   pull_request:
-    branches: [main]
+    branches: [dev]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: Development
+    environment: discitapi-dev
     steps:
       - uses: actions/checkout@v2
 
