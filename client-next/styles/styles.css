@@ -1,0 +1,77 @@
+body {
+	margin: 0;
+	/* font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif"; */
+	font-size: 1rem;
+	overflow: hidden;
+	display: block;
+	text-align: center;
+	-webkit-text-size-adjust: none;
+	touch-action: none;
+	user-select: none;
+}
+
+a:link,
+a:visited {
+	color: blue;
+	text-decoration: none;
+}
+
+button:focus {
+	outline: 0;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+h1 {
+	font-size: 2rem;
+	margin: 1rem;
+	color: black;
+}
+
+h1 a:link,
+h1 a:visited {
+	color: black;
+}
+
+input {
+	min-width: 9rem;
+}
+
+.active-route a:link,
+.active-route a:visited {
+	color: black;
+}
+
+.emoji {
+	font-weight: 400;
+	font-family: "apple color emoji", "segoe ui emoji", "noto color emoji",
+		"android emoji", "emojisymbols", "emojione mozilla", "twemoji mozilla",
+		"segoe ui symbol";
+}
+
+.item {
+	margin-bottom: 1rem;
+}
+
+#results {
+	visibility: hidden;
+	width: 600px;
+	height: 680px;
+	margin: auto;
+	-webkit-text-size-adjust: none;
+	touch-action: pan-y;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-align: left;
+	user-select: text;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	font-family: monospace;
+	font-size: 12px;
+}
+
+#results-count {
+	margin-top: 1rem;
+}

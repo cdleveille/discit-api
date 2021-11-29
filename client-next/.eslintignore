@@ -1,0 +1,5 @@
+.next/**/*
+.vscode/**/*
+.legacy/**/*
+.public/**/*
+.styles/**/*
