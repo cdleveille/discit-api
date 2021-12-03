@@ -43,7 +43,10 @@ export default class App {
 			})
 		);
 		App.instance.use(compression());
-		App.instance.use(cors());
+		App.instance.use(cors({
+			origin: "*",
+			methods: ["GET"]
+		}));
 		App.instance.use(cleanURL());
 		App.instance.use(Routes.root, router);
 

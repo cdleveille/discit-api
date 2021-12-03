@@ -1,5 +1,6 @@
 {
   "name": "discit",
+  "private": true,
   "version": "1.0.0",
   "description": "RESTful API for disc golf discs.",
   "main": "build/src/index.js",
