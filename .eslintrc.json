@@ -1,5 +1,6 @@
 {
   "env": {
+    "browser": true,
     "node": true,
     "es2021": true
   },
@@ -12,10 +13,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "linebreak-style": [
-      "warn",
-      "windows"
-    ],
     "quotes": [
       "warn",
       "double"
@@ -23,6 +20,12 @@
     "semi": [
       "warn",
       "always"
+    ],
+    "no-unused-vars": [
+      2,
+      {
+        "args": "none"
+      }
     ]
   },
   "settings": {
