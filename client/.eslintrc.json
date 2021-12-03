@@ -21,6 +21,6 @@
 		"react": {
 			"pragma": "React",
 			"version": "detect"
-	  }
+		}
 	}
-  }
+}
