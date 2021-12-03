@@ -1,25 +1,39 @@
 {
-	"editor.detectIndentation": false,
-	"editor.tabSize": 4,
-	"editor.insertSpaces": false,
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
-	},
-	"files.exclude": {
-		"**/.git": true,
-		"**/.svn": true,
-		"**/.hg": true,
-		"**/CVS": true,
-		"**/.DS_Store": true,
-		"node_modules": true,
-		"client/node_modules": true
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features",
-		"editor.formatOnSave": true
-	},
-	"eslint.validate": [
-		"javascript",
-		"typescript",
-	]
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false,
+  "editor.tabSize": 4,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+  },
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+  ],
+  "prettier.endOfLine": "crlf",
+  "prettier.printWidth": 150,
+  "prettier.tabWidth": 4,
+  "prettier.trailingComma": "none",
+  "prettier.useTabs": true,
+  "prettier.singleQuote": false,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": true
 }
