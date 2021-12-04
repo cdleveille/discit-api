@@ -1,4 +1,4 @@
-# 🥏 DiscIt
+# 🥏 DiscIt API
 
 RESTful API for disc golf discs.
 
