@@ -62,8 +62,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const brand_slug: string = slugify(brand);
 		const category_slug: string = slugify(category);
 		const stability_slug: string = slugify(stability);
+		const color: string = element.getAttribute(Site.colorAttr);
+		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug, color, background_color };
 
 		let match;
 		for (const existingDisc of existingDiscs) {
@@ -97,8 +99,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const brand_slug: string = slugify(brand);
 		const category_slug: string = slugify(category);
 		const stability_slug: string = slugify(stability);
+		const color: string = element.getAttribute(Site.colorAttr);
+		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug };
+		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug, color, background_color };
 
 		let match;
 		for (const existingDisc of existingDiscs) {

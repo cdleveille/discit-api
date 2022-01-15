@@ -27,7 +27,9 @@ export enum Site {
 	fadeAttr = "data-fade",
 	linkAttr = "data-link",
 	discPicAttr = "data-pic",
-	putterPicAttr = "data-image"
+	putterPicAttr = "data-image",
+	colorAttr = "data-text",
+	backgroundColorAttr = "data-bg"
 }
 
 export const CategoryMap = new Map([

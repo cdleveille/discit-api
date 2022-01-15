@@ -17,7 +17,9 @@ export const createDisc = (disc: IDisc): Disc => {
 		name_slug: disc.name_slug,
 		brand_slug: disc.brand_slug,
 		category_slug: disc.category_slug,
-		stability_slug: disc.stability_slug
+		stability_slug: disc.stability_slug,
+		color: disc.color,
+		background_color: disc.background_color
 	});
 };
 
@@ -40,7 +42,9 @@ export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
 		disc1.name_slug === disc2.name_slug &&
 		disc1.brand_slug === disc2.brand_slug &&
 		disc1.category_slug === disc2.category_slug &&
-		disc1.stability_slug === disc2.stability_slug
+		disc1.stability_slug === disc2.stability_slug &&
+		disc1.color === disc2.color &&
+		disc1.background_color === disc2.background_color
 	);
 };
 
@@ -59,6 +63,8 @@ export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): I
 	targetDisc.brand_slug = sourceDisc.brand_slug;
 	targetDisc.category_slug = sourceDisc.category_slug;
 	targetDisc.stability_slug = sourceDisc.stability_slug;
+	targetDisc.color = sourceDisc.color;
+	targetDisc.background_color = sourceDisc.background_color;
 
 	return targetDisc;
 };
