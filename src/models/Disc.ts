@@ -59,4 +59,10 @@ export class Disc extends Base {
 	@Index()
 	@Property({ default: "*" })
 	stability_slug: string;
+
+	@Property({ default: "#" })
+	color: string;
+
+	@Property({ default: "#" })
+	background_color: string;
 }
