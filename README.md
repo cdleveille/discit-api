@@ -40,7 +40,7 @@ Check it out live on Heroku! [discitapi.herokuapp.com](https://discitapi.herokua
 | `GET`  | `/disc/fade`       | Search by `fade` field        |
 | `GET`  | `/disc/stability`  | Search by `stability` field   |
 
-See [requests.rest](https://github.com/cdleveille/discit/blob/main/requests.rest) for example requests.
+See [requests.rest](https://github.com/cdleveille/discit-api/blob/main/requests.rest) for example requests.
 
 ## Technologies
 
