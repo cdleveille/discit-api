@@ -1,6 +1,6 @@
 import compression from "compression";
 import cors from "cors";
-import express, { Express, NextFunction, Request, Response } from "express";
+import express, { Express } from "express";
 import fs from "fs";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -10,11 +10,10 @@ import router from "../controllers/index";
 import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
 import cleanURL from "../middleware/cleanUrl";
-import { Disc } from "../models/Disc";
 import Cron from "./cron";
-import { Database } from "./db";
+import { connectToDatabase } from "./db";
 import log from "./log";
-import { Routes } from "../../client/src/shared/types/constants";
+import { Routes } from "../types/constants";
 
 export default class App {
 	private static instance: Express;
@@ -24,11 +23,6 @@ export default class App {
 
 		const logStream = fs.createWriteStream("combined.log", { flags: "a" });
 		App.instance.use(morgan("combined", { stream: logStream }));
-
-		App.instance.use((req: Request, res: Response, next: NextFunction) => {
-			res.locals.em = Database.Manager.fork();
-			next();
-		});
 
 		App.instance.use(
 			helmet.contentSecurityPolicy({
@@ -59,16 +53,15 @@ export default class App {
 	}
 
 	public static async start() {
-		await Database.Connect();
+		await connectToDatabase();
 		await App.setup();
 
 		App.instance.listen(Config.PORT);
 		log.info(`Server started - listening on http://${Config.HOST}:${Config.PORT}`);
 
-		const manager = Database.Manager.fork().getRepository(Disc);
-		const cron = new Cron(manager);
+		const cron = new Cron();
 		cron.autoDiscMaintenance.start();
 
-		if (Config.FETCH_DISCS_START) await fetchDiscs(manager);
+		if (Config.FETCH_DISCS_START) await fetchDiscs();
 	}
 }

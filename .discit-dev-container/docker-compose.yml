@@ -1,0 +1,23 @@
+version: "3.6"
+
+services:
+    # mongo service
+    discit-mongodb-local:
+        image: mongo:latest
+        container_name: discit-mongodb-local
+        command: mongod --port 27047
+        ports:
+            - 27047:27047
+        expose:
+            - 27047
+        volumes:
+            - mongo-data:/data/db
+        networks:
+            - mongo_net
+
+volumes:
+    mongo-data:
+
+networks:
+    mongo_net:
+        driver: bridge

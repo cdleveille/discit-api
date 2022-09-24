@@ -1,8 +1,8 @@
-import { Disc } from "../models/Disc";
+import { Disc } from "../models/disc";
 import { IDisc } from "../types/abstract";
 import { FieldsUsingLike, FieldsUsingSlug } from "../types/constants";
 
-export const createDisc = (disc: IDisc): Disc => {
+export const createDisc = (disc: IDisc) => {
 	return new Disc({
 		name: disc.name,
 		brand: disc.brand,
@@ -81,4 +81,11 @@ export const cleanQueryValue = (cleanKey: string, value: string): any => {
 	} else {
 		return `${cleanValue}`;
 	}
+};
+
+export const slugify = (text: string): string => {
+	const slug = text.toLowerCase()
+		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
+		.replace(/[ ]/g, "-");
+	return slug;
 };

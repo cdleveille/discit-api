@@ -1,22 +1,21 @@
 import axios from "axios";
 import { JSDOM } from "jsdom";
 
-import { slugify } from "../../client/src/shared/helpers/util";
 import Config from "../helpers/config";
-import { discNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc } from "../helpers/util";
-import { DiscRepository as DiscRepo, RequestRepo as Manager } from "../repositories/DiscRepository";
+import { discNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc, slugify } from "../helpers/util";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
 import { CategoryMap, Site, StabilityMap } from "../types/constants";
+import { Disc } from "../models/disc";
 
-export const fetchDiscs = async (manager: Manager) => {
+export const fetchDiscs = async () => {
 	try {
 		log.info("***START*** - disc maintenance process.");
 
 		log.info("Getting all existing discs from database...");
-		const existingDiscs: IDisc[] = await DiscRepo.FindAll(manager);
+		const existingDiscs: IDisc[] = await Disc.find();
 
-		await fetchDiscsFromWebPage(manager, existingDiscs);
+		await fetchDiscsFromWebPage(existingDiscs);
 
 		log.info("***END*** - disc maintenance process completed successfully.");
 	} catch (error) {
@@ -24,7 +23,7 @@ export const fetchDiscs = async (manager: Manager) => {
 	}
 };
 
-const fetchDiscsFromWebPage = async (manager: Manager, existingDiscs: IDisc[]) => {
+const fetchDiscsFromWebPage = async (existingDiscs: IDisc[]) => {
 	try {
 		log.info(`Fetching disc data from ${Config.DISC_FETCH_URL}...`);
 		const { data } = await axios.get(Config.DISC_FETCH_URL);
@@ -36,7 +35,7 @@ const fetchDiscsFromWebPage = async (manager: Manager, existingDiscs: IDisc[]) =
 
 		const discs: IDiscUpsert = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
 
-		await upsertDiscs(manager, discs.discsToInsert, discs.discsToUpdate, existingDiscs, discCollection.length + putterCollection.length);
+		await upsertDiscs(discs.discsToInsert, discs.discsToUpdate, existingDiscs, discCollection.length + putterCollection.length);
 	} catch (error) {
 		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'!`);
 	}
@@ -123,10 +122,10 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	return { discsToInsert, discsToUpdate };
 };
 
-const upsertDiscs = async (manager: Manager, discsToInsert: IDisc[], discsToUpdate: IDisc[], existingDiscs: IDisc[], fetchCount: number) => {
+const upsertDiscs = async (discsToInsert: IDisc[], discsToUpdate: IDisc[], existingDiscs: IDisc[], fetchCount: number) => {
 	try {
-		if (discsToInsert.length > 0) await DiscRepo.InsertMany(manager, discsToInsert);
-		if (discsToUpdate.length > 0 && !Config.INSERT_ONLY) await DiscRepo.UpdateMany(manager, discsToUpdate);
+		if (discsToInsert.length > 0) await Disc.create(discsToInsert);
+		// if (discsToUpdate.length > 0 && !Config.INSERT_ONLY) await Disc.updateMany(discsToUpdate); // TODO: FIX THIS
 
 		let additionalUpdateOutput = "";
 		if (discsToUpdate.length > 0 && Config.INSERT_ONLY) {
