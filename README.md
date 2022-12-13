@@ -2,7 +2,7 @@
 
 RESTful API for disc golf discs.
 
-Enables developers to programmatically access public disc information from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page.
+Enables developers to programmatically access public disc information from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page. New disc information is fetched nightly.
 
 Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
@@ -41,6 +41,7 @@ Refer to the **Fields** section below for all possible query string parameters.
 
 ## Setup
 
+-   Install [Node.js](https://nodejs.org/en/download/), [Visual Studio Code](https://code.visualstudio.com/download) (with [Docker Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)), and [Docker Desktop](https://www.docker.com/).
 -   Clone repo and open in VS Code.
 -   Install yarn: `npm i -g yarn`
 -   Install package dependencies: `yarn`
