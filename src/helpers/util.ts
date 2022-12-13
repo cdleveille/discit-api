@@ -89,3 +89,7 @@ export const slugify = (text: string): string => {
 		.replace(/[ ]/g, "-");
 	return slug;
 };
+
+export const regexify = (field: string) => {
+	return { $regex: field, $options: "i" };
+};

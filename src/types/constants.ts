@@ -64,18 +64,6 @@ export const FieldsUsingSlug = [
 	"stability"
 ];
 
-export const FieldTypos = new Map([
-	["disc", ["idsc", "dsic", "dics", "disk", "disks", "dissk", "discs", "dissc", "dsci"]],
-	["name", ["anme", "nmae", "naem", "names", "namse", "mold", "omld", "modl", "molds", "molsd", "mlod", "mldo"]],
-	["brand", ["rband", "barnd", "brnad", "bradn", "brands", "bransd", "manufacturer"]],
-	["category", ["actegory", "ctaegory", "caetgory", "catgeory", "cateogry", "categroy", "categoyr", "categories", "type", "ytpe", "tpye", "tyep", "types", "typse"]],
-	["speed", ["pseed", "seped", "spede", "speeds", "speesd"]],
-	["glide", ["lgide", "gilde", "gldie", "glied", "glides", "glidse"]],
-	["turn", ["utrn", "trun", "tunr", "turns", "tursn"]],
-	["fade", ["afde", "fdae", "faed", "fades", "fadse", "face"]],
-	["stability", ["tsability", "satbility", "stbaility", "staiblity", "stabliity", "stabiilty", "stabiltiy", "stabiliyt", "stabilities", "stabilitise"]]
-]);
-
 export enum Routes {
 	root = "/",
 	disc = "/disc",

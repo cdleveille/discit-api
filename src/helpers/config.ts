@@ -7,7 +7,7 @@ import { Env, Host, DISC_FETCH_URL, PROD_URL } from "../types/constants";
 const Config = {
 	IS_COMPILED: <boolean>path.extname(__filename).includes("js"),
 	IS_PROD: <boolean>(process.env.NODE_ENV === Env.prod),
-	PORT: <number>(parseInt(process.env.PORT) || 3001),
+	PORT: <number>(parseInt(process.env.PORT) || 3000),
 	HOST: <string>(process.env.NODE_ENV === Env.prod ? process.env.HOST || PROD_URL : Host.local || Host.ip),
 	CORES: <number>os.cpus().length,
 	DISC_FETCH_URL: <string>DISC_FETCH_URL,

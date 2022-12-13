@@ -4,12 +4,10 @@ import express, { Express } from "express";
 import fs from "fs";
 import helmet from "helmet";
 import morgan from "morgan";
-import path from "path";
 
 import router from "../controllers/index";
 import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
-import cleanURL from "../middleware/cleanUrl";
 import Cron from "./cron";
 import { connectToDatabase } from "./db";
 import log from "./log";
@@ -41,13 +39,7 @@ export default class App {
 			origin: "*",
 			methods: ["GET"]
 		}));
-		App.instance.use(cleanURL());
 		App.instance.use(Routes.root, router);
-
-		if (fs.existsSync(path.join(process.cwd(), "/client/build"))) {
-			App.instance.use(express.static(path.join(process.cwd(), "/client/build")));
-		}
-
 		App.instance.set("json spaces", 2);
 		App.instance.disabled("x-powered-by");
 	}

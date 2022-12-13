@@ -53,3 +53,15 @@ export interface Options<T extends IBase = IBase> extends QueryOptions {
 	skip?: number;
 	new?: boolean;
 }
+
+export type DiscQueryRegex = { $regex: string; $options: string }
+export interface IDiscQuery {
+	name_slug?: DiscQueryRegex;
+	brand_slug?: DiscQueryRegex;
+	category_slug?: DiscQueryRegex;
+	stability_slug?: DiscQueryRegex;
+	speed?: string;
+	glide?: string;
+	turn?: string;
+	fade?: string;
+}
