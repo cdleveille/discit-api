@@ -15,7 +15,7 @@ discRouter.get(Routes.root, async (req: Request, res: Response): Promise<Respons
 		name && (query.name_slug = regexify(name));
 		brand && (query.brand_slug = regexify(brand));
 		category && (query.category_slug = regexify(category));
-		stability && (query.stability_slug = regexify(stability));
+		stability && (query.stability_slug = stability);
 		speed && (query.speed = speed);
 		glide && (query.glide = glide);
 		turn && (query.turn = turn);

@@ -59,7 +59,7 @@ export interface IDiscQuery {
 	name_slug?: DiscQueryRegex;
 	brand_slug?: DiscQueryRegex;
 	category_slug?: DiscQueryRegex;
-	stability_slug?: DiscQueryRegex;
+	stability_slug?: string;
 	speed?: string;
 	glide?: string;
 	turn?: string;
