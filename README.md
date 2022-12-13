@@ -8,9 +8,17 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
 ## Endpoints
 
-| Method | Route   | Description   |
-| ------ | ------- | ------------- |
-| `GET`  | `/disc` | Get all discs |
+| Method | Route   | Description  |
+| ------ | ------- | ------------ |
+| `GET`  | `/disc` | Search discs |
+
+## Example Requests
+
+-   All discs: `/disc`
+-   By one field: `/disc?stability=very-overstable`
+-   By multiple fields: `/disc?brand=innova&category=control-driver`
+
+Refer to the **Fields** section below for all possible query string parameters.
 
 ## Fields
 
@@ -31,13 +39,15 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
 \* This field uses a URL-friendly **slug** string for searches. All non-alphanumeric characters are stripped out, and each space is replaced with a hyphen (e.g. `Crank SS` = `crank-ss`, `#1 Driver` = `1-driver`).
 
-## Example Requests
+## Setup
 
--   All discs: `/disc`
--   By one field: `/disc?stability=very-overstable`
--   By multiple fields: `/disc?brand=innova&category=control-driver`
-
-See the **Fields** section above for all possible query string parameters.
+-   Clone repo and open in VS Code.
+-   Install yarn: `npm i -g yarn`
+-   Install package dependencies: `yarn`
+-   Create and populate a `.env` file based on `.env.example`.
+-   Launch Docker Desktop. In VS Code, right-click `.discit-dev-container\docker-compose.yml` and select `Compose Up` to initialize database container.
+-   Press `F5` or run `yarn dev` to run in dev mode (server restarts on file save).
+-   Server will listen for requests on [localhost:3000](http://localhost:3000/).
 
 ## Technologies
 
