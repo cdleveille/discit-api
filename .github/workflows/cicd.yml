@@ -1,0 +1,27 @@
+name: cicd
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: lint project
+        run: yarn lint
+
+      - name: build project
+        run: yarn build

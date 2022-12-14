@@ -77,14 +77,15 @@ export const cleanQueryField = (key: string): string => {
 export const cleanQueryValue = (cleanKey: string, value: string): any => {
 	const cleanValue = value.toLowerCase().trim();
 	if (FieldsUsingLike.includes(cleanKey)) {
-		return { "$ilike": `%${cleanValue}%` };
+		return { $ilike: `%${cleanValue}%` };
 	} else {
 		return `${cleanValue}`;
 	}
 };
 
 export const slugify = (text: string): string => {
-	const slug = text.toLowerCase()
+	const slug = text
+		.toLowerCase()
 		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
 		.replace(/[ ]/g, "-");
 	return slug;

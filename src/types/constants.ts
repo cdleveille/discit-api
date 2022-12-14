@@ -48,21 +48,9 @@ export const StabilityMap = new Map([
 	["very-understable", "Very Understable"]
 ]);
 
-export const FieldsUsingLike = [
-	"name_slug",
-	"brand_slug",
-	"category_slug",
-	"name",
-	"brand",
-	"category"
-];
+export const FieldsUsingLike = ["name_slug", "brand_slug", "category_slug", "name", "brand", "category"];
 
-export const FieldsUsingSlug = [
-	"name",
-	"brand",
-	"category",
-	"stability"
-];
+export const FieldsUsingSlug = ["name", "brand", "category", "stability"];
 
 export enum Routes {
 	root = "/",
@@ -74,5 +62,5 @@ export enum Routes {
 	glide = "/glide",
 	turn = "/turn",
 	fade = "/fade",
-	stability = "/stability",
+	stability = "/stability"
 }

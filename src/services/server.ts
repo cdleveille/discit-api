@@ -8,10 +8,10 @@ import morgan from "morgan";
 import router from "../controllers/index";
 import { fetchDiscs } from "../db/populate";
 import Config from "../helpers/config";
+import { Routes } from "../types/constants";
 import Cron from "./cron";
 import { connectToDatabase } from "./db";
 import log from "./log";
-import { Routes } from "../types/constants";
 
 export default class App {
 	private static instance: Express;
@@ -31,14 +31,16 @@ export default class App {
 					"style-src": ["'self'", "'unsafe-inline'", "cdnjs.cloudflare.com", "fonts.googleapis.com"],
 					"font-src": ["'self'", "'unsafe-inline'", "fonts.googleapis.com", "fonts.gstatic.com"],
 					"img-src": ["'self' blob: data:"]
-				},
+				}
 			})
 		);
 		App.instance.use(compression());
-		App.instance.use(cors({
-			origin: "*",
-			methods: ["GET"]
-		}));
+		App.instance.use(
+			cors({
+				origin: "*",
+				methods: ["GET"]
+			})
+		);
 		App.instance.use(Routes.root, router);
 		App.instance.set("json spaces", 2);
 		App.instance.disabled("x-powered-by");

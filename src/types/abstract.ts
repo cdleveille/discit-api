@@ -6,27 +6,27 @@ export interface IBase {
 }
 
 export interface IDisc {
-	name: string,
-	brand: string,
-	category: string,
-	speed: string,
-	glide: string,
-	turn: string,
-	fade: string,
-	stability: string,
-	link: string,
-	pic: string,
-	name_slug: string,
-	brand_slug: string,
-	category_slug: string,
-	stability_slug: string
-	color: string,
-	background_color: string
+	name: string;
+	brand: string;
+	category: string;
+	speed: string;
+	glide: string;
+	turn: string;
+	fade: string;
+	stability: string;
+	link: string;
+	pic: string;
+	name_slug: string;
+	brand_slug: string;
+	category_slug: string;
+	stability_slug: string;
+	color: string;
+	background_color: string;
 }
 
 export interface IDiscUpsert {
-	discsToInsert: IDisc[],
-	discsToUpdate: IDisc[]
+	discsToInsert: IDisc[];
+	discsToUpdate: IDisc[];
 }
 
 export interface IBaseModel<T extends IBase = IBase> extends Model<T> {
@@ -37,7 +37,7 @@ export interface IBaseModel<T extends IBase = IBase> extends Model<T> {
 	getCount(filter: FilterQuery<T>, options?: Options<T>): Promise<number>;
 }
 
-interface IDiscXt extends IBase, IDisc { }
+interface IDiscXt extends IBase, IDisc {}
 
 export type IDiscModel = IBaseModel<IDiscXt>;
 
@@ -54,7 +54,7 @@ export interface Options<T extends IBase = IBase> extends QueryOptions {
 	new?: boolean;
 }
 
-export type DiscQueryRegex = { $regex: string; $options: string }
+export type DiscQueryRegex = { $regex: string; $options: string };
 export interface IDiscQuery {
 	name_slug?: DiscQueryRegex;
 	brand_slug?: DiscQueryRegex;

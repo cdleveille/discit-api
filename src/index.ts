@@ -1,10 +1,10 @@
-import Config from "./helpers/config";
 import cluster from "cluster";
 
+import Config from "./helpers/config";
 import log from "./services/log";
 import app from "./services/server";
 
-process.on("uncaughtException", (error) => {
+process.on("uncaughtException", error => {
 	log.error(error);
 	process.exit(1);
 });
@@ -16,8 +16,7 @@ process.on("uncaughtException", (error) => {
 			for (let i = 0; i < cpus; i++) {
 				cluster.fork();
 			}
-		}
-		else await app.start();
+		} else await app.start();
 	} catch (error) {
 		log.error(error);
 		process.exit(1);

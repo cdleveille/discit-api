@@ -2,11 +2,11 @@ import axios from "axios";
 import { JSDOM } from "jsdom";
 
 import Config from "../helpers/config";
-import { discNameAndBrandMatch, discsAreEqual, updateDiscFromOtherDisc, slugify } from "../helpers/util";
+import { discNameAndBrandMatch, discsAreEqual, slugify, updateDiscFromOtherDisc } from "../helpers/util";
+import { Disc } from "../models/disc";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
 import { CategoryMap, Site, StabilityMap } from "../types/constants";
-import { Disc } from "../models/disc";
 
 export const fetchDiscs = async () => {
 	try {
@@ -35,15 +35,20 @@ const fetchDiscsFromWebPage = async (existingDiscs: IDisc[]) => {
 
 		const discs: IDiscUpsert = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
 
-		await upsertDiscs(discs.discsToInsert, discs.discsToUpdate, existingDiscs, discCollection.length + putterCollection.length);
+		await upsertDiscs(
+			discs.discsToInsert,
+			discs.discsToUpdate,
+			existingDiscs,
+			discCollection.length + putterCollection.length
+		);
 	} catch (error) {
 		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'!`);
 	}
 };
 
 const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existingDiscs: IDisc[]): IDiscUpsert => {
-	let discsToInsert: IDisc[] = [];
-	let discsToUpdate: IDisc[] = [];
+	const discsToInsert: IDisc[] = [];
+	const discsToUpdate: IDisc[] = [];
 
 	// distance drivers, hybrid drivers, control drivers, midranges
 	for (const element of discCollection) {
@@ -64,7 +69,24 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const color: string = element.getAttribute(Site.colorAttr);
 		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug, color, background_color };
+		const disc: IDisc = {
+			name,
+			brand,
+			category,
+			speed,
+			glide,
+			turn,
+			fade,
+			stability,
+			link,
+			pic,
+			name_slug,
+			brand_slug,
+			category_slug,
+			stability_slug,
+			color,
+			background_color
+		};
 
 		let match;
 		for (const existingDisc of existingDiscs) {
@@ -86,7 +108,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	for (const element of putterCollection) {
 		const name: string = element.getAttribute(Site.putterNameAttr);
 		const brand: string = element.getAttribute(Site.brandAttr);
-		const category: string = "Putter";
+		const category = "Putter";
 		const speed: string = parseDecimalString(element.getAttribute(Site.speedAttr));
 		const glide: string = parseDecimalString(element.getAttribute(Site.glideAttr));
 		const turn: string = parseDecimalString(element.getAttribute(Site.turnAttr));
@@ -101,7 +123,24 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const color: string = element.getAttribute(Site.colorAttr);
 		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
 
-		const disc: IDisc = { name, brand, category, speed, glide, turn, fade, stability, link, pic, name_slug, brand_slug, category_slug, stability_slug, color, background_color };
+		const disc: IDisc = {
+			name,
+			brand,
+			category,
+			speed,
+			glide,
+			turn,
+			fade,
+			stability,
+			link,
+			pic,
+			name_slug,
+			brand_slug,
+			category_slug,
+			stability_slug,
+			color,
+			background_color
+		};
 
 		let match;
 		for (const existingDisc of existingDiscs) {
@@ -122,7 +161,12 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	return { discsToInsert, discsToUpdate };
 };
 
-const upsertDiscs = async (discsToInsert: IDisc[], discsToUpdate: IDisc[], existingDiscs: IDisc[], fetchCount: number) => {
+const upsertDiscs = async (
+	discsToInsert: IDisc[],
+	discsToUpdate: IDisc[],
+	existingDiscs: IDisc[],
+	fetchCount: number
+) => {
 	try {
 		if (discsToInsert.length > 0) await Disc.create(discsToInsert);
 		// if (discsToUpdate.length > 0 && !Config.INSERT_ONLY) await Disc.updateMany(discsToUpdate); // TODO: FIX THIS
@@ -135,7 +179,11 @@ const upsertDiscs = async (discsToInsert: IDisc[], discsToUpdate: IDisc[], exist
 		log.info(`${fetchCount} discs fetched from ${Config.DISC_FETCH_URL}.`);
 		log.info(`${existingDiscs.length} existing discs in database.`);
 		log.info(`${discsToInsert.length} new discs inserted.`);
-		log.info(`${Config.INSERT_ONLY ? 0 : discsToUpdate.length} existing discs updated with new data${additionalUpdateOutput}.`);
+		log.info(
+			`${
+				Config.INSERT_ONLY ? 0 : discsToUpdate.length
+			} existing discs updated with new data${additionalUpdateOutput}.`
+		);
 	} catch (error) {
 		log.error(error);
 		log.error("Error updating disc data in database!");
@@ -161,12 +209,18 @@ const parseStability = (element: any, turn: string, fade: string): string => {
 	// if not found in html, calculate it based on turn and fade
 	const diff: number = parseFloat(turn) + parseFloat(fade);
 	switch (true) {
-		case (diff >= 4): return "Very Overstable";
-		case (diff >= 2 && diff < 4): return "Overstable";
-		case (diff < 2 && diff > -2): return "Stable";
-		case (diff <= -2 && diff > -4): return "Understable";
-		case (diff <= -4): return "Very Understable";
-		default: return null;
+		case diff >= 4:
+			return "Very Overstable";
+		case diff >= 2 && diff < 4:
+			return "Overstable";
+		case diff < 2 && diff > -2:
+			return "Stable";
+		case diff <= -2 && diff > -4:
+			return "Understable";
+		case diff <= -4:
+			return "Very Understable";
+		default:
+			return null;
 	}
 };
 

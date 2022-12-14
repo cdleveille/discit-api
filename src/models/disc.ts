@@ -70,12 +70,12 @@ const DiscSchema = new Schema<IDisc>({
 	},
 	color: {
 		type: String,
-		required: false,
+		required: false
 	},
 	background_color: {
 		type: String,
-		required: false,
-	},
+		required: false
+	}
 }).add(BaseSchema);
 
 export const Disc = model<IDisc, IDiscModel>("Disc", DiscSchema);

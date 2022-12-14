@@ -1,8 +1,9 @@
 import "dotenv/config";
+
 import os from "os";
 import path from "path";
 
-import { Env, Host, DISC_FETCH_URL, PROD_URL } from "../types/constants";
+import { DISC_FETCH_URL, Env, Host, PROD_URL } from "../types/constants";
 
 const Config = {
 	IS_COMPILED: <boolean>path.extname(__filename).includes("js"),
