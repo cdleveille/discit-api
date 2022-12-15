@@ -2,7 +2,13 @@ import axios from "axios";
 import { JSDOM } from "jsdom";
 
 import Config from "../helpers/config";
-import { discNameAndBrandMatch, discsAreEqual, safeUpdateDiscFromOtherDisc, slugify } from "../helpers/util";
+import {
+	discMeetsMinCriteria,
+	discNameAndBrandMatch,
+	discsAreEqual,
+	safeUpdateDiscFromOtherDisc,
+	slugify
+} from "../helpers/util";
 import { Disc } from "../models/disc";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
@@ -85,22 +91,24 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 			background_color
 		};
 
-		if (Config.FETCH_DISCS_CLEAN) {
-			discsToInsert.push(disc);
-		} else {
-			let match;
-			for (const existingDisc of existingDiscs) {
-				match = discNameAndBrandMatch(disc, existingDisc);
-				if (match) break;
-			}
-
-			if (match) {
-				if (!discsAreEqual(disc, match)) {
-					safeUpdateDiscFromOtherDisc(match, disc);
-					discsToUpdate.push(match);
-				}
-			} else {
+		if (discMeetsMinCriteria(disc)) {
+			if (Config.FETCH_DISCS_CLEAN) {
 				discsToInsert.push(disc);
+			} else {
+				let match;
+				for (const existingDisc of existingDiscs) {
+					match = discNameAndBrandMatch(disc, existingDisc);
+					if (match) break;
+				}
+
+				if (match) {
+					if (!discsAreEqual(disc, match)) {
+						safeUpdateDiscFromOtherDisc(match, disc);
+						discsToUpdate.push(match);
+					}
+				} else {
+					discsToInsert.push(disc);
+				}
 			}
 		}
 	}
@@ -143,22 +151,24 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 			background_color
 		};
 
-		if (Config.FETCH_DISCS_CLEAN) {
-			discsToInsert.push(disc);
-		} else {
-			let match;
-			for (const existingDisc of existingDiscs) {
-				match = discNameAndBrandMatch(disc, existingDisc);
-				if (match) break;
-			}
-
-			if (match) {
-				if (!discsAreEqual(disc, match)) {
-					safeUpdateDiscFromOtherDisc(match, disc);
-					discsToUpdate.push(match);
-				}
-			} else {
+		if (discMeetsMinCriteria(disc)) {
+			if (Config.FETCH_DISCS_CLEAN) {
 				discsToInsert.push(disc);
+			} else {
+				let match;
+				for (const existingDisc of existingDiscs) {
+					match = discNameAndBrandMatch(disc, existingDisc);
+					if (match) break;
+				}
+
+				if (match) {
+					if (!discsAreEqual(disc, match)) {
+						safeUpdateDiscFromOtherDisc(match, disc);
+						discsToUpdate.push(match);
+					}
+				} else {
+					discsToInsert.push(disc);
+				}
 			}
 		}
 	}

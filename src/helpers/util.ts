@@ -68,8 +68,10 @@ export const safeUpdateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc
 	return targetDisc;
 };
 
-const discHasEnoughData = (disc: IDisc) => {
-	//
+export const discMeetsMinCriteria = (disc: IDisc) => {
+	return (
+		disc.name && disc.brand && disc.category && disc.speed && disc.glide && disc.turn && disc.fade && disc.stability
+	);
 };
 
 export const cleanQueryField = (key: string): string => {
