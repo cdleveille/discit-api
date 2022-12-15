@@ -1,5 +1,6 @@
 import axios from "axios";
 import { JSDOM } from "jsdom";
+import path from "path";
 
 import {
 	discMeetsMinCriteria,
@@ -45,8 +46,9 @@ const backupDiscs = async () => {
 
 		if (existingDiscs.length > 0) {
 			log.info("Backing up existing discs...");
-			writeDataToFile(existingDiscs, "./backup/discs.json");
-			log.info(`Backed up ${existingDiscs.length} existing discs to file './backup/discs.json'.`);
+			const filepath = path.join(process.cwd(), "backup\\discs.json");
+			writeDataToFile(existingDiscs, filepath);
+			log.info(`Backed up ${existingDiscs.length} existing discs to file '${filepath}.`);
 		}
 	} catch (error) {
 		throw new Error(`${error} - Error backing up existing discs.`);
