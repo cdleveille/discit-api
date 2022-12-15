@@ -14,6 +14,7 @@ const Config = {
 	DISC_FETCH_URL: <string>DISC_FETCH_URL,
 	FETCH_DISCS_START: <boolean>(process.env.FETCH_DISCS_START === "true"),
 	FETCH_DISCS_CRON: <boolean>(process.env.FETCH_DISCS_CRON === "true"),
+	FETCH_DISCS_CLEAN: <boolean>(process.env.FETCH_DISCS_CLEAN === "true"),
 	INSERT_ONLY: <boolean>(process.env.INSERT_ONLY === "true"),
 	MONGO_URI: <string>process.env.MONGO_URI || "mongodb://localhost:27047/discit"
 };

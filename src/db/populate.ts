@@ -2,7 +2,7 @@ import axios from "axios";
 import { JSDOM } from "jsdom";
 
 import Config from "../helpers/config";
-import { discNameAndBrandMatch, discsAreEqual, slugify, updateDiscFromOtherDisc } from "../helpers/util";
+import { discNameAndBrandMatch, discsAreEqual, safeUpdateDiscFromOtherDisc, slugify } from "../helpers/util";
 import { Disc } from "../models/disc";
 import log from "../services/log";
 import { IDisc, IDiscUpsert } from "../types/abstract";
@@ -14,6 +14,7 @@ export const fetchDiscs = async () => {
 
 		log.info("Getting all existing discs from database...");
 		const existingDiscs: IDisc[] = await Disc.find();
+		log.info(`${existingDiscs.length} existing discs in database.`);
 
 		await fetchDiscsFromWebPage(existingDiscs);
 
@@ -26,21 +27,17 @@ export const fetchDiscs = async () => {
 const fetchDiscsFromWebPage = async (existingDiscs: IDisc[]) => {
 	try {
 		log.info(`Fetching disc data from ${Config.DISC_FETCH_URL}...`);
-		const { data } = await axios.get(Config.DISC_FETCH_URL);
+		const { status, data } = await axios.get(Config.DISC_FETCH_URL);
+		if (status !== 200) throw `Bad response status: ${status}`;
 		if (!data) throw `${Config.DISC_FETCH_URL} returned no data!`;
 
 		const dom = new JSDOM(data);
 		const discCollection = dom.window.document.getElementsByClassName(Site.discClass);
 		const putterCollection = dom.window.document.getElementsByClassName(Site.putterClass);
 
-		const discs: IDiscUpsert = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
+		const discs = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
 
-		await upsertDiscs(
-			discs.discsToInsert,
-			discs.discsToUpdate,
-			existingDiscs,
-			discCollection.length + putterCollection.length
-		);
+		await upsertDiscs(discs.discsToInsert, discs.discsToUpdate, discCollection.length + putterCollection.length);
 	} catch (error) {
 		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'!`);
 	}
@@ -88,19 +85,23 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 			background_color
 		};
 
-		let match;
-		for (const existingDisc of existingDiscs) {
-			match = discNameAndBrandMatch(disc, existingDisc);
-			if (match) break;
-		}
-
-		if (match) {
-			if (!discsAreEqual(disc, match)) {
-				updateDiscFromOtherDisc(match, disc);
-				discsToUpdate.push(match);
-			}
-		} else {
+		if (Config.FETCH_DISCS_CLEAN) {
 			discsToInsert.push(disc);
+		} else {
+			let match;
+			for (const existingDisc of existingDiscs) {
+				match = discNameAndBrandMatch(disc, existingDisc);
+				if (match) break;
+			}
+
+			if (match) {
+				if (!discsAreEqual(disc, match)) {
+					safeUpdateDiscFromOtherDisc(match, disc);
+					discsToUpdate.push(match);
+				}
+			} else {
+				discsToInsert.push(disc);
+			}
 		}
 	}
 
@@ -142,34 +143,39 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 			background_color
 		};
 
-		let match;
-		for (const existingDisc of existingDiscs) {
-			match = discNameAndBrandMatch(disc, existingDisc);
-			if (match) break;
-		}
-
-		if (match) {
-			if (!discsAreEqual(disc, match)) {
-				updateDiscFromOtherDisc(match, disc);
-				discsToUpdate.push(match);
-			}
-		} else {
+		if (Config.FETCH_DISCS_CLEAN) {
 			discsToInsert.push(disc);
+		} else {
+			let match;
+			for (const existingDisc of existingDiscs) {
+				match = discNameAndBrandMatch(disc, existingDisc);
+				if (match) break;
+			}
+
+			if (match) {
+				if (!discsAreEqual(disc, match)) {
+					safeUpdateDiscFromOtherDisc(match, disc);
+					discsToUpdate.push(match);
+				}
+			} else {
+				discsToInsert.push(disc);
+			}
 		}
 	}
 
 	return { discsToInsert, discsToUpdate };
 };
 
-const upsertDiscs = async (
-	discsToInsert: IDisc[],
-	discsToUpdate: IDisc[],
-	existingDiscs: IDisc[],
-	fetchCount: number
-) => {
+const upsertDiscs = async (discsToInsert: IDisc[], discsToUpdate: IDisc[], fetchCount: number) => {
 	try {
-		if (discsToInsert.length > 0) await Disc.create(discsToInsert);
-		// if (discsToUpdate.length > 0 && !Config.INSERT_ONLY) await Disc.updateMany(discsToUpdate); // TODO: FIX THIS
+		if (discsToInsert.length > 0) {
+			if (Config.FETCH_DISCS_CLEAN) {
+				log.info("FETCH_DISCS_CLEAN is set to true. Deleting all existing discs from database...");
+				await Disc.deleteMany();
+			}
+			await Disc.create(discsToInsert);
+		}
+		// if (discsToUpdate.length > 0 && !Config.INSERT_ONLY) await Disc.updateMany(discsToUpdate); // broken since moving to mongo
 
 		let additionalUpdateOutput = "";
 		if (discsToUpdate.length > 0 && Config.INSERT_ONLY) {
@@ -177,7 +183,6 @@ const upsertDiscs = async (
 		}
 
 		log.info(`${fetchCount} discs fetched from ${Config.DISC_FETCH_URL}.`);
-		log.info(`${existingDiscs.length} existing discs in database.`);
 		log.info(`${discsToInsert.length} new discs inserted.`);
 		log.info(
 			`${
@@ -207,7 +212,7 @@ const parseStability = (element: any, turn: string, fade: string): string => {
 	}
 
 	// if not found in html, calculate it based on turn and fade
-	const diff: number = parseFloat(turn) + parseFloat(fade);
+	const diff = parseFloat(turn) + parseFloat(fade);
 	switch (true) {
 		case diff >= 4:
 			return "Very Overstable";

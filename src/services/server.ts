@@ -56,6 +56,9 @@ export default class App {
 		const cron = new Cron();
 		cron.autoDiscMaintenance.start();
 
-		if (Config.FETCH_DISCS_START) await fetchDiscs();
+		if (Config.FETCH_DISCS_START) {
+			log.info("FETCH_DISCS_START is set to true. Starting disc maintenance process...");
+			await fetchDiscs();
+		}
 	}
 }

@@ -12,7 +12,7 @@ export enum Host {
 
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";
 
-export const PROD_URL = "https://discitapi.herokuapp.com";
+export const PROD_URL = "https://discit-api.fly.dev";
 
 export enum Site {
 	discClass = "disc-item",
@@ -54,13 +54,5 @@ export const FieldsUsingSlug = ["name", "brand", "category", "stability"];
 
 export enum Routes {
 	root = "/",
-	disc = "/disc",
-	name = "/name",
-	brand = "/brand",
-	category = "/category",
-	speed = "/speed",
-	glide = "/glide",
-	turn = "/turn",
-	fade = "/fade",
-	stability = "/stability"
+	disc = "/disc"
 }

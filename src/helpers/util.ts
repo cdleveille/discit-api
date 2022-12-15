@@ -48,25 +48,28 @@ export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
 	);
 };
 
-export const updateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): IDisc => {
-	targetDisc.name = sourceDisc.name;
-	targetDisc.brand = sourceDisc.brand;
-	targetDisc.category = sourceDisc.category;
-	targetDisc.speed = sourceDisc.speed;
-	targetDisc.glide = sourceDisc.glide;
-	targetDisc.turn = sourceDisc.turn;
-	targetDisc.fade = sourceDisc.fade;
-	targetDisc.stability = sourceDisc.stability;
-	targetDisc.link = sourceDisc.link;
-	targetDisc.pic = sourceDisc.pic;
-	targetDisc.name_slug = sourceDisc.name_slug;
-	targetDisc.brand_slug = sourceDisc.brand_slug;
-	targetDisc.category_slug = sourceDisc.category_slug;
-	targetDisc.stability_slug = sourceDisc.stability_slug;
-	targetDisc.color = sourceDisc.color;
-	targetDisc.background_color = sourceDisc.background_color;
-
+export const safeUpdateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): IDisc => {
+	sourceDisc.name && (targetDisc.name = sourceDisc.name);
+	sourceDisc.brand && (targetDisc.brand = sourceDisc.brand);
+	sourceDisc.category && (targetDisc.category = sourceDisc.category);
+	sourceDisc.speed && (targetDisc.speed = sourceDisc.speed);
+	sourceDisc.glide && (targetDisc.glide = sourceDisc.glide);
+	sourceDisc.turn && (targetDisc.turn = sourceDisc.turn);
+	sourceDisc.fade && (targetDisc.fade = sourceDisc.fade);
+	sourceDisc.stability && (targetDisc.stability = sourceDisc.stability);
+	sourceDisc.link && (targetDisc.link = sourceDisc.link);
+	sourceDisc.pic && (targetDisc.pic = sourceDisc.pic);
+	sourceDisc.name_slug && (targetDisc.name_slug = sourceDisc.name_slug);
+	sourceDisc.brand_slug && (targetDisc.brand_slug = sourceDisc.brand_slug);
+	sourceDisc.category_slug && (targetDisc.category_slug = sourceDisc.category_slug);
+	sourceDisc.stability_slug && (targetDisc.stability_slug = sourceDisc.stability_slug);
+	sourceDisc.color && (targetDisc.color = sourceDisc.color);
+	sourceDisc.background_color && (targetDisc.background_color = sourceDisc.background_color);
 	return targetDisc;
+};
+
+const discHasEnoughData = (disc: IDisc) => {
+	//
 };
 
 export const cleanQueryField = (key: string): string => {
