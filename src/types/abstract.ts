@@ -25,9 +25,9 @@ export interface IDisc {
 	background_color: string;
 }
 
-export interface IDiscUpsert {
-	discsToInsert: IDisc[];
-	discsToUpdate: IDisc[];
+export interface IDiscCollections {
+	discCollection: HTMLCollectionOf<Element>;
+	putterCollection: HTMLCollectionOf<Element>;
 }
 
 export interface IBaseModel<T extends IBase = IBase> extends Model<T> {
@@ -55,12 +55,12 @@ export interface Options<T extends IBase = IBase> extends QueryOptions {
 	new?: boolean;
 }
 
-export type DiscQueryRegex = { $regex: string; $options: string };
-export interface IDiscQuery {
+export type DiscFilterRegex = { $regex: string; $options: string };
+export interface IDiscFilter {
 	id?: string;
-	name_slug?: DiscQueryRegex;
-	brand_slug?: DiscQueryRegex;
-	category_slug?: DiscQueryRegex;
+	name_slug?: DiscFilterRegex;
+	brand_slug?: DiscFilterRegex;
+	category_slug?: DiscFilterRegex;
 	stability_slug?: string;
 	speed?: string;
 	glide?: string;

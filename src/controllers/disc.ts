@@ -3,30 +3,37 @@ import { Request, Response, Router } from "express";
 import { regexify } from "../helpers/util";
 import { Disc } from "../models/disc";
 import log from "../services/log";
-import { IDiscQuery } from "../types/abstract";
+import { IDisc, IDiscFilter } from "../types/abstract";
 import { Routes } from "../types/constants";
 
 const discRouter = Router();
 
 discRouter.get(Routes.root, async (req: Request, res: Response): Promise<Response | void> => {
 	try {
-		const { id, name, brand, category, stability, speed, glide, turn, fade } = req.query as Record<string, string>;
-		const query = {} as IDiscQuery;
-		id && (query.id = id);
-		name && (query.name_slug = regexify(name));
-		brand && (query.brand_slug = regexify(brand));
-		category && (query.category_slug = regexify(category));
-		stability && (query.stability_slug = stability);
-		speed && (query.speed = speed);
-		glide && (query.glide = glide);
-		turn && (query.turn = turn);
-		fade && (query.fade = fade);
-		const discs = await Disc.find(query, { _id: 0, created_at: 0, updated_at: 0, __v: 0 }).sort({ name: 1 });
+		const filter = buildFilter(req.query as Record<string, string>);
+		const discs = (await Disc.find(filter, { _id: 0, created_at: 0, updated_at: 0, __v: 0 }).sort({
+			name: 1
+		})) as IDisc[];
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
 		return res.status(500);
 	}
 });
+
+const buildFilter = (query: Record<string, string>) => {
+	const { id, name, brand, category, stability, speed, glide, turn, fade } = query;
+	const filter = {} as IDiscFilter;
+	id && (filter.id = id);
+	name && (filter.name_slug = regexify(name));
+	brand && (filter.brand_slug = regexify(brand));
+	category && (filter.category_slug = regexify(category));
+	stability && (filter.stability_slug = stability);
+	speed && (filter.speed = speed);
+	glide && (filter.glide = glide);
+	turn && (filter.turn = turn);
+	fade && (filter.fade = fade);
+	return filter;
+};
 
 export default discRouter;

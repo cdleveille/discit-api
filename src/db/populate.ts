@@ -1,252 +1,194 @@
 import axios from "axios";
 import { JSDOM } from "jsdom";
 
-import Config from "../helpers/config";
 import {
 	discMeetsMinCriteria,
-	discNameAndBrandMatch,
-	discsAreEqual,
 	hashString,
-	safeUpdateDiscFromOtherDisc,
-	slugify
+	parseCategory,
+	parseDecimalString,
+	parseStability,
+	slugify,
+	writeDataToFile
 } from "../helpers/util";
 import { Disc } from "../models/disc";
 import log from "../services/log";
-import { IDisc, IDiscUpsert } from "../types/abstract";
-import { CategoryMap, Site, StabilityMap } from "../types/constants";
+import { IDisc, IDiscCollections } from "../types/abstract";
+import { DISC_FETCH_URL, Site } from "../types/constants";
 
 export const fetchDiscs = async () => {
 	try {
-		log.info("***START*** - disc maintenance process.");
+		log.info("*** START *** - disc maintenance process starting.");
 
+		await backupDiscs();
+
+		const discCollections = await getDiscs();
+
+		const discsToInsert = processDiscs(discCollections);
+
+		if (discsToInsert.length > 0) {
+			await deleteAllDiscs();
+			await insertDiscs(discsToInsert);
+		}
+
+		log.info("*** END *** - disc maintenance process completed successfully.");
+	} catch (error) {
+		log.error(error);
+		log.error("*** ABEND *** - disc maintenance process completed with errors.");
+	}
+};
+
+const backupDiscs = async () => {
+	try {
 		log.info("Getting all existing discs from database...");
 		const existingDiscs: IDisc[] = await Disc.find();
 		log.info(`${existingDiscs.length} existing discs in database.`);
 
-		await fetchDiscsFromWebPage(existingDiscs);
-
-		log.info("***END*** - disc maintenance process completed successfully.");
+		if (existingDiscs.length > 0) {
+			log.info("Backing up existing discs...");
+			writeDataToFile(existingDiscs, "./backup/discs.json");
+			log.info(`Backed up ${existingDiscs.length} existing discs to file './backup/discs.json'.`);
+		}
 	} catch (error) {
-		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'!`);
+		throw new Error(`${error} - Error backing up existing discs.`);
 	}
 };
 
-const fetchDiscsFromWebPage = async (existingDiscs: IDisc[]) => {
+const getDiscs = async () => {
 	try {
-		log.info(`Fetching disc data from ${Config.DISC_FETCH_URL}...`);
-		const { status, data } = await axios.get(Config.DISC_FETCH_URL);
+		log.info(`Fetching discs from ${DISC_FETCH_URL}...`);
+		const { status, data } = await axios.get(DISC_FETCH_URL);
 		if (status !== 200) throw `Bad response status: ${status}`;
-		if (!data) throw `${Config.DISC_FETCH_URL} returned no data!`;
+		if (!data) throw `${DISC_FETCH_URL} returned no data!`;
 
 		const dom = new JSDOM(data);
 		const discCollection = dom.window.document.getElementsByClassName(Site.discClass);
 		const putterCollection = dom.window.document.getElementsByClassName(Site.putterClass);
+		log.info(`${discCollection.length + putterCollection.length} discs fetched.`);
 
-		const discs = getDiscsFromWebPage(discCollection, putterCollection, existingDiscs);
-
-		await upsertDiscs(discs.discsToInsert, discs.discsToUpdate, discCollection.length + putterCollection.length);
+		return { discCollection, putterCollection } as IDiscCollections;
 	} catch (error) {
-		log.error(error, `Error fetching disc data from '${Config.DISC_FETCH_URL}'!`);
+		throw new Error(`${error} - Error fetching disc data from '${DISC_FETCH_URL}'.`);
 	}
 };
 
-const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existingDiscs: IDisc[]): IDiscUpsert => {
-	const discsToInsert: IDisc[] = [];
-	const discsToUpdate: IDisc[] = [];
-
-	// distance drivers, hybrid drivers, control drivers, midranges
-	for (const element of discCollection) {
-		const name: string = element.getAttribute(Site.discNameAttr);
-		const brand: string = element.getAttribute(Site.brandAttr);
-		const id = hashString(name + brand);
-		const category: string = parseCategory(element.getAttribute(Site.categoryAttr));
-		const speed: string = parseDecimalString(element.getAttribute(Site.speedAttr));
-		const glide: string = parseDecimalString(element.getAttribute(Site.glideAttr));
-		const turn: string = parseDecimalString(element.getAttribute(Site.turnAttr));
-		const fade: string = parseDecimalString(element.getAttribute(Site.fadeAttr));
-		const stability: string = parseStability(element, turn, fade);
-		const link: string = element.getAttribute(Site.linkAttr);
-		const pic: string = element.getAttribute(Site.discPicAttr);
-		const name_slug: string = slugify(name);
-		const brand_slug: string = slugify(brand);
-		const category_slug: string = slugify(category);
-		const stability_slug: string = slugify(stability);
-		const color: string = element.getAttribute(Site.colorAttr);
-		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
-
-		const disc: IDisc = {
-			id,
-			name,
-			brand,
-			category,
-			speed,
-			glide,
-			turn,
-			fade,
-			stability,
-			link,
-			pic,
-			name_slug,
-			brand_slug,
-			category_slug,
-			stability_slug,
-			color,
-			background_color
-		};
-
-		if (discMeetsMinCriteria(disc)) {
-			if (Config.FETCH_DISCS_CLEAN) {
-				discsToInsert.push(disc);
-			} else {
-				let match;
-				for (const existingDisc of existingDiscs) {
-					match = discNameAndBrandMatch(disc, existingDisc);
-					if (match) break;
-				}
-
-				if (match) {
-					if (!discsAreEqual(disc, match)) {
-						safeUpdateDiscFromOtherDisc(match, disc);
-						discsToUpdate.push(match);
-					}
-				} else {
-					discsToInsert.push(disc);
-				}
-			}
-		}
-	}
-
-	// putters
-	for (const element of putterCollection) {
-		const name: string = element.getAttribute(Site.putterNameAttr);
-		const brand: string = element.getAttribute(Site.brandAttr);
-		const id = hashString(name + brand);
-		const category = "Putter";
-		const speed: string = parseDecimalString(element.getAttribute(Site.speedAttr));
-		const glide: string = parseDecimalString(element.getAttribute(Site.glideAttr));
-		const turn: string = parseDecimalString(element.getAttribute(Site.turnAttr));
-		const fade: string = parseDecimalString(element.getAttribute(Site.fadeAttr));
-		const stability: string = parseStability(element, turn, fade);
-		const link: string = element.getAttribute(Site.linkAttr);
-		const pic: string = element.getAttribute(Site.putterPicAttr);
-		const name_slug: string = slugify(name);
-		const brand_slug: string = slugify(brand);
-		const category_slug: string = slugify(category);
-		const stability_slug: string = slugify(stability);
-		const color: string = element.getAttribute(Site.colorAttr);
-		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
-
-		const disc: IDisc = {
-			id,
-			name,
-			brand,
-			category,
-			speed,
-			glide,
-			turn,
-			fade,
-			stability,
-			link,
-			pic,
-			name_slug,
-			brand_slug,
-			category_slug,
-			stability_slug,
-			color,
-			background_color
-		};
-
-		if (discMeetsMinCriteria(disc)) {
-			if (Config.FETCH_DISCS_CLEAN) {
-				discsToInsert.push(disc);
-			} else {
-				let match;
-				for (const existingDisc of existingDiscs) {
-					match = discNameAndBrandMatch(disc, existingDisc);
-					if (match) break;
-				}
-
-				if (match) {
-					if (!discsAreEqual(disc, match)) {
-						safeUpdateDiscFromOtherDisc(match, disc);
-						discsToUpdate.push(match);
-					}
-				} else {
-					discsToInsert.push(disc);
-				}
-			}
-		}
-	}
-
-	return { discsToInsert, discsToUpdate };
-};
-
-const upsertDiscs = async (discsToInsert: IDisc[], discsToUpdate: IDisc[], fetchCount: number) => {
+const processDiscs = (collections: IDiscCollections) => {
 	try {
-		if (discsToInsert.length > 0) {
-			if (Config.FETCH_DISCS_CLEAN) {
-				log.info("FETCH_DISCS_CLEAN is set to true. Deleting all existing discs from database...");
-				await Disc.deleteMany();
-			}
-			await Disc.create(discsToInsert);
-		}
-		// if (discsToUpdate.length > 0 && !Config.INSERT_ONLY) await Disc.updateMany(discsToUpdate); // broken since moving to mongo
+		log.info("Processing fetched discs...");
+		const discsToInsert: IDisc[] = [];
 
-		let additionalUpdateOutput = "";
-		if (discsToUpdate.length > 0 && Config.INSERT_ONLY) {
-			additionalUpdateOutput = ` (fetched new data for ${discsToUpdate.length} existing discs, but INSERT_ONLY flag is set to true)`;
+		// distance drivers, hybrid drivers, control drivers, midranges
+		for (const element of collections.discCollection) {
+			const name = element.getAttribute(Site.discNameAttr);
+			const brand = element.getAttribute(Site.brandAttr);
+			const id = hashString(name + brand);
+			const category = parseCategory(element.getAttribute(Site.categoryAttr));
+			const speed = parseDecimalString(element.getAttribute(Site.speedAttr));
+			const glide = parseDecimalString(element.getAttribute(Site.glideAttr));
+			const turn = parseDecimalString(element.getAttribute(Site.turnAttr));
+			const fade = parseDecimalString(element.getAttribute(Site.fadeAttr));
+			const stability = parseStability(element, turn, fade);
+			const link = element.getAttribute(Site.linkAttr);
+			const pic = element.getAttribute(Site.discPicAttr);
+			const name_slug = slugify(name);
+			const brand_slug = slugify(brand);
+			const category_slug = slugify(category);
+			const stability_slug = slugify(stability);
+			const color = element.getAttribute(Site.colorAttr);
+			const background_color = element.getAttribute(Site.backgroundColorAttr);
+
+			const disc: IDisc = {
+				id,
+				name,
+				brand,
+				category,
+				speed,
+				glide,
+				turn,
+				fade,
+				stability,
+				link,
+				pic,
+				name_slug,
+				brand_slug,
+				category_slug,
+				stability_slug,
+				color,
+				background_color
+			};
+
+			if (discMeetsMinCriteria(disc)) discsToInsert.push(disc);
 		}
 
-		log.info(`${fetchCount} discs fetched from ${Config.DISC_FETCH_URL}.`);
-		log.info(`${discsToInsert.length} new discs inserted.`);
+		// putters
+		for (const element of collections.putterCollection) {
+			const name = element.getAttribute(Site.putterNameAttr);
+			const brand = element.getAttribute(Site.brandAttr);
+			const id = hashString(name + brand);
+			const category = "Putter";
+			const speed = parseDecimalString(element.getAttribute(Site.speedAttr));
+			const glide = parseDecimalString(element.getAttribute(Site.glideAttr));
+			const turn = parseDecimalString(element.getAttribute(Site.turnAttr));
+			const fade = parseDecimalString(element.getAttribute(Site.fadeAttr));
+			const stability = parseStability(element, turn, fade);
+			const link = element.getAttribute(Site.linkAttr);
+			const pic = element.getAttribute(Site.putterPicAttr);
+			const name_slug = slugify(name);
+			const brand_slug = slugify(brand);
+			const category_slug = slugify(category);
+			const stability_slug = slugify(stability);
+			const color = element.getAttribute(Site.colorAttr);
+			const background_color = element.getAttribute(Site.backgroundColorAttr);
+
+			const disc: IDisc = {
+				id,
+				name,
+				brand,
+				category,
+				speed,
+				glide,
+				turn,
+				fade,
+				stability,
+				link,
+				pic,
+				name_slug,
+				brand_slug,
+				category_slug,
+				stability_slug,
+				color,
+				background_color
+			};
+
+			if (discMeetsMinCriteria(disc)) discsToInsert.push(disc);
+		}
+
 		log.info(
-			`${
-				Config.INSERT_ONLY ? 0 : discsToUpdate.length
-			} existing discs updated with new data${additionalUpdateOutput}.`
+			`${discsToInsert.length}/${
+				collections.discCollection.length + collections.putterCollection.length
+			} fetched discs meet insert criteria.`
 		);
+		return discsToInsert;
 	} catch (error) {
-		log.error(error);
-		log.error("Error updating disc data in database!");
+		throw new Error(`${error} - Error processing fetched disc data.`);
 	}
 };
 
-const parseCategory = (category: string): string => {
-	return CategoryMap.get(category) || category;
-};
-
-const parseStability = (element: any, turn: string, fade: string): string => {
-	if (element) {
-		const classes: string = element.parentNode.parentNode.parentNode.className;
-		const classesSplit = classes.split(" ");
-
-		// check for stability via class name in html
-		for (let i = classesSplit.length - 1; i >= 0; i--) {
-			const stability = classesSplit[i];
-			if (Array.from(StabilityMap.keys()).includes(stability)) return StabilityMap.get(stability);
-		}
-	}
-
-	// if not found in html, calculate it based on turn and fade
-	const diff = parseFloat(turn) + parseFloat(fade);
-	switch (true) {
-		case diff >= 4:
-			return "Very Overstable";
-		case diff >= 2 && diff < 4:
-			return "Overstable";
-		case diff < 2 && diff > -2:
-			return "Stable";
-		case diff <= -2 && diff > -4:
-			return "Understable";
-		case diff <= -4:
-			return "Very Understable";
-		default:
-			return null;
+const deleteAllDiscs = async () => {
+	try {
+		log.info("Deleting all existing discs...");
+		await Disc.deleteMany();
+		log.info("All existing discs deleted.");
+	} catch (error) {
+		throw new Error(`${error} - Error deleting existing discs from database.`);
 	}
 };
 
-const parseDecimalString = (decimal: string) => {
-	if (decimal.startsWith(".") || decimal.startsWith("-.")) {
-		return decimal.replace(".", "0.");
+const insertDiscs = async (discsToInsert: IDisc[]) => {
+	try {
+		log.info(`Inserting ${discsToInsert.length} discs...`);
+		await Disc.create(discsToInsert);
+		log.info(`${discsToInsert.length} discs inserted.`);
+	} catch (error) {
+		throw new Error(`${error} - Error inserting discs into database.`);
 	}
-	return decimal;
 };

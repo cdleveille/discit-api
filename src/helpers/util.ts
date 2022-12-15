@@ -1,77 +1,9 @@
+import fs from "fs";
 import { v5 as uuidv5 } from "uuid";
 
-import { Disc } from "../models/disc";
+import log from "../services/log";
 import { IDisc } from "../types/abstract";
-import { ID_HASH_NAMESPACE } from "../types/constants";
-
-export const createDisc = (disc: IDisc) => {
-	return new Disc({
-		id: disc.id,
-		name: disc.name,
-		brand: disc.brand,
-		category: disc.category,
-		speed: disc.speed,
-		glide: disc.glide,
-		turn: disc.turn,
-		fade: disc.fade,
-		stability: disc.stability,
-		link: disc.link,
-		pic: disc.pic,
-		name_slug: disc.name_slug,
-		brand_slug: disc.brand_slug,
-		category_slug: disc.category_slug,
-		stability_slug: disc.stability_slug,
-		color: disc.color,
-		background_color: disc.background_color
-	});
-};
-
-export const discNameAndBrandMatch = (disc: IDisc, disc2: IDisc): IDisc => {
-	return disc.name === disc2.name && disc.brand === disc2.brand ? disc2 : null;
-};
-
-export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
-	return (
-		disc1.id === disc2.id &&
-		disc1.name === disc2.name &&
-		disc1.brand === disc2.brand &&
-		disc1.category === disc2.category &&
-		disc1.speed === disc2.speed &&
-		disc1.glide === disc2.glide &&
-		disc1.turn === disc2.turn &&
-		disc1.fade === disc2.fade &&
-		disc1.stability === disc2.stability &&
-		disc1.link === disc2.link &&
-		disc1.pic === disc2.pic &&
-		disc1.name_slug === disc2.name_slug &&
-		disc1.brand_slug === disc2.brand_slug &&
-		disc1.category_slug === disc2.category_slug &&
-		disc1.stability_slug === disc2.stability_slug &&
-		disc1.color === disc2.color &&
-		disc1.background_color === disc2.background_color
-	);
-};
-
-export const safeUpdateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): IDisc => {
-	sourceDisc.id && (targetDisc.id = sourceDisc.id);
-	sourceDisc.name && (targetDisc.name = sourceDisc.name);
-	sourceDisc.brand && (targetDisc.brand = sourceDisc.brand);
-	sourceDisc.category && (targetDisc.category = sourceDisc.category);
-	sourceDisc.speed && (targetDisc.speed = sourceDisc.speed);
-	sourceDisc.glide && (targetDisc.glide = sourceDisc.glide);
-	sourceDisc.turn && (targetDisc.turn = sourceDisc.turn);
-	sourceDisc.fade && (targetDisc.fade = sourceDisc.fade);
-	sourceDisc.stability && (targetDisc.stability = sourceDisc.stability);
-	sourceDisc.link && (targetDisc.link = sourceDisc.link);
-	sourceDisc.pic && (targetDisc.pic = sourceDisc.pic);
-	sourceDisc.name_slug && (targetDisc.name_slug = sourceDisc.name_slug);
-	sourceDisc.brand_slug && (targetDisc.brand_slug = sourceDisc.brand_slug);
-	sourceDisc.category_slug && (targetDisc.category_slug = sourceDisc.category_slug);
-	sourceDisc.stability_slug && (targetDisc.stability_slug = sourceDisc.stability_slug);
-	sourceDisc.color && (targetDisc.color = sourceDisc.color);
-	sourceDisc.background_color && (targetDisc.background_color = sourceDisc.background_color);
-	return targetDisc;
-};
+import { CategoryMap, ID_HASH_NAMESPACE, StabilityMap } from "../types/constants";
 
 export const discMeetsMinCriteria = (disc: IDisc) => {
 	return (
@@ -101,4 +33,53 @@ export const regexify = (field: string) => {
 
 export const hashString = (toHash: string) => {
 	return uuidv5(toHash, ID_HASH_NAMESPACE);
+};
+
+export const writeDataToFile = (data: any, path: string) => {
+	try {
+		fs.writeFileSync(path, JSON.stringify(data));
+	} catch (error) {
+		log.error(error);
+	}
+};
+
+export const parseCategory = (category: string): string => {
+	return CategoryMap.get(category) || category;
+};
+
+export const parseStability = (element: any, turn: string, fade: string): string => {
+	if (element) {
+		const classes: string = element.parentNode.parentNode.parentNode.className;
+		const classesSplit = classes.split(" ");
+
+		// check for stability via class name in html
+		for (let i = classesSplit.length - 1; i >= 0; i--) {
+			const stability = classesSplit[i];
+			if (Array.from(StabilityMap.keys()).includes(stability)) return StabilityMap.get(stability);
+		}
+	}
+
+	// if not found in html, calculate it based on turn and fade
+	const diff = parseFloat(turn) + parseFloat(fade);
+	switch (true) {
+		case diff >= 4:
+			return "Very Overstable";
+		case diff >= 2 && diff < 4:
+			return "Overstable";
+		case diff < 2 && diff > -2:
+			return "Stable";
+		case diff <= -2 && diff > -4:
+			return "Understable";
+		case diff <= -4:
+			return "Very Understable";
+		default:
+			return null;
+	}
+};
+
+export const parseDecimalString = (decimal: string) => {
+	if (decimal.startsWith(".") || decimal.startsWith("-.")) {
+		return decimal.replace(".", "0.");
+	}
+	return decimal;
 };

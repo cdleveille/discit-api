@@ -114,3 +114,5 @@ package-lock.json
 public/build/
 
 public.min/
+
+backup/
