@@ -10,8 +10,9 @@ const discRouter = Router();
 
 discRouter.get(Routes.root, async (req: Request, res: Response): Promise<Response | void> => {
 	try {
-		const { name, brand, category, stability, speed, glide, turn, fade } = req.query as Record<string, string>;
+		const { id, name, brand, category, stability, speed, glide, turn, fade } = req.query as Record<string, string>;
 		const query = {} as IDiscQuery;
+		id && (query.id = id);
 		name && (query.name_slug = regexify(name));
 		brand && (query.brand_slug = regexify(brand));
 		category && (query.category_slug = regexify(category));
@@ -20,9 +21,7 @@ discRouter.get(Routes.root, async (req: Request, res: Response): Promise<Respons
 		glide && (query.glide = glide);
 		turn && (query.turn = turn);
 		fade && (query.fade = fade);
-		const discs = await Disc.find(query).select(
-			"-_id name brand category speed glide turn fade stability link pic name_slug brand_slug category_slug stability_slug color background_color"
-		);
+		const discs = await Disc.find(query, { _id: 0, created_at: 0, updated_at: 0, __v: 0 }).sort({ name: 1 });
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);

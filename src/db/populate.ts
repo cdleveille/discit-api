@@ -6,6 +6,7 @@ import {
 	discMeetsMinCriteria,
 	discNameAndBrandMatch,
 	discsAreEqual,
+	hashString,
 	safeUpdateDiscFromOtherDisc,
 	slugify
 } from "../helpers/util";
@@ -57,6 +58,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	for (const element of discCollection) {
 		const name: string = element.getAttribute(Site.discNameAttr);
 		const brand: string = element.getAttribute(Site.brandAttr);
+		const id = hashString(name + brand);
 		const category: string = parseCategory(element.getAttribute(Site.categoryAttr));
 		const speed: string = parseDecimalString(element.getAttribute(Site.speedAttr));
 		const glide: string = parseDecimalString(element.getAttribute(Site.glideAttr));
@@ -73,6 +75,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
 
 		const disc: IDisc = {
+			id,
 			name,
 			brand,
 			category,
@@ -117,6 +120,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 	for (const element of putterCollection) {
 		const name: string = element.getAttribute(Site.putterNameAttr);
 		const brand: string = element.getAttribute(Site.brandAttr);
+		const id = hashString(name + brand);
 		const category = "Putter";
 		const speed: string = parseDecimalString(element.getAttribute(Site.speedAttr));
 		const glide: string = parseDecimalString(element.getAttribute(Site.glideAttr));
@@ -133,6 +137,7 @@ const getDiscsFromWebPage = (discCollection: any, putterCollection: any, existin
 		const background_color: string = element.getAttribute(Site.backgroundColorAttr);
 
 		const disc: IDisc = {
+			id,
 			name,
 			brand,
 			category,

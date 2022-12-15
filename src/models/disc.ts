@@ -4,6 +4,10 @@ import { IDisc, IDiscModel } from "../types/abstract";
 import { BaseSchema } from "./_base";
 
 const DiscSchema = new Schema<IDisc>({
+	id: {
+		type: String,
+		required: true
+	},
 	name: {
 		type: String,
 		required: true

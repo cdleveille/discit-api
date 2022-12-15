@@ -1,9 +1,12 @@
+import { v5 as uuidv5 } from "uuid";
+
 import { Disc } from "../models/disc";
 import { IDisc } from "../types/abstract";
-import { FieldsUsingLike, FieldsUsingSlug } from "../types/constants";
+import { ID_HASH_NAMESPACE } from "../types/constants";
 
 export const createDisc = (disc: IDisc) => {
 	return new Disc({
+		id: disc.id,
 		name: disc.name,
 		brand: disc.brand,
 		category: disc.category,
@@ -29,6 +32,7 @@ export const discNameAndBrandMatch = (disc: IDisc, disc2: IDisc): IDisc => {
 
 export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
 	return (
+		disc1.id === disc2.id &&
 		disc1.name === disc2.name &&
 		disc1.brand === disc2.brand &&
 		disc1.category === disc2.category &&
@@ -49,6 +53,7 @@ export const discsAreEqual = (disc1: IDisc, disc2: IDisc): boolean => {
 };
 
 export const safeUpdateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc): IDisc => {
+	sourceDisc.id && (targetDisc.id = sourceDisc.id);
 	sourceDisc.name && (targetDisc.name = sourceDisc.name);
 	sourceDisc.brand && (targetDisc.brand = sourceDisc.brand);
 	sourceDisc.category && (targetDisc.category = sourceDisc.category);
@@ -70,22 +75,16 @@ export const safeUpdateDiscFromOtherDisc = (targetDisc: IDisc, sourceDisc: IDisc
 
 export const discMeetsMinCriteria = (disc: IDisc) => {
 	return (
-		disc.name && disc.brand && disc.category && disc.speed && disc.glide && disc.turn && disc.fade && disc.stability
+		disc.id &&
+		disc.name &&
+		disc.brand &&
+		disc.category &&
+		disc.speed &&
+		disc.glide &&
+		disc.turn &&
+		disc.fade &&
+		disc.stability
 	);
-};
-
-export const cleanQueryField = (key: string): string => {
-	const cleanKey = key.replace(/amp;/gi, "").toLowerCase().trim();
-	return FieldsUsingSlug.includes(cleanKey) ? `${cleanKey}_slug` : cleanKey;
-};
-
-export const cleanQueryValue = (cleanKey: string, value: string): any => {
-	const cleanValue = value.toLowerCase().trim();
-	if (FieldsUsingLike.includes(cleanKey)) {
-		return { $ilike: `%${cleanValue}%` };
-	} else {
-		return `${cleanValue}`;
-	}
 };
 
 export const slugify = (text: string): string => {
@@ -98,4 +97,8 @@ export const slugify = (text: string): string => {
 
 export const regexify = (field: string) => {
 	return { $regex: field, $options: "i" };
+};
+
+export const hashString = (toHash: string) => {
+	return uuidv5(toHash, ID_HASH_NAMESPACE);
 };

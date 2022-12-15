@@ -6,6 +6,7 @@ export interface IBase {
 }
 
 export interface IDisc {
+	id: string;
 	name: string;
 	brand: string;
 	category: string;
@@ -56,6 +57,7 @@ export interface Options<T extends IBase = IBase> extends QueryOptions {
 
 export type DiscQueryRegex = { $regex: string; $options: string };
 export interface IDiscQuery {
+	id?: string;
 	name_slug?: DiscQueryRegex;
 	brand_slug?: DiscQueryRegex;
 	category_slug?: DiscQueryRegex;

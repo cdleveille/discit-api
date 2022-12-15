@@ -48,11 +48,9 @@ export const StabilityMap = new Map([
 	["very-understable", "Very Understable"]
 ]);
 
-export const FieldsUsingLike = ["name_slug", "brand_slug", "category_slug", "name", "brand", "category"];
-
-export const FieldsUsingSlug = ["name", "brand", "category", "stability"];
-
 export enum Routes {
 	root = "/",
 	disc = "/disc"
 }
+
+export const ID_HASH_NAMESPACE = "1b671a64-40d5-491e-99b0-da01ff1f3341";
