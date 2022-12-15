@@ -20,7 +20,9 @@ discRouter.get(Routes.root, async (req: Request, res: Response): Promise<Respons
 		glide && (query.glide = glide);
 		turn && (query.turn = turn);
 		fade && (query.fade = fade);
-		const discs = await Disc.find(query);
+		const discs = await Disc.find(query).select(
+			"-_id name brand category speed glide turn fade stability link pic name_slug brand_slug category_slug stability_slug color background_color"
+		);
 		return res.json(discs);
 	} catch (error) {
 		log.error(error);
