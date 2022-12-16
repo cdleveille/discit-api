@@ -8,15 +8,20 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
 ## Endpoints
 
-| Method | Route   | Description  |
-| ------ | ------- | ------------ |
-| `GET`  | `/disc` | Search discs |
+| Method | Route         | Description              | 404 Response Body |
+| ------ | ------------- | ------------------------ | ----------------- |
+| `GET`  | `/disc`       | Get all discs            | N/A               |
+| `GET`  | `/disc?`      | Search discs by field(s) | `[]`              |
+| `GET`  | `/disc/:id`   | Get disc by id           | `null`            |
+| `GET`  | `/disc/:name` | Get disc by name         | `null`            |
 
 ## Example Requests
 
 -   All discs: `/disc`
 -   By one field: `/disc?stability=very-overstable`
 -   By multiple fields: `/disc?brand=innova&category=control-driver`
+-   By id: `/disc/8ddd0d56-b63c-5d65-9737-1a380b93cc23`
+-   By name: `/disc/buzzz`
 
 Refer to the **Fields** section below for all possible query string parameters.
 
@@ -42,7 +47,10 @@ Refer to the **Fields** section below for all possible query string parameters.
 
 ## Setup
 
--   Install [Node.js](https://nodejs.org/en/download/), [Visual Studio Code](https://code.visualstudio.com/download) (with [Docker Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)), and [Docker Desktop](https://www.docker.com/).
+-   Install prerequisites:
+    -   [Node.js](https://nodejs.org/en/download/)
+    -   [Visual Studio Code](https://code.visualstudio.com/download) (with [Docker Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker))
+    -   [Docker Desktop](https://www.docker.com/)
 -   Clone repo and open in VS Code.
 -   Install yarn: `npm i -g yarn`
 -   Install package dependencies: `yarn`

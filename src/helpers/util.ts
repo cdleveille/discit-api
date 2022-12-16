@@ -19,7 +19,7 @@ export const discMeetsMinCriteria = (disc: IDisc) => {
 	);
 };
 
-export const slugify = (text: string): string => {
+export const slugify = (text: string) => {
 	const slug = text
 		.toLowerCase()
 		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
@@ -43,11 +43,11 @@ export const writeDataToFile = (data: any, path: string) => {
 	}
 };
 
-export const parseCategory = (category: string): string => {
+export const parseCategory = (category: string) => {
 	return CategoryMap.get(category) || category;
 };
 
-export const parseStability = (element: any, turn: string, fade: string): string => {
+export const parseStability = (element: any, turn: string, fade: string) => {
 	if (element) {
 		const classes: string = element.parentNode.parentNode.parentNode.className;
 		const classesSplit = classes.split(" ");

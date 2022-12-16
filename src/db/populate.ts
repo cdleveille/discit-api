@@ -16,9 +16,9 @@ import log from "../services/log";
 import { IDisc, IDiscCollections } from "../types/abstract";
 import { DISC_FETCH_URL, Site } from "../types/constants";
 
-export const fetchDiscs = async () => {
+export const refreshDiscs = async () => {
 	try {
-		log.info("*** START *** - disc maintenance process starting.");
+		log.info("*** START *** - disc refresh process starting.");
 
 		await backupDiscs();
 
@@ -31,10 +31,10 @@ export const fetchDiscs = async () => {
 			await insertDiscs(discsToInsert);
 		}
 
-		log.info("*** END *** - disc maintenance process completed successfully.");
+		log.info("*** END *** - disc refresh process completed successfully.");
 	} catch (error) {
 		log.error(error);
-		log.error("*** ABEND *** - disc maintenance process completed with errors.");
+		log.error("*** ABEND *** - disc refresh process completed with errors.");
 	}
 };
 
