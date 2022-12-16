@@ -2,7 +2,7 @@
 
 RESTful API for disc golf discs.
 
-Enables developers to programmatically access public disc information from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page. New disc information is fetched nightly.
+Enables developers to programmatically access public disc information from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page. Disc data is refreshed nightly.
 
 Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
