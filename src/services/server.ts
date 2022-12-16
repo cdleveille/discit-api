@@ -10,12 +10,9 @@ import { refreshDiscs } from "../db/refresh";
 import Config from "../helpers/config";
 import { Routes } from "../types/constants";
 import Cron from "./cron";
-import { connectToDatabase } from "./db";
 import log from "./log";
 
 export const startServer = async () => {
-	await connectToDatabase();
-
 	const app = express();
 
 	const logStream = fs.createWriteStream("combined.log", { flags: "a" });
@@ -41,7 +38,7 @@ export const startServer = async () => {
 	);
 	app.use(Routes.root, router);
 	app.set("json spaces", 2);
-	app.disabled("x-powered-by");
+	app.disable("x-powered-by");
 
 	app.listen(Config.PORT);
 	log.info(`Server started - listening on http://${Config.HOST}:${Config.PORT}`);
