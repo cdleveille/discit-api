@@ -8,12 +8,12 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
 ## Endpoints
 
-| Method | Route         | Description              | 404 Response Body |
-| ------ | ------------- | ------------------------ | ----------------- |
-| `GET`  | `/disc`       | Get all discs            | N/A               |
-| `GET`  | `/disc?`      | Search discs by field(s) | `[]`              |
-| `GET`  | `/disc/:id`   | Get disc by id           | `null`            |
-| `GET`  | `/disc/:name` | Get disc by name         | `null`            |
+| Method | Route         | Description | 404 Response Body |
+| ------ | ------------- | ----------- | ----------------- |
+| `GET`  | `/disc`       | All discs   | N/A               |
+| `GET`  | `/disc?`      | By field(s) | `[]`              |
+| `GET`  | `/disc/:id`   | By id       | `null`            |
+| `GET`  | `/disc/:name` | By name     | `null`            |
 
 ## Example Requests
 
