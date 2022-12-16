@@ -46,7 +46,7 @@ const backupDiscs = async () => {
 
 		if (existingDiscs.length > 0) {
 			log.info("Backing up existing discs...");
-			const filepath = path.join(process.cwd(), "backup\\discs.json");
+			const filepath = path.join(process.cwd(), "discs_backup.json");
 			writeDataToFile(existingDiscs, filepath);
 			log.info(`Backed up ${existingDiscs.length} existing discs to file '${filepath}.`);
 		}

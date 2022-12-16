@@ -5,4 +5,4 @@
 *.log
 *.lock
 .DS_Store
-/backup
+discs_backup.json
