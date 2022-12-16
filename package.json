@@ -8,20 +8,20 @@
     "prepare": "husky install",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx . && prettier --check .",
     "format": "eslint --fix --ext .js,.jsx,.ts,.tsx . && prettier --write .",
-    "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
     "start": "node ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cdleveille/discit.git"
+    "url": "git+https://github.com/cdleveille/discit-api.git"
   },
   "author": "Chris Leveille <cdleveille@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cdleveille/discit/issues"
+    "url": "https://github.com/cdleveille/discit-api/issues"
   },
-  "homepage": "https://github.com/cdleveille/discit#readme",
+  "homepage": "https://github.com/cdleveille/discit-api#readme",
   "dependencies": {
     "axios": "^0.24.0",
     "compression": "^1.7.4",

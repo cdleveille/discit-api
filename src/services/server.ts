@@ -6,7 +6,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 import router from "../controllers/index";
-import { refreshDiscs } from "../db/populate";
+import { refreshDiscs } from "../db/refresh";
 import Config from "../helpers/config";
 import { Routes } from "../types/constants";
 import Cron from "./cron";

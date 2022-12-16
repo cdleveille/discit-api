@@ -1,6 +1,6 @@
 import { CronJob } from "cron";
 
-import { refreshDiscs } from "../db/populate";
+import { refreshDiscs } from "../db/refresh";
 import Config from "../helpers/config";
 import log from "./log";
 
