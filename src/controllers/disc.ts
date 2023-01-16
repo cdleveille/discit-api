@@ -1,14 +1,13 @@
-import { Request, Response, Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 
 import { regexify } from "../helpers/util";
 import { Disc } from "../models/disc";
-import log from "../services/log";
 import { IDisc, IDiscFilter } from "../types/abstract";
 import { Routes } from "../types/constants";
 
 const discRouter = Router();
 
-discRouter.get(Routes.root, async (req: Request, res: Response) => {
+discRouter.get(Routes.root, async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const filter = buildFilter(req.query as Record<string, string>);
 		const discs = (await Disc.find(filter, projection).sort({
@@ -17,12 +16,11 @@ discRouter.get(Routes.root, async (req: Request, res: Response) => {
 		if (!discs || discs.length === 0) return res.status(404).json([]);
 		return res.status(200).json(discs);
 	} catch (error) {
-		log.error(error);
-		return res.status(500).json(null);
+		next(error);
 	}
 });
 
-discRouter.get(`${Routes.root}:id_or_name`, async (req: Request, res: Response) => {
+discRouter.get(`${Routes.root}:id_or_name`, async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { id_or_name } = req.params;
 		const [discById, discByName] = (await Promise.all([
@@ -32,8 +30,7 @@ discRouter.get(`${Routes.root}:id_or_name`, async (req: Request, res: Response) 
 		if (discById || discByName) return res.status(200).json(discById ?? discByName);
 		return res.status(404).json(null);
 	} catch (error) {
-		log.error(error);
-		return res.status(500).json(null);
+		next(error);
 	}
 });
 

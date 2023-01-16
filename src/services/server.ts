@@ -8,12 +8,14 @@ import morgan from "morgan";
 import router from "../controllers/index";
 import { refreshDiscs } from "../db/refresh";
 import Config from "../helpers/config";
+import errorHandler from "../middleware/errorHandler";
 import { Routes } from "../types/constants";
 import Cron from "./cron";
 import log from "./log";
 
 export const startServer = async () => {
 	const app = express();
+	app.use(express.json());
 
 	const logStream = fs.createWriteStream("combined.log", { flags: "a" });
 	app.use(morgan("combined", { stream: logStream }));
@@ -33,7 +35,7 @@ export const startServer = async () => {
 	app.use(
 		cors({
 			origin: "*",
-			methods: ["GET"]
+			methods: ["GET", "POST"]
 		})
 	);
 	app.use(Routes.root, router);
@@ -42,6 +44,8 @@ export const startServer = async () => {
 
 	app.listen(Config.PORT);
 	log.info(`Server started - listening on http://${Config.HOST}:${Config.PORT}`);
+
+	app.use(errorHandler);
 
 	const cron = new Cron();
 	cron.refreshDiscsNightly.start();

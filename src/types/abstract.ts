@@ -25,22 +25,47 @@ export interface IDisc {
 	background_color: string;
 }
 
+export interface IUser {
+	id: string;
+	username: string;
+	email: string;
+	password: string;
+}
+
+export interface IBag {
+	id: string;
+	name: string;
+	user_id: string;
+	discs: string[];
+}
+
 export interface IDiscCollections {
 	discCollection: HTMLCollectionOf<Element>;
 	putterCollection: HTMLCollectionOf<Element>;
 }
 
 export interface IBaseModel<T extends IBase = IBase> extends Model<T> {
-	assertFindOne(filter?: FilterQuery<T>, options?: Options<T>, projection?: Projection): Promise<T>;
-	assertFind(filter?: FilterQuery<T>, options?: Options<T>, projection?: Projection): Promise<T[]>;
-	createOrUpdate(filter: FilterQuery<T>, doc: Partial<T>): Promise<T>;
-	assertExists(filter: FilterQuery<T>, options?: Options<T>): Promise<void>;
-	getCount(filter: FilterQuery<T>, options?: Options<T>): Promise<number>;
+	_findOne(filter?: FilterQuery<T>, options?: Options<T>, projection?: Projection): Promise<T>;
+	_assertFindOne(filter?: FilterQuery<T>, options?: Options<T>, projection?: Projection): Promise<T>;
+	_find(filter?: FilterQuery<T>, options?: Options<T>, projection?: Projection): Promise<T[]>;
+	_assertFind(filter?: FilterQuery<T>, options?: Options<T>, projection?: Projection): Promise<T[]>;
+	_createOrUpdate(doc: Partial<T>, filter?: FilterQuery<T>): Promise<T>;
+	_exists(filter: FilterQuery<T>, options?: Options<T>): Promise<boolean>;
+	_assertExists(filter: FilterQuery<T>, options?: Options<T>): Promise<boolean>;
+	_getCount(filter: FilterQuery<T>, options?: Options<T>): Promise<number>;
 }
 
 interface IDiscXt extends IBase, IDisc {}
 
+interface IUserXt extends IBase, IUser {}
+
+interface IBagXt extends IBase, IBag {}
+
 export type IDiscModel = IBaseModel<IDiscXt>;
+
+export type IUserModel = IBaseModel<IUserXt>;
+
+export type IBagModel = IBaseModel<IBagXt>;
 
 export type Projection = Record<string, 0 | 1>;
 
@@ -66,4 +91,27 @@ export interface IDiscFilter {
 	glide?: string;
 	turn?: string;
 	fade?: string;
+}
+
+export interface IResponse<T = any> {
+	ok: boolean;
+	status: number;
+	data: T;
+	error?: string;
+}
+
+export interface IJwtPayload {
+	id: string;
+	username: string;
+	email: string;
+}
+
+export interface IJWT {
+	id: string;
+	username: string;
+	email: string;
+	iat: string;
+	exp: string;
+	issued: string;
+	expires: string;
 }

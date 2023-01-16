@@ -1,5 +1,5 @@
 import fs from "fs";
-import { v5 as uuidv5 } from "uuid";
+import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
 
 import log from "../services/log";
 import { IDisc } from "../types/abstract";
@@ -82,4 +82,12 @@ export const parseDecimalString = (decimal: string) => {
 		return decimal.replace(".", "0.");
 	}
 	return decimal;
+};
+
+export const newId = () => uuidv4();
+
+export const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+
+export const validateEmail = (email: string) => {
+	return email.includes("@") && email.includes(".");
 };
