@@ -46,12 +46,18 @@ const statics = {
 		return this.find(filter, options).count();
 	},
 	_exists: async function (filter: FilterQuery<IBase>, options?: Options) {
-		return (await this._getCount(filter, options)) > 0;
+		return this._getCount(filter, options) > 0;
 	},
 	_assertExists: async function (filter: FilterQuery<IBase>, options?: Options) {
 		const count = await this._getCount(filter, options);
 		if (count <= 0) throw new NotFoundError(`${this.modelName} does not exist`);
 		return true;
+	},
+	_deleteOne: async function (filter?: FilterQuery<IBase>, options?: Options, projection?: Projection) {
+		const doc = await this.findOne(filter, projection, options);
+		if (!doc) return null;
+		await this.deleteOne(filter, options, projection);
+		return doc;
 	}
 } as IBaseModel;
 

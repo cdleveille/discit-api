@@ -90,4 +90,18 @@ userRouter.post(Routes.validate, validate, async (_req: Request, res: Response, 
 	}
 });
 
+userRouter.delete(Routes.delete, validate, async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		const { id } = req.body as IUser;
+		const user = await User._deleteOne({ id });
+		return res.status(200).send({
+			ok: true,
+			status: 200,
+			data: user
+		} as IResponse);
+	} catch (error) {
+		next(error);
+	}
+});
+
 export default userRouter;

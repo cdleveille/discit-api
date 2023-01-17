@@ -35,7 +35,7 @@ export const startServer = async () => {
 	app.use(
 		cors({
 			origin: "*",
-			methods: ["GET", "POST"]
+			methods: ["GET", "POST", "DELETE"]
 		})
 	);
 	app.use(Routes.root, router);

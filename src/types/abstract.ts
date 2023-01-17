@@ -53,6 +53,7 @@ export interface IBaseModel<T extends IBase = IBase> extends Model<T> {
 	_exists(filter: FilterQuery<T>, options?: Options<T>): Promise<boolean>;
 	_assertExists(filter: FilterQuery<T>, options?: Options<T>): Promise<boolean>;
 	_getCount(filter: FilterQuery<T>, options?: Options<T>): Promise<number>;
+	_deleteOne(filter?: FilterQuery<T>, options?: Options<T>, projection?: Projection): Promise<T>;
 }
 
 interface IDiscXt extends IBase, IDisc {}
