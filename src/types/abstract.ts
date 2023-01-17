@@ -28,7 +28,6 @@ export interface IDisc {
 export interface IUser {
 	id: string;
 	username: string;
-	email: string;
 	password: string;
 }
 
@@ -109,13 +108,11 @@ export interface IError {
 export interface IJwtPayload {
 	id: string;
 	username: string;
-	email: string;
 }
 
 export interface IJWT {
 	id: string;
 	username: string;
-	email: string;
 	iat: string;
 	exp: string;
 	issued: string;

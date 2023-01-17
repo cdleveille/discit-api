@@ -86,12 +86,6 @@ export const parseDecimalString = (decimal: string) => {
 
 export const newId = () => uuidv4();
 
-export const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
-
-export const validateEmail = (email: string) => {
-	return email.includes("@") && email.includes(".");
-};
-
 export const isAlphaNumeric = (str: string): boolean => {
 	let code: number, i: number, len: number;
 

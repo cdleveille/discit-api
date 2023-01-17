@@ -21,7 +21,6 @@ export default class Jwt {
 			return {
 				id: data.id,
 				username: data.username,
-				email: data.email,
 				iat: data.iat,
 				exp: data.exp,
 				issued: dateFormat(new Date(parseInt(data.iat) * 1000), "yyyy-mm-dd h:MM:ss"),
@@ -35,7 +34,6 @@ export default class Jwt {
 	public static async SignUser(user: IJwtPayload): Promise<string> {
 		const token: string = await Jwt.Sign({
 			id: user.id,
-			email: user.email,
 			username: user.username
 		} as IJwtPayload);
 		return token;
