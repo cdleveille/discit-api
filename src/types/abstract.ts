@@ -100,6 +100,11 @@ export interface IResponse<T = any> {
 	error?: string;
 }
 
+export interface IError {
+	status: number;
+	message: string;
+}
+
 export interface IJwtPayload {
 	id: string;
 	username: string;
