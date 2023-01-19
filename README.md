@@ -57,7 +57,7 @@ Refer to the **Fields** section below for all possible query string parameters.
 -   Create and populate a `.env` file based on `.env.example`.
 -   Launch Docker Desktop. In VS Code, right-click `.discit-dev-container\docker-compose.yml` and select `Compose Up` to initialize database container.
 -   Press `F5` or run `yarn dev` to run in dev mode (server restarts on file save).
--   Server will listen for requests on [localhost:3000](http://localhost:3000/).
+-   Server will listen for requests on [localhost:5000](http://localhost:5000/).
 
 ## Technologies
 
