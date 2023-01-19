@@ -14,6 +14,8 @@ const userRouter = Router();
 userRouter.post(Routes.login, async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { username, password } = req.body as IUser;
+		if (!username || !password) throw new BadRequestError("Required field(s): username, password");
+
 		const user = await User._findOne({ username });
 		if (!user) throw new BadRequestError("Invalid username.");
 
@@ -38,6 +40,7 @@ userRouter.post(Routes.login, async (req: Request, res: Response, next: NextFunc
 userRouter.post(Routes.register, async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { username, password } = req.body as IUser;
+		if (!username || !password) throw new BadRequestError("Required field(s): username, password");
 
 		if (!isAlphaNumeric(username)) throw new BadRequestError("Username must be alphanumeric only.");
 
@@ -74,6 +77,7 @@ userRouter.post(Routes.register, async (req: Request, res: Response, next: NextF
 userRouter.post(Routes.validate, validate, async (_req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { id } = res.locals.jwt as IJWT;
+		if (!id) throw new BadRequestError("Required field(s): id");
 		const { username } = await User._findOne({ id });
 		return res.status(200).send({
 			ok: true,
@@ -88,6 +92,8 @@ userRouter.post(Routes.validate, validate, async (_req: Request, res: Response, 
 userRouter.put(Routes.update, validate, async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { id, username, newPassword, password } = req.body as IUser & { newPassword: string };
+		if (!id || !username || !newPassword || !password)
+			throw new BadRequestError("Required field(s): id, username, newPassword, password");
 
 		const payload = { id } as IUser;
 
@@ -132,12 +138,20 @@ userRouter.put(Routes.update, validate, async (req: Request, res: Response, next
 
 userRouter.delete(Routes.delete, validate, async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const { id } = req.body as IUser;
-		const user = await User._deleteOne({ id });
+		const { id, password } = req.body as IUser;
+		if (!id || !password) throw new BadRequestError("Required field(s): id, password");
+
+		const user = await User._findOne({ id });
+		if (!user) throw new NotFoundError("User not found.");
+
+		const passwordMatch = await Password.compare(password, user.password);
+		if (!passwordMatch) throw new BadRequestError("Invalid password.");
+
+		const deletedUser = await User._deleteOne({ id });
 		return res.status(200).send({
 			ok: true,
 			status: 200,
-			data: user
+			data: deletedUser
 		} as IResponse<IUser>);
 	} catch (error) {
 		next(error);

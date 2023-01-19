@@ -19,18 +19,13 @@ import { DISC_FETCH_URL, Site } from "../types/constants";
 export const refreshDiscs = async () => {
 	try {
 		log.info("*** START *** - disc refresh process starting.");
-
-		await backupDiscs();
-
+		const existingDiscs = await backupDiscs();
 		const discCollections = await getDiscs();
-
 		const discsToInsert = processDiscs(discCollections);
-
-		if (discsToInsert.length > 0) {
+		if (discsToInsert.length > 0 && discsToInsert.length >= existingDiscs.length) {
 			await deleteAllDiscs();
 			await insertDiscs(discsToInsert);
 		}
-
 		log.info("*** END *** - disc refresh process completed successfully.");
 	} catch (error) {
 		log.error(error);
@@ -43,13 +38,13 @@ const backupDiscs = async () => {
 		log.info("Getting all existing discs from database...");
 		const existingDiscs: IDisc[] = await Disc.find();
 		log.info(`${existingDiscs.length} existing discs in database.`);
-
 		if (existingDiscs.length > 0) {
 			log.info("Backing up existing discs...");
 			const filepath = path.join(process.cwd(), "discs_backup.json");
 			writeDataToFile(existingDiscs, filepath);
 			log.info(`Backed up ${existingDiscs.length} existing discs to file '${filepath}.`);
 		}
+		return existingDiscs;
 	} catch (error) {
 		throw new Error(`${error} - Error backing up existing discs.`);
 	}
