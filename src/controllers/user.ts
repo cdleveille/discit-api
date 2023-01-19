@@ -5,7 +5,7 @@ import { Password } from "../helpers/password";
 import { isAlphaNumeric, newId } from "../helpers/util";
 import { validate } from "../middleware/jwt";
 import { User } from "../models/user";
-import { IResponse, IUser } from "../types/abstract";
+import { IJWT, IResponse, IUser } from "../types/abstract";
 import { Routes } from "../types/constants";
 import { BadRequestError, NotFoundError } from "../types/errors";
 
@@ -73,11 +73,13 @@ userRouter.post(Routes.register, async (req: Request, res: Response, next: NextF
 
 userRouter.post(Routes.validate, validate, async (_req: Request, res: Response, next: NextFunction) => {
 	try {
+		const { id } = res.locals.jwt as IJWT;
+		const { username } = await User._findOne({ id });
 		return res.status(200).send({
 			ok: true,
 			status: 200,
-			data: res.locals.jwt
-		} as IResponse);
+			data: { ...res.locals.jwt, username }
+		} as IResponse<IJWT>);
 	} catch (error) {
 		next(error);
 	}
