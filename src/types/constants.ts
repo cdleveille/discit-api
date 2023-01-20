@@ -17,6 +17,7 @@ export const PROD_URL = "https://discit-api.fly.dev";
 export enum Site {
 	discClass = "disc-item",
 	putterClass = "pc-entry",
+	idAttr = "data-id",
 	discNameAttr = "data-title",
 	putterNameAttr = "data-putter",
 	brandAttr = "data-brand",

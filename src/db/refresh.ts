@@ -77,7 +77,7 @@ const processDiscs = (collections: IDiscCollections) => {
 		for (const element of collections.discCollection) {
 			const name = element.getAttribute(Site.discNameAttr);
 			const brand = element.getAttribute(Site.brandAttr);
-			const id = hashString(name + brand);
+			const id = hashString(element.getAttribute(Site.idAttr));
 			const category = parseCategory(element.getAttribute(Site.categoryAttr));
 			const speed = parseDecimalString(element.getAttribute(Site.speedAttr));
 			const glide = parseDecimalString(element.getAttribute(Site.glideAttr));
