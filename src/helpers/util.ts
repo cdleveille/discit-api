@@ -102,3 +102,5 @@ export const isAlphaNumeric = (str: string): boolean => {
 	}
 	return true;
 };
+
+export const projection = { _id: 0, created_at: 0, updated_at: 0, __v: 0 };

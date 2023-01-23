@@ -2,7 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 
 import Jwt from "../helpers/jwt";
 import { Password } from "../helpers/password";
-import { isAlphaNumeric, newId } from "../helpers/util";
+import { isAlphaNumeric, newId, projection } from "../helpers/util";
 import { validate } from "../middleware/jwt";
 import { User } from "../models/user";
 import { IJWT, IResponse, IUser } from "../types/abstract";
@@ -10,6 +10,19 @@ import { Routes } from "../types/constants";
 import { BadRequestError, NotFoundError } from "../types/errors";
 
 const userRouter = Router();
+
+userRouter.get(Routes.root, validate, async (_req: Request, res: Response, next: NextFunction) => {
+	try {
+		const data = await User._find({}, { ...projection, password: 0 });
+		return res.status(200).send({
+			ok: true,
+			status: 200,
+			data
+		} as IResponse<IUser[]>);
+	} catch (error) {
+		next(error);
+	}
+});
 
 userRouter.post(Routes.login, async (req: Request, res: Response, next: NextFunction) => {
 	try {

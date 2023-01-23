@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 
-import { regexify } from "../helpers/util";
+import { projection, regexify } from "../helpers/util";
 import { Disc } from "../models/disc";
 import { IDisc, IDiscFilter } from "../types/abstract";
 import { Routes } from "../types/constants";
@@ -48,7 +48,5 @@ const buildFilter = (query: Record<string, string>) => {
 	fade && (filter.fade = fade);
 	return filter;
 };
-
-const projection = { _id: 0, created_at: 0, updated_at: 0, __v: 0 };
 
 export default discRouter;

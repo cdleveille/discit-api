@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 
-import { newId } from "../helpers/util";
+import { newId, projection } from "../helpers/util";
 import { validate } from "../middleware/jwt";
 import { Bag } from "../models/bag";
 import { Disc } from "../models/disc";
@@ -18,7 +18,7 @@ bagRouter.post(Routes.root, validate, async (req: Request, res: Response, next: 
 		const user = await User._findOne({ id: user_id });
 		if (!user) throw new NotFoundError("User not found.");
 
-		const bags = await Bag._find({ user_id });
+		const bags = await Bag._find({ user_id }, projection);
 
 		return res.status(200).send({
 			ok: true,
