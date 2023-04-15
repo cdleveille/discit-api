@@ -17,11 +17,11 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
 ## Example Requests
 
--   All discs: `/disc`
--   By one field: `/disc?stability=very-overstable`
--   By multiple fields: `/disc?brand=innova&category=control-driver`
--   By id: `/disc/8ddd0d56-b63c-5d65-9737-1a380b93cc23`
--   By name: `/disc/buzzz`
+-   All discs: [`/disc`](https://discit-api.fly.dev/disc)
+-   By one field: [`/disc?stability=very-overstable`](https://discit-api.fly.dev/disc?stability=very-overstable)
+-   By multiple fields: [`/disc?brand=innova&category=control-driver`](https://discit-api.fly.dev/disc?brand=innova&category=control-driver)
+-   By id: [`/disc/dc3616c5-c9f2-55e3-9563-83a00d0805cb`](https://discit-api.fly.dev/disc/dc3616c5-c9f2-55e3-9563-83a00d0805cb)
+-   By name: [`/disc/buzzz`](https://discit-api.fly.dev/disc/buzzz)
 
 Refer to the **Fields** section below for all possible query string parameters.
 
