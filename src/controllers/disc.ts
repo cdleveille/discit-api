@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express";
 
-import { projection, regexify } from "../helpers/util";
-import { Disc } from "../models/disc";
-import { IDisc, IDiscFilter } from "../types/abstract";
-import { Routes } from "../types/constants";
+import { projection, regexify } from "@helpers";
+import { Disc } from "@models";
+import { IDisc, IDiscFilter, Routes } from "@types";
 
 const discRouter = Router();
 
