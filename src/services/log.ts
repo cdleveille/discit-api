@@ -1,6 +1,6 @@
 export const log = {
-	info: (...msgs: any[]) => console.info(...msgs),
-	error: (...msgs: any[]) => console.error(...msgs),
+	info: (msg: any, msg2?: any) => console.info(msg, msg2 ? msg2 : ""),
+	error: (msg: any, msg2?: any) => console.error(msg, msg2 ? msg2 : ""),
 	query: (msg: string) => logQuery(msg)
 };
 
