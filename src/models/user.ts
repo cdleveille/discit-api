@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
 import { BaseSchema } from "@models";
-import { IUser, IUserModel } from "@types";
+import { IUser } from "@types";
 
 const UserSchema = new Schema<IUser>({
 	id: {
@@ -18,4 +18,4 @@ const UserSchema = new Schema<IUser>({
 	}
 }).add(BaseSchema);
 
-export const User = model<IUser, IUserModel>("User", UserSchema);
+export const User = model<IUser>("User", UserSchema);

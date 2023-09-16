@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
 import { BaseSchema } from "@models";
-import { IDisc, IDiscModel } from "@types";
+import { IDisc } from "@types";
 
 const DiscSchema = new Schema<IDisc>({
 	id: {
@@ -82,4 +82,4 @@ const DiscSchema = new Schema<IDisc>({
 	}
 }).add(BaseSchema);
 
-export const Disc = model<IDisc, IDiscModel>("Disc", DiscSchema);
+export const Disc = model<IDisc>("Disc", DiscSchema);
