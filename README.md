@@ -8,11 +8,12 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
 ## Endpoints
 
-| Method | Route       | Description |
-| ------ | ----------- | ----------- |
-| `GET`  | `/disc`     | All discs   |
-| `GET`  | `/disc?`    | By field(s) |
-| `GET`  | `/disc/:id` | By id       |
+| Method | Route         | Description | 404 Response Body |
+| ------ | ------------- | ----------- | ----------------- |
+| `GET`  | `/disc`       | All discs   | N/A               |
+| `GET`  | `/disc?`      | By field(s) | `[]`              |
+| `GET`  | `/disc/:id`   | By id       | `null`            |
+| `GET`  | `/disc/:name` | By name     | `null`            |
 
 ## Example Requests
 
@@ -20,26 +21,27 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 -   By one field: [`/disc?stability=very-overstable`](https://discit-api.fly.dev/disc?stability=very-overstable)
 -   By multiple fields: [`/disc?brand=innova&category=control-driver`](https://discit-api.fly.dev/disc?brand=innova&category=control-driver)
 -   By id: [`/disc/dc3616c5-c9f2-55e3-9563-83a00d0805cb`](https://discit-api.fly.dev/disc/dc3616c5-c9f2-55e3-9563-83a00d0805cb)
+-   By name: [`/disc/buzzz`](https://discit-api.fly.dev/disc/buzzz)
 
 Refer to the **Fields** section below for all possible query string parameters.
 
 ## Fields
 
-| Field              | Is Searchable | Search Operator | Description                                                                                                           |
-| ------------------ | ------------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `id`               | Yes           | `=`             | Unique identifier for the disc                                                                                        |
-| `name`\*           | Yes           | `LIKE`          | Name of the disc: `Aviar`, `Buzz`, `Crank SS`, etc.                                                                   |
-| `brand`\*          | Yes           | `LIKE`          | Brand of the disc: `Innova`, `Discraft`, `Dynamic Discs`, etc.                                                        |
-| `category`\*       | Yes           | `LIKE`          | `Distance Driver`, `Hybrid Driver`, `Control Driver`, `Midrange`, `Putter`                                            |
-| `speed`            | Yes           | `=`             | The relative rate at which the disc can travel through the air: `1` to `15`                                           |
-| `glide`            | Yes           | `=`             | The relative ability of the disc to maintain loft during its flight: `1` to `7`                                       |
-| `turn`             | Yes           | `=`             | The tendency of the disc to turn over or bank to the right (for RHBH throws) at the start of its flight: `+1` to `-5` |
-| `fade`             | Yes           | `=`             | The tendency of the disc to hook left (for RHBH throws) at the end of its flight: `0` to `5`                          |
-| `stability`\*      | Yes           | `=`             | `Stable`, `Overstable`, `Very Overstable`, `Understable`, `Very Understable`                                          |
-| `link`             | No            | N/A             | Link to search for the disc in the Marshall Street Disc Golf web store                                                |
-| `pic`              | No            | N/A             | Link to a picture showing the approximate flight shape of the disc                                                    |
-| `color`            | No            | N/A             | Text color for the disc on the Marshall Street Flight Guide page                                                      |
-| `background_color` | No            | N/A             | Background color for the disc on the Marshall Street Flight Guide page                                                |
+| Field              | Is Searchable | Search Operator | Description                                                                                                                  |
+| ------------------ | ------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `id`               | Yes           | `=`             | Unique identifier for the disc                                                                                               |
+| `name`\*           | Yes           | `LIKE`          | Name of the disc: `Aviar`, `Buzz`, `Crank SS`, etc.                                                                          |
+| `brand`\*          | Yes           | `LIKE`          | Brand of the disc: `Innova`, `Discraft`, `Dynamic Discs`, etc.                                                               |
+| `category`\*       | Yes           | `LIKE`          | `Distance Driver`, `Hybrid Driver`, `Control Driver`, `Midrange`, `Putter`                                                   |
+| `speed`            | Yes           | `=`             | The relative rate at which the disc can travel through the air: `1` to `15`                                                  |
+| `glide`            | Yes           | `=`             | The relative ability of the disc to maintain loft during its flight: `1` to `7`                                              |
+| `turn`             | Yes           | `=`             | The tendency of the disc to turn over or bank to the right (for RHBH throws) at the initial part of its flight: `+1` to `-5` |
+| `fade`             | Yes           | `=`             | The tendency of the disc to hook left (for RHBH throws) at the end of its flight: `0` to `5`                                 |
+| `stability`\*      | Yes           | `=`             | `Stable`, `Overstable`, `Very Overstable`, `Understable`, `Very Understable`                                                 |
+| `link`             | No            | N/A             | Link to search for the disc in the Marshall Street Disc Golf web store                                                       |
+| `pic`              | No            | N/A             | Link to a picture showing the approximate flight shape of the disc                                                           |
+| `color`            | No            | N/A             | Text color for the disc on the Marshall Street Flight Guide page                                                             |
+| `background_color` | No            | N/A             | Background color for the disc on the Marshall Street Flight Guide page                                                       |
 
 \* This field uses a URL-friendly **slug** string for searches. All non-alphanumeric characters are stripped out, and each space is replaced with a hyphen (e.g. `Crank SS` = `crank-ss`, `#1 Driver` = `1-driver`).
 
@@ -54,14 +56,14 @@ Refer to the **Fields** section below for all possible query string parameters.
 -   Create and populate a `.env` file based on `.env.example`.
 -   Launch Docker Desktop. In VS Code, right-click `.discit-dev-container\docker-compose.yml` and select `Compose Up` to initialize database container.
 -   Run `bun dev` to start in dev mode (server restarts on file save).
--   Server will listen for requests on [localhost:5000](http://localhost:5000).
+-   Server will listen for requests on [localhost:5000](http://localhost:5000/).
 
 ## Technologies
 
--   [TypeScript](https://www.typescriptlang.org)
+-   [TypeScript](https://www.typescriptlang.org/)
 -   [Bun](https://bun.sh/)
--   [Express](https://expressjs.com)
--   [MongoDB](https://www.mongodb.com)
+-   [Express](https://expressjs.com/)
+-   [MongoDB](https://www.mongodb.com/)
 
 ## See Also
 

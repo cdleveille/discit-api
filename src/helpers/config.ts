@@ -1,7 +1,7 @@
-import { IConfig } from "@types";
+import { Env, IConfig } from "@types";
 
 export const Config = {
-	IS_PROD: Bun.env.NODE_ENV === "production",
+	IS_PROD: Bun.env.NODE_ENV === Env.prod,
 	PORT: parseInt(Bun.env.PORT) || 5000,
 	REFRESH_DISCS_START: Bun.env.REFRESH_DISCS_START?.toLowerCase() === "true",
 	REFRESH_DISCS_CRON: Bun.env.REFRESH_DISCS_CRON?.toLowerCase() === "true",

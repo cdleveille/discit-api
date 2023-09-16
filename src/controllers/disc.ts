@@ -1,32 +1,37 @@
-import { Elysia } from "elysia";
+import { NextFunction, Request, Response, Router } from "express";
 
-import { errorResponse, projection, regexify } from "@helpers";
+import { projection, regexify } from "@helpers";
 import { Disc } from "@models";
-import { IDiscFilter } from "@types";
+import { IDisc, IDiscFilter, Routes } from "@types";
 
-export const initDiscRoutes = (app: Elysia) => {
-	app.get("/disc", async ({ set, query }) => {
-		try {
-			const filter = buildFilter(query as Record<string, string>);
-			return await Disc.find(filter, projection).sort({
-				name: 1
-			});
-		} catch (error) {
-			return errorResponse(set, error);
-		}
-	});
+const discRouter = Router();
 
-	app.get("/disc/:id", async ({ set, params }) => {
-		try {
-			const { id } = params as Record<string, string>;
-			const disc = await Disc.findOne({ id }, projection);
-			if (!disc) throw { code: 404, data: "Disc not found." };
-			return disc;
-		} catch (error) {
-			return errorResponse(set, error);
-		}
-	});
-};
+discRouter.get(Routes.root, async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		const filter = buildFilter(req.query as Record<string, string>);
+		const discs = (await Disc.find(filter, projection).sort({
+			name: 1
+		})) as IDisc[];
+		if (!discs || discs.length === 0) return res.status(404).json([]);
+		return res.status(200).json(discs);
+	} catch (error) {
+		next(error);
+	}
+});
+
+discRouter.get(`${Routes.root}:id_or_name`, async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		const { id_or_name } = req.params;
+		const [discById, discByName] = (await Promise.all([
+			Disc.findOne({ id: id_or_name }, projection),
+			Disc.findOne({ name_slug: id_or_name }, projection)
+		])) as IDisc[];
+		if (discById || discByName) return res.status(200).json(discById ?? discByName);
+		return res.status(404).json(null);
+	} catch (error) {
+		next(error);
+	}
+});
 
 const buildFilter = (query: Record<string, string>) => {
 	const { id, name, brand, category, stability, speed, glide, turn, fade } = query;
@@ -42,3 +47,5 @@ const buildFilter = (query: Record<string, string>) => {
 	fade && (filter.fade = fade);
 	return filter;
 };
+
+export default discRouter;
