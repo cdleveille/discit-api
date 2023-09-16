@@ -1,9 +1,13 @@
 import { NextFunction, Request, Response, Router } from "express";
 
-import { newId, projection } from "@helpers";
-import { validate } from "@middleware";
-import { Bag, Disc, User } from "@models";
-import { BadRequestError, IBag, IResponse, NotFoundError, Routes } from "@types";
+import { newId, projection } from "../helpers/util";
+import { validate } from "../middleware/jwt";
+import { Bag } from "../models/bag";
+import { Disc } from "../models/disc";
+import { User } from "../models/user";
+import { IBag, IResponse } from "../types/abstract";
+import { Routes } from "../types/constants";
+import { BadRequestError, NotFoundError } from "../types/errors";
 
 const bagRouter = Router();
 

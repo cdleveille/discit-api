@@ -1,17 +1,24 @@
 import compression from "compression";
 import cors from "cors";
 import express from "express";
+import fs from "fs";
 import helmet from "helmet";
+import morgan from "morgan";
 
-import router from "@controllers";
-import { Config } from "@helpers";
-import { errorHandler } from "@middleware";
-import { Cron, log, refreshDiscs } from "@services";
-import { Routes } from "@types";
+import router from "../controllers/index";
+import { refreshDiscs } from "../db/refresh";
+import Config from "../helpers/config";
+import errorHandler from "../middleware/errorHandler";
+import { Routes } from "../types/constants";
+import Cron from "./cron";
+import log from "./log";
 
 export const startServer = async () => {
 	const app = express();
 	app.use(express.json());
+
+	const logStream = fs.createWriteStream("combined.log", { flags: "a" });
+	app.use(morgan("combined", { stream: logStream }));
 	app.use(
 		helmet.contentSecurityPolicy({
 			directives: {
@@ -36,7 +43,7 @@ export const startServer = async () => {
 	app.disable("x-powered-by");
 
 	app.listen(Config.PORT);
-	log.info(`Server started in ${Config.IS_PROD ? "production" : "development"} mode on port ${Config.PORT}.`);
+	log.info(`Server started - listening on http://${Config.HOST}:${Config.PORT}`);
 
 	app.use(errorHandler);
 

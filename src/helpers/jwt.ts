@@ -1,14 +1,14 @@
 import dateFormat from "dateformat";
 import jwt from "jsonwebtoken";
 
-import { Config } from "@helpers";
-import { IJWT, IJwtPayload } from "@types";
+import { IJWT, IJwtPayload } from "../types/abstract";
+import config from "./config";
 
-export class Jwt {
+export default class Jwt {
 	public static async Sign(payload: IJwtPayload) {
 		try {
-			return jwt.sign(payload, Config.JWT_SECRET, {
-				expiresIn: Config.JWT_EXPIRATION
+			return jwt.sign(payload, config.JWT_SECRET, {
+				expiresIn: config.JWT_EXPIRATION
 			});
 		} catch (e) {
 			throw Error(e);
@@ -17,7 +17,7 @@ export class Jwt {
 
 	public static async Verify(token: string) {
 		try {
-			const data = <IJWT>(<unknown>jwt.verify(token, Config.JWT_SECRET));
+			const data = <IJWT>(<unknown>jwt.verify(token, config.JWT_SECRET));
 			return {
 				id: data.id,
 				username: data.username,

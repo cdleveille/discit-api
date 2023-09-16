@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
-import { BaseSchema } from "@models";
-import { IUser, IUserModel } from "@types";
+import { IUser, IUserModel } from "../types/abstract";
+import { BaseSchema } from "./_base";
 
 const UserSchema = new Schema<IUser>({
 	id: {

@@ -1,15 +1,5 @@
 import { FilterQuery, Model, PopulateOptions, QueryOptions } from "mongoose";
 
-export interface IConfig {
-	IS_PROD: boolean;
-	PORT: number;
-	REFRESH_DISCS_START: boolean;
-	REFRESH_DISCS_CRON: boolean;
-	MONGO_URI: string;
-	JWT_SECRET: string;
-	JWT_EXPIRATION: string;
-}
-
 export interface IBase {
 	created_at: Date;
 	updated_at: Date;

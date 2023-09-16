@@ -48,20 +48,21 @@ Refer to the **Fields** section below for all possible query string parameters.
 ## Setup
 
 -   Install prerequisites:
-    -   [bun](https://bun.sh/)
+    -   [Node.js](https://nodejs.org/en/download/)
     -   [Visual Studio Code](https://code.visualstudio.com/download) (with [Docker Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker))
     -   [Docker Desktop](https://www.docker.com/)
 -   Clone repo and open in VS Code.
--   Install package dependencies: `bun i`
+-   Install yarn: `npm i -g yarn`
+-   Install package dependencies: `yarn`
 -   Create and populate a `.env` file based on `.env.example`.
 -   Launch Docker Desktop. In VS Code, right-click `.discit-dev-container\docker-compose.yml` and select `Compose Up` to initialize database container.
--   Run `bun dev` to start in dev mode (server restarts on file save).
+-   Press `F5` or run `yarn dev` to run in dev mode (server restarts on file save).
 -   Server will listen for requests on [localhost:5000](http://localhost:5000/).
 
 ## Technologies
 
 -   [TypeScript](https://www.typescriptlang.org/)
--   [Bun](https://bun.sh/)
+-   [Node.js](https://nodejs.org/en/)
 -   [Express](https://expressjs.com/)
 -   [MongoDB](https://www.mongodb.com/)
 

@@ -12,6 +12,7 @@ charset = utf-8
 indent_style = tab
 indent_size = 4
 
-[*.{json,yml,toml}]
+# Matches the exact files either *.json or *.yml
+[*.{json,yml}]
 indent_style = space
 indent_size = 2

@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 
-import { log } from "@services";
-import { IError, IResponse } from "@types";
+import log from "../services/log";
+import { IError, IResponse } from "../types/abstract";
 
-export const errorHandler = (error: IError, _req: Request, res: Response, next: NextFunction) => {
+const errorHandler = (error: IError, _req: Request, res: Response, next: NextFunction) => {
 	if (error) {
 		const { status = 500, message } = error;
 		log.error(`Error (${status}): ${message}`);
@@ -14,3 +14,5 @@ export const errorHandler = (error: IError, _req: Request, res: Response, next: 
 		} as IResponse);
 	} else next();
 };
+
+export default errorHandler;

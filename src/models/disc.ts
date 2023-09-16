@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
-import { BaseSchema } from "@models";
-import { IDisc, IDiscModel } from "@types";
+import { IDisc, IDiscModel } from "../types/abstract";
+import { BaseSchema } from "./_base";
 
 const DiscSchema = new Schema<IDisc>({
 	id: {

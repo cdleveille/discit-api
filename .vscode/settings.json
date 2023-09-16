@@ -1,20 +1,12 @@
 {
-  "editor.detectIndentation": false,
-  "editor.tabSize": 4,
-  "editor.insertSpaces": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "node_modules": true
-  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": false,
+  "editor.tabSize": 4,
   "eslint.validate": ["javascript", "typescript"]
 }

@@ -1,9 +1,10 @@
 import { CronJob } from "cron";
 
-import { Config } from "@helpers";
-import { log, refreshDiscs } from "@services";
+import { refreshDiscs } from "../db/refresh";
+import Config from "../helpers/config";
+import log from "./log";
 
-export class Cron {
+export default class Cron {
 	private static EveryNightAtMidnight = "0 0 0 * * *";
 
 	public refreshDiscsNightly = new CronJob(

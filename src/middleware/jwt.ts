@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { Jwt } from "@helpers";
+import Jwt from "../helpers/jwt";
 
 export const validate = async (req: Request, res: Response, next: NextFunction) => {
 	try {

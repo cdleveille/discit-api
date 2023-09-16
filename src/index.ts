@@ -1,4 +1,6 @@
-import { connectToDatabase, log, startServer } from "@services";
+import { connectToDatabase } from "./services/db";
+import log from "./services/log";
+import { startServer } from "./services/server";
 
 (async () => {
 	try {

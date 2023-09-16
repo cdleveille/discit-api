@@ -1,8 +1,9 @@
 import fs from "fs";
 import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
 
-import { log } from "@services";
-import { CategoryMap, ID_HASH_NAMESPACE, IDisc, StabilityMap } from "@types";
+import log from "../services/log";
+import { IDisc } from "../types/abstract";
+import { CategoryMap, ID_HASH_NAMESPACE, StabilityMap } from "../types/constants";
 
 export const discMeetsMinCriteria = (disc: IDisc) => {
 	return (
