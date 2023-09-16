@@ -1,5 +1,7 @@
+import fs from "fs";
 import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
 
+import { log } from "@services";
 import { CategoryMap, ID_HASH_NAMESPACE, IDisc, StabilityMap } from "@types";
 
 export const discMeetsMinCriteria = (disc: IDisc) => {
@@ -32,9 +34,17 @@ export const hashString = (toHash: string) => {
 	return uuidv5(toHash, ID_HASH_NAMESPACE);
 };
 
-export const writeDataToFile = async (data: any, path: string) => await Bun.write(path, JSON.stringify(data));
+export const writeDataToFile = (data: any, path: string) => {
+	try {
+		fs.writeFileSync(path, JSON.stringify(data));
+	} catch (error) {
+		log.error(error);
+	}
+};
 
-export const parseCategory = (category: string) => CategoryMap.get(category) || category;
+export const parseCategory = (category: string) => {
+	return CategoryMap.get(category) || category;
+};
 
 export const parseStability = (element: any, turn: string, fade: string) => {
 	if (element) {
