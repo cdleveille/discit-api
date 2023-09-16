@@ -5,11 +5,11 @@ services:
   discit-mongodb-local:
     image: mongo:latest
     container_name: discit-mongodb-local
-    command: mongod --port 27017
+    command: mongod --port 27047
     ports:
-      - 27017:27017
+      - 27047:27047
     expose:
-      - 27017
+      - 27047
     volumes:
       - mongo-data:/data/db
     networks:
