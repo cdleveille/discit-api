@@ -100,7 +100,7 @@ export const initUserRoutes = (app: Elysia) => {
 			const passwordMatch = await Password.compare(password, user.password);
 			if (!passwordMatch) throw { code: 400, data: "Invalid password." };
 
-			await User.updateOne({ id }, { id, username, updated_at: Date.now() });
+			await User.updateOne({ id }, { username, updated_at: Date.now() });
 
 			const token = await jwt.sign({ id });
 			return { token };
@@ -124,7 +124,7 @@ export const initUserRoutes = (app: Elysia) => {
 			const passwordMatch = await Password.compare(password, user.password);
 			if (!passwordMatch) throw { code: 400, data: "Invalid password." };
 
-			await User.updateOne({ id }, { id, password: await Password.hash(newPassword), updated_at: Date.now() });
+			await User.updateOne({ id }, { password: await Password.hash(newPassword), updated_at: Date.now() });
 
 			const token = await jwt.sign({ id });
 			return { token };
