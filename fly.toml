@@ -1,4 +1,4 @@
-app = "bun-cdl"
+app = "discit-api"
 primary_region = "bos"
 
 [build]
