@@ -35,7 +35,7 @@ const buildFilter = (query: Record<string, string>) => {
 	name && (filter.name_slug = regexify(name));
 	brand && (filter.brand_slug = regexify(brand));
 	category && (filter.category_slug = regexify(category));
-	stability && (filter.stability_slug = stability);
+	stability && (filter.stability_slug = stability.toLowerCase());
 	speed && (filter.speed = speed);
 	glide && (filter.glide = glide);
 	turn && (filter.turn = turn);

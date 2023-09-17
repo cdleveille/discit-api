@@ -6,6 +6,5 @@ import { connectToDatabase, log, startServer } from "@services";
 		await startServer();
 	} catch (error) {
 		log.error(error);
-		process.exit(1);
 	}
 })();
