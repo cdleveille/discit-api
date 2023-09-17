@@ -1,6 +1,4 @@
-import axios from "axios";
 import { JSDOM } from "jsdom";
-import path from "path";
 
 import {
 	discMeetsMinCriteria,
@@ -21,7 +19,7 @@ export const refreshDiscs = async () => {
 		const existingDiscs = await backupDiscs();
 		const discCollections = await getDiscs();
 		const discsToInsert = processDiscs(discCollections);
-		if (discsToInsert.length > 0 && discsToInsert.length >= existingDiscs.length) {
+		if (discsToInsert.length >= existingDiscs.length) {
 			await deleteAllDiscs();
 			await insertDiscs(discsToInsert);
 		}
@@ -39,7 +37,7 @@ const backupDiscs = async () => {
 		log.info(`${existingDiscs.length} existing discs in database.`);
 		if (existingDiscs.length > 0) {
 			log.info("Backing up existing discs...");
-			const filepath = path.join(process.cwd(), "discs_backup.json");
+			const filepath = "discs_backup.json";
 			writeDataToFile(existingDiscs, filepath);
 			log.info(`Backed up ${existingDiscs.length} existing discs to file '${filepath}.`);
 		}
@@ -52,15 +50,13 @@ const backupDiscs = async () => {
 const getDiscs = async () => {
 	try {
 		log.info(`Fetching discs from ${DISC_FETCH_URL}...`);
-		const { status, data } = await axios.get(DISC_FETCH_URL);
+		const { status, body } = await fetch(DISC_FETCH_URL);
 		if (status !== 200) throw `Bad response status: ${status}`;
-		if (!data) throw `${DISC_FETCH_URL} returned no data!`;
-
-		const dom = new JSDOM(data);
+		if (!body) throw `${DISC_FETCH_URL} returned no data!`;
+		const dom = new JSDOM(await Bun.readableStreamToText(body));
 		const discCollection = dom.window.document.getElementsByClassName(Site.discClass);
 		const putterCollection = dom.window.document.getElementsByClassName(Site.putterClass);
 		log.info(`${discCollection.length + putterCollection.length} discs fetched.`);
-
 		return { discCollection, putterCollection } as IDiscCollections;
 	} catch (error) {
 		throw new Error(`${error} - Error fetching disc data from '${DISC_FETCH_URL}'.`);
