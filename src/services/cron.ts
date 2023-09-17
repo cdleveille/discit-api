@@ -6,7 +6,7 @@ import { log, refreshDiscs } from "@services";
 
 const everyNightAtMidnight = "0 0 0 * * *";
 
-export const initCron = (app: Elysia) => {
+export const initCron = (app: Elysia) =>
 	app.use(
 		cron({
 			name: "refreshDiscs",
@@ -19,4 +19,3 @@ export const initCron = (app: Elysia) => {
 			}
 		})
 	);
-};

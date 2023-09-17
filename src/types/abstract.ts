@@ -1,5 +1,3 @@
-import { PopulateOptions, QueryOptions } from "mongoose";
-
 export interface IConfig {
 	IS_PROD: boolean;
 	PORT: number;
@@ -54,16 +52,6 @@ export interface IDiscCollections {
 }
 
 export type Projection = Record<string, 0 | 1>;
-
-export interface Options<T extends IBase = IBase> extends QueryOptions {
-	sort?: {
-		[k in keyof Partial<T>]: 1 | -1 | number;
-	};
-	populate?: PopulateOptions[];
-	limit?: number;
-	skip?: number;
-	new?: boolean;
-}
 
 export type DiscFilterRegex = { $regex: string; $options: string };
 

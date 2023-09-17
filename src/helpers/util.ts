@@ -2,35 +2,26 @@ import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
 
 import { CategoryMap, ID_HASH_NAMESPACE, IDisc, IError, StabilityMap } from "@types";
 
-export const discMeetsMinCriteria = (disc: IDisc) => {
-	return (
-		disc.id &&
-		disc.name &&
-		disc.brand &&
-		disc.category &&
-		disc.speed &&
-		disc.glide &&
-		disc.turn &&
-		disc.fade &&
-		disc.stability
-	);
-};
+export const discMeetsMinCriteria = (disc: IDisc) =>
+	disc.id &&
+	disc.name &&
+	disc.brand &&
+	disc.category &&
+	disc.speed &&
+	disc.glide &&
+	disc.turn &&
+	disc.fade &&
+	disc.stability;
 
-export const slugify = (text: string) => {
-	const slug = text
+export const slugify = (text: string) =>
+	text
 		.toLowerCase()
 		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
 		.replace(/[ ]/g, "-");
-	return slug;
-};
 
-export const regexify = (field: string) => {
-	return { $regex: field, $options: "i" };
-};
+export const regexify = (field: string) => ({ $regex: field, $options: "i" });
 
-export const hashString = (toHash: string) => {
-	return uuidv5(toHash, ID_HASH_NAMESPACE);
-};
+export const hashString = (toHash: string) => uuidv5(toHash, ID_HASH_NAMESPACE);
 
 export const writeDataToFile = async (data: any, path: string) => await Bun.write(path, JSON.stringify(data));
 
@@ -77,7 +68,6 @@ export const newId = () => uuidv4();
 
 export const isAlphaNumeric = (str: string): boolean => {
 	let code: number, i: number, len: number;
-
 	for (i = 0, len = str.length; i < len; i++) {
 		code = str.charCodeAt(i);
 		if (

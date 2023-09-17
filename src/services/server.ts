@@ -1,14 +1,13 @@
 import { Elysia } from "elysia";
 
 import { initRoutes } from "@controllers";
-import { cors } from "@elysiajs/cors";
-import { Config, initJwt } from "@helpers";
+import { Config } from "@helpers";
+import { initMiddleware } from "@middleware";
 import { initCron, log, refreshDiscs } from "@services";
 
 export const startServer = async () => {
 	const app = new Elysia();
-	app.use(cors());
-	initJwt(app);
+	initMiddleware(app);
 	initRoutes(app);
 	initCron(app);
 	app.listen(Config.PORT, () =>
