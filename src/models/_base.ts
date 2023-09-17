@@ -1,7 +1,6 @@
 import { FilterQuery, Schema } from "mongoose";
 
-import { IBase, IBaseModel, Options, Projection } from "../types/abstract";
-import { NotFoundError } from "../types/errors";
+import { IBase, IBaseModel, NotFoundError, Options, Projection } from "@types";
 
 export const BaseSchema = new Schema<IBase, IBaseModel>({
 	created_at: {

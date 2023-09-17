@@ -10,11 +10,10 @@ import {
 	parseStability,
 	slugify,
 	writeDataToFile
-} from "../helpers/util";
-import { Disc } from "../models/disc";
-import log from "../services/log";
-import { IDisc, IDiscCollections } from "../types/abstract";
-import { DISC_FETCH_URL, Site } from "../types/constants";
+} from "@helpers";
+import { Disc } from "@models";
+import { log } from "@services";
+import { DISC_FETCH_URL, IDisc, IDiscCollections, Site } from "@types";
 
 export const refreshDiscs = async () => {
 	try {

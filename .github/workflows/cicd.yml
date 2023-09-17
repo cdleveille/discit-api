@@ -2,26 +2,19 @@ name: cicd
 
 on:
   push:
-    branches: [main]
+    branches: ["*"]
   pull_request:
-    branches: [main]
+    branches: ["*"]
 
 jobs:
-  build:
+  lint:
+    name: lint
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+        with:
+          version: 1.0.1
 
-      - name: install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: lint project
-        run: yarn lint
-
-      - name: build project
-        run: yarn build
+      - run: bun i --frozen-lockfile
+      - run: bun lint

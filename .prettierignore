@@ -1,8 +1,2 @@
-/node_modules
-/build
-.env
-*.tsbuildinfo
-*.log
-*.lock
-.DS_Store
+node_modules/
 discs_backup.json

@@ -1,11 +1,7 @@
-import bcrypt from "bcrypt";
-
 export class Password {
-	public static async hash(string: string) {
+	public static async hash(pass: string) {
 		try {
-			const salt: string = await bcrypt.genSalt(12);
-			const hash: string = await bcrypt.hash(string, salt);
-			return hash;
+			return await Bun.password.hash(pass, { algorithm: "bcrypt" });
 		} catch (e) {
 			throw Error(e);
 		}
@@ -13,7 +9,7 @@ export class Password {
 
 	public static async compare(pass: string, hash: string) {
 		try {
-			return await bcrypt.compare(pass, hash);
+			return await Bun.password.verify(pass, hash);
 		} catch (e) {
 			throw Error(e);
 		}

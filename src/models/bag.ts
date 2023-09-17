@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
-import { IBag, IBagModel } from "../types/abstract";
-import { BaseSchema } from "./_base";
+import { BaseSchema } from "@models";
+import { IBag, IBagModel } from "@types";
 
 const BagSchema = new Schema<IBag>({
 	id: {

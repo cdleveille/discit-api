@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-import Config from "../helpers/config";
-import log from "./log";
+import { Config } from "@helpers";
+import { log } from "@services";
 
 export const connectToDatabase = async () => {
 	try {

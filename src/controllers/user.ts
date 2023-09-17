@@ -1,13 +1,9 @@
 import { NextFunction, Request, Response, Router } from "express";
 
-import Jwt from "../helpers/jwt";
-import { Password } from "../helpers/password";
-import { isAlphaNumeric, newId, projection } from "../helpers/util";
-import { validate } from "../middleware/jwt";
-import { User } from "../models/user";
-import { IJWT, IResponse, IUser } from "../types/abstract";
-import { Routes } from "../types/constants";
-import { BadRequestError, NotFoundError } from "../types/errors";
+import { isAlphaNumeric, Jwt, newId, Password, projection } from "@helpers";
+import { validate } from "@middleware";
+import { User } from "@models";
+import { BadRequestError, IJWT, IResponse, IUser, NotFoundError, Routes } from "@types";
 
 const userRouter = Router();
 
