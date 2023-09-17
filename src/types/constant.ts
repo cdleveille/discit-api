@@ -1,15 +1,3 @@
-/* eslint-disable no-unused-vars */
-
-export enum Env {
-	dev = "development",
-	prod = "production"
-}
-
-export enum Host {
-	local = "localhost",
-	ip = "127.0.0.1"
-}
-
 export const DISC_FETCH_URL = "https://www.marshallstreetdiscgolf.com/flightguide";
 
 export const PROD_URL = "https://discit-api.fly.dev";
@@ -48,20 +36,5 @@ export const StabilityMap = new Map([
 	["understable", "Understable"],
 	["very-understable", "Very Understable"]
 ]);
-
-export enum Routes {
-	root = "/",
-	disc = "/disc",
-	user = "/user",
-	bag = "/bag",
-	create = "/create",
-	update = "/update",
-	delete = "/delete",
-	register = "/register",
-	login = "/login",
-	validate = "/validate",
-	addDisc = "/add-disc",
-	removeDisc = "/remove-disc"
-}
 
 export const ID_HASH_NAMESPACE = "1b671a64-40d5-491e-99b0-da01ff1f3341";

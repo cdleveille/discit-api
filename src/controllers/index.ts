@@ -1,20 +1,16 @@
-import { Request, Response, Router } from "express";
+import { Elysia } from "elysia";
 
-import { Routes } from "../types/constant";
-import bagRouter from "./bag";
-import discRouter from "./disc";
-import userRouter from "./user";
+import { initBagRoutes, initDiscRoutes, initUserRoutes } from "@controllers";
 
-const router = Router();
-router.use(Routes.disc, discRouter);
-router.use(Routes.user, userRouter);
-router.use(Routes.bag, bagRouter);
+export const initRoutes = (app: Elysia) => {
+	app.get("/", ({ set }) => {
+		set.redirect = "/disc";
+	});
+	initDiscRoutes(app);
+	initUserRoutes(app);
+	initBagRoutes(app);
+};
 
-router.get(Routes.root, async (_req: Request, res: Response) => {
-	res.redirect(Routes.disc);
-});
-
-export default router;
 export * from "./bag";
 export * from "./disc";
 export * from "./user";

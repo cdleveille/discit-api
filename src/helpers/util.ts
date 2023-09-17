@@ -1,6 +1,6 @@
 import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
 
-import { CategoryMap, ID_HASH_NAMESPACE, IDisc, StabilityMap } from "@types";
+import { CategoryMap, ID_HASH_NAMESPACE, IDisc, IError, StabilityMap } from "@types";
 
 export const discMeetsMinCriteria = (disc: IDisc) => {
 	return (
@@ -93,3 +93,8 @@ export const isAlphaNumeric = (str: string): boolean => {
 };
 
 export const projection = { _id: 0, created_at: 0, updated_at: 0, __v: 0 };
+
+export const errorResponse = (set: { status?: number }, error: IError) => {
+	set.status = error?.code ?? 500;
+	return { error: error?.data ?? "Internal server error." };
+};

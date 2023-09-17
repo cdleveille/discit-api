@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
 import { BaseSchema } from "@models";
-import { IBag, IBagModel } from "@types";
+import { IBag } from "@types";
 
 const BagSchema = new Schema<IBag>({
 	id: {
@@ -27,4 +27,4 @@ const BagSchema = new Schema<IBag>({
 	}
 }).add(BaseSchema);
 
-export const Bag = model<IBag, IBagModel>("Bag", BagSchema);
+export const Bag = model<IBag>("Bag", BagSchema);
