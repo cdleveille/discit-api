@@ -88,7 +88,7 @@ const processDiscs = (collections: IDiscCollections) => {
 			const color = element.getAttribute(Site.colorAttr);
 			const background_color = element.getAttribute(Site.backgroundColorAttr);
 
-			const disc: IDisc = {
+			const disc = {
 				id,
 				name,
 				brand,
@@ -106,7 +106,7 @@ const processDiscs = (collections: IDiscCollections) => {
 				stability_slug,
 				color,
 				background_color
-			};
+			} as IDisc;
 
 			if (discMeetsMinCriteria(disc)) discsToInsert.push(disc);
 		}
@@ -131,7 +131,7 @@ const processDiscs = (collections: IDiscCollections) => {
 			const color = element.getAttribute(Site.colorAttr);
 			const background_color = element.getAttribute(Site.backgroundColorAttr);
 
-			const disc: IDisc = {
+			const disc = {
 				id,
 				name,
 				brand,
@@ -149,7 +149,7 @@ const processDiscs = (collections: IDiscCollections) => {
 				stability_slug,
 				color,
 				background_color
-			};
+			} as IDisc;
 
 			if (discMeetsMinCriteria(disc)) discsToInsert.push(disc);
 		}

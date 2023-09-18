@@ -1,12 +1,13 @@
 import { model, Schema } from "mongoose";
 
-import { BaseSchema } from "@models";
+import { BaseSchema, newId } from "@helpers";
 import { IUser } from "@types";
 
 const UserSchema = new Schema<IUser>({
 	id: {
 		type: String,
-		required: true
+		required: false,
+		default: newId()
 	},
 	username: {
 		type: String,

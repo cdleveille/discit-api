@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 
-import { errorResponse, isAlphaNumeric, newId, Password, projection } from "@helpers";
+import { errorResponse, isAlphaNumeric, Password, projection } from "@helpers";
 import { User } from "@models";
 import { IUser } from "@types";
 
@@ -54,11 +54,7 @@ export const initUserRoutes = (app: Elysia) => {
 			if (password.length < 8) throw { code: 400, data: "Password must be at least 8 characters." };
 			if (await User.findOne({ username })) throw { code: 400, data: "Username not available." };
 
-			const { id } = await User.create({
-				id: newId(),
-				username,
-				password: await Password.hash(password)
-			});
+			const { id } = await User.create({ username, password: await Password.hash(password) });
 
 			const token = await jwt.sign({ id });
 			return { token };

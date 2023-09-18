@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 
-import { errorResponse, newId, projection } from "@helpers";
+import { errorResponse, projection } from "@helpers";
 import { Bag, Disc, User } from "@models";
 import { IBag } from "@types";
 
@@ -45,9 +45,7 @@ export const initBagRoutes = (app: Elysia) => {
 			if (name.length < 1) throw { code: 400, data: "Bag name must be at least 1 character." };
 			if (name.length > 32) throw { code: 400, data: "Bag name must be no more than 32 characters." };
 
-			const bag = { id: newId(), user_id, name };
-			await Bag.create(bag);
-			return bag;
+			return await Bag.create({ user_id, name });
 		} catch (error) {
 			return errorResponse(set, error);
 		}
@@ -65,8 +63,7 @@ export const initBagRoutes = (app: Elysia) => {
 			if (bag.discs.includes(disc_id)) throw { code: 400, data: "Bag already contains this disc." };
 
 			bag.discs.push(disc_id);
-			await Bag.updateOne({ id }, bag);
-			return bag;
+			return await Bag.updateOne({ id }, bag);
 		} catch (error) {
 			return errorResponse(set, error);
 		}
@@ -84,8 +81,7 @@ export const initBagRoutes = (app: Elysia) => {
 			if (!bag.discs.includes(disc_id)) throw { code: 400, data: "Bag does not contain this disc." };
 
 			bag.discs = bag.discs.filter(discId => discId !== disc_id);
-			await Bag.updateOne({ id }, bag);
-			return bag;
+			return await Bag.updateOne({ id }, bag);
 		} catch (error) {
 			return errorResponse(set, error);
 		}

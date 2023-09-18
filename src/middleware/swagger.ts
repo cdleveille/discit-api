@@ -9,11 +9,7 @@ export const useSwagger = (app: Elysia) =>
 		swagger({
 			path: "/docs",
 			documentation: {
-				info: {
-					title,
-					version,
-					description: ""
-				},
+				info: { title, version, description: "" },
 				servers: [
 					{ url: "https://discit-api.fly.dev", description: "production" },
 					{ url: "http://localhost:5000", description: "development" }

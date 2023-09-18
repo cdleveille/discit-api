@@ -1,7 +1,8 @@
 import { t } from "elysia";
+import { Schema } from "mongoose";
 import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
 
-import { CategoryMap, ID_HASH_NAMESPACE, IDisc, IError, StabilityMap } from "@types";
+import { CategoryMap, IBase, ID_HASH_NAMESPACE, IDisc, IError, StabilityMap } from "@types";
 
 export const discMeetsMinCriteria = (disc: IDisc) =>
 	disc.id &&
@@ -84,6 +85,18 @@ export const isAlphaNumeric = (str: string): boolean => {
 };
 
 export const projection = { _id: 0, created_at: 0, updated_at: 0, __v: 0 };
+
+export const BaseSchema = new Schema<IBase>({
+	created_at: {
+		type: Date,
+		default: () => Date.now(),
+		immutable: true
+	},
+	updated_at: {
+		type: Date,
+		default: () => Date.now()
+	}
+});
 
 export const errorResponse = (set: { status?: number }, error: IError) => {
 	set.status = error?.code ?? 500;

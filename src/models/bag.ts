@@ -1,12 +1,13 @@
 import { model, Schema } from "mongoose";
 
-import { BaseSchema } from "@models";
+import { BaseSchema, newId } from "@helpers";
 import { IBag } from "@types";
 
 const BagSchema = new Schema<IBag>({
 	id: {
 		type: String,
-		required: true
+		required: false,
+		default: newId()
 	},
 	name: {
 		type: String,
