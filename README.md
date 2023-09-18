@@ -27,7 +27,7 @@ Refer to the **Fields** section below for all possible query string parameters.
 
 | Field              | Searchable? | Search Operator | Description                                                                                                           |
 | ------------------ | ----------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `id`               | Yes         | `=`             | Unique identifier for the disc                                                                                        |
+| `id`               | Yes         | `=`             | Unique identifier of the disc                                                                                         |
 | `name`\*           | Yes         | `LIKE`          | Name of the disc: `Aviar`, `Buzz`, `Crank SS`, etc.                                                                   |
 | `brand`\*          | Yes         | `LIKE`          | Brand of the disc: `Innova`, `Discraft`, `Dynamic Discs`, etc.                                                        |
 | `category`\*       | Yes         | `LIKE`          | `Distance Driver`, `Hybrid Driver`, `Control Driver`, `Midrange`, `Putter`                                            |

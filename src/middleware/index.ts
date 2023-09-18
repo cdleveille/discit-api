@@ -1,11 +1,15 @@
 import { Elysia } from "elysia";
 
-import { initCors, initJwt } from "@middleware";
+import { useCors, useHelmet, useJwt, useSwagger } from "@middleware";
 
 export const initMiddleware = (app: Elysia) => {
-	initCors(app);
-	initJwt(app);
+	useCors(app);
+	useHelmet(app);
+	useJwt(app);
+	useSwagger(app);
 };
 
 export * from "./cors";
+export * from "./helmet";
 export * from "./jwt";
+export * from "./swagger";

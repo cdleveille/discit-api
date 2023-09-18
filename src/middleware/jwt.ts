@@ -3,7 +3,7 @@ import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
 import { Config } from "@helpers";
 
-export const initJwt = (app: Elysia) =>
+export const useJwt = (app: Elysia) =>
 	app.use(
 		jwt({
 			name: "jwt",

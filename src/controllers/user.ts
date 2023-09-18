@@ -13,7 +13,7 @@ export const initUserRoutes = (app: Elysia) => {
 		}
 	});
 
-	app.get("/user/:id", async ({ params, set }) => {
+	app.get("/user/:id", async ({ set, params }) => {
 		try {
 			const { id } = params as Record<string, string>;
 			const user = await User.findOne({ id }, { ...projection, password: 0 });
@@ -25,7 +25,7 @@ export const initUserRoutes = (app: Elysia) => {
 	});
 
 	// @ts-ignore
-	app.post("/user/login", async ({ body, set, jwt }) => {
+	app.post("/user/login", async ({ set, body, jwt }) => {
 		try {
 			const { username, password } = body as IUser;
 			if (!username || !password) throw { code: 400, data: "Required body fields: username, password" };

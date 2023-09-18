@@ -4,7 +4,7 @@ import { initBagRoutes, initDiscRoutes, initUserRoutes } from "@controllers";
 
 export const initRoutes = (app: Elysia) => {
 	app.get("/", ({ set }) => {
-		set.redirect = "/disc";
+		set.redirect = "/docs";
 	});
 	initDiscRoutes(app);
 	initUserRoutes(app);
