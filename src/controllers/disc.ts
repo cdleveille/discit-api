@@ -10,16 +10,17 @@ export const initDiscRoutes = (app: Elysia) => {
 		async ({ set, query }) => {
 			try {
 				const filter = buildFilter(query as Record<string, string>);
-				return await Disc.find(filter, projection).sort({
-					name: 1
-				});
+				return await Disc.find(filter, projection).sort({ name: 1 });
 			} catch (error) {
 				return errorResponse(set, error);
 			}
 		},
 		{
+			type: "application/json",
 			query: discRequestSchema,
-			response: t.Array(discResponseSchema)
+			response: {
+				200: t.Array(discResponseSchema)
+			}
 		}
 	);
 
@@ -36,8 +37,15 @@ export const initDiscRoutes = (app: Elysia) => {
 			}
 		},
 		{
+			type: "application/json",
 			params: t.Object({ id: t.String() }),
-			response: discResponseSchema
+			response: {
+				200: discResponseSchema,
+				404: t.Object({
+					code: t.Integer({ default: 404 }),
+					data: t.String({ default: "Disc not found." })
+				})
+			}
 		}
 	);
 };

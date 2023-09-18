@@ -6,6 +6,10 @@ Enables developers to programmatically access public disc information from the a
 
 Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
+## Docs
+
+Check out the Swagger docs at [discit-api.fly.dev/docs](https://discit-api.fly.dev/docs) or see below for endpoints, example requests, and field reference.
+
 ## Endpoints
 
 | Method | Route       | Description |
