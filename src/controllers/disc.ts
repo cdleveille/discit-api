@@ -18,9 +18,7 @@ export const initDiscRoutes = (app: Elysia) => {
 		{
 			type: "application/json",
 			query: discRequestSchema,
-			response: {
-				200: t.Array(discResponseSchema)
-			}
+			response: t.Array(discResponseSchema)
 		}
 	);
 
@@ -39,13 +37,7 @@ export const initDiscRoutes = (app: Elysia) => {
 		{
 			type: "application/json",
 			params: t.Object({ id: t.String() }),
-			response: {
-				200: discResponseSchema,
-				404: t.Object({
-					code: t.Integer({ default: 404 }),
-					data: t.String({ default: "Disc not found." })
-				})
-			}
+			response: discResponseSchema
 		}
 	);
 };
