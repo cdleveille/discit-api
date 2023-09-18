@@ -16,7 +16,6 @@ export const startServer = async () => {
 				?.hostname}:${app.server?.port}.`
 		)
 	);
-
 	if (Config.REFRESH_DISCS_START) {
 		log.info("REFRESH_DISCS_START is set to true. Starting disc refresh process...");
 		await refreshDiscs();

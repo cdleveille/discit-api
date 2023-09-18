@@ -30,9 +30,11 @@ export const initUserRoutes = (app: Elysia) => {
 			const { username, password } = body as IUser;
 			if (!username || !password) throw { code: 400, data: "Required body fields: username, password" };
 
+			const invalidUsernameOrPassword = { code: 400, data: "Invalid username or password." };
 			const user = await User.findOne({ username });
+			if (!user) throw invalidUsernameOrPassword;
 			const passwordMatch = await Password.compare(password, user?.password ?? "");
-			if (!user || !passwordMatch) throw { code: 400, data: "Invalid username or password." };
+			if (!passwordMatch) throw invalidUsernameOrPassword;
 
 			const token = await jwt.sign({ id: user.id });
 			return { token };
@@ -52,13 +54,13 @@ export const initUserRoutes = (app: Elysia) => {
 			if (password.length < 8) throw { code: 400, data: "Password must be at least 8 characters." };
 			if (await User.findOne({ username })) throw { code: 400, data: "Username not available." };
 
-			const user = await User.create({
+			const { id } = await User.create({
 				id: newId(),
 				username,
 				password: await Password.hash(password)
 			});
 
-			const token = await jwt.sign({ id: user.id });
+			const token = await jwt.sign({ id });
 			return { token };
 		} catch (error) {
 			return errorResponse(set, error);
