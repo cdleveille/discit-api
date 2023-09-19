@@ -49,15 +49,14 @@ Refer to the **Fields** section below for all possible query string parameters.
 
 ## Setup
 
--   Install prerequisites:
-    -   [bun](https://bun.sh)
-    -   [Visual Studio Code](https://code.visualstudio.com/download) (with [Docker Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker))
-    -   [Docker Desktop](https://www.docker.com/)
--   Clone repo and open in VS Code.
+-   Install [bun](https://bun.sh).
 -   Install package dependencies: `bun i`
--   Create and populate a `.env` file based on `.env.example`.
--   Launch Docker Desktop. In VS Code, right-click `.discit-dev-container\docker-compose.yml` and select `Compose Up` to initialize database container.
--   Run `bun dev` to start in dev mode (server restarts on file save).
+-   Create and populate a `.env` file:
+    -   `REFRESH_DISCS_START`: Set to "true" to refresh discs from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) page on server start.
+    -   `REFRESH_DISCS_CRON`: Set to "true" to refresh discs automatically every night at 12:00AM EST.
+    -   `MONGO_URI` (optional): Connection string to a MongoDB database. If not provided, a Docker container will be used instead to host the database locally.
+-   If not using a custom MongoDB connection string, install and launch [Docker Desktop](https://www.docker.com/products/docker-desktop). Run `docker compose -f ".discit-dev-container/docker-compose.yml" up -d --build` to initialize the database container.
+-   Run `bun dev` to start in watch mode (server restarts on file save).
 -   Server will listen for requests on [localhost:5000](http://localhost:5000).
 
 ## Technologies
