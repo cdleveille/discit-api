@@ -55,7 +55,7 @@ Refer to the **Fields** section below for all possible query string parameters.
     -   `REFRESH_DISCS_START`: Set to "true" to refresh discs from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) page on server start.
     -   `REFRESH_DISCS_CRON`: Set to "true" to refresh discs automatically every night at 12:00AM EST.
     -   `MONGO_URI` (optional): Connection string to a MongoDB database. If not provided, a Docker container will be used instead to host the database locally.
--   If not using a custom MongoDB connection string, install and launch [Docker Desktop](https://www.docker.com/products/docker-desktop). Run `docker compose -f ".discit-dev-container/docker-compose.yml" up -d --build` to initialize the database container.
+-   If not using a custom MongoDB connection string, install and launch [Docker Desktop](https://www.docker.com/products/docker-desktop). Run `bun compose:up` to initialize the database container.
 -   Run `bun dev` to start in watch mode (server restarts on file save).
 -   Server will listen for requests on [localhost:5000](http://localhost:5000).
 

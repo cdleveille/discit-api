@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "bunx eslint --ext .js,.jsx,.ts,.tsx . && bunx prettier --check .",
     "fix": "bunx eslint --fix --ext .js,.jsx,.ts,.tsx . && bunx prettier --write .",
+    "compose:up": "docker compose -f \".discit-dev-container/docker-compose.yml\" up -d --build",
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts"
   },
