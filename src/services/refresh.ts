@@ -1,14 +1,6 @@
 import { JSDOM } from "jsdom";
 
-import {
-	discMeetsMinCriteria,
-	hashString,
-	parseCategory,
-	parseDecimalString,
-	parseStability,
-	slugify,
-	writeDataToFile
-} from "@helpers";
+import { discMeetsMinCriteria, hashString, parseCategory, parseDecimalString, parseStability, slugify } from "@helpers";
 import { Disc } from "@models";
 import { log } from "@services";
 import { DISC_FETCH_URL, IDisc, IDiscCollections, Site } from "@types";
@@ -35,12 +27,12 @@ const backupDiscs = async () => {
 		log.info("Getting all existing discs from database...");
 		const existingDiscs: IDisc[] = await Disc.find();
 		log.info(`${existingDiscs.length} existing discs in database.`);
-		if (existingDiscs.length > 0) {
-			log.info("Backing up existing discs...");
-			const filepath = "discs_backup.json";
-			writeDataToFile(existingDiscs, filepath);
-			log.info(`Backed up ${existingDiscs.length} existing discs to file '${filepath}.`);
-		}
+		// if (existingDiscs.length > 0) {
+		// 	log.info("Backing up existing discs...");
+		// 	const filepath = "discs_backup.json";
+		// 	writeDataToFile(existingDiscs, filepath);
+		// 	log.info(`Backed up ${existingDiscs.length} existing discs to file '${filepath}.`);
+		// }
 		return existingDiscs;
 	} catch (error) {
 		throw new Error(`${error} - Error backing up existing discs.`);
