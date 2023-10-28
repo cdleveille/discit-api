@@ -7,5 +7,6 @@ export const Config = {
 	REFRESH_DISCS_CRON: Bun.env.REFRESH_DISCS_CRON?.toLowerCase() === "true",
 	MONGO_URI: Bun.env.MONGO_URI || "mongodb://localhost:27017/discit",
 	JWT_SECRET: Bun.env.JWT_SECRET || undefined,
-	JWT_EXPIRATION: "7d"
+	JWT_EXPIRATION: "7d",
+	API_KEY: Bun.env.API_KEY || undefined
 } as IConfig;

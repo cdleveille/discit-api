@@ -1,6 +1,6 @@
 import { Elysia, t } from "elysia";
 
-import { discRequestSchema, discResponseSchema, errorResponse, projection, regexify } from "@helpers";
+import { Config, discRequestSchema, discResponseSchema, errorResponse, projection, regexify } from "@helpers";
 import { Disc } from "@models";
 import { IDiscFilter } from "@types";
 
@@ -40,6 +40,22 @@ export const initDiscRoutes = (app: Elysia) => {
 			response: discResponseSchema
 		}
 	);
+
+	app.delete("/disc", async ({ set, request }) => {
+		try {
+			const tokenPrefix = "Bearer ";
+			const bearerToken = request.headers.get("Authorization");
+			if (bearerToken?.slice(0, tokenPrefix.length) !== tokenPrefix)
+				throw { code: 401, data: "Invalid authorization method. Bearer token expected." };
+			const token = bearerToken.slice(tokenPrefix.length);
+			const auth = token === Config.API_KEY;
+			if (!auth) throw { code: 401, data: "Invalid token." };
+			await Disc.deleteMany();
+			return true;
+		} catch (error) {
+			return errorResponse(set, error);
+		}
+	});
 };
 
 const buildFilter = (query: Record<string, string>) => {

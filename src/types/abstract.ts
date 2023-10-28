@@ -6,6 +6,7 @@ export interface IConfig {
 	MONGO_URI: string;
 	JWT_SECRET: string;
 	JWT_EXPIRATION: string;
+	API_KEY: string;
 }
 
 export interface IBase {
