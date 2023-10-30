@@ -1,8 +1,6 @@
 export interface IConfig {
 	IS_PROD: boolean;
 	PORT: number;
-	REFRESH_DISCS_START: boolean;
-	REFRESH_DISCS_CRON: boolean;
 	MONGO_URI: string;
 	JWT_SECRET: string;
 	JWT_EXPIRATION: string;
@@ -45,11 +43,6 @@ export interface IBag {
 	name: string;
 	user_id: string;
 	discs: string[];
-}
-
-export interface IDiscCollections {
-	discCollection: HTMLCollectionOf<Element>;
-	putterCollection: HTMLCollectionOf<Element>;
 }
 
 export type Projection = Record<string, 0 | 1>;

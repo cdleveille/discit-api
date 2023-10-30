@@ -52,8 +52,6 @@ Refer to the **Fields** section below for all possible query string parameters.
 -   Install [bun](https://bun.sh).
 -   Install package dependencies: `bun i`
 -   Create and populate a `.env` file:
-    -   `REFRESH_DISCS_START`: Set to "true" to refresh discs from the [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) page on server start.
-    -   `REFRESH_DISCS_CRON`: Set to "true" to refresh discs automatically every night at 12:00AM EST.
     -   `MONGO_URI` (optional): Connection string to a MongoDB database. If not provided, a Docker container will be used instead to host the database locally.
 -   If not using a custom MongoDB connection string, install and launch [Docker Desktop](https://www.docker.com/products/docker-desktop). Run `bun compose:up` to initialize the database container.
 -   Run `bun dev` to start in watch mode (server restarts on file save).

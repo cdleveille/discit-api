@@ -1,70 +1,10 @@
 import { t } from "elysia";
 import { Schema } from "mongoose";
-import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-import { CategoryMap, IBase, ID_HASH_NAMESPACE, IDisc, IError, StabilityMap } from "@types";
-
-export const discMeetsMinCriteria = (disc: IDisc) =>
-	disc.id &&
-	disc.name &&
-	disc.brand &&
-	disc.category &&
-	disc.speed &&
-	disc.glide &&
-	disc.turn &&
-	disc.fade &&
-	disc.stability;
-
-export const slugify = (text: string) =>
-	text
-		.toLowerCase()
-		.replace(/[/\\#,+()$~%!@^|`.'":;*?<>{}[\]]/g, "")
-		.replace(/[ ]/g, "-");
+import { IBase, IError } from "@types";
 
 export const regexify = (field: string) => ({ $regex: field, $options: "i" });
-
-export const hashString = (toHash: string) => uuidv5(toHash, ID_HASH_NAMESPACE);
-
-export const writeDataToFile = async (data: any, path: string) => await Bun.write(path, JSON.stringify(data));
-
-export const parseCategory = (category: string) => CategoryMap.get(category) || category;
-
-export const parseStability = (element: any, turn: string, fade: string) => {
-	if (element) {
-		const classes: string = element.parentNode.parentNode.parentNode.className;
-		const classesSplit = classes.split(" ");
-
-		// check for stability via class name in html
-		for (let i = classesSplit.length - 1; i >= 0; i--) {
-			const stability = classesSplit[i];
-			if (Array.from(StabilityMap.keys()).includes(stability)) return StabilityMap.get(stability);
-		}
-	}
-
-	// if not found in html, calculate it based on turn and fade
-	const diff = parseFloat(turn) + parseFloat(fade);
-	switch (true) {
-		case diff >= 4:
-			return "Very Overstable";
-		case diff >= 2 && diff < 4:
-			return "Overstable";
-		case diff < 2 && diff > -2:
-			return "Stable";
-		case diff <= -2 && diff > -4:
-			return "Understable";
-		case diff <= -4:
-			return "Very Understable";
-		default:
-			return null;
-	}
-};
-
-export const parseDecimalString = (decimal: string) => {
-	if (decimal.startsWith(".") || decimal.startsWith("-.")) {
-		return decimal.replace(".", "0.");
-	}
-	return decimal;
-};
 
 export const newId = () => uuidv4();
 
