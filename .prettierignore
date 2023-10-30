@@ -1,2 +1,3 @@
 node_modules/
-discs_backup.json
+backups/
+package.json
