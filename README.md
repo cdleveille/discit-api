@@ -10,7 +10,7 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
 Check out the Swagger docs at [discit-api.fly.dev/docs](https://discit-api.fly.dev/docs) or see below for endpoints, example requests, and field reference.
 
-## Endpoints
+## Public Endpoints
 
 | Method | Route       | Description |
 | ------ | ----------- | ----------- |

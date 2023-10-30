@@ -5,6 +5,7 @@ import { Disc } from "@models";
 import { IDiscFilter } from "@types";
 
 export const initDiscRoutes = (app: Elysia) => {
+	/* Get all discs */
 	app.get(
 		"/disc",
 		async ({ set, query }) => {
@@ -22,6 +23,7 @@ export const initDiscRoutes = (app: Elysia) => {
 		}
 	);
 
+	/* Get disc by id */
 	app.get(
 		"/disc/:id",
 		async ({ set, params }) => {
@@ -41,6 +43,7 @@ export const initDiscRoutes = (app: Elysia) => {
 		}
 	);
 
+	/* Delete all discs (bearer auth secured) */
 	app.delete("/disc", async ({ set, request }) => {
 		try {
 			const tokenPrefix = "Bearer ";
@@ -51,7 +54,25 @@ export const initDiscRoutes = (app: Elysia) => {
 			const auth = token === Config.API_KEY;
 			if (!auth) throw { code: 401, data: "Invalid token." };
 			await Disc.deleteMany();
-			return true;
+		} catch (error) {
+			return errorResponse(set, error);
+		}
+	});
+
+	/* Delete disc by id (bearer auth secured) */
+	app.delete("/disc/:id", async ({ set, params, request }) => {
+		try {
+			const { id } = params as Record<string, string>;
+			const tokenPrefix = "Bearer ";
+			const bearerToken = request.headers.get("Authorization");
+			if (bearerToken?.slice(0, tokenPrefix.length) !== tokenPrefix)
+				throw { code: 401, data: "Invalid authorization method. Bearer token expected." };
+			const token = bearerToken.slice(tokenPrefix.length);
+			const auth = token === Config.API_KEY;
+			if (!auth) throw { code: 401, data: "Invalid token." };
+			const disc = await Disc.findOne({ id });
+			if (!disc) throw { code: 404, data: "Disc not found." };
+			await Disc.deleteOne({ id });
 		} catch (error) {
 			return errorResponse(set, error);
 		}

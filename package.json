@@ -30,7 +30,6 @@
     "elysia": "^0.6.23",
     "elysia-helmet": "^1.0.1",
     "jsdom": "^22.1.0",
-    "mongodb": "^6.1.0",
     "mongoose": "^7.5.1",
     "uuid": "^9.0.1"
   },
