@@ -51,11 +51,14 @@ Refer to the **Fields** section below for all possible query string parameters.
 
 -   Install [bun](https://bun.sh).
 -   Install package dependencies: `bun i`
--   Create and populate a `.env` file:
-    -   `MONGO_URI` (optional): Connection string to a MongoDB database. If not provided, a Docker container will be used instead to host the database locally.
+-   Create and populate a `.env` file based on the `.env.example` file in the root directory.
+    -   `JWT_SECRET`: Secret key used to sign and verify JWTs. Can be any string value.
+    -   `API_KEY`: Secret key used to authenticate requests to the API. Can be any string value, but must match the value used in the [discit-api-refresh](https://github.com/cdleveille/discit-api-refresh) project.
+    -   `MONGO_URI` (optional): Connection string to a MongoDB database. If not provided, a Docker container will need to be used instead to host the database locally.
 -   If not using a custom MongoDB connection string, install and launch [Docker Desktop](https://www.docker.com/products/docker-desktop). Run `bun compose:up` to initialize the database container.
 -   Run `bun dev` to start in watch mode (server restarts on file save).
 -   Server will listen for requests on [localhost:5000](http://localhost:5000).
+-   To populate the database with disc data, refer to the setup instructions for the [discit-api-refresh](https://github.com/cdleveille/discit-api-refresh) process.
 
 ## Technologies
 
