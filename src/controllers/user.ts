@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 
 import { errorResponse, isAlphaNumeric, Password, projection } from "@helpers";
 import { User } from "@models";
+import { getAuthToken } from "@services";
 import { IUser } from "@types";
 
 export const initUserRoutes = (app: Elysia) => {
@@ -66,13 +67,9 @@ export const initUserRoutes = (app: Elysia) => {
 	// @ts-ignore
 	app.post("/user/validate", async ({ set, request, jwt }) => {
 		try {
-			const tokenPrefix = "Bearer ";
-			const bearerToken = request.headers.get("Authorization");
-			if (bearerToken?.slice(0, tokenPrefix.length) !== tokenPrefix)
-				throw { code: 401, data: "Invalid authorization method. Bearer token expected." };
-			const token = bearerToken.slice(tokenPrefix.length);
+			const token = getAuthToken(request);
 			const auth = await jwt.verify(token);
-			if (!auth) throw { code: 401, data: "Invalid token." };
+			if (!auth) throw { code: 401, data: "Unauthorized." };
 			const { id, username } = await User.findOne({ id: auth.id });
 			return { id, username };
 		} catch (error) {
