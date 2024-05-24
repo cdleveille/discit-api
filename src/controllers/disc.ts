@@ -47,8 +47,8 @@ export const initDiscRoutes = (app: Elysia) => {
 	/* Insert discs (bearer auth secured) */
 	app.post("/disc", async ({ set, request }) => {
 		try {
-			const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
 			assertIsRequestAuthorized(request);
+			const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
 			await Disc.insertMany(discs);
 		} catch (error) {
 			return errorResponse(set, error);
@@ -68,8 +68,8 @@ export const initDiscRoutes = (app: Elysia) => {
 	/* Delete disc by id (bearer auth secured) */
 	app.delete("/disc/:id", async ({ set, params, request }) => {
 		try {
-			const { id } = params as Record<string, string>;
 			assertIsRequestAuthorized(request);
+			const { id } = params as Record<string, string>;
 			const disc = await Disc.findOne({ id });
 			if (!disc) throw { code: 404, data: "Disc not found." };
 			await Disc.deleteOne({ id });
