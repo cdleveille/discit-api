@@ -6,13 +6,13 @@ import { assertIsRequestAuthorized } from "@services";
 import { IDisc, IDiscFilter } from "@types";
 
 export const initDiscRoutes = (app: Elysia) => {
-	/* Get all discs */
+	/* Get all discs (optionally filter by fields specified in query string) */
 	app.get(
 		"/disc",
 		async ({ set, query }) => {
 			try {
 				const filter = buildFilter(query as Record<string, string>);
-				return await Disc.find(filter, projection).sort({ name: 1 });
+				return Disc.find(filter, projection).sort({ name: 1 });
 			} catch (error) {
 				return errorResponse(set, error);
 			}
@@ -49,7 +49,7 @@ export const initDiscRoutes = (app: Elysia) => {
 		try {
 			assertIsRequestAuthorized(request);
 			const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
-			await Disc.insertMany(discs);
+			return Disc.insertMany(discs);
 		} catch (error) {
 			return errorResponse(set, error);
 		}
@@ -59,7 +59,7 @@ export const initDiscRoutes = (app: Elysia) => {
 	app.delete("/disc", async ({ set, request }) => {
 		try {
 			assertIsRequestAuthorized(request);
-			await Disc.deleteMany();
+			return Disc.deleteMany();
 		} catch (error) {
 			return errorResponse(set, error);
 		}
@@ -72,7 +72,7 @@ export const initDiscRoutes = (app: Elysia) => {
 			const { id } = params as Record<string, string>;
 			const disc = await Disc.findOne({ id });
 			if (!disc) throw { code: 404, data: "Disc not found." };
-			await Disc.deleteOne({ id });
+			return Disc.deleteOne({ id });
 		} catch (error) {
 			return errorResponse(set, error);
 		}

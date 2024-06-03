@@ -1,19 +1,17 @@
 import { Elysia } from "elysia";
 
 import { errorResponse, projection } from "@helpers";
-import { Bag, Disc, User } from "@models";
+import { Bag, Disc } from "@models";
+import { assertIsRequestAuthorized } from "@services";
 import { IBag } from "@types";
 
 export const initBagRoutes = (app: Elysia) => {
-	app.get("/bag", async ({ set, query }) => {
+	/* Get all bags (optionally filter by user id) */
+	app.get("/bag", async ({ set, request, query }) => {
 		try {
+			assertIsRequestAuthorized(request);
 			const { user_id } = query as Record<string, string>;
-			if (!user_id) throw { code: 400, data: "Required query field: user_id" };
-
-			const user = await User.findOne({ id: user_id });
-			if (!user) throw { code: 404, data: "User not found." };
-
-			const bags = await Bag.find({ user_id }, projection);
+			const bags = await (user_id ? Bag.find({ user_id }, projection) : Bag.find({}, projection));
 			if (!bags || bags.length === 0) return [];
 			return bags;
 		} catch (error) {
@@ -21,11 +19,11 @@ export const initBagRoutes = (app: Elysia) => {
 		}
 	});
 
-	app.get("/bag/:id", async ({ set, params }) => {
+	/* Get bag by id */
+	app.get("/bag/:id", async ({ set, request, params }) => {
 		try {
+			assertIsRequestAuthorized(request);
 			const { id } = params as Record<string, string>;
-			if (!id) throw { code: 400, data: "Required param field: id" };
-
 			const bag = await Bag.findOne({ id }, projection);
 			if (!bag) throw { code: 404, data: "Bag not found." };
 			return bag;
@@ -34,25 +32,26 @@ export const initBagRoutes = (app: Elysia) => {
 		}
 	});
 
-	app.post("/bag/create", async ({ set, body }) => {
+	/* Create new bag (bearer auth secured) */
+	app.post("/bag/create", async ({ set, body, request }) => {
 		try {
-			const { user_id, name } = body as IBag;
-
-			const user = await User.findOne({ id: user_id });
-			if (!user) throw { code: 404, data: "User not found." };
+			assertIsRequestAuthorized(request);
+			const { user_id, name } = JSON.parse(body as string) as IBag;
 
 			if (await Bag.findOne({ user_id, name })) throw { code: 400, data: "You already have a bag of that name." };
 			if (name.length < 1) throw { code: 400, data: "Bag name must be at least 1 character." };
 			if (name.length > 32) throw { code: 400, data: "Bag name must be no more than 32 characters." };
 
-			return await Bag.create({ user_id, name });
+			return Bag.create({ user_id, name });
 		} catch (error) {
 			return errorResponse(set, error);
 		}
 	});
 
-	app.post("/bag/add-disc", async ({ set, body }) => {
+	/* Add disc to bag (bearer auth secured) */
+	app.put("/bag/add-disc", async ({ set, body, request }) => {
 		try {
+			assertIsRequestAuthorized(request);
 			const { id, disc_id } = body as IBag & { disc_id: string };
 
 			const bag = await Bag.findOne({ id });
@@ -63,14 +62,16 @@ export const initBagRoutes = (app: Elysia) => {
 			if (bag.discs.includes(disc_id)) throw { code: 400, data: "Bag already contains this disc." };
 
 			bag.discs.push(disc_id);
-			return await Bag.updateOne({ id }, bag);
+			return Bag.updateOne({ id }, bag);
 		} catch (error) {
 			return errorResponse(set, error);
 		}
 	});
 
-	app.post("/bag/remove-disc", async ({ set, body }) => {
+	/* Remove disc from bag (bearer auth secured) */
+	app.put("/bag/remove-disc", async ({ set, body, request }) => {
 		try {
+			assertIsRequestAuthorized(request);
 			const { id, disc_id } = body as IBag & { disc_id: string };
 
 			const bag = await Bag.findOne({ id });
@@ -81,7 +82,21 @@ export const initBagRoutes = (app: Elysia) => {
 			if (!bag.discs.includes(disc_id)) throw { code: 400, data: "Bag does not contain this disc." };
 
 			bag.discs = bag.discs.filter(discId => discId !== disc_id);
-			return await Bag.updateOne({ id }, bag);
+			return Bag.updateOne({ id }, bag);
+		} catch (error) {
+			return errorResponse(set, error);
+		}
+	});
+
+	/* Delete bag (bearer auth secured) */
+	app.delete("/bag/delete/:id", async ({ set, params, request }) => {
+		try {
+			assertIsRequestAuthorized(request);
+			const { id } = params as Record<string, string>;
+			if (!id) throw { code: 400, data: "Required param missing: id" };
+			const bag = await Bag.findOne({ id });
+			if (!bag) throw { code: 404, data: "Bag not found." };
+			return Bag.deleteOne({ id });
 		} catch (error) {
 			return errorResponse(set, error);
 		}

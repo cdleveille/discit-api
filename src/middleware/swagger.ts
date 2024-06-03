@@ -9,7 +9,7 @@ export const useSwagger = (app: Elysia) =>
 		swagger({
 			path: "/docs",
 			documentation: {
-				info: { title, version, description: "" },
+				info: { title, version, description: "RESTful API for disc golf discs." },
 				servers: [
 					{ url: "https://discit-api.fly.dev", description: "production" },
 					{ url: "http://localhost:5000", description: "development" }
@@ -19,19 +19,12 @@ export const useSwagger = (app: Elysia) =>
 				"/",
 				"/docs",
 				"/docs/json",
-				"/user",
-				"/user/{id}",
-				"/user/login",
-				"/user/register",
-				"/user/validate",
-				"/user/update/username",
-				"/user/update/password",
-				"/user/delete",
 				"/bag",
 				"/bag/{id}",
 				"/bag/create",
 				"/bag/add-disc",
-				"/bag/remove-disc"
+				"/bag/remove-disc",
+				"/bag/delete/{id}"
 			]
 		})
 	);

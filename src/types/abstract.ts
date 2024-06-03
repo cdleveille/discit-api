@@ -2,8 +2,6 @@ export interface IConfig {
 	IS_PROD: boolean;
 	PORT: number;
 	MONGO_URI: string;
-	JWT_SECRET: string;
-	JWT_EXPIRATION: string;
 	API_KEY: string;
 }
 
@@ -32,12 +30,6 @@ export interface IDisc {
 	background_color: string;
 }
 
-export interface IUser {
-	id: string;
-	username: string;
-	password: string;
-}
-
 export interface IBag {
 	id: string;
 	name: string;
@@ -63,5 +55,5 @@ export interface IDiscFilter {
 
 export interface IError {
 	code: number;
-	data: any;
+	data: string;
 }

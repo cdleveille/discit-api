@@ -1,6 +1,6 @@
 {
   "name": "discit-api",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "RESTful API for disc golf discs.",
   "type": "module",
   "module": "src/index.ts",
@@ -24,8 +24,6 @@
   "homepage": "https://github.com/cdleveille/discit-api#readme",
   "dependencies": {
     "@elysiajs/cors": "^0.6.0",
-    "@elysiajs/cron": "^0.6.0",
-    "@elysiajs/jwt": "^0.6.4",
     "@elysiajs/swagger": "^0.6.2",
     "elysia": "^0.6.23",
     "elysia-helmet": "^1.0.1",
