@@ -7,7 +7,7 @@ const BagSchema = new Schema<IBag>({
 	id: {
 		type: String,
 		required: false,
-		default: newId()
+		default: () => newId()
 	},
 	name: {
 		type: String,

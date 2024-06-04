@@ -38,7 +38,8 @@ export const initBagRoutes = (app: Elysia) => {
 			assertIsRequestAuthorized(request);
 			const { user_id, name } = JSON.parse(body as string) as IBag;
 
-			if (await Bag.findOne({ user_id, name })) throw { code: 400, data: "You already have a bag of that name." };
+			if (await Bag.findOne({ user_id, name }))
+				throw { code: 400, data: "You already have a bag with that name." };
 			if (name.length < 1) throw { code: 400, data: "Bag name must be at least 1 character." };
 			if (name.length > 32) throw { code: 400, data: "Bag name must be no more than 32 characters." };
 
