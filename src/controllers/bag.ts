@@ -3,7 +3,6 @@ import { Elysia } from "elysia";
 import { errorResponse, projection } from "@helpers";
 import { Bag, Disc } from "@models";
 import { assertIsRequestAuthorized } from "@services";
-import { IBag } from "@types";
 
 export const initBagRoutes = (app: Elysia) => {
 	/* Get all bags (optionally filter by user id) */
@@ -36,7 +35,7 @@ export const initBagRoutes = (app: Elysia) => {
 	app.post("/bag/create", async ({ set, body, request }) => {
 		try {
 			assertIsRequestAuthorized(request);
-			const { user_id, name } = JSON.parse(body as string) as IBag;
+			const { user_id, name } = JSON.parse(body as string) as { user_id: string; name: string };
 
 			if (await Bag.findOne({ user_id, name }))
 				throw { code: 400, data: "You already have a bag with that name." };
@@ -53,7 +52,7 @@ export const initBagRoutes = (app: Elysia) => {
 	app.put("/bag/add-disc", async ({ set, body, request }) => {
 		try {
 			assertIsRequestAuthorized(request);
-			const { id, disc_id } = body as IBag & { disc_id: string };
+			const { id, disc_id } = JSON.parse(body as string) as { id: string; disc_id: string };
 
 			const bag = await Bag.findOne({ id });
 			if (!bag) throw { code: 404, data: "Bag not found." };
@@ -73,7 +72,7 @@ export const initBagRoutes = (app: Elysia) => {
 	app.put("/bag/remove-disc", async ({ set, body, request }) => {
 		try {
 			assertIsRequestAuthorized(request);
-			const { id, disc_id } = body as IBag & { disc_id: string };
+			const { id, disc_id } = JSON.parse(body as string) as { id: string; disc_id: string };
 
 			const bag = await Bag.findOne({ id });
 			if (!bag) throw { code: 404, data: "Bag not found." };
