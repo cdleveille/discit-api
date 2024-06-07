@@ -80,7 +80,8 @@ export const initBagRoutes = (app: Elysia) => {
 		if (name.length > 32) throw new BadRequestError("Bag name must be no more than 32 characters");
 		const bag = await Bag.findOne({ id });
 		if (!bag) throw new NotFoundError("Bag not found");
-		if (await Bag.findOne({ user_id: bag.user_id, name }))
+		const existingBag = await Bag.findOne({ user_id: bag.user_id, name });
+		if (existingBag && existingBag.id !== bag.id)
 			throw new BadRequestError("You already have a bag with that name");
 		bag.name = name;
 		await Bag.updateOne({ id }, bag);
