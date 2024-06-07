@@ -13,7 +13,7 @@ export const initDiscRoutes = (app: Elysia) => {
 	});
 
 	/* Get disc by id */
-	app.get("/disc/:id", async ({ params: id }) => {
+	app.get("/disc/:id", async ({ params: { id } }) => {
 		const disc = await Disc.findOne({ id }, projection);
 		if (!disc) throw new NotFoundError("Disc not found");
 		return disc;
@@ -33,7 +33,7 @@ export const initDiscRoutes = (app: Elysia) => {
 	});
 
 	/* Delete disc by id (bearer auth secured) */
-	app.delete("/disc/:id", async ({ request, params: id }) => {
+	app.delete("/disc/:id", async ({ request, params: { id } }) => {
 		assertIsRequestAuthorized(request);
 		const disc = await Disc.findOne({ id });
 		if (!disc) throw new NotFoundError("Disc not found");
