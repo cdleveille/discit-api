@@ -2,7 +2,7 @@ import { connectToDatabase, log, startServer } from "@services";
 
 try {
 	await connectToDatabase();
-	await startServer();
+	startServer();
 } catch (error) {
 	log.error(error);
 }

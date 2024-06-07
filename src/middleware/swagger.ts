@@ -15,16 +15,6 @@ export const useSwagger = (app: Elysia) =>
 					{ url: "http://localhost:5000", description: "development" }
 				]
 			},
-			exclude: [
-				"/",
-				"/docs",
-				"/docs/json",
-				"/bag",
-				"/bag/{id}",
-				"/bag/create",
-				"/bag/add-disc",
-				"/bag/remove-disc",
-				"/bag/delete/{id}"
-			]
+			exclude: ["/", /^\/(docs|bag)/i]
 		})
 	);

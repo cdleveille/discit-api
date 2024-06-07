@@ -5,7 +5,7 @@ import { log } from "@services";
 
 export const useErrorHandler = (app: Elysia) => {
 	app.onError(({ error, request, path }) => {
-		const { message = error.toString() || "Internal server error", status = 500 } = error as {
+		const { message = error.toString() || "Internal Server Error", status = 500 } = error as {
 			message?: string;
 			status?: number;
 		};

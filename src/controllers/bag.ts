@@ -15,9 +15,8 @@ export const initBagRoutes = (app: Elysia) => {
 	});
 
 	/* Get bag by id */
-	app.get("/bag/:id", async ({ request, params }) => {
+	app.get("/bag/:id", async ({ request, params: id }) => {
 		assertIsRequestAuthorized(request);
-		const { id } = params as Record<string, string>;
 		const bag = await Bag.findOne({ id }, projection);
 		if (!bag) throw new NotFoundError("Bag not found");
 		return bag;
@@ -89,9 +88,8 @@ export const initBagRoutes = (app: Elysia) => {
 	});
 
 	/* Delete bag (bearer auth secured) */
-	app.delete("/bag/delete/:id", async ({ request, params }) => {
+	app.delete("/bag/delete/:id", async ({ request, params: id }) => {
 		assertIsRequestAuthorized(request);
-		const { id } = params as Record<string, string>;
 		if (!id) throw new BadRequestError("Required path param missing: id");
 		const bag = await Bag.findOne({ id });
 		if (!bag) throw new NotFoundError("Bag not found");
