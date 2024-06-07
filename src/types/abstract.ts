@@ -37,22 +37,6 @@ export interface IBag {
 	discs: string[];
 }
 
-export interface IUser {
-	id: string;
-	settings: IFiltersEnabled;
-}
-
-export interface IFiltersEnabled {
-	name: boolean;
-	brand: boolean;
-	category: boolean;
-	stability: boolean;
-	speed: boolean;
-	glide: boolean;
-	turn: boolean;
-	fade: boolean;
-}
-
 export type Projection = Record<string, 0 | 1>;
 
 export type DiscFilterRegex = { $regex: string; $options: string };
