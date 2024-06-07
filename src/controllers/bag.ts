@@ -36,9 +36,12 @@ export const initBagRoutes = (app: Elysia) => {
 		try {
 			assertIsRequestAuthorized(request);
 			const { user_id, name } = JSON.parse(body as string) as { user_id: string; name: string };
+			if (!user_id) throw { code: 400, data: "Required body field missing: user_id" };
+			if (!name) throw { code: 400, data: "Required body field missing: name" };
 
 			if (await Bag.findOne({ user_id, name }))
 				throw { code: 400, data: "You already have a bag with that name." };
+
 			if (name.length < 1) throw { code: 400, data: "Bag name must be at least 1 character." };
 			if (name.length > 32) throw { code: 400, data: "Bag name must be no more than 32 characters." };
 
@@ -53,6 +56,8 @@ export const initBagRoutes = (app: Elysia) => {
 		try {
 			assertIsRequestAuthorized(request);
 			const { id, disc_id } = JSON.parse(body as string) as { id: string; disc_id: string };
+			if (!id) throw { code: 400, data: "Required body field missing: id" };
+			if (!disc_id) throw { code: 400, data: "Required body field missing: disc_id" };
 
 			const bag = await Bag.findOne({ id });
 			if (!bag) throw { code: 404, data: "Bag not found." };
@@ -73,6 +78,8 @@ export const initBagRoutes = (app: Elysia) => {
 		try {
 			assertIsRequestAuthorized(request);
 			const { id, disc_id } = JSON.parse(body as string) as { id: string; disc_id: string };
+			if (!id) throw { code: 400, data: "Required body field missing: id" };
+			if (!disc_id) throw { code: 400, data: "Required body field missing: disc_id" };
 
 			const bag = await Bag.findOne({ id });
 			if (!bag) throw { code: 404, data: "Bag not found." };
@@ -88,12 +95,36 @@ export const initBagRoutes = (app: Elysia) => {
 		}
 	});
 
+	/* Update name of bag (bearer auth secured) */
+	app.put("/bag/update-name", async ({ set, body, request }) => {
+		try {
+			assertIsRequestAuthorized(request);
+			const { id, name } = JSON.parse(body as string) as { id: string; name: string };
+			if (!id) throw { code: 400, data: "Required body field missing: id" };
+			if (!name) throw { code: 400, data: "Required body field missing: name" };
+
+			if (name.length < 1) throw { code: 400, data: "Bag name must be at least 1 character." };
+			if (name.length > 32) throw { code: 400, data: "Bag name must be no more than 32 characters." };
+
+			const bag = await Bag.findOne({ id });
+			if (!bag) throw { code: 404, data: "Bag not found." };
+
+			if (await Bag.findOne({ user_id: bag.user_id, name }))
+				throw { code: 400, data: "You already have a bag with that name." };
+
+			bag.name = name;
+			return Bag.updateOne({ id }, bag);
+		} catch (error) {
+			return errorResponse(set, error);
+		}
+	});
+
 	/* Delete bag (bearer auth secured) */
 	app.delete("/bag/delete/:id", async ({ set, params, request }) => {
 		try {
 			assertIsRequestAuthorized(request);
 			const { id } = params as Record<string, string>;
-			if (!id) throw { code: 400, data: "Required param missing: id" };
+			if (!id) throw { code: 400, data: "Required path param missing: id" };
 			const bag = await Bag.findOne({ id });
 			if (!bag) throw { code: 404, data: "Bag not found." };
 			return Bag.deleteOne({ id });
