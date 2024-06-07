@@ -1,13 +1,12 @@
 {
   "name": "discit-api",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "RESTful API for disc golf discs.",
   "type": "module",
   "module": "src/index.ts",
-  "main": "src/index.ts",
   "scripts": {
-    "lint": "bunx eslint --ext .js,.jsx,.ts,.tsx . && bunx prettier --check .",
-    "fix": "bunx eslint --fix --ext .js,.jsx,.ts,.tsx . && bunx prettier --write .",
+    "lint": "bunx eslint . && bunx prettier --check .",
+    "fix": "bunx eslint --fix . && bunx prettier --write .",
     "compose:up": "docker compose -f \".discit-dev-container/docker-compose.yml\" up -d --build",
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts"
@@ -23,22 +22,19 @@
   },
   "homepage": "https://github.com/cdleveille/discit-api#readme",
   "dependencies": {
-    "@elysiajs/cors": "^0.6.0",
-    "@elysiajs/swagger": "^0.6.2",
-    "elysia": "^0.6.23",
-    "elysia-helmet": "^1.0.1",
-    "mongoose": "^7.5.1",
+    "@elysiajs/cors": "^1.0.2",
+    "@elysiajs/swagger": "^1.0.5",
+    "elysia": "^1.0.22",
+    "elysia-helmet": "^1.0.2",
+    "mongoose": "^8.4.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.4",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
+    "@types/uuid": "^9.0.8",
     "bun-types": "latest",
-    "eslint": "^8.49.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "eslint": "^9.4.0",
+    "prettier": "^3.3.1",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.12.0"
   }
 }

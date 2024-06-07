@@ -1,4 +1,4 @@
 export const log = {
-	info: (...msgs: any[]) => console.info(...msgs),
-	error: (...msgs: any[]) => console.error(...msgs)
+	info: (...msgs: unknown[]) => console.info(...msgs),
+	error: (...msgs: unknown[]) => console.error(...msgs)
 };

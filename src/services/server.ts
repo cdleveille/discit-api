@@ -11,8 +11,8 @@ export const startServer = async () => {
 	initRoutes(app);
 	app.listen(Config.PORT, () =>
 		log.info(
-			`Server started in ${Config.IS_PROD ? "production" : "development"} mode - running at ${app.server
-				?.hostname}:${app.server?.port}.`
+			`Server started in ${Config.IS_PROD ? "production" : "development"} mode` +
+				`- running at ${app.server?.hostname}:${app.server?.port}.`
 		)
 	);
 };

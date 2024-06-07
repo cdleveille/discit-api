@@ -1,81 +1,45 @@
-import { Elysia, t } from "elysia";
+import { Elysia } from "elysia";
 
-import { discRequestSchema, discResponseSchema, errorResponse, projection, regexify } from "@helpers";
+import { NotFoundError, projection, regexify } from "@helpers";
 import { Disc } from "@models";
 import { assertIsRequestAuthorized } from "@services";
 import { IDisc, IDiscFilter } from "@types";
 
 export const initDiscRoutes = (app: Elysia) => {
 	/* Get all discs (optionally filter by fields specified in query string) */
-	app.get(
-		"/disc",
-		async ({ set, query }) => {
-			try {
-				const filter = buildFilter(query as Record<string, string>);
-				return Disc.find(filter, projection).sort({ name: 1 });
-			} catch (error) {
-				return errorResponse(set, error);
-			}
-		},
-		{
-			type: "application/json",
-			query: discRequestSchema,
-			response: t.Array(discResponseSchema)
-		}
-	);
+	app.get("/disc", async ({ query }) => {
+		const filter = buildFilter(query as Record<string, string>);
+		return Disc.find(filter, projection).sort({ name: 1 });
+	});
 
 	/* Get disc by id */
-	app.get(
-		"/disc/:id",
-		async ({ set, params }) => {
-			try {
-				const { id } = params as Record<string, string>;
-				const disc = await Disc.findOne({ id }, projection);
-				if (!disc) throw { code: 404, data: "Disc not found." };
-				return disc;
-			} catch (error) {
-				return errorResponse(set, error);
-			}
-		},
-		{
-			type: "application/json",
-			params: t.Object({ id: t.String() }),
-			response: discResponseSchema
-		}
-	);
+	app.get("/disc/:id", async ({ params }) => {
+		const { id } = params as Record<string, string>;
+		const disc = await Disc.findOne({ id }, projection);
+		if (!disc) throw new NotFoundError("Disc not found");
+		return disc;
+	});
 
 	/* Insert discs (bearer auth secured) */
-	app.post("/disc", async ({ set, request }) => {
-		try {
-			assertIsRequestAuthorized(request);
-			const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
-			return Disc.insertMany(discs);
-		} catch (error) {
-			return errorResponse(set, error);
-		}
+	app.post("/disc", async ({ request }) => {
+		assertIsRequestAuthorized(request);
+		const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
+		return Disc.insertMany(discs);
 	});
 
 	/* Delete all discs (bearer auth secured) */
-	app.delete("/disc", async ({ set, request }) => {
-		try {
-			assertIsRequestAuthorized(request);
-			return Disc.deleteMany();
-		} catch (error) {
-			return errorResponse(set, error);
-		}
+	app.delete("/disc", async ({ request }) => {
+		assertIsRequestAuthorized(request);
+		return Disc.deleteMany();
 	});
 
 	/* Delete disc by id (bearer auth secured) */
-	app.delete("/disc/:id", async ({ set, params, request }) => {
-		try {
-			assertIsRequestAuthorized(request);
-			const { id } = params as Record<string, string>;
-			const disc = await Disc.findOne({ id });
-			if (!disc) throw { code: 404, data: "Disc not found." };
-			return Disc.deleteOne({ id });
-		} catch (error) {
-			return errorResponse(set, error);
-		}
+	app.delete("/disc/:id", async ({ request, params }) => {
+		assertIsRequestAuthorized(request);
+		const { id } = params as Record<string, string>;
+		const disc = await Disc.findOne({ id });
+		if (!disc) throw new NotFoundError("Disc not found");
+		return Disc.deleteOne({ id });
 	});
 };
 

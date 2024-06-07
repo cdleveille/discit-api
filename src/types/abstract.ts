@@ -68,8 +68,3 @@ export interface IDiscFilter {
 	turn?: string;
 	fade?: string;
 }
-
-export interface IError {
-	code: number;
-	data: string;
-}
