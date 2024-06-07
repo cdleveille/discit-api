@@ -9,7 +9,7 @@ export const initDiscRoutes = (app: Elysia) => {
 	/* Get all discs (optionally filter by fields specified in query string) */
 	app.get("/disc", async ({ query }) => {
 		const filter = buildFilter(query as Record<string, string>);
-		return Disc.find(filter, projection).sort({ name: 1 });
+		return await Disc.find(filter, projection).sort({ name: 1 });
 	});
 
 	/* Get disc by id */
@@ -23,13 +23,13 @@ export const initDiscRoutes = (app: Elysia) => {
 	app.post("/disc", async ({ request }) => {
 		assertIsRequestAuthorized(request);
 		const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
-		return Disc.insertMany(discs);
+		return await Disc.insertMany(discs);
 	});
 
 	/* Delete all discs (bearer auth secured) */
 	app.delete("/disc", async ({ request }) => {
 		assertIsRequestAuthorized(request);
-		return Disc.deleteMany();
+		return await Disc.deleteMany();
 	});
 
 	/* Delete disc by id (bearer auth secured) */
@@ -37,7 +37,7 @@ export const initDiscRoutes = (app: Elysia) => {
 		assertIsRequestAuthorized(request);
 		const disc = await Disc.findOne({ id });
 		if (!disc) throw new NotFoundError("Disc not found");
-		return Disc.deleteOne({ id });
+		return await Disc.deleteOne({ id });
 	});
 };
 
