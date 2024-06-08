@@ -1,3 +1,4 @@
+import { t } from "elysia";
 import { Schema } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
@@ -48,3 +49,37 @@ export const buildBagResponse = ({ id, name, user_id, discs }: IBag) => ({
 	user_id,
 	discs
 });
+
+export const discQuerySchema = t.Object({
+	id: t.Optional(t.String()),
+	name: t.Optional(t.String()),
+	brand: t.Optional(t.String()),
+	category: t.Optional(t.String()),
+	speed: t.Optional(t.String()),
+	glide: t.Optional(t.String()),
+	turn: t.Optional(t.String()),
+	fade: t.Optional(t.String()),
+	stability: t.Optional(t.String())
+});
+
+export const discResponseSchema = t.Object({
+	id: t.String(),
+	name: t.String(),
+	brand: t.String(),
+	category: t.String(),
+	speed: t.String(),
+	glide: t.String(),
+	turn: t.String(),
+	fade: t.String(),
+	stability: t.String(),
+	link: t.String(),
+	pic: t.String(),
+	name_slug: t.String(),
+	brand_slug: t.String(),
+	category_slug: t.String(),
+	stability_slug: t.String(),
+	color: t.String(),
+	background_color: t.String()
+});
+
+export const discArrayResponseSchema = t.Array(discResponseSchema);
