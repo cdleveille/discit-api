@@ -1,10 +1,11 @@
 import { Elysia } from "elysia";
 
-import { useCors, useErrorHandler, useHelmet, useSwagger } from "@middleware";
+import { useCors, useErrorHandler, useHelmet, useLogger, useSwagger } from "@middleware";
 
 export const initMiddleware = (app: Elysia) => {
-	useCors(app);
 	useErrorHandler(app);
+	useLogger(app);
+	useCors(app);
 	useHelmet(app);
 	useSwagger(app);
 };
@@ -12,4 +13,5 @@ export const initMiddleware = (app: Elysia) => {
 export * from "./cors";
 export * from "./errorHandler";
 export * from "./helmet";
+export * from "./logger";
 export * from "./swagger";
