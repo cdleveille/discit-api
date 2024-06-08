@@ -12,7 +12,7 @@ export const useSwagger = (app: Elysia) =>
 			documentation: {
 				info: { title, version, description: "RESTful API for disc golf discs." },
 				servers: [
-					...(!Config.IS_PROD && [{ url: "http://localhost:5000", description: "development" }]),
+					...(!Config.IS_PROD && [{ url: `http://localhost:${Config.PORT}`, description: "development" }]),
 					{ url: "https://discit-api.fly.dev", description: "production" }
 				]
 			},
