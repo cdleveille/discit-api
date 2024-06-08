@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 
 import { Config } from "@helpers";
 import { log } from "@services";
+import { ApiError } from "@types";
 
 export const useErrorHandler = (app: Elysia) => {
 	app.onError(({ error, request, path }) => {
@@ -10,6 +11,6 @@ export const useErrorHandler = (app: Elysia) => {
 			status?: number;
 		};
 		!Config.IS_PROD && log.error(`${new Date().toISOString()} ${request.method} ${path} ${status} ${message}`);
-		return { error: message };
+		return { error: message } satisfies ApiError;
 	});
 };

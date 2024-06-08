@@ -32,6 +32,7 @@
   "devDependencies": {
     "@types/uuid": "^9.0.8",
     "bun-types": "latest",
+    "discit-types": "^1.0.0",
     "eslint": "^9.4.0",
     "prettier": "^3.3.1",
     "typescript": "^5.4.5",

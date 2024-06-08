@@ -1,3 +1,9 @@
+import type * as shared from "discit-types";
+
+export type IDisc = shared.Disc;
+export type IBag = shared.Bag;
+export type ApiError = shared.ApiError;
+
 export interface IConfig {
 	IS_PROD: boolean;
 	PORT: number;
@@ -8,33 +14,6 @@ export interface IConfig {
 export interface IBase {
 	created_at: Date;
 	updated_at: Date;
-}
-
-export interface IDisc {
-	id: string;
-	name: string;
-	brand: string;
-	category: string;
-	speed: string;
-	glide: string;
-	turn: string;
-	fade: string;
-	stability: string;
-	link: string;
-	pic: string;
-	name_slug: string;
-	brand_slug: string;
-	category_slug: string;
-	stability_slug: string;
-	color: string;
-	background_color: string;
-}
-
-export interface IBag {
-	id: string;
-	name: string;
-	user_id: string;
-	discs: string[];
 }
 
 export type Projection = Record<string, 0 | 1>;
