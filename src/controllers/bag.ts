@@ -39,7 +39,7 @@ export const initBagRoutes = (app: Elysia) => {
 	});
 
 	/* Add disc to bag (bearer auth secured) */
-	app.put("/bag/add-disc", async ({ request, body }) => {
+	app.patch("/bag/add-disc", async ({ request, body }) => {
 		assertIsRequestAuthorized(request);
 		const { id, disc_id } = parseBody(body) as { id: string; disc_id: string };
 		if (!id) throw new BadRequestError("Required body field missing: id");
@@ -55,7 +55,7 @@ export const initBagRoutes = (app: Elysia) => {
 	});
 
 	/* Remove disc from bag (bearer auth secured) */
-	app.put("/bag/remove-disc", async ({ request, body }) => {
+	app.patch("/bag/remove-disc", async ({ request, body }) => {
 		assertIsRequestAuthorized(request);
 		const { id, disc_id } = parseBody(body) as { id: string; disc_id: string };
 		if (!id) throw new BadRequestError("Required body field missing: id");
@@ -71,7 +71,7 @@ export const initBagRoutes = (app: Elysia) => {
 	});
 
 	/* Update name of bag (bearer auth secured) */
-	app.put("/bag/update-name", async ({ request, body }) => {
+	app.patch("/bag/update-name", async ({ request, body }) => {
 		assertIsRequestAuthorized(request);
 		const { id, name } = parseBody(body) as { id: string; name: string };
 		if (!id) throw new BadRequestError("Required body field missing: id");

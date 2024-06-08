@@ -12,7 +12,7 @@ export const startServer = () => {
 	app.listen(Config.PORT, () =>
 		log.info(
 			`Server started in ${Config.IS_PROD ? "production" : "development"} mode` +
-				` - listening on port ${app.server.port}.`
+				` - listening on port ${app.server.port}...`
 		)
 	);
 };

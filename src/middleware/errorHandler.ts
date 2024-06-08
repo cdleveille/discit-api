@@ -9,7 +9,7 @@ export const useErrorHandler = (app: Elysia) => {
 			message?: string;
 			status?: number;
 		};
-		!Config.IS_PROD && log.error(`${new Date().toISOString()} ${request.method} ${path} ${status}: ${message}`);
+		!Config.IS_PROD && log.error(`${new Date().toISOString()} ${request.method} ${path} ${status} ${message}`);
 		return { error: message };
 	});
 };
