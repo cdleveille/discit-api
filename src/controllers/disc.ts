@@ -43,29 +43,17 @@ export const initDiscRoutes = (app: Elysia) => {
 	);
 
 	/* Insert discs (bearer auth secured) */
-	app.post(
-		"/disc",
-		async ({ request }) => {
-			assertIsRequestAuthorized(request);
-			const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
-			return await Disc.insertMany(discs);
-		},
-		{
-			type: "application/json"
-		}
-	);
+	app.post("/disc", async ({ request }) => {
+		assertIsRequestAuthorized(request);
+		const discs = (await Bun.readableStreamToJSON(request.body)) as IDisc[];
+		return await Disc.insertMany(discs);
+	});
 
 	/* Delete all discs (bearer auth secured) */
-	app.delete(
-		"/disc",
-		async ({ request }) => {
-			assertIsRequestAuthorized(request);
-			return await Disc.deleteMany();
-		},
-		{
-			type: "application/json"
-		}
-	);
+	app.delete("/disc", async ({ request }) => {
+		assertIsRequestAuthorized(request);
+		return await Disc.deleteMany();
+	});
 
 	/* Delete disc by id (bearer auth secured) */
 	app.delete(
