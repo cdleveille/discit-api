@@ -33,7 +33,7 @@ export const initDiscRoutes = (app: Elysia) => {
 		async ({ params: { id } }) => {
 			const disc = await Disc.findOne({ id }, projection);
 			if (!disc) throw new NotFoundError("Disc not found");
-			return disc;
+			return Object.assign({}, disc)["_doc"];
 		},
 		{
 			type: "application/json",
