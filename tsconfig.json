@@ -5,21 +5,30 @@
     "target": "esnext",
     "types": ["bun-types"],
     "moduleResolution": "bundler",
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
     "moduleDetection": "force",
+    "noEmit": true,
+    "composite": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
     "allowJs": true,
+    "checkJs": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
     "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@controllers": ["src/controllers"],
-      "@helpers": ["src/helpers"],
-      "@middleware": ["src/middleware"],
-      "@models": ["src/models"],
-      "@services": ["src/services"],
-      "@types": ["src/types"]
+      "@constants": ["./src/types/constants"],
+      "@endpoints": ["./src/endpoints"],
+      "@helpers": ["./src/helpers"],
+      "@middleware": ["./src/middleware"],
+      "@models": ["./src/models"],
+      "@services": ["./src/services"],
+      "@types": ["./src/types/abstract"]
     }
-  }
+  },
+  "include": ["./src/**/*", "./eslint.config.js"]
 }

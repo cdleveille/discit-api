@@ -1,3 +1,4 @@
 node_modules/
-discs_backup.json
+public/
 .env
+.DS_Store

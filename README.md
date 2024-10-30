@@ -6,10 +6,6 @@ Enables developers to programmatically access public disc information from the a
 
 Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 
-## Docs
-
-Check out the Swagger docs at [discit-api.fly.dev/docs](https://discit-api.fly.dev/docs) or see below for endpoints, example requests, and field reference.
-
 ## Public Endpoints
 
 | Method | Route       | Description |
@@ -54,17 +50,17 @@ Refer to the **Fields** section below for all possible query string parameters.
 -   Create and populate a `.env` file based on the `.env.example` file in the root directory.
     -   `API_KEY`: Secret key used to authenticate requests to the API. Can be any string value, but must match the value used in the [discit-api-refresh](https://github.com/cdleveille/discit-api-refresh) project.
     -   `MONGO_URI` (optional): Connection string to a MongoDB database. If not provided, a Docker container will need to be used instead to host the database locally.
--   If not using a custom MongoDB connection string, install and run [Docker Desktop](https://www.docker.com/products/docker-desktop). Run `bun compose:up` to initialize the database container.
+-   If not using a custom MongoDB connection string, install and run [Docker Desktop](https://www.docker.com/products/docker-desktop). Run `bun compose` to initialize the database container.
 -   Run `bun dev` to start in watch mode (server restarts on file save).
 -   Server will listen for requests on [localhost:5000](http://localhost:5000).
 -   To populate the database with disc data, refer to the setup instructions for the [discit-api-refresh](https://github.com/cdleveille/discit-api-refresh) process.
 
 ## Technologies
 
--   [TypeScript](https://www.typescriptlang.org)
 -   [Bun](https://bun.sh/)
--   [Elysia](https://elysiajs.com)
+-   [Express](https://expressjs.com)
 -   [MongoDB](https://www.mongodb.com)
+-   [TypeScript](https://www.typescriptlang.org)
 
 ## See Also
 

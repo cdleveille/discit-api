@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    name: lint
+    name: install, lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -16,5 +16,5 @@ jobs:
         with:
           bun-version: latest
 
-      - run: bun i
+      - run: bun i --ignore-scripts --frozen-lockfile
       - run: bun lint

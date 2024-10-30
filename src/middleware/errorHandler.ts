@@ -1,16 +1,10 @@
-import { Elysia } from "elysia";
+import type { NextFunction, Request, Response } from "express";
 
-import { Config } from "@helpers";
-import { log } from "@services";
-import { ApiError } from "@types";
+import { CustomError } from "@helpers";
 
-export const useErrorHandler = (app: Elysia) => {
-	app.onError(({ error, request, path }) => {
-		const { message = error.toString() || "Internal Server Error", status = 500 } = error as {
-			message?: string;
-			status?: number;
-		};
-		!Config.IS_PROD && log.error(`${new Date().toISOString()} ${request.method} ${path} ${status} ${message}`);
-		return { error: message } satisfies ApiError;
-	});
+export const errorHandler = () => (error: Error | CustomError, _req: Request, res: Response, next: NextFunction) => {
+	if (!error) return next();
+	const statusCode = error instanceof CustomError ? error.statusCode : res.statusCode !== 200 ? res.statusCode : 500;
+	const errorMessage = (typeof error === "string" ? error : error.message) || "Internal Server Error";
+	res.status(statusCode).json({ message: errorMessage });
 };

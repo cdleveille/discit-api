@@ -1,32 +1,8 @@
-import { t } from "elysia";
 import { Schema } from "mongoose";
-import { v4 as uuidv4 } from "uuid";
 
-import { IBag, IBase } from "@types";
+import type { TBase, TDiscFilter, TDiscQuery } from "@types";
 
-export const regexify = (field: string) => ({ $regex: field, $options: "i" });
-
-export const newId = () => uuidv4();
-
-export const isAlphaNumeric = (str: string): boolean => {
-	let code: number, i: number, len: number;
-	for (i = 0, len = str.length; i < len; i++) {
-		code = str.charCodeAt(i);
-		if (
-			!(code > 47 && code < 58) && // numeric (0-9)
-			!(code > 64 && code < 91) && // upper alpha (A-Z)
-			!(code > 96 && code < 123)
-		) {
-			// lower alpha (a-z)
-			return false;
-		}
-	}
-	return true;
-};
-
-export const projection = { _id: 0, created_at: 0, updated_at: 0, __v: 0 };
-
-export const BaseSchema = new Schema<IBase>({
+export const BaseSchema = new Schema<TBase>({
 	created_at: {
 		type: Date,
 		default: () => Date.now(),
@@ -37,49 +13,23 @@ export const BaseSchema = new Schema<IBase>({
 		default: () => Date.now()
 	}
 });
+export const newId = () => crypto.randomUUID();
 
-export const parseBody = (body: unknown) => {
-	if (typeof body === "string") return JSON.parse(body);
-	return body;
+export const projection = { _id: 0, created_at: 0, updated_at: 0, __v: 0 };
+
+export const regexify = (field: string) => ({ $regex: field, $options: "i" });
+
+export const buildDiscFilter = (query: TDiscQuery) => {
+	const { id, name, brand, category, stability, speed, glide, turn, fade } = query;
+	const filter: TDiscFilter = {};
+	if (id) filter.id = id;
+	if (name) filter.name_slug = regexify(name);
+	if (brand) filter.brand_slug = regexify(brand);
+	if (category) filter.category_slug = regexify(category);
+	if (stability) filter.stability_slug = stability.toLowerCase();
+	if (speed) filter.speed = speed;
+	if (glide) filter.glide = glide;
+	if (turn) filter.turn = turn;
+	if (fade) filter.fade = fade;
+	return filter;
 };
-
-export const buildBagResponse = ({ id, name, user_id, discs }: IBag) => ({
-	id,
-	name,
-	user_id,
-	discs
-});
-
-export const discQuerySchema = t.Object({
-	id: t.Optional(t.String()),
-	name: t.Optional(t.String()),
-	brand: t.Optional(t.String()),
-	category: t.Optional(t.String()),
-	speed: t.Optional(t.String()),
-	glide: t.Optional(t.String()),
-	turn: t.Optional(t.String()),
-	fade: t.Optional(t.String()),
-	stability: t.Optional(t.String())
-});
-
-export const discResponseSchema = t.Object({
-	id: t.String(),
-	name: t.String(),
-	brand: t.String(),
-	category: t.String(),
-	speed: t.String(),
-	glide: t.String(),
-	turn: t.String(),
-	fade: t.String(),
-	stability: t.String(),
-	link: t.String(),
-	pic: t.String(),
-	name_slug: t.String(),
-	brand_slug: t.String(),
-	category_slug: t.String(),
-	stability_slug: t.String(),
-	color: t.String(),
-	background_color: t.String()
-});
-
-export const discArrayResponseSchema = t.Array(discResponseSchema);

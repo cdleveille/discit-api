@@ -1,8 +1,18 @@
-import { IConfig } from "@types";
+import { Env } from "@constants";
+
+const IS_PROD = Bun.env.BUN_ENV === Env.Production || Bun.env.NODE_ENV === Env.Production;
+
+const PORT = parseInt(Bun.env.PORT ?? (IS_PROD ? "8080" : "5000"));
+
+const API_KEY = Bun.env.API_KEY;
+
+const MONGO_URI = IS_PROD ? Bun.env.MONGO_URI : (Bun.env.MONGO_URI ?? "mongodb://localhost:27017/discit");
+
+if (!MONGO_URI) throw new Error("MONGO_URI env var is required in production mode");
 
 export const Config = {
-	IS_PROD: Bun.env.NODE_ENV === "production",
-	PORT: parseInt(Bun.env.PORT || "5000"),
-	MONGO_URI: Bun.env.MONGO_URI || "mongodb://localhost:27017/discit",
-	API_KEY: Bun.env.API_KEY || undefined
-} as IConfig;
+	IS_PROD,
+	PORT,
+	API_KEY,
+	MONGO_URI
+};

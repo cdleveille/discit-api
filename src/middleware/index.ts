@@ -1,17 +1,46 @@
-import { Elysia } from "elysia";
+import compression from "compression";
+import cors from "cors";
+import express, { type Express } from "express";
+import helmet from "helmet";
 
-import { useCors, useErrorHandler, useHelmet, useLogger, useSwagger } from "@middleware";
-
-export const initMiddleware = (app: Elysia) => {
-	useErrorHandler(app);
-	useLogger(app);
-	useCors(app);
-	useHelmet(app);
-	useSwagger(app);
-};
-
-export * from "./cors";
 export * from "./errorHandler";
-export * from "./helmet";
-export * from "./logger";
-export * from "./swagger";
+export * from "./notFound";
+
+export const initMiddleware = (app: Express) => {
+	app.use(express.json({ limit: "10mb" }));
+
+	app.use(compression());
+
+	app.use(cors());
+
+	app.use(
+		helmet.contentSecurityPolicy({
+			directives: {
+				defaultSrc: ["'self'"],
+				baseUri: ["'self'"],
+				childSrc: ["'self'"],
+				connectSrc: ["'self'"],
+				fontSrc: ["'self'", "https:", "data:"],
+				formAction: ["'self'"],
+				frameAncestors: ["'self'"],
+				frameSrc: ["'self'"],
+				imgSrc: ["'self'", "data:"],
+				manifestSrc: ["'self'"],
+				mediaSrc: ["'self'"],
+				objectSrc: ["'none'"],
+				scriptSrc: ["'self'"],
+				scriptSrcAttr: ["'none'"],
+				scriptSrcElem: ["'self'"],
+				styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+				styleSrcAttr: ["'none'"],
+				styleSrcElem: ["'self'", "https:", "'unsafe-inline'"],
+				upgradeInsecureRequests: [],
+				workerSrc: ["'self'", "blob:"]
+			}
+		})
+	);
+
+	app.set("json spaces", 2);
+
+	app.disable("x-powered-by");
+};

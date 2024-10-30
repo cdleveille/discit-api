@@ -1,41 +1,45 @@
 {
-  "name": "discit-api",
-  "version": "2.2.0",
-  "description": "RESTful API for disc golf discs.",
+  "name": "fullstack-bun",
+  "description": "Fully type-safe \"MERB\" stack monorepo project template. Bun/Express/Mongo on the backend, React on the frontend, with Socket.IO bridging the gap.",
+  "author": "Chris Leveille <cdleveille@gmail.com",
+  "license": "MIT",
+  "module": "./src/server/index.ts",
   "type": "module",
-  "module": "src/index.ts",
-  "scripts": {
-    "lint": "bunx eslint . && bunx prettier --check .",
-    "fix": "bunx eslint --fix . && bunx prettier --write .",
-    "compose:up": "docker compose -f \".discit-dev-container/docker-compose.yml\" up -d --build",
-    "dev": "bun --watch src/index.ts",
-    "start": "bun src/index.ts"
-  },
-  "repository": {
+    "repository": {
     "type": "git",
     "url": "git+https://github.com/cdleveille/discit-api.git"
   },
-  "author": "Chris Leveille <cdleveille@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cdleveille/discit-api/issues"
   },
   "homepage": "https://github.com/cdleveille/discit-api#readme",
-  "dependencies": {
-    "@elysiajs/cors": "^1.0.2",
-    "@elysiajs/swagger": "^1.0.5",
-    "elysia": "^1.0.22",
-    "elysia-helmet": "^1.0.2",
-    "mongoose": "^8.4.1",
-    "uuid": "^9.0.1"
+  "scripts": {
+    "compose": "docker compose -f \"./.discit-dev-container/docker-compose.yml\" up -d --build",
+    "lint": "eslint . && prettier --check .",
+    "fix": "eslint --fix . && prettier --write .",
+    "dev": "bun --watch ./src/index.ts",
+    "start": "bun ./src/index.ts"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.8",
-    "bun-types": "latest",
-    "discit-types": "^1.0.0",
-    "eslint": "^9.4.0",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.12.0"
+    "@eslint/js": "^9.13.0",
+    "@types/compression": "^1.7.5",
+    "@types/cors": "^2.8.17",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^5.0.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "bun-types": "^1.1.33",
+    "eslint": "^9.13.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.11.0"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.7.3",
+    "zod": "^3.23.8"
   }
 }

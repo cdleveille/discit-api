@@ -1,5 +1,5 @@
 {
-  "endOfLine": "crlf",
+  "endOfLine": "lf",
   "printWidth": 120,
   "tabWidth": 4,
   "trailingComma": "none",
@@ -14,6 +14,12 @@
       "options": {
         "tabWidth": 2,
         "useTabs": false
+      }
+    },
+    {
+      "files": ["*.cmd", "*.bat"],
+      "options": {
+        "endOfLine": "crlf"
       }
     }
   ]

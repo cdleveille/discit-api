@@ -1,4 +1,4 @@
-name: fly.io deploy
+name: deploy
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
 
 jobs:
   deploy:
-    name: deploy production
+    name: fly.io deploy
 
     runs-on: ubuntu-latest
 
@@ -21,8 +21,8 @@ jobs:
         with:
           bun-version: latest
 
-      - run: bun i
+      - run: bun i --ignore-scripts --frozen-lockfile
       - run: bun lint
 
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only --detach --no-cache
+      - run: flyctl deploy --remote-only --detach --no-cache --config fly.toml
