@@ -25,15 +25,14 @@ export const filterDiscsByQuery = (discs: TDisc[], query: TDiscQuery) => {
 	return discs.filter(disc => {
 		return (
 			(!id || disc.id === id) &&
-			(!name ||
-				(disc.name_slug.includes(name) &&
-					(!brand || disc.brand_slug.includes(brand)) &&
-					(!category || disc.category_slug.includes(category)) &&
-					(!stability || disc.stability_slug === stability.toLowerCase()) &&
-					(!speed || disc.speed === speed) &&
-					(!glide || disc.glide === glide) &&
-					(!turn || disc.turn === turn) &&
-					(!fade || disc.fade === fade)))
+			(!name || disc.name_slug.includes(name)) &&
+			(!brand || disc.brand_slug.includes(brand)) &&
+			(!category || disc.category_slug.includes(category)) &&
+			(!stability || disc.stability_slug === stability.toLowerCase()) &&
+			(!speed || disc.speed === speed) &&
+			(!glide || disc.glide === glide) &&
+			(!turn || disc.turn === turn) &&
+			(!fade || disc.fade === fade)
 		);
 	});
 };

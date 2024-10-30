@@ -95,7 +95,7 @@ const getDiscsFromFile = async () => {
 };
 
 const writeDiscsToFile = async () => {
-	const discs = await DiscModel.find({}, projection);
+	const discs = await DiscModel.find({}, projection).sort({ name: 1 });
 	await Bun.write(DISCS_FILENAME, JSON.stringify(discs));
 	return discs;
 };
