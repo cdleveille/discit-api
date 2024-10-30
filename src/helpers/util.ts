@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 
-import type { TBase, TDiscFilter, TDiscQuery } from "@types";
+import type { TBase, TDisc, TDiscQuery } from "@types";
 
 export const BaseSchema = new Schema<TBase>({
 	created_at: {
@@ -13,23 +13,27 @@ export const BaseSchema = new Schema<TBase>({
 		default: () => Date.now()
 	}
 });
+
 export const newId = () => crypto.randomUUID();
 
 export const projection = { _id: 0, created_at: 0, updated_at: 0, __v: 0 };
 
 export const regexify = (field: string) => ({ $regex: field, $options: "i" });
 
-export const buildDiscFilter = (query: TDiscQuery) => {
+export const filterDiscsByQuery = (discs: TDisc[], query: TDiscQuery) => {
 	const { id, name, brand, category, stability, speed, glide, turn, fade } = query;
-	const filter: TDiscFilter = {};
-	if (id) filter.id = id;
-	if (name) filter.name_slug = regexify(name);
-	if (brand) filter.brand_slug = regexify(brand);
-	if (category) filter.category_slug = regexify(category);
-	if (stability) filter.stability_slug = stability.toLowerCase();
-	if (speed) filter.speed = speed;
-	if (glide) filter.glide = glide;
-	if (turn) filter.turn = turn;
-	if (fade) filter.fade = fade;
-	return filter;
+	return discs.filter(disc => {
+		return (
+			(!id || disc.id === id) &&
+			(!name ||
+				(disc.name_slug.includes(name) &&
+					(!brand || disc.brand_slug.includes(brand)) &&
+					(!category || disc.category_slug.includes(category)) &&
+					(!stability || disc.stability_slug === stability.toLowerCase()) &&
+					(!speed || disc.speed === speed) &&
+					(!glide || disc.glide === glide) &&
+					(!turn || disc.turn === turn) &&
+					(!fade || disc.fade === fade)))
+		);
+	});
 };

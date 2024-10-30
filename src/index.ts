@@ -4,6 +4,7 @@ import { Env } from "@constants";
 import { initEndpoints } from "@endpoints";
 import { Config } from "@helpers";
 import { errorHandler, initMiddleware, notFound } from "@middleware";
+import { Disc } from "@models";
 import { connectToDatabase, log } from "@services";
 
 const { IS_PROD, PORT } = Config;
@@ -11,6 +12,8 @@ const { IS_PROD, PORT } = Config;
 const app = express();
 
 await connectToDatabase();
+
+await Disc.writeDiscsToFile();
 
 initMiddleware(app);
 

@@ -40,7 +40,5 @@ export const initMiddleware = (app: Express) => {
 		})
 	);
 
-	app.set("json spaces", 2);
-
 	app.disable("x-powered-by");
 };

@@ -15,3 +15,5 @@ export enum RequestMethod {
 	TRACE = "trace",
 	ALL = "all"
 }
+
+export const DISCS_FILENAME = "discs.json";
