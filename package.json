@@ -1,5 +1,6 @@
 {
-  "name": "fullstack-bun",
+  "name": "discit-api",
+  "version": "3.0.0",
   "description": "Fully type-safe \"MERB\" stack monorepo project template. Bun/Express/Mongo on the backend, React on the frontend, with Socket.IO bridging the gap.",
   "author": "Chris Leveille <cdleveille@gmail.com",
   "license": "MIT",
