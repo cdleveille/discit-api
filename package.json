@@ -1,10 +1,10 @@
 {
   "name": "discit-api",
   "version": "3.0.0",
-  "description": "Fully type-safe \"MERB\" stack monorepo project template. Bun/Express/Mongo on the backend, React on the frontend, with Socket.IO bridging the gap.",
+  "description": "RESTful API for disc golf discs.",
   "author": "Chris Leveille <cdleveille@gmail.com",
   "license": "MIT",
-  "module": "./src/server/index.ts",
+  "module": "./src/index.ts",
   "type": "module",
     "repository": {
     "type": "git",
