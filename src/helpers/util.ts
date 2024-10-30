@@ -25,9 +25,9 @@ export const filterDiscsByQuery = (discs: TDisc[], query: TDiscQuery) => {
 	return discs.filter(disc => {
 		return (
 			(!id || disc.id === id) &&
-			(!name || disc.name_slug.includes(name)) &&
-			(!brand || disc.brand_slug.includes(brand)) &&
-			(!category || disc.category_slug.includes(category)) &&
+			(!name || disc.name_slug.includes(name.toLowerCase())) &&
+			(!brand || disc.brand_slug.includes(brand.toLowerCase())) &&
+			(!category || disc.category_slug.includes(category.toLowerCase())) &&
 			(!stability || disc.stability_slug === stability.toLowerCase()) &&
 			(!speed || disc.speed === speed) &&
 			(!glide || disc.glide === glide) &&
