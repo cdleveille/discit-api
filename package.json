@@ -4,9 +4,9 @@
   "description": "RESTful API for disc golf discs.",
   "author": "Chris Leveille <cdleveille@gmail.com",
   "license": "MIT",
-  "module": "./src/index.ts",
   "type": "module",
-    "repository": {
+  "module": "./src/index.ts",
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/cdleveille/discit-api.git"
   },

@@ -1,18 +1,4 @@
-import { Schema } from "mongoose";
-
-import type { TBase, TDisc, TDiscQuery } from "@types";
-
-export const BaseSchema = new Schema<TBase>({
-	created_at: {
-		type: Date,
-		default: () => Date.now(),
-		immutable: true
-	},
-	updated_at: {
-		type: Date,
-		default: () => Date.now()
-	}
-});
+import type { TDisc, TDiscQuery } from "@types";
 
 export const newId = () => crypto.randomUUID();
 
