@@ -1,4 +1,4 @@
-app = 'fullstack-bun'
+app = 'discit-api'
 primary_region = 'bos'
 
 [build]
