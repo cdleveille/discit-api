@@ -51,7 +51,7 @@ const assertBagExists = async (id: string) => {
 
 const addDiscToBag = async (id: string, disc_id: string) => {
 	const bag = await assertBagExists(id);
-	await Disc.assertDiscExists(disc_id);
+	Disc.assertDiscExists(disc_id);
 	if (bag.discs.includes(disc_id)) throw new CustomError(`Bag already contains disc with id '${disc_id}'`, 400);
 	bag.discs.push(disc_id);
 	await BagModel.updateOne({ id }, bag);
@@ -60,7 +60,7 @@ const addDiscToBag = async (id: string, disc_id: string) => {
 
 const removeDiscFromBag = async (id: string, disc_id: string) => {
 	const bag = await assertBagExists(id);
-	await Disc.assertDiscExists(disc_id);
+	Disc.assertDiscExists(disc_id);
 	if (!bag.discs.includes(disc_id)) throw new CustomError(`Bag does not contain disc with id '${disc_id}'`, 400);
 	bag.discs = bag.discs.filter(discId => discId !== disc_id);
 	await BagModel.updateOne({ id }, bag);
