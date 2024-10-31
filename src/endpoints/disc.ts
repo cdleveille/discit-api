@@ -12,8 +12,8 @@ export const registerDiscEndpoints = () => {
 		router: discRouter,
 		method: "GET",
 		route: "/",
-		handler: async ({ req, res }) => {
-			const discs = await Disc.getDiscs(req.query);
+		handler: ({ req, res }) => {
+			const discs = Disc.getDiscs(req.query);
 			res.json(discs);
 		},
 		schema: {
@@ -27,9 +27,9 @@ export const registerDiscEndpoints = () => {
 		router: discRouter,
 		method: "GET",
 		route: "/:id",
-		handler: async ({ req, res }) => {
+		handler: ({ req, res }) => {
 			const { id } = req.params;
-			const disc = await Disc.assertDiscExists(id);
+			const disc = Disc.assertDiscExists(id);
 			res.json(disc);
 		},
 		schema: {
@@ -65,23 +65,6 @@ export const registerDiscEndpoints = () => {
 			res.json({ message: "All discs deleted successfully" });
 		},
 		schema: {
-			resBody: z.object({ message: z.string() })
-		}
-	});
-
-	// delete disc by id
-	registerEndpoint({
-		router: discRouter,
-		method: "DELETE",
-		route: "/:id",
-		handler: async ({ req, res }) => {
-			assertRequestIsAuthorized(req.headers.authorization);
-			const { id } = req.params;
-			await Disc.deleteDiscById(id);
-			res.json({ message: "Disc deleted successfully" });
-		},
-		schema: {
-			reqParams: discByIdSchema,
 			resBody: z.object({ message: z.string() })
 		}
 	});

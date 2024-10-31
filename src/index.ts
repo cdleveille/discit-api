@@ -13,7 +13,7 @@ const app = express();
 
 await connectToDatabase();
 
-await Disc.writeDiscsToFile();
+await Disc.setDiscData();
 
 initMiddleware(app);
 

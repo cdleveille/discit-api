@@ -1,7 +1,5 @@
-import fs from "fs";
 import { model, Schema } from "mongoose";
 
-import { DISCS_FILENAME } from "@constants";
 import { BaseSchema, CustomError, filterDiscsByQuery, projection } from "@helpers";
 import type { TDisc, TDiscQuery } from "@types";
 
@@ -88,26 +86,26 @@ const DiscModel = model<TDisc>(
 	}).add(BaseSchema)
 );
 
-const getDiscsFromFile = async () => {
-	if (!fs.existsSync(DISCS_FILENAME)) return [];
-	const text = await Bun.file(DISCS_FILENAME).text();
-	return JSON.parse(text) as TDisc[];
+const discCache: { discs: TDisc[] } = {
+	discs: []
 };
 
-const writeDiscsToFile = async () => {
+const getDiscData = () => discCache.discs;
+
+const setDiscData = async () => {
 	const discs = await DiscModel.find({}, projection).sort({ name: 1 });
-	await Bun.write(DISCS_FILENAME, JSON.stringify(discs));
+	discCache.discs = discs;
 	return discs;
 };
 
-const getDiscs = async (query?: TDiscQuery) => {
-	const discs = await getDiscsFromFile();
+const getDiscs = (query?: TDiscQuery) => {
+	const discs = getDiscData();
 	if (query) return filterDiscsByQuery(discs, query);
 	return discs;
 };
 
-const assertDiscExists = async (id: string) => {
-	const discs = await getDiscs();
+const assertDiscExists = (id: string) => {
+	const discs = getDiscData();
 	if (discs?.length > 0) {
 		const disc = discs.find(d => d.id === id);
 		if (disc) return disc;
@@ -117,22 +115,17 @@ const assertDiscExists = async (id: string) => {
 
 const insertDiscs = async (discs: TDisc[]) => {
 	await DiscModel.insertMany(discs);
-	return writeDiscsToFile();
+	const allDiscs = setDiscData();
+	return allDiscs;
 };
 
 const deleteAllDiscs = () => DiscModel.deleteMany();
 
-const deleteDiscById = async (id: string) => {
-	await assertDiscExists(id);
-	DiscModel.deleteOne({ id });
-};
-
 export const Disc = {
-	getDiscsFromFile,
-	writeDiscsToFile,
+	getDiscData,
+	setDiscData,
 	getDiscs,
 	assertDiscExists,
 	insertDiscs,
-	deleteAllDiscs,
-	deleteDiscById
+	deleteAllDiscs
 };
