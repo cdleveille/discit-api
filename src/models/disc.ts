@@ -92,7 +92,7 @@ const discCache: { discs: TDisc[] } = {
 
 const getDiscData = () => discCache.discs;
 
-const setDiscData = async () => {
+const refreshDiscCache = async () => {
 	const discs = await DiscModel.find({}, projection).sort({ name: 1 });
 	discCache.discs = discs;
 	return discs;
@@ -115,7 +115,7 @@ const assertDiscExists = (id: string) => {
 
 const insertDiscs = async (discs: TDisc[]) => {
 	await DiscModel.insertMany(discs);
-	const allDiscs = setDiscData();
+	const allDiscs = refreshDiscCache();
 	return allDiscs;
 };
 
@@ -123,7 +123,7 @@ const deleteAllDiscs = () => DiscModel.deleteMany();
 
 export const Disc = {
 	getDiscData,
-	setDiscData,
+	refreshDiscCache,
 	getDiscs,
 	assertDiscExists,
 	insertDiscs,

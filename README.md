@@ -4,7 +4,7 @@ RESTful API for disc golf discs.
 
 Enables developers to programmatically access public disc information from the amazing [Marshall Street Disc Golf Interactive Flight Guide](https://www.marshallstreetdiscgolf.com/flightguide) web page. Disc data is refreshed nightly via the [DiscIt API Refresh Service](https://github.com/cdleveille/discit-api-refresh).
 
-Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
+Check it out live on fly.io! [discit-api.fly.dev/disc](https://discit-api.fly.dev/disc)
 
 ## Public Endpoints
 
@@ -21,7 +21,7 @@ Check it out live on fly.io! [discit-api.fly.dev](https://discit-api.fly.dev)
 -   By multiple fields: [`/disc?brand=innova&category=control-driver`](https://discit-api.fly.dev/disc?brand=innova&category=control-driver)
 -   By id: [`/disc/dc3616c5-c9f2-55e3-9563-83a00d0805cb`](https://discit-api.fly.dev/disc/dc3616c5-c9f2-55e3-9563-83a00d0805cb)
 
-Refer to the **Fields** section below for all possible query string parameters.
+Refer to the **Fields** section below for all possible query string parameters, or check out the [Scalar API documentation](https://discit-api.fly.dev/reference). OpenAPI Specification .json data is also available at [discit-api.fly.dev/spec](https://discit-api.fly.dev/spec).
 
 ## Fields
 
@@ -58,7 +58,7 @@ Refer to the **Fields** section below for all possible query string parameters.
 ## Technologies
 
 -   [Bun](https://bun.sh/)
--   [Express](https://expressjs.com)
+-   [Hono](https://hono.dev)
 -   [MongoDB](https://www.mongodb.com)
 -   [TypeScript](https://www.typescriptlang.org)
 

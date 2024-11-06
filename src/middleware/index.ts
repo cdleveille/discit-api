@@ -1,21 +1,25 @@
-import compression from "compression";
-import cors from "cors";
-import express, { type Express } from "express";
-import helmet from "helmet";
+import { cors } from "hono/cors";
+import { secureHeaders } from "hono/secure-headers";
 
-export * from "./errorHandler";
-export * from "./notFound";
+import type { OpenAPIHono } from "@hono/zod-openapi";
+import { serveEmojiFavicon } from "@middleware";
+import { apiReference } from "@scalar/hono-api-reference";
 
-export const initMiddleware = (app: Express) => {
-	app.use(express.json({ limit: "10mb" }));
+import { name, version } from "../../package.json";
 
-	app.use(compression());
+export * from "./emojiFavicon";
 
+const openApiInfo = {
+	openapi: "3.1.0",
+	info: { version, title: name }
+};
+
+export const initMiddleware = (app: OpenAPIHono) => {
 	app.use(cors());
 
 	app.use(
-		helmet.contentSecurityPolicy({
-			directives: {
+		secureHeaders({
+			contentSecurityPolicy: {
 				defaultSrc: ["'self'"],
 				baseUri: ["'self'"],
 				childSrc: ["'self'"],
@@ -30,9 +34,9 @@ export const initMiddleware = (app: Express) => {
 				objectSrc: ["'none'"],
 				scriptSrc: ["'self'"],
 				scriptSrcAttr: ["'none'"],
-				scriptSrcElem: ["'self'"],
+				scriptSrcElem: ["'self'", "https://cdn.jsdelivr.net/npm/@scalar/api-reference"],
 				styleSrc: ["'self'", "https:", "'unsafe-inline'"],
-				styleSrcAttr: ["'none'"],
+				styleSrcAttr: ["'self'", "https:", "'unsafe-inline'"],
 				styleSrcElem: ["'self'", "https:", "'unsafe-inline'"],
 				upgradeInsecureRequests: [],
 				workerSrc: ["'self'", "blob:"]
@@ -40,5 +44,15 @@ export const initMiddleware = (app: Express) => {
 		})
 	);
 
-	app.disable("x-powered-by");
+	app.use(serveEmojiFavicon("🥏"));
+
+	app.doc31("/spec", openApiInfo);
+	app.getOpenAPI31Document(openApiInfo);
+
+	app.get(
+		"/reference",
+		apiReference({
+			spec: { url: "/spec" }
+		})
+	);
 };

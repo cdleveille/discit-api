@@ -1,30 +1,45 @@
-import express from "express";
-
-import { Env } from "@constants";
-import { initEndpoints } from "@endpoints";
-import { Config } from "@helpers";
-import { errorHandler, initMiddleware, notFound } from "@middleware";
+import { Config, initErrorHandling } from "@helpers";
+import { OpenAPIHono } from "@hono/zod-openapi";
+import { initMiddleware } from "@middleware";
 import { Disc } from "@models";
+import { initRoutes } from "@routes";
 import { connectToDatabase, log } from "@services";
-
-const { IS_PROD, PORT } = Config;
-
-const app = express();
 
 await connectToDatabase();
 
-await Disc.setDiscData();
+await Disc.refreshDiscCache();
+
+const app = new OpenAPIHono({
+	defaultHook: (result, c) => {
+		if (!result.success) {
+			return c.json(
+				{
+					message: result.error.errors
+						.map(err => {
+							const error = err as typeof err & { expected?: string };
+							const path = error.path.join(".");
+							const message = error.message;
+							const expected = error.expected ? ` <${error.expected}>` : "";
+							return `${path}${expected}: ${message}`;
+						})
+						.join(", ")
+				},
+				400
+			);
+		}
+	},
+	strict: false
+});
 
 initMiddleware(app);
 
-initEndpoints(app);
+initRoutes(app);
 
-// these must be applied last
-app.use(notFound());
-app.use(errorHandler());
+initErrorHandling(app);
 
-app.listen(PORT, () => {
-	log.info(
-		`Server started in ${IS_PROD ? Env.Production : Env.Development} mode - listening on ${!IS_PROD ? "http://localhost:" : "port "}${PORT}`
-	);
-});
+log.info(`HTTP server started on port ${Config.PORT}.`);
+
+export default {
+	port: Config.PORT,
+	fetch: app.fetch
+};

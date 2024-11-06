@@ -1,6 +1,17 @@
-# flyctl launch added from .gitignore
+**/*.DS_Store
+**/*.env*
+**/*.git
+**/.*dev-container
+**/.github
+**/.vscode
 **/node_modules
-**/public
-**/.env
-**/.DS_Store
+.editorconfig
+.gitattributes
+.gitignore
+.prettierignore
+.prettierrc.json
+eslint.config.js
 fly.toml
+import-sorter.json
+LICENSE
+README.md

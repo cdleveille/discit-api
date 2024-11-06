@@ -11,7 +11,6 @@ const MONGO_URI = IS_PROD ? Bun.env.MONGO_URI : (Bun.env.MONGO_URI ?? "mongodb:/
 if (!MONGO_URI) throw new Error("MONGO_URI env var is required in production mode");
 
 export const Config = {
-	IS_PROD,
 	PORT,
 	API_KEY,
 	MONGO_URI

@@ -1,7 +1,11 @@
 import { Schema } from "mongoose";
-import { z } from "zod";
 
+import { z } from "@hono/zod-openapi";
 import type { TBase } from "@types";
+
+export const resMessageSchema = z.object({ message: z.string() });
+
+export const authHeaderSchema = z.object({ authorization: z.string().optional() });
 
 export const BaseSchema = new Schema<TBase>({
 	created_at: {
@@ -45,10 +49,6 @@ export const discQuerySchema = z.object({
 	turn: z.string().optional(),
 	fade: z.string().optional(),
 	stability: z.string().optional()
-});
-
-export const discByIdSchema = z.object({
-	id: z.string()
 });
 
 export const regexifySchema = z.object({

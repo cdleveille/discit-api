@@ -22,10 +22,10 @@
     "baseUrl": ".",
     "paths": {
       "@constants": ["./src/types/constants"],
-      "@endpoints": ["./src/endpoints"],
       "@helpers": ["./src/helpers"],
       "@middleware": ["./src/middleware"],
       "@models": ["./src/models"],
+      "@routes": ["./src/routes"],
       "@services": ["./src/services"],
       "@types": ["./src/types/abstract"]
     }
