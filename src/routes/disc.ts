@@ -108,9 +108,9 @@ export const initDiscRoutes = (app: OpenAPIHono) => {
 				headers: authHeaderSchema
 			},
 			responses: {
-				204: {
+				200: {
 					content: { "application/json": { schema: resMessageSchema } },
-					description: "No Content"
+					description: "OK"
 				},
 				401: {
 					content: { "application/json": { schema: resMessageSchema } },
@@ -126,7 +126,7 @@ export const initDiscRoutes = (app: OpenAPIHono) => {
 			const { authorization } = c.req.valid("header");
 			assertRequestIsAuthorized(authorization);
 			await Disc.deleteAllDiscs();
-			return c.json({ message: "All discs deleted successfully" }, 204);
+			return c.json({ message: "All discs deleted successfully" }, 200);
 		}
 	);
 };
