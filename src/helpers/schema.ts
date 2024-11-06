@@ -51,23 +51,6 @@ export const discQuerySchema = z.object({
 	stability: z.string().optional()
 });
 
-export const regexifySchema = z.object({
-	$regex: z.string(),
-	$options: z.string()
-});
-
-export const discFilterSchema = z.object({
-	id: z.string().optional(),
-	name_slug: regexifySchema.optional(),
-	brand_slug: regexifySchema.optional(),
-	category_slug: regexifySchema.optional(),
-	speed: z.string().optional(),
-	glide: z.string().optional(),
-	turn: z.string().optional(),
-	fade: z.string().optional(),
-	stability_slug: z.string().optional()
-});
-
 export const bagSchema = z.object({
 	id: z.string(),
 	name: z.string(),
