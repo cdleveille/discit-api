@@ -39,7 +39,7 @@ const getBags = (user_id?: string) => BagModel.find(user_id ? { user_id } : {}, 
 
 const createBag = async (user_id: string, name: string) => {
 	const existingBag = await BagModel.findOne({ user_id, name });
-	if (existingBag) throw new CustomError(`You already have a bag named ${name}'`, 400);
+	if (existingBag) throw new CustomError(`You already have a bag named '${name}'`, 400);
 	return BagModel.create({ user_id, name });
 };
 
