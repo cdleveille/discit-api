@@ -1,4 +1,6 @@
-import { assertRequestIsAuthorized, authHeaderSchema, bagSchema, resMessageSchema } from "@helpers";
+import { bagSchema } from "discit-types";
+
+import { assertRequestIsAuthorized, authHeaderSchema, resMessageSchema } from "@helpers";
 import { createRoute, type OpenAPIHono, z } from "@hono/zod-openapi";
 import { Bag } from "@models";
 

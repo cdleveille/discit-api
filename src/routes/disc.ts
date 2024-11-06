@@ -1,4 +1,6 @@
-import { assertRequestIsAuthorized, authHeaderSchema, discQuerySchema, discSchema, resMessageSchema } from "@helpers";
+import { discSchema } from "discit-types";
+
+import { assertRequestIsAuthorized, authHeaderSchema, discQuerySchema, resMessageSchema } from "@helpers";
 import { createRoute, type OpenAPIHono, z } from "@hono/zod-openapi";
 import { Disc } from "@models";
 

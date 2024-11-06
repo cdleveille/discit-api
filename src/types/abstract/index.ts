@@ -1,4 +1,6 @@
-import { bagSchema, discQuerySchema, discSchema } from "@helpers";
+import type * as types from "discit-types";
+
+import { discQuerySchema } from "@helpers";
 import { z } from "@hono/zod-openapi";
 
 export type TBase = {
@@ -6,8 +8,8 @@ export type TBase = {
 	updated_at: Date;
 };
 
-export type TDisc = z.infer<typeof discSchema>;
+export type TDisc = types.TDisc;
 
 export type TDiscQuery = z.infer<typeof discQuerySchema>;
 
-export type TBag = z.infer<typeof bagSchema>;
+export type TBag = types.TBag;
